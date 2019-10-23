@@ -13,11 +13,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author Adri
  */
+@Repository
 public class VideojocHibernateDAO implements VideojocDAO {
 
     @Autowired

@@ -35,8 +35,8 @@ public class Videojoc implements Serializable {
     @Column(name = "nom")
     private String nom;
 
-    @Column(name = "data_Llançament")
     @Temporal(javax.persistence.TemporalType.DATE)
+    @Column(name = "data_Llançament")
     private Date data_Llançament;
 
     @NotNull
