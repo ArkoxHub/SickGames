@@ -82,100 +82,29 @@
         <!--Secció body; Jocs més venuts, valorats, millors ofertes, streams...-->
         <section class="section-body">
             <div class="container">
-                <!--Jocs més venuts-->
-                <p class="tituloFilas">Jocs més venut</p>
+
+                <!--MOST SELLED GAMES-->
+                <p class="tituloFilas">Jocs més venuts</p>
                 <div class="row" id="filaCatalogo">
-                    <div class="column">
-                        <!-- SE TIENE QUE PASAR UNA EL NOMBRE O ID DEL PRODUCTO COMO ID EN LOS LINKS PARA PODER CREAR UNA WEB CON UN CONTENIDO U OTRO-->
-                        <a href="<c:url value="/product"/>" class="imgProducteAComprar" id="overwatch"><img src="<c:url value="/resources/img/cover_test_juego.jpg"/>"><!--poner alt nombrejuego, oferta, nombreweb, juegobarato, etc-->
-                            <div class="infoJoc">
-                                <span class="preu">28€</span>
-                                <div class="genere1"><span>RPG</span></div><!--Genere(numero bd)-->
-                                <div class="genere2"><span>Acció</span></div>
-                            </div>
-                        </a>
-                        <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i>10% - Comprar</a>
-                    </div>
-                    <div class="column">
-                        <!-- SE TIENE QUE PASAR UNA EL NOMBRE O ID DEL PRODUCTO COMO ID EN LOS LINKS PARA PODER CREAR UNA WEB CON UN CONTENIDO U OTRO-->
-                        <a href="<c:url value="/product"/>" class="imgProducteAComprar" id="overwatch"><img src="<c:url value="/resources/img/cover_test_juego.jpg"/>"><!--poner alt nombrejuego, oferta, nombreweb, juegobarato, etc-->
-                            <div class="infoJoc">
-                                <span class="preu">28€</span>
-                                <div class="genere2"><span>Aventura</span></div><!--Genere(numero bd)-->
-                                <div class="genere3"><span>Cundicció</span></div>
-                                <div class="genere4"><span>Estrategia</span></div>
-                                <div class="genere5"><span>Simulador</span></div>
-                            </div>
-                        </a>
-                        <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i>10% - Comprar</a>
-                    </div>
-                    <div class="column">
-                        <!-- SE TIENE QUE PASAR UNA EL NOMBRE O ID DEL PRODUCTO COMO ID EN LOS LINKS PARA PODER CREAR UNA WEB CON UN CONTENIDO U OTRO-->
-                        <a href="<c:url value="/product"/>" class="imgProducteAComprar" id="overwatch"><img src="<c:url value="/resources/img/cover_test_juego.jpg"/>"><!--poner alt nombrejuego, oferta, nombreweb, juegobarato, etc-->
-                            <div class="infoJoc">
-                                <span class="preu">28€</span>
-                                <div class="genere4"><span>Estrategia</span></div><!--Genere(numero bd)-->
-                                <div class="genere5"><span>Simulador</span></div>
-                            </div>
-                        </a>
-                        <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i>10% - Comprar</a>
-                    </div>
-                    <div class="column">
-                        <!-- SE TIENE QUE PASAR UNA EL NOMBRE O ID DEL PRODUCTO COMO ID EN LOS LINKS PARA PODER CREAR UNA WEB CON UN CONTENIDO U OTRO-->
-                        <a href="<c:url value="/product"/>" class="imgProducteAComprar" id="overwatch"><img src="<c:url value="/resources/img/cover_test_juego.jpg"/>"><!--poner alt nombrejuego, oferta, nombreweb, juegobarato, etc-->
-                            <div class="infoJoc">
-                                <span class="preu">28€</span>
-                                <div class="genere6"><span>MMO</span></div><!--Genere(numero bd)-->
-                                <div class="genere7"><span>Deportiu</span></div>
-                            </div>
-                        </a>
-                        <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i>10% - Comprar</a>
-                    </div>
+                    <c:forEach var="joc" items="${videojocs}">
+                        <div class="column">
+                            <a href="<c:url value="/product?id=${joc.codi_Joc}"/>" class="imgProducteAComprar" id="${joc.nom}"><img src="<c:url value="/resources/img/cover_test_juego.jpg"/>" alt="${joc.nom}">
+                                <div class="infoJoc">
+                                    <span>${joc.nom}</span> 
+                                    <span class="preu">${joc.preu}€</span>
+                                    <div class="genere1"><span>RPG</span></div><!--Genere(numero bd)-->
+                                    <div class="genere2"><span>Acció</span></div>
+                                </div>
+                            </a>
+                            <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i>${joc.oferta}% - Comprar</a>
+                        </div>
+                    </c:forEach>
                 </div>
-                <!--Jocs més valorats-->
+
+                <!--MOST VALORATED GAMES     NEED IMPLEMENTATION-->
                 <p class="tituloFilas">Jocs més valorats</p>
                 <div class="row" id="filaCatalogo">
                     <div class="column">
-                        <!-- SE TIENE QUE PASAR UNA EL NOMBRE O ID DEL PRODUCTO COMO ID EN LOS LINKS PARA PODER CREAR UNA WEB CON UN CONTENIDO U OTRO-->
-                        <a href="<c:url value="/product"/>" class="imgProducteAComprar" id="overwatch"><img src="<c:url value="/resources/img/cover_test_juego.jpg"/>"><!--poner alt nombrejuego, oferta, nombreweb, juegobarato, etc-->
-                            <div class="infoJoc">
-                                <span class="preu">28€</span>
-                                <div class="genere2"><span>Aventura</span></div><!--Genere(numero bd)-->
-                                <div class="genere3"><span>Cundicció</span></div>
-                                <div class="genere4"><span>Estrategia</span></div>
-                                <div class="genere5"><span>Simulador</span></div>
-                            </div>
-                        </a>
-                        <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i>10% - Comprar</a>
-                    </div>
-                    <div class="column">
-                        <!-- SE TIENE QUE PASAR UNA EL NOMBRE O ID DEL PRODUCTO COMO ID EN LOS LINKS PARA PODER CREAR UNA WEB CON UN CONTENIDO U OTRO-->
-                        <a href="<c:url value="/product"/>" class="imgProducteAComprar" id="overwatch"><img src="<c:url value="/resources/img/cover_test_juego.jpg"/>"><!--poner alt nombrejuego, oferta, nombreweb, juegobarato, etc-->
-                            <div class="infoJoc">
-                                <span class="preu">28€</span>
-                                <div class="genere2"><span>Aventura</span></div><!--Genere(numero bd)-->
-                                <div class="genere3"><span>Cundicció</span></div>
-                                <div class="genere4"><span>Estrategia</span></div>
-                                <div class="genere5"><span>Simulador</span></div>
-                            </div>
-                        </a>
-                        <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i>10% - Comprar</a>
-                    </div>
-                    <div class="column">
-                        <!-- SE TIENE QUE PASAR UNA EL NOMBRE O ID DEL PRODUCTO COMO ID EN LOS LINKS PARA PODER CREAR UNA WEB CON UN CONTENIDO U OTRO-->
-                        <a href="<c:url value="/product"/>" class="imgProducteAComprar" id="overwatch"><img src="<c:url value="/resources/img/cover_test_juego.jpg"/>"><!--poner alt nombrejuego, oferta, nombreweb, juegobarato, etc-->
-                            <div class="infoJoc">
-                                <span class="preu">28€</span>
-                                <div class="genere2"><span>Aventura</span></div><!--Genere(numero bd)-->
-                                <div class="genere3"><span>Cundicció</span></div>
-                                <div class="genere4"><span>Estrategia</span></div>
-                                <div class="genere5"><span>Simulador</span></div>
-                            </div>
-                        </a>
-                        <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i>10% - Comprar</a>
-                    </div>
-                    <div class="column">
-                        <!-- SE TIENE QUE PASAR UNA EL NOMBRE O ID DEL PRODUCTO COMO ID EN LOS LINKS PARA PODER CREAR UNA WEB CON UN CONTENIDO U OTRO-->
                         <a href="<c:url value="/product"/>" class="imgProducteAComprar" id="overwatch"><img src="<c:url value="/resources/img/cover_test_juego.jpg"/>"><!--poner alt nombrejuego, oferta, nombreweb, juegobarato, etc-->
                             <div class="infoJoc">
                                 <span class="preu">28€</span>
@@ -188,62 +117,26 @@
                         <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i>10% - Comprar</a>
                     </div>
                 </div>
-                <!--Millors Ofertes-->
+
+                <!--TOP OFFERTS DESC-->
                 <p class="tituloFilas">Millors ofertes</p>
                 <div class="row" id="filaCatalogo">
-                    <div class="column">
-                        <!-- SE TIENE QUE PASAR UNA EL NOMBRE O ID DEL PRODUCTO COMO ID EN LOS LINKS PARA PODER CREAR UNA WEB CON UN CONTENIDO U OTRO-->
-                        <a href="<c:url value="/product"/>" class="imgProducteAComprar" id="overwatch"><img src="<c:url value="/resources/img/cover_test_juego.jpg"/>"><!--poner alt nombrejuego, oferta, nombreweb, juegobarato, etc-->
-                            <div class="infoJoc">
-                                <span class="preu">28€</span>
-                                <div class="genere2"><span>Aventura</span></div><!--Genere(numero bd)-->
-                                <div class="genere3"><span>Cundicció</span></div>
-                                <div class="genere4"><span>Estrategia</span></div>
-                                <div class="genere5"><span>Simulador</span></div>
-                            </div>
-                        </a>
-                        <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i>10% - Comprar</a>
-                    </div>
-                    <div class="column">
-                        <!-- SE TIENE QUE PASAR UNA EL NOMBRE O ID DEL PRODUCTO COMO ID EN LOS LINKS PARA PODER CREAR UNA WEB CON UN CONTENIDO U OTRO-->
-                        <a href="<c:url value="/product"/>" class="imgProducteAComprar" id="overwatch"><img src="<c:url value="/resources/img/cover_test_juego.jpg"/>"><!--poner alt nombrejuego, oferta, nombreweb, juegobarato, etc-->
-                            <div class="infoJoc">
-                                <span class="preu">28€</span>
-                                <div class="genere2"><span>Aventura</span></div><!--Genere(numero bd)-->
-                                <div class="genere3"><span>Cundicció</span></div>
-                                <div class="genere4"><span>Estrategia</span></div>
-                                <div class="genere5"><span>Simulador</span></div>
-                            </div>
-                        </a>
-                        <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i>10% - Comprar</a>
-                    </div>
-                    <div class="column">
-                        <!-- SE TIENE QUE PASAR UNA EL NOMBRE O ID DEL PRODUCTO COMO ID EN LOS LINKS PARA PODER CREAR UNA WEB CON UN CONTENIDO U OTRO-->
-                        <a href="<c:url value="/product"/>" class="imgProducteAComprar" id="overwatch"><img src="<c:url value="/resources/img/cover_test_juego.jpg"/>"><!--poner alt nombrejuego, oferta, nombreweb, juegobarato, etc-->
-                            <div class="infoJoc">
-                                <span class="preu">28€</span>
-                                <div class="genere2"><span>Aventura</span></div><!--Genere(numero bd)-->
-                                <div class="genere3"><span>Cundicció</span></div>
-                                <div class="genere4"><span>Estrategia</span></div>
-                                <div class="genere5"><span>Simulador</span></div>
-                            </div>
-                        </a>
-                        <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i>10% - Comprar</a>
-                    </div>
-                    <div class="column">
-                        <!-- SE TIENE QUE PASAR UNA EL NOMBRE O ID DEL PRODUCTO COMO ID EN LOS LINKS PARA PODER CREAR UNA WEB CON UN CONTENIDO U OTRO-->
-                        <a href="<c:url value="/product"/>" class="imgProducteAComprar" id="overwatch"><img src="<c:url value="/resources/img/cover_test_juego.jpg"/>"><!--poner alt nombrejuego, oferta, nombreweb, juegobarato, etc-->
-                            <div class="infoJoc">
-                                <span class="preu">28€</span>
-                                <div class="genere2"><span>Aventura</span></div><!--Genere(numero bd)-->
-                                <div class="genere3"><span>Cundicció</span></div>
-                                <div class="genere4"><span>Estrategia</span></div>
-                                <div class="genere5"><span>Simulador</span></div>
-                            </div>
-                        </a>
-                        <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i>10% - Comprar</a>
-                    </div>
+                    <c:forEach items="${ofertes}" var="joc_Oferta">
+                        <div class="column">
+                            <!-- SE TIENE QUE PASAR UNA EL NOMBRE O ID DEL PRODUCTO COMO ID EN LOS LINKS PARA PODER CREAR UNA WEB CON UN CONTENIDO U OTRO-->
+                            <a href="<c:url value="/product?id=${joc_Oferta.codi_Joc}"/>" class="imgProducteAComprar" id="{joc_Oferta.nom}"><img src="<c:url value="/resources/img/cover_test_juego.jpg"/>" alt="${joc_Oferta.codi_Joc}"><!--poner alt nombrejuego, oferta, nombreweb, juegobarato, etc-->
+                                <div class="infoJoc">
+                                    <span>${joc_Oferta.nom}</span> 
+                                    <span class="preu">${joc_Oferta.preu}</span>
+                                    <div class="genere2"><span>Aventura</span></div><!--Genere(numero bd)-->
+                                    <div class="genere3"><span>Cundicció</span></div>
+                                </div>
+                            </a>
+                            <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i>${joc_Oferta.oferta}% - Comprar</a>
+                        </div>
+                    </c:forEach>
                 </div>
+
                 <!--Streams-->
                 <p class="tituloFilas">Top Streamers [ESP]</p>
                 <div class="row" id="filaStreams"></div><!--S'omplira automaticament amb els top streamers-->

@@ -77,7 +77,7 @@
                 </div>
             </nav>
         </section>
-        <!--FI SecciÃ³ top-->
+        <!--FI Secció top-->
 
         <!--Secció body; Jocs més venuts, valorats, millors ofertes, streams...-->
         <section class="section-body">
@@ -92,7 +92,7 @@
                     <div class="column-9">
                         <div class="row" id="titol">
                             <!--Importar nombre juego de la bd-->
-                            <div class="column-12 text-center">Indivisible</div>
+                            <div class="column-12 text-center">${joc.nom}</div>
                         </div>
                         <div class="row justify-content-md-center">           
                             <img src="<c:url value="/resources/img/plataformes/battlenet.png"/>" alt="">
@@ -104,7 +104,7 @@
                         </div>
                         <div class="row" id="stock">
                             <div class="column-6 text-left">
-                                <span class="stockSi">Stock  10 <!--si no hay stock , la class se llamara stockNo y no se mostrara el total-->
+                                <span class="stockSi">Stock disponible: ${joc.qty_Available}<!--si no hay stock , la class se llamara stockNo y no se mostrara el total-->
                                     <i class="fa fa-times" id="cruz"></i>
                                 </span>
                             </div>
@@ -120,13 +120,13 @@
                             </div>
                             <div class="column-6 text-right">
                                 <span>
-                                    <i class="fa fa-arrow-down"></i> 20%<!--Importar descompte joc-->
+                                    <i class="fa fa-arrow-down"></i> ${joc.oferta}%<!--Importar descompte joc-->
                                 </span>
                             </div>
                         </div>
                         <div class="row" id="preu">
                             <div class="column-12 text-center">
-                                <span>30€</span>
+                                <span>${joc.preu}€</span>
                             </div>
                         </div>
                         <div class="row" id="comprarJoc">
@@ -173,11 +173,7 @@
                         <table>
                             <tbody>
                                 <tr>
-                                    <td class="requisit">Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer 
-                                        took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
-                                        but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s 
-                                        with the release of Letraset sheets containing Lorem Ipsum passages.
+                                    <td class="requisit">${joc.descripcio}
                                     </td>
                                 </tr>
                             </tbody>

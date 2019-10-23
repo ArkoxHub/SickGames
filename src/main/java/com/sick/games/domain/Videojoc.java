@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -26,6 +28,7 @@ public class Videojoc implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
     @Column(name = "codi_Joc")
     private int codi_Joc;
@@ -49,8 +52,8 @@ public class Videojoc implements Serializable {
 
     @Column(name = "oferta")
     private int oferta;
-
-    @Column(name = "descripcio")
+    
+    @Column(name = "descripcio", columnDefinition = "TEXT")
     private String descripcio;
 
     @NotNull

@@ -10,11 +10,13 @@ import com.sick.games.repository.VideojocDAO;
 import com.sick.games.service.VideojocService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Adri
  */
+@Service
 public class VideojocServiceImpl implements VideojocService {
     
     @Autowired

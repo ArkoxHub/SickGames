@@ -11,6 +11,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -66,6 +67,7 @@ public class VideojocHibernateDAO implements VideojocDAO {
     public List<Videojoc> getGamesByOfert(int ofertaStart, int ofertaEnd) {
         Criteria criteria = createEntityCriteria();
         criteria.add(Restrictions.between("oferta", ofertaStart, ofertaEnd));
+        criteria.addOrder(Order.desc("oferta"));
         return (List<Videojoc>) criteria.list();
     }
 
