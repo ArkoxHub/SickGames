@@ -11,10 +11,11 @@ http://www.springframework.org/schema/mvc
 http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
     
     <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/"/>
+    <mvc:annotation-driven enable-matrix-variables="true"/>
     <mvc:default-servlet-handler/>
     <mvc:annotation-driven />
     
-    <context:component-scan base-package="com.sick.games.controller com.sick.games.domain com.sick.games.repository com.sick.games.service" />
+    <context:component-scan base-package="com.sick.games.controller com.sick.games.domain com.sick.games.repository com.sick.games.service com.sick.games.config"/>
  
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/" />
