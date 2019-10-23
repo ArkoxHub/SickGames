@@ -14,11 +14,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author Adri
  */
+@Transactional
 @Repository
 public class VideojocHibernateDAO implements VideojocDAO {
 
@@ -36,7 +38,7 @@ public class VideojocHibernateDAO implements VideojocDAO {
     }
 
     @Override
-    public Videojoc getVideojocByCode(String codi) {
+    public Videojoc getVideojocByCode(int codi) {
         Criteria criteria = createEntityCriteria();
         criteria.add(Restrictions.eq("codi_Joc", codi));
         return (Videojoc) criteria.uniqueResult();
@@ -50,18 +52,21 @@ public class VideojocHibernateDAO implements VideojocDAO {
     }
 
     @Override
-    public Videojoc updateVideojoc(Videojoc videojoc) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void updateVideojoc(Videojoc videojoc) {
+        getSession().merge(videojoc);
     }
 
     @Override
     public List<Videojoc> getAllVideojocs() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Criteria criteria = createEntityCriteria();
+        return (List<Videojoc>) criteria.list();
     }
 
     @Override
-    public List<Videojoc> getGamesByOfert(int oferta) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Videojoc> getGamesByOfert(int ofertaStart, int ofertaEnd) {
+        Criteria criteria = createEntityCriteria();
+        criteria.add(Restrictions.between("oferta", ofertaStart, ofertaEnd));
+        return (List<Videojoc>) criteria.list();
     }
 
     // Connecta amb la Base de Dades

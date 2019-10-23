@@ -44,6 +44,7 @@ public class Videojoc implements Serializable {
     private float preu;
 
     @Column(name = "idioma")
+    @Size(max = 50)
     private String idioma;
 
     @Column(name = "oferta")
@@ -61,9 +62,7 @@ public class Videojoc implements Serializable {
     private int plataforma;
 
     public Videojoc() {
-    }
-
-    ;
+    };
 
     public Videojoc(int codi_Joc, String nom, Date data_Llançament, float preu, String idioma, int oferta, String descripcio, int qty_Available, int plataforma) {
         this.codi_Joc = codi_Joc;
