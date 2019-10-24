@@ -97,27 +97,6 @@ $(document).ready(function () {
     });
 });
 
-//Se podria mejorar este codigo?, para cada genero(num) seria un color
-window.onload = function () {
-    $(".genere1").css("background-image", "url(../img/generos/Rojo.png)");
-    $(".genere2").css("background-image", "url(../img/generos/Azul_marino.png");
-    $(".genere3").css("background-image", "url(../img/generos/Aguamarina.png");
-    $(".genere4").css("background-image", "url(../img/generos/Cereza.png");
-    $(".genere5").css("background-image", "url(../img/generos/Verde.png");
-    $(".genere6").css("background-image", "url(../img/generos/Verde_azulado.png");
-    $(".genere7").css("background-image", "url(../img/generos/Violeta.png");
-    $(".genere8").css("background-image", "url(../img/generos/Verde_pistacho.png");
-    $(".genere9").css("background-image", "url(../img/generos/Morado.png");
-    $(".genere10").css("background-image", "url(../img/generos/Cielo.png");
-    $(".genere11").css("background-image", "url(../img/generos/Fucsia.png");
-    $(".genere12").css("background-image", "url(../img/generos/Naranja.png");
-    $(".genere13").css("background-image", "url(../img/generos/Ocre.png");
-    $(".genere14").css("background-image", "url(../img/generos/Naranja_brillante.png");
-    $(".genere15").css("background-image", "url(../img/generos/Purpura.png");
-    $(".genere16").css("background-image", "url(../img/generos/Turquesa.png");
-    $(".genere17").css("background-image", "url(../img/generos/Rosa.png");
-    $(".genere18").css("background-image", "url(../img/generos/Turquesa_verdoso.png");
-};
 /* Menu login*/
 $(document).ready(function () {
     $('#test').hover(function (event) {

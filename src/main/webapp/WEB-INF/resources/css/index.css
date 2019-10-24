@@ -432,3 +432,59 @@ html{
     color: white;
     transition: 0.3s ease-in-out;
 }
+
+
+.genere1{
+    background-image: url("../img/generos/Rojo.png");
+}
+.genere2{
+    background-image: url("../img/generos/Azul_marino.png");
+}
+.genere3{
+    background-image: url("../img/generos/Aguamarina.png");
+}
+.genere4{
+    background-image: url("../img/generos/Cereza.png");
+}
+.genere5{
+    background-image: url("../img/generos/Verde.png");
+}
+.genere6{
+    background-image: url("../img/generos/Verde_azulado.png");
+}
+.genere7{
+    background-image: url("../img/generos/Violeta.png");
+}
+.genere8{
+    background-image: url("../img/generos/Verde_pistacho.png");
+}
+.genere9{
+    background-image: url("../img/generos/Morado.png");
+}
+.genere10{
+    background-image: url("../img/generos/Cielo.png");
+}
+.genere11{
+    background-image: url("../img/generos/Fucsia.png");
+}
+.genere12{
+    background-image: url("../img/generos/Naranja.png");
+}
+.genere13{
+    background-image: url("../img/generos/Ocre.png");
+}
+.genere14{
+    background-image: url("../img/generos/Naranja_brillante.png");
+}
+.genere15{
+    background-image: url("../img/generos/Purpura.png");
+}
+.genere16{
+    background-image: url("../img/generos/Turquesa.png");
+}
+.genere17{
+    background-image: url("../img/generos/Rosa.png");
+}
+.genere18{
+    background-image: url("../img/generos/Turquesa_verdoso.png");
+}

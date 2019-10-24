@@ -28,6 +28,7 @@
     </head>
 
     <body>
+        <a href="<c:url value="/afegirJoc"/>">AAAAAAAAAAAAAAAAAAAAAAAAAAdriaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaTOOOOONNTOOOOOOOOOOOOOOOOOOOOOOOO</a>
         <!--Secció top: Buscador, conta, logo....--> 
         <section class="section-top">    
             <a href="<c:url value="/"/>"><img src="<c:url value="/resources/img/logo_sick.png"/>" alt="" class="logoMvl"></a>
@@ -86,7 +87,7 @@
                 <!--MOST SELLED GAMES-->
                 <p class="tituloFilas">Jocs més venuts</p>
                 <div class="row" id="filaCatalogo">
-                    <c:forEach var="joc" items="${videojocs}">
+                    <c:forEach var="joc" items="${videojocs}" begin="1" end="4">
                         <div class="column">
                             <a href="<c:url value="/product?id=${joc.codi_Joc}"/>" class="imgProducteAComprar" id="${joc.nom}"><img src="<c:url value="/resources/img/cover_test_juego.jpg"/>" alt="${joc.nom}">
                                 <div class="infoJoc">
