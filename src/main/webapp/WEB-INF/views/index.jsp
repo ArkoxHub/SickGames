@@ -28,7 +28,7 @@
     </head>
 
     <body>
-        <a href="<c:url value="/afegirJoc"/>">AAAAAAAAAAAAAAAAAAAAAAAAAAdriaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaTOOOOONNTOOOOOOOOOOOOOOOOOOOOOOOO</a>
+        <a href="<c:url value="/admin/addGame"/>">Importar Videojoc</a>
         <!--Secció top: Buscador, conta, logo....--> 
         <section class="section-top">    
             <a href="<c:url value="/"/>"><img src="<c:url value="/resources/img/logo_sick.png"/>" alt="" class="logoMvl"></a>
@@ -161,7 +161,7 @@
                             <div class="col-md-6 mt-md-0 mt-3">
 
                                 <!-- Content -->
-                                <h5 class="text-uppercase">Gràcies cies per confiar en SickGames</h5>
+                                <h5 class="text-uppercase">Gràcies per confiar en SickGames</h5>
                                 <ul class="list-unstyled">
                                     <li>
                                         Adrià

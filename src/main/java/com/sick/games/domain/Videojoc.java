@@ -64,9 +64,11 @@ public class Videojoc implements Serializable {
     @Column(name = "plataforma")
     private int plataforma;
 
+    // Empty Constructor
     public Videojoc() {
     };
 
+    // Full Constructor
     public Videojoc(int codi_Joc, String nom, Date data_Llançament, float preu, String idioma, int oferta, String descripcio, int qty_Available, int plataforma) {
         this.codi_Joc = codi_Joc;
         this.nom = nom;

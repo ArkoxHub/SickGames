@@ -37,6 +37,8 @@ form{
 }
 form input[type="text"],
 form input[type="file"],
+form input[type="number"],
+form input[type="date"],
 form textarea{
     border: 1px solid #536DFE;
     border-radius: 2px;
@@ -87,6 +89,7 @@ form input[type="submit"]{
     border:none;
     float:right;
     cursor:pointer;
+    text-decoration: none;
 }
 form input[type="submit"]:hover{
     background:#E64A19;
