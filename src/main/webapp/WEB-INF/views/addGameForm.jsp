@@ -29,13 +29,10 @@
     <body>
         <div class="wrap">
             <a class="btn btn-primary" href="<c:url value="/"/>">Tornar a la web</a>
-            <form:form modelAttribute="game" id="form" method="post" onsubmit="return validacio();">
-                <label for="codi_Joc">Codi del joc</label><br>
-                <form:input path="codi_Joc" type="number" class="form-control" id="codi_Joc" name="codi_Joc" placeholder="Introdueix el codi"/>
-                
+            <form:form modelAttribute="game" id="form" method="post" onsubmit="return validacio();" enctype="multipart/form-data">
                 <label for="nom">Nom</label><br>
                 <form:input path="nom" type="text" maxlength="50" class="form-control" id="nom" name="nom" placeholder="Nom del joc"/>
-                
+
                 <label for="data_Llançament">Data de llançament</label>
                 <form:input path="data_Llançament" type="date" class="form-control" id="data_Llançament" name="data_Llançament"/>
 
@@ -62,7 +59,7 @@
                 <img id="preview" src="#" alt="" style="max-width: 100%"/>
                 -->
                 <input type="submit" id="submit" class="btn btn-primary" value="Crear Videojoc">
-                </form:form>
-            </div>
-        </body>
-    </html>
+            </form:form>
+        </div>
+    </body>
+</html>

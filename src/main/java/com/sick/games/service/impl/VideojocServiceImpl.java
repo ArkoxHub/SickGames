@@ -36,6 +36,11 @@ public class VideojocServiceImpl implements VideojocService {
     public void updateVideojoc(Videojoc videojoc) {
         videojocDAO.updateVideojoc(videojoc);
     }
+    
+    @Override
+    public int getMaxID() {
+        return videojocDAO.getMaxID();
+    }
 
     @Override
     public Videojoc getVideojocByCode(int codi) {

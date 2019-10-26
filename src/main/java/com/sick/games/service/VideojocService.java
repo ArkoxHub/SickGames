@@ -19,6 +19,8 @@ public interface VideojocService {
     public void removeVideojoc(Videojoc videojoc);
 
     public void updateVideojoc(Videojoc videojoc);
+    
+    public int getMaxID();
 
     public Videojoc getVideojocByCode(int codi);
 
