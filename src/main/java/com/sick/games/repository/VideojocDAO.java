@@ -18,6 +18,8 @@ public interface VideojocDAO {
     
     public void updateVideojoc(Videojoc videojoc);
     
+    public int getMaxID();
+    
     public Videojoc getVideojocByCode(int codi);
     
     public List<Videojoc> getVideojocsByName(String name);

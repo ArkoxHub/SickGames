@@ -12,6 +12,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -55,6 +56,13 @@ public class VideojocHibernateDAO implements VideojocDAO {
     @Override
     public void updateVideojoc(Videojoc videojoc) {
         getSession().merge(videojoc);
+    }
+    
+    @Override
+    public int getMaxID() {
+        Criteria criteria = createEntityCriteria();
+        criteria.setProjection(Projections.max("codi_Joc"));
+        return (Integer) criteria.uniqueResult();
     }
 
     @Override

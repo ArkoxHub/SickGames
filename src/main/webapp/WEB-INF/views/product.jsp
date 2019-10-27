@@ -28,6 +28,7 @@
     </head>
 
     <body>
+        <a href="<c:url value="/admin/updateGame?id=${joc.codi_Joc}"/>">Modifica aquest videojoc</a>
         <!--Secció top; Buscador, conta, logo....--> 
         <section class="section-top">    
             <a href="<c:url value="/"/>"><img src="<c:url value="/resources/img/logo_sick.png"/>" alt="" class="logoMvl"></a>
@@ -84,7 +85,7 @@
             <div class="container" >
                 <div class="row" id="cartaJoc">
                     <div class="column-3">
-                        <img class="portadaJoc" src="<c:url value="/resources/img/cover_test_juego.jpg"/>">         
+                        <img class="portadaJoc" src="<c:url value="/resources/portades/${joc.nom}.jpg"/>">         
                         <img class="afegirWhishList" src="<c:url value="/resources/img/like.png"/>" alt=""> <!--Alt deberia ser el nombre del juego de la bd-->
                     </div>
                     <div class="portada">

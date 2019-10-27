@@ -28,7 +28,7 @@
     </head>
 
     <body>
-        <a href="<c:url value="/afegirJoc"/>">AAAAAAAAAAAAAAAAAAAAAAAAAAdriaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaTOOOOONNTOOOOOOOOOOOOOOOOOOOOOOOO</a>
+        <a href="<c:url value="/admin/addGame"/>">Afegir nou videojoc</a>
         <!--Secció top: Buscador, conta, logo....--> 
         <section class="section-top">    
             <a href="<c:url value="/"/>"><img src="<c:url value="/resources/img/logo_sick.png"/>" alt="" class="logoMvl"></a>
@@ -78,7 +78,7 @@
                 </div>
             </nav>
         </section>
-        <!--FI Secció top-->
+        <!--Fi Secció top-->
 
         <!--Secció body; Jocs més venuts, valorats, millors ofertes, streams...-->
         <section class="section-body">
@@ -87,9 +87,9 @@
                 <!--MOST SELLED GAMES-->
                 <p class="tituloFilas">Jocs més venuts</p>
                 <div class="row" id="filaCatalogo">
-                    <c:forEach var="joc" items="${videojocs}" begin="1" end="4">
+                    <c:forEach var="joc" items="${videojocs}" begin="0" end="3">
                         <div class="column">
-                            <a href="<c:url value="/product?id=${joc.codi_Joc}"/>" class="imgProducteAComprar" id="${joc.nom}"><img src="<c:url value="/resources/img/cover_test_juego.jpg"/>" alt="${joc.nom}">
+                            <a href="<c:url value="/product?id=${joc.codi_Joc}"/>" class="imgProducteAComprar" id="${joc.nom}"><img src="<c:url value="/resources/portades/${joc.nom}.jpg"/>" style="height: 320px" alt="${joc.nom}">
                                 <div class="infoJoc">
                                     <span>${joc.nom}</span> 
                                     <span class="preu">${joc.preu}€</span>
@@ -125,7 +125,7 @@
                     <c:forEach items="${ofertes}" var="joc_Oferta">
                         <div class="column">
                             <!-- SE TIENE QUE PASAR UNA EL NOMBRE O ID DEL PRODUCTO COMO ID EN LOS LINKS PARA PODER CREAR UNA WEB CON UN CONTENIDO U OTRO-->
-                            <a href="<c:url value="/product?id=${joc_Oferta.codi_Joc}"/>" class="imgProducteAComprar" id="{joc_Oferta.nom}"><img src="<c:url value="/resources/img/cover_test_juego.jpg"/>" alt="${joc_Oferta.codi_Joc}"><!--poner alt nombrejuego, oferta, nombreweb, juegobarato, etc-->
+                            <a href="<c:url value="/product?id=${joc_Oferta.codi_Joc}"/>" class="imgProducteAComprar" id="${joc_Oferta.nom}"><img src="<c:url value="/resources/portades/${joc_Oferta.nom}.jpg"/>" style="height: 320px"" alt="${joc_Oferta.codi_Joc}"><!--poner alt nombrejuego, oferta, nombreweb, juegobarato, etc-->
                                 <div class="infoJoc">
                                     <span>${joc_Oferta.nom}</span> 
                                     <span class="preu">${joc_Oferta.preu}</span>
@@ -161,7 +161,7 @@
                             <div class="col-md-6 mt-md-0 mt-3">
 
                                 <!-- Content -->
-                                <h5 class="text-uppercase">Gràcies cies per confiar en SickGames</h5>
+                                <h5 class="text-uppercase">Gràcies per confiar en SickGames</h5>
                                 <ul class="list-unstyled">
                                     <li>
                                         Adrià

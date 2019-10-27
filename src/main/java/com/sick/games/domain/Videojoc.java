@@ -6,14 +6,10 @@
 package com.sick.games.domain;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -28,7 +24,6 @@ public class Videojoc implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
     @Column(name = "codi_Joc")
     private int codi_Joc;
@@ -38,9 +33,8 @@ public class Videojoc implements Serializable {
     @Column(name = "nom")
     private String nom;
 
-    @Temporal(javax.persistence.TemporalType.DATE)
     @Column(name = "data_Llançament")
-    private Date data_Llançament;
+    private java.sql.Date data_Llançament;
 
     @NotNull
     @Column(name = "preu")
@@ -64,10 +58,12 @@ public class Videojoc implements Serializable {
     @Column(name = "plataforma")
     private int plataforma;
 
+    // Empty Constructor
     public Videojoc() {
     };
 
-    public Videojoc(int codi_Joc, String nom, Date data_Llançament, float preu, String idioma, int oferta, String descripcio, int qty_Available, int plataforma) {
+    // Full Constructor
+    public Videojoc(int codi_Joc, String nom, java.sql.Date data_Llançament, float preu, String idioma, int oferta, String descripcio, int qty_Available, int plataforma) {
         this.codi_Joc = codi_Joc;
         this.nom = nom;
         this.data_Llançament = data_Llançament;
@@ -95,11 +91,11 @@ public class Videojoc implements Serializable {
         this.nom = nom;
     }
 
-    public Date getData_Llançament() {
+    public java.sql.Date getData_Llançament() {
         return data_Llançament;
     }
 
-    public void setData_Llançament(Date data_Llançament) {
+    public void setData_Llançament(java.sql.Date data_Llançament) {
         this.data_Llançament = data_Llançament;
     }
 
