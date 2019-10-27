@@ -28,7 +28,7 @@
     </head>
 
     <body>
-        <a href="<c:url value="/admin/addGame"/>">Importar Videojoc</a>
+        <a href="<c:url value="/admin/addGame"/>">Afegir nou videojoc</a>
         <!--Secció top: Buscador, conta, logo....--> 
         <section class="section-top">    
             <a href="<c:url value="/"/>"><img src="<c:url value="/resources/img/logo_sick.png"/>" alt="" class="logoMvl"></a>
@@ -78,7 +78,7 @@
                 </div>
             </nav>
         </section>
-        <!--FI Secció top-->
+        <!--Fi Secció top-->
 
         <!--Secció body; Jocs més venuts, valorats, millors ofertes, streams...-->
         <section class="section-body">
@@ -87,7 +87,7 @@
                 <!--MOST SELLED GAMES-->
                 <p class="tituloFilas">Jocs més venuts</p>
                 <div class="row" id="filaCatalogo">
-                    <c:forEach var="joc" items="${videojocs}" begin="1" end="4">
+                    <c:forEach var="joc" items="${videojocs}" begin="0" end="3">
                         <div class="column">
                             <a href="<c:url value="/product?id=${joc.codi_Joc}"/>" class="imgProducteAComprar" id="${joc.nom}"><img src="<c:url value="/resources/portades/${joc.nom}.jpg"/>" style="height: 320px" alt="${joc.nom}">
                                 <div class="infoJoc">

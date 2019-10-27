@@ -28,6 +28,7 @@
     </head>
 
     <body>
+        <a href="<c:url value="/admin/updateGame?id=${joc.codi_Joc}"/>">Modifica aquest videojoc</a>
         <!--Secció top; Buscador, conta, logo....--> 
         <section class="section-top">    
             <a href="<c:url value="/"/>"><img src="<c:url value="/resources/img/logo_sick.png"/>" alt="" class="logoMvl"></a>

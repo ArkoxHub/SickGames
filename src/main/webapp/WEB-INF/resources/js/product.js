@@ -1,17 +1,17 @@
 /**
-
+ 
  * @fileoverview Archivo Js de la página product.html
-
+ 
  *
-
+ 
  * @author                  Kevin Merat <kevinmerat@hotmail.com>
-
+ 
  * @copyright               www.sickgames.com/copyright
-
+ 
  * 
-
-**/
-$(document).ready(function(){
+ 
+ **/
+$(document).ready(function () {
     //En cas de voler introduir el nom d'un joc amb espais s'ha de posar: Joc%20amb%20espais
     var jocApi = "https://api.twitch.tv/helix/games?name=Indivisible";
     $.ajax({
@@ -20,107 +20,107 @@ $(document).ready(function(){
         success: gameID,
         headers: {
             'Client-ID': 'w202jotbdcd2zue6prnpvmyk7sbitc'
-          },
-        error: function(){
+        },
+        error: function () {
             alert("error carrega resposta");
         }
     });
-    function gameID(datosJuego){
+    function gameID(datosJuego) {
         var idJoc = datosJuego.data[0].id;
         $.ajax({
             type: "GET",
-            url: "https://api.twitch.tv/helix/streams?first=5&game_id="+idJoc+"&language=es",
+            url: "https://api.twitch.tv/helix/streams?first=5&game_id=" + idJoc + "&language=es",
             success: mostrarStreamsJoc,
             headers: {
                 'Client-ID': 'w202jotbdcd2zue6prnpvmyk7sbitc'
-              },
-            error: function(){
+            },
+            error: function () {
                 alert("error carrega resposta");
             }
         });
     }
-    function mostrarStreamsJoc(datosStream){
-        if(datosStream.data.length == 0){
+    function mostrarStreamsJoc(datosStream) {
+        if (datosStream.data.length == 0) {
             $("#filaStreams").append($('<span>No hi ha streams de parla espanyola en aquest moment</span>'));
         }
-        for (var i = 0; i < datosStream.data.length; i++){
+        for (var i = 0; i < datosStream.data.length; i++) {
             //Agafem el thumbnail (imatge previsualitzacio)
             var thumbnail = datosStream.data[i].thumbnail_url;
             //Modifiquem el thumbnail per aplicarli les mesures que desitjem
-            var aplicarTamaño = thumbnail.replace("{width}x{height}","500x500");
+            var aplicarTamaño = thumbnail.replace("{width}x{height}", "500x500");
             $("#filaStreams").append($(
-                '<div class="column">'+
-                    '<a href="#streamView" class='+datosStream.data[i].user_name+' id="stream">'+
-                        '<img src="'+aplicarTamaño+'">'+
-                    '</a>'+
-                    '<a href="#streamView" class='+datosStream.data[i].user_name+' id="streamName">'+
-                        datosStream.data[i].user_name+
-                    '</a>'+
-                '</div>'));
-            
-            $("."+datosStream.data[i].user_name).click(function(){
-                $("#streamView").show("slow");                
+                    '<div class="column">' +
+                    '<a href="#streamView" class=' + datosStream.data[i].user_name + ' id="stream">' +
+                    '<img src="' + aplicarTamaño + '">' +
+                    '</a>' +
+                    '<a href="#streamView" class=' + datosStream.data[i].user_name + ' id="streamName">' +
+                    datosStream.data[i].user_name +
+                    '</a>' +
+                    '</div>'));
+
+            $("." + datosStream.data[i].user_name).click(function () {
+                $("#streamView").show("slow");
                 var existeStream = $("#streamView");
-                if (existeStream.length >= 1){
-                    $("#streamView").empty();  
+                if (existeStream.length >= 1) {
+                    $("#streamView").empty();
                 }
                 $("#streamView").append($(
-                    '<div class="col-12">'+
-                        '<div>'+
-                            '<a id="cerrar" href="#filaStreams">'+
-                                '<img src="../img/cruz.png" style="width:30px; float:right">'+
-                            '</a>'+
-                        '</div>'+
-                    '</div>'+
-                    '<div class="col-12">'+
-                        '<div id="twitch-embed"></div>'+
-                    '</div>').show("slow"));
-                    
-        
-                $("#cerrar").click(function(){
+                        '<div class="col-12">' +
+                        '<div>' +
+                        '<a id="cerrar" href="#filaStreams">' +
+                        '<img src="../img/cruz.png" style="width:30px; float:right">' +
+                        '</a>' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="col-12">' +
+                        '<div id="twitch-embed"></div>' +
+                        '</div>').show("slow"));
+
+
+                $("#cerrar").click(function () {
                     $("#streamView").hide("slow");
                     $("#streamView").empty();
                 })
 
-                if (window.matchMedia('(max-width: 600px)').matches){
+                if (window.matchMedia('(max-width: 600px)').matches) {
                     new Twitch.Embed("twitch-embed", {
                         width: "100%",
                         height: 250,
                         layout: "video",
                         channel: this.className //devuelve el nombre del streamer, ya que la class es el nombre
                     });
-                }
-                else{
+                } else {
                     new Twitch.Embed("twitch-embed", {
                         width: "100%",
                         height: 625,
                         layout: "video",
                         channel: this.className //devuelve el nombre del streamer, ya que la class es el nombre
-                    }); 
-                }               
-            });       
-        };
+                    });
+                }
+            });
+        }
+        ;
     }
 
 });
 
 /* Menu login*/
-$(document).ready(function(){
-    $('#test').hover(function(event) {
+$(document).ready(function () {
+    $('#test').hover(function (event) {
         clearTimeout($(this).data('timeout'));
-        $(this).data('timeout', setTimeout(function() {
-          $('.menuCompte').slideDown('fast');
-        },100));
-      }, function(event) {
+        $(this).data('timeout', setTimeout(function () {
+            $('.menuCompte').slideDown('fast');
+        }, 100));
+    }, function (event) {
         clearTimeout($(this).data('timeout'));
-        $('.menuCompte').slideUp(200, function() {
-          $(this).hide();
+        $('.menuCompte').slideUp(200, function () {
+            $(this).hide();
         });
-      });
+    });
 });
 
 //Dark y light Mode 
-$(document).ready(function(){
+$(document).ready(function () {
     function setLocalStorage(c_name, value) {
         var exdays = 30;
         // if localStorage is present, use that
@@ -133,48 +133,48 @@ $(document).ready(function(){
             document.cookie = c_name + "=" + c_value;
         }
     }
-            
-    
-    if (window.localStorage.getItem('colorMode') == "darkMode"){
-        $(".darkMode").css("display","none");
-        $("body").css("color","white")
-                .css("background-color","rgb(42, 41, 41)");
-        $(".soporte").css("color","white");
-        $(".column-9").css("background-color","black");
-        $("#genere").css("color","#4596F0");
+
+
+    if (window.localStorage.getItem('colorMode') == "darkMode") {
+        $(".darkMode").css("display", "none");
+        $("body").css("color", "white")
+                .css("background-color", "rgb(42, 41, 41)");
+        $(".soporte").css("color", "white");
+        $(".column-9").css("background-color", "black");
+        $("#genere").css("color", "#4596F0");
     }
-    if (window.localStorage.getItem('colorMode') == "lightMode"){
+    if (window.localStorage.getItem('colorMode') == "lightMode") {
         $(".darkMode").toggle();
-        $(".lightMode").css("display","none");
-        $("body").css("color","black")
-                .css("background-color","rgb(250, 250, 250)");
-        $(".section-top").css("background","rgba(0, 0, 0)");
-        $(".column-9").css("background-color","white");
-        $("#genere").css("color","#004085");
+        $(".lightMode").css("display", "none");
+        $("body").css("color", "black")
+                .css("background-color", "rgb(250, 250, 250)");
+        $(".section-top").css("background", "rgba(0, 0, 0)");
+        $(".column-9").css("background-color", "white");
+        $("#genere").css("color", "#004085");
     }
 
-    
-    $(".darkMode").click(function(){
+
+    $(".darkMode").click(function () {
         $(".darkMode").toggle();
         $(".lightMode").toggle();
-        $("body").css("color","white")
-                .css("background-color","rgb(42, 41, 41)");
-        $(".soporte").css("color","white");
-        $(".column-9").css("background-color","black");
-        $("#genere").css("color","#4596F0");
+        $("body").css("color", "white")
+                .css("background-color", "rgb(42, 41, 41)");
+        $(".soporte").css("color", "white");
+        $(".column-9").css("background-color", "black");
+        $("#genere").css("color", "#4596F0");
         setLocalStorage("colorMode", "darkMode");
     })
-    $(".lightMode").click(function(){
+    $(".lightMode").click(function () {
         $(".darkMode").toggle();
         $(".lightMode").toggle();
-        $("body").css("color","black")
-                .css("background-color","rgb(250, 250, 250)");
-        $(".section-top").css("background","rgba(0, 0, 0)");
-        $(".column-9").css("background-color","white");
-        $("#genere").css("color","#132e4d");
+        $("body").css("color", "black")
+                .css("background-color", "rgb(250, 250, 250)");
+        $(".section-top").css("background", "rgba(0, 0, 0)");
+        $(".column-9").css("background-color", "white");
+        $("#genere").css("color", "#132e4d");
         setLocalStorage("colorMode", "lightMode");
-        
+
     })
-    
+
 });
   
