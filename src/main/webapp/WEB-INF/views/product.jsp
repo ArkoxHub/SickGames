@@ -86,11 +86,11 @@
             <div class="container" >
                 <div class="row" id="cartaJoc">
                     <div class="column-3">
-                        <img id="stream${joc.nom}" class="portadaJoc" src="<c:url value="/resources/portades/${joc.nom}.jpg"/>">
+                        <img id="stream${joc.nom}" class="portadaJoc" src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>">
                         <img class="afegirWhishList" src="<c:url value="/resources/img/like.png"/>" alt=""> <!--Alt deberia ser el nombre del juego de la bd-->
                     </div>
                     <div class="portada">
-                        <img class="portadaJocMvl" src="<c:url value="/resources/portades/${joc.nom}.jpg"/>">
+                        <img class="portadaJocMvl" src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>">
                     </div>
                     <div class="column-9">
                         <div class="row" id="titol">

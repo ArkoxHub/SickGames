@@ -89,7 +89,7 @@
                 <div class="row" id="filaCatalogo">
                     <c:forEach var="joc" items="${videojocs}" begin="0" end="3">
                         <div class="column">
-                            <a href="<c:url value="/product?id=${joc.codi_Joc}"/>" class="imgProducteAComprar" id="${joc.nom}"><img src="<c:url value="/resources/portades/${joc.nom}.jpg"/>" title="${joc.nom}" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis, ${joc.nom}">
+                            <a href="<c:url value="/product?id=${joc.codi_Joc}"/>" class="imgProducteAComprar" id="${joc.nom}"><img src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>" title="${joc.nom}" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis, ${joc.nom}">
                                 <div class="infoJoc">
                                     <span class="preu">${joc.preu}€</span>
                                     <!--Aqui faltan los generes para que se creen solos-->
@@ -124,7 +124,7 @@
                     <c:forEach items="${ofertes}" var="joc_Oferta">
                         <div class="column">
                             <!-- SE TIENE QUE PASAR UNA EL NOMBRE O ID DEL PRODUCTO COMO ID EN LOS LINKS PARA PODER CREAR UNA WEB CON UN CONTENIDO U OTRO-->
-                            <a href="<c:url value="/product?id=${joc_Oferta.codi_Joc}"/>" class="imgProducteAComprar" id="${joc_Oferta.nom}"><img src="<c:url value="/resources/portades/${joc_Oferta.nom}.jpg"/>" title="${joc_Oferta.codi_Joc}" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis, ${joc_Oferta.codi_Joc} , ${joc_Oferta.nom}"><!--poner alt nombrejuego, oferta, nombreweb, juegobarato, etc-->
+                            <a href="<c:url value="/product?id=${joc_Oferta.codi_Joc}"/>" class="imgProducteAComprar" id="${joc_Oferta.nom}"><img src="<c:url value="/resources/img/portades/${joc_Oferta.nom}.jpg"/>" title="${joc_Oferta.codi_Joc}" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis, ${joc_Oferta.codi_Joc} , ${joc_Oferta.nom}"><!--poner alt nombrejuego, oferta, nombreweb, juegobarato, etc-->
                                 <div class="infoJoc">
                                     <span class="preu">${joc_Oferta.preu}</span>
                                     <div class="genere2"><span>Aventura</span></div><!--Genere(numero bd)-->
