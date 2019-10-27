@@ -51,7 +51,7 @@ $(document).ready(function () {
                         '<div class="col-12">' +
                         '<div>' +
                         '<a id="cerrar" href="#filaStreams">' +
-                        '<img src="../img/cruz.png" style="width:30px; float:right">' +
+                        '<img src="/SickGames/resources/img/cruz.png" style="width:30px; float:right">' +
                         '</a>' +
                         '</div>' +
                         '</div>' +
@@ -130,15 +130,23 @@ $(document).ready(function () {
     if (window.localStorage.getItem('colorMode') === "darkMode") {
         $(".darkMode").css("display", "none");
         $("body").css("color", "white")
-                .css("background-color", "rgb(42, 41, 41)");
-        $(".soporte").css("color", "white");
+                .css("background-image", "url('./resources/img/backgrounds/dark/Overwatch.jpg')");
+        /*$(".soporte").css("color", "white");
+         * $(".lightMode").css("color","white");
+         * $(".darkMode").css("color","black");
+         **/
     }
     if (window.localStorage.getItem('colorMode') === "lightMode") {
         $(".darkMode").toggle();
         $(".lightMode").css("display", "none");
         $("body").css("color", "black")
-                .css("background-color", "rgb(250, 250, 250)");
-        $(".section-top").css("background", "rgba(0, 0, 0)");
+                .css("background-image", "url('./resources/img/backgrounds/light/The Outer Worlds.jpg')");
+        /*
+         * $(".section-top").css("background", "background: rgba(0, 0, 0, 0.22)");
+         * $(".soporte").css("color", "black");
+         * $(".darkMode").css("color","black");
+         * $(".lightMode").css("color","white");
+         **/
     }
 
 
@@ -146,18 +154,25 @@ $(document).ready(function () {
         $(".darkMode").toggle();
         $(".lightMode").toggle();
         $("body").css("color", "white")
-                .css("background-color", "rgb(42, 41, 41)");
-        $(".soporte").css("color", "white");
-        $(".column-9").css("background-color", "black");
+                .css("background-image", "url('./resources/img/backgrounds/dark/Overwatch.jpg')");
+        /*
+         * $(".soporte").css("color", "white");
+         * $(".column-9").css("background-color", "black");
+         * $(".darkMode").css("color","black");
+         */
         setLocalStorage("colorMode", "darkMode");
     });
     $(".lightMode").click(function () {
         $(".darkMode").toggle();
         $(".lightMode").toggle();
         $("body").css("color", "black")
-                .css("background-color", "rgb(250, 250, 250)");
-        $(".section-top").css("background", "rgba(0, 0, 0)");
-        $(".column-9").css("background-color", "white");
+                .css("background-image", "url('./resources/img/backgrounds/light/The Outer Worlds.jpg')");
+        $(".section-top").css("background", "background: rgba(0, 0, 0, 0.22)");
+        /*
+         * $(".column-9").css("background-color", "white");
+         * $(".soporte").css("color","black");
+         * (".lightMode").css("color","white");
+         **/
         setLocalStorage("colorMode", "lightMode");
 
     });

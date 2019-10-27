@@ -12,8 +12,19 @@
  
  **/
 $(document).ready(function () {
-    //En cas de voler introduir el nom d'un joc amb espais s'ha de posar: Joc%20amb%20espais
-    var jocApi = "https://api.twitch.tv/helix/games?name=Indivisible";
+    var jocStream = $("img[id^='stream']").val("");
+    //console.log(jocStream[0].id);
+    var obtenirNomJoc = jocStream[0].id.replace('stream','');
+    if (obtenirNomJoc == "Ark Survival Evolved") {
+        obtenirNomJoc = "ARK";
+    }
+    if (obtenirNomJoc == "Fifa2020") {
+        obtenirNomJoc = "FIFA 20";
+    }
+    if (obtenirNomJoc == "Euro Truck 2") {
+        obtenirNomJoc = "Euro Truck Simulator 2";
+    }
+    var jocApi = "https://api.twitch.tv/helix/games?name="+obtenirNomJoc;
     $.ajax({
         type: "GET",
         url: jocApi,
@@ -29,19 +40,93 @@ $(document).ready(function () {
         var idJoc = datosJuego.data[0].id;
         $.ajax({
             type: "GET",
-            url: "https://api.twitch.tv/helix/streams?first=5&game_id=" + idJoc + "&language=es",
+            url: "https://api.twitch.tv/helix/streams?first=4&game_id=" + idJoc + "&language=es",
             success: mostrarStreamsJoc,
             headers: {
                 'Client-ID': 'w202jotbdcd2zue6prnpvmyk7sbitc'
             },
             error: function () {
-                alert("error carrega resposta");
+                alert("error carrega resposta streams");
             }
         });
-    }
+    
     function mostrarStreamsJoc(datosStream) {
         if (datosStream.data.length == 0) {
-            $("#filaStreams").append($('<span>No hi ha streams de parla espanyola en aquest moment</span>'));
+            $.ajax({
+                type: "GET",
+                url: "https://api.twitch.tv/helix/streams?first=4&game_id=" + idJoc,
+                success: mostrarStreamsGlobales,
+                headers: {
+                    'Client-ID': 'w202jotbdcd2zue6prnpvmyk7sbitc'
+                },
+                error: function () {
+                    alert("error carrega resposta streams");
+                }
+            });
+            
+            function mostrarStreamsGlobales(datosStream) {
+                if (datosStream.data.length == 0) {
+                    $("#filaStreams").append($('<span>No hi ha streamers en aquest moment</span>'));
+                }
+                for (var i = 0; i < datosStream.data.length; i++) {
+                    //Agafem el thumbnail (imatge previsualitzacio)
+                    var thumbnail = datosStream.data[i].thumbnail_url;
+                    //Modifiquem el thumbnail per aplicarli les mesures que desitjem
+                    var aplicarTamaño = thumbnail.replace("{width}x{height}", "500x500");
+                    $("#filaStreams").append($(
+                            '<div class="column">' +
+                            '<a href="#streamView" class=' + datosStream.data[i].user_name + ' id="stream">' +
+                            '<img src="' + aplicarTamaño + '">' +
+                            '</a>' +
+                            '<a href="#streamView" class=' + datosStream.data[i].user_name + ' id="streamName">' +
+                            datosStream.data[i].user_name +
+                            '</a>' +
+                            '</div>'));
+                    
+                    $("." + datosStream.data[i].user_name).click(function () {
+                        $("#streamView").show("slow");
+                        var existeStream = $("#streamView");
+                        if (existeStream.length >= 1) {
+                            $("#streamView").empty();
+                        }
+                        $("#streamView").append($(
+                                '<div class="col-12">' +
+                                '<div>' +
+                                '<a id="cerrar" href="#filaStreams">' +
+                                '<img src="/SickGames/resources/img/cruz.png" style="width:30px; float:right">' +
+                                '</a>' +
+                                '</div>' +
+                                '</div>' +
+                                '<div class="col-12">' +
+                                '<div id="twitch-embed"></div>' +
+                                '</div>').show("slow"));
+                        
+                        
+                        $("#cerrar").click(function () {
+                            $("#streamView").hide("slow");
+                            $("#streamView").empty();
+                        })
+                        
+                        if (window.matchMedia('(max-width: 600px)').matches) {
+                            new Twitch.Embed("twitch-embed", {
+                                width: "100%",
+                                height: 250,
+                                layout: "video",
+                                channel: this.className //devuelve el nombre del streamer, ya que la class es el nombre
+                            });
+                        } else {
+                            new Twitch.Embed("twitch-embed", {
+                                width: "100%",
+                                height: 625,
+                                layout: "video",
+                                channel: this.className //devuelve el nombre del streamer, ya que la class es el nombre
+                            });
+                        }
+                    });
+                }
+                ;
+                
+            }
         }
         for (var i = 0; i < datosStream.data.length; i++) {
             //Agafem el thumbnail (imatge previsualitzacio)
@@ -68,7 +153,7 @@ $(document).ready(function () {
                         '<div class="col-12">' +
                         '<div>' +
                         '<a id="cerrar" href="#filaStreams">' +
-                        '<img src="../img/cruz.png" style="width:30px; float:right">' +
+                        '<img src="/SickGames/resources/img/cruz.png" style="width:30px; float:right">' +
                         '</a>' +
                         '</div>' +
                         '</div>' +
@@ -98,10 +183,9 @@ $(document).ready(function () {
                     });
                 }
             });
-        }
-        ;
+        };
     }
-
+}
 });
 
 /* Menu login*/

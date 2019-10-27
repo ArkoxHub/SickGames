@@ -28,14 +28,14 @@
     </head>
 
     <body>
-        <a href="<c:url value="/admin/addGame"/>">Afegir nou videojoc</a>
         <!--Secció top: Buscador, conta, logo....--> 
-        <section class="section-top">    
-            <a href="<c:url value="/"/>"><img src="<c:url value="/resources/img/logo_sick.png"/>" alt="" class="logoMvl"></a>
+        <section class="section-top">
+            <a href="<c:url value="/admin/addGame"/>">Afegir nou videojoc</a>
+            <a href="<c:url value="/"/>"><img src="<c:url value="/resources/img/logo_sick.png"/>" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis" class="logoMvl"></a>
             <nav class="container" id="container-top">
                 <div class="d-flex flex-row">
                     <div class="col-2">
-                        <a href="<c:url value="/"/>"><img src="<c:url value="/resources/img/logo_sick.png"/>" alt="" class="logo"></a>
+                        <a href="<c:url value="/"/>"><img src="<c:url value="/resources/img/logo_sick.png"/>" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis" class="logo"></a>
                     </div>
                     <div class="col-6" id="colbuscador">
                         <form action="/action_page.php">
@@ -89,15 +89,14 @@
                 <div class="row" id="filaCatalogo">
                     <c:forEach var="joc" items="${videojocs}" begin="0" end="3">
                         <div class="column">
-                            <a href="<c:url value="/product?id=${joc.codi_Joc}"/>" class="imgProducteAComprar" id="${joc.nom}"><img src="<c:url value="/resources/portades/${joc.nom}.jpg"/>" style="height: 320px" title="${joc.nom}" alt="${joc.nom}">
+                            <a href="<c:url value="/product?id=${joc.codi_Joc}"/>" class="imgProducteAComprar" id="${joc.nom}"><img src="<c:url value="/resources/portades/${joc.nom}.jpg"/>" title="${joc.nom}" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis, ${joc.nom}">
                                 <div class="infoJoc">
-                                    <span>${joc.nom}</span> 
                                     <span class="preu">${joc.preu}€</span>
+                                    <!--Aqui faltan los generes para que se creen solos-->
                                     <div class="genere1"><span>RPG</span></div><!--Genere(numero bd)-->
-                                    <div class="genere2"><span>Acció</span></div>
                                 </div>
                             </a>
-                            <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i>${joc.oferta}% - Comprar</a>
+                            <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> ${joc.oferta}% - Comprar</a>
                         </div>
                     </c:forEach>
                 </div>
@@ -106,7 +105,7 @@
                 <p class="tituloFilas">Jocs més valorats</p>
                 <div class="row" id="filaCatalogo">
                     <div class="column">
-                        <a href="<c:url value="/product"/>" class="imgProducteAComprar" id="overwatch"><img src="<c:url value="/resources/img/cover_test_juego.jpg"/>"><!--poner alt nombrejuego, oferta, nombreweb, juegobarato, etc-->
+                        <a href="<c:url value="/product"/>" class="imgProducteAComprar" id="overwatch"><img src="<c:url value="/resources/img/cover_test_juego.jpg"/>" alt="SickGames, codis jocs online, tenda de codis, ofertes jocs"><!--poner alt nombrejuego, oferta, nombreweb, juegobarato, etc-->
                             <div class="infoJoc">
                                 <span class="preu">28€</span>
                                 <div class="genere2"><span>Aventura</span></div><!--Genere(numero bd)-->
@@ -115,7 +114,7 @@
                                 <div class="genere5"><span>Simulador</span></div>
                             </div>
                         </a>
-                        <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i>10% - Comprar</a>
+                        <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> 10% - Comprar</a>
                     </div>
                 </div>
 
@@ -125,15 +124,14 @@
                     <c:forEach items="${ofertes}" var="joc_Oferta">
                         <div class="column">
                             <!-- SE TIENE QUE PASAR UNA EL NOMBRE O ID DEL PRODUCTO COMO ID EN LOS LINKS PARA PODER CREAR UNA WEB CON UN CONTENIDO U OTRO-->
-                            <a href="<c:url value="/product?id=${joc_Oferta.codi_Joc}"/>" class="imgProducteAComprar" id="${joc_Oferta.nom}"><img src="<c:url value="/resources/portades/${joc_Oferta.nom}.jpg"/>" style="height: 320px" title="${joc_Oferta.codi_Joc}" alt="${joc_Oferta.codi_Joc}"><!--poner alt nombrejuego, oferta, nombreweb, juegobarato, etc-->
+                            <a href="<c:url value="/product?id=${joc_Oferta.codi_Joc}"/>" class="imgProducteAComprar" id="${joc_Oferta.nom}"><img src="<c:url value="/resources/portades/${joc_Oferta.nom}.jpg"/>" title="${joc_Oferta.codi_Joc}" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis, ${joc_Oferta.codi_Joc} , ${joc_Oferta.nom}"><!--poner alt nombrejuego, oferta, nombreweb, juegobarato, etc-->
                                 <div class="infoJoc">
-                                    <span>${joc_Oferta.nom}</span> 
                                     <span class="preu">${joc_Oferta.preu}</span>
                                     <div class="genere2"><span>Aventura</span></div><!--Genere(numero bd)-->
                                     <div class="genere3"><span>Cundicció</span></div>
                                 </div>
                             </a>
-                            <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i>${joc_Oferta.oferta}% - Comprar</a>
+                            <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> ${joc_Oferta.oferta}% - Comprar</a>
                         </div>
                     </c:forEach>
                 </div>

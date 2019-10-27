@@ -4,6 +4,16 @@ body{
     background-color: rgb(42, 41, 41);
     color: white;
     font-family: 'Archivo', sans-serif;
+    /* The image used */
+
+  /* Set a specific height */
+  min-height: 500px; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 html{
     scroll-behavior: smooth;
@@ -133,7 +143,7 @@ html{
     padding-bottom: 4px;
 }
 .section-top{
-    background: rgba(0, 0, 0, 0.767);
+    background: black;
     -webkit-box-shadow: 0px 5px 5px 0px rgba(69,124,191,0.63);
     -moz-box-shadow: 0px 5px 5px 0px rgba(69,124,191,0.63);
     box-shadow: 0px 5px 5px 0px rgba(69,124,191,0.63);
@@ -208,6 +218,9 @@ html{
     margin-left: 5px;
 }
 /*FOOTER*/
+.section-footer{
+    background: black;
+}
 .container-fluid{
     padding-left: 0px !important;
 }
@@ -240,6 +253,7 @@ html{
 /*Producte foto i info*/
 .portadaJoc{ 
     width: 100%;
+    height: 375px;
 }
 #titol{
     margin-top: 10px;
@@ -306,6 +320,10 @@ html{
 }
 /*Medida de los elementos descriptivos del producto: precio, stock, idioma, titulo...*/
 @media (max-width:1204px){
+    .portadaJoc{
+        width: 100%;
+        height: 325px;
+    }
     #genere{
         position: relative;
         font-size: 22px;
@@ -344,6 +362,10 @@ html{
 }
 
 @media (max-width:994px){
+    .portadaJoc{
+        width: 100%;
+        height: 300px;
+    }
     #titol{
         max-width: 100%;
         margin-left: 0;
@@ -476,6 +498,9 @@ html{
 .column-6{
     width: calc(100%/2 - 4px);
 }
+.portada{
+    display:none;
+}
 @media (max-width:924px){
     .column-3{
         text-align: center;
@@ -498,8 +523,6 @@ html{
         display: block;
         width: 140px;
         height: 140px;
-        left: 0; 
-        right: 0;
         margin-left: auto; 
         margin-right: auto; 
         overflow: hidden;
@@ -508,11 +531,11 @@ html{
         -moz-border-radius: 137px 0px 137px 98px;
         -webkit-border-radius: 137px 0px 137px 98px;
         border: 1px solid #6d93de;
-        position: relative;
-        z-index: 2;
-        background-image: url("../img/cover_test_juego.jpg");
-        background-position: no-repeat center center;
-        background-size: 100%;
+    }
+    .portadaJocMvl{
+        display: block;
+        width: 140px;
+        height: 140px;
     }
     .column-9{
         width: calc(100%/1);
