@@ -4,6 +4,17 @@ body{
     background-color: rgb(42, 41, 41);
     color: white;
     font-family: 'Archivo', sans-serif;
+    background: black;
+    /*background-image: url("../img/backgrounds/dark/Overwatch.jpg");
+   
+    
+    min-height: 500px; 
+    
+    
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;*/
 }
 html{
     scroll-behavior: smooth;
@@ -133,7 +144,7 @@ html{
     padding-bottom: 4px;
 }
 .section-top{
-    background: rgba(0, 0, 0, 0.767);
+    background: black;
     -webkit-box-shadow: 0px 5px 5px 0px rgba(69,124,191,0.63);
     -moz-box-shadow: 0px 5px 5px 0px rgba(69,124,191,0.63);
     box-shadow: 0px 5px 5px 0px rgba(69,124,191,0.63);
@@ -208,9 +219,104 @@ html{
     margin-left: 5px;
 }
 /*FOOTER*/
+.section-footer{
+    background: black;
+}
 .container-fluid{
     padding-left: 0px !important;
 }
 /*******Fin css todas webs*******/
 /********************************/
 /********************************/
+#fotoPerfil{
+    border-radius: 50%;
+    height: 145px;
+    width: 100%;
+}
+.section-body{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+/*fa icon camara para editar imagen perfil*/
+.fa-camera{
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background:none;
+    color:white;
+    padding:30px;
+}
+#fotoPerfil:hover + .fa-camera{
+    visibility: visible;
+    transition: all .3s;
+}
+.fa-camera:hover{
+    visibility: visible;
+    transition: all .3s;
+    color: #4596F0;
+}
+.file-upload{
+    display:none;
+}
+
+/*Divs lista de juegos*/
+.section-body .col-md-12{
+    margin-top: 20px;
+}
+
+.retirarWhishList{
+    position: absolute;
+    width: 30px;
+    z-index: 99999;
+    left: 20px;
+    top:0;
+}
+.retirarWhishList:hover{
+    transform: scale(1.2);
+}
+
+#llistaProductes{
+    display:none;
+    list-style-type: none;
+}
+#carritoHide{
+    display:none;
+    transition: 1s all;
+}
+#carritoShow{
+    transition: 1s all;
+}
+@media (max-width:1199px){
+    #fotoPerfil{
+    height: 90px;
+    width: 100%;
+    }
+}
+@media (max-width:767px){
+    #fotoPerfil{
+        height: 140px;
+        width: 140px;
+    }
+    .fa-camera{
+        visibility: hidden;
+        position: absolute;
+        left: 150px;
+        top: 0;
+        background:none;
+        color:white;
+        padding:30px;
+    }
+}
+
+/*Jocs desitjats*/
+
+#jocsPerfil{
+    margin-top: 20px;
+}
+#jocsDesitjats{
+    margin: 20px 15px;
+}
+.section-body .row .col-md-3{
+    margin-bottom: 40px;
+}

@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html lang="cat">
     <head>
         <title>SickGames</title>
@@ -28,9 +29,9 @@
     </head>
 
     <body>
-        <a href="<c:url value="/admin/updateGame?id=${joc.codi_Joc}"/>">Modifica aquest videojoc</a>
         <!--Secció top; Buscador, conta, logo....--> 
         <section class="section-top">    
+            <a href="<c:url value="/admin/updateGame?id=${joc.codi_Joc}"/>">Modifica aquest videojoc</a>
             <a href="<c:url value="/"/>"><img src="<c:url value="/resources/img/logo_sick.png"/>" alt="" class="logoMvl"></a>
             <nav class="container" id="container-top">
                 <div class="d-flex flex-row">
@@ -85,10 +86,11 @@
             <div class="container" >
                 <div class="row" id="cartaJoc">
                     <div class="column-3">
-                        <img class="portadaJoc" src="<c:url value="/resources/portades/${joc.nom}.jpg"/>">         
+                        <img id="stream${joc.nom}" class="portadaJoc" src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>">
                         <img class="afegirWhishList" src="<c:url value="/resources/img/like.png"/>" alt=""> <!--Alt deberia ser el nombre del juego de la bd-->
                     </div>
                     <div class="portada">
+                        <img class="portadaJocMvl" src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>">
                     </div>
                     <div class="column-9">
                         <div class="row" id="titol">
@@ -110,9 +112,18 @@
                                 </span>
                             </div>
                             <div class="column-6 text-right">
-                                <!--Importar lenguas del juego y poner las banderas-->
-                                <img src="<c:url value="/resources/img/banderas/spain.png"/>" alt="">
-                                <img src="<c:url value="/resources/img/banderas/german.png"/>" alt="">
+                                <!--CAMBIAR BD LA COMA ENTRE IDIOMAS Y MODIFICAR ESTE SPLIT-->
+                                <c:forEach var="split" items="${joc.idioma.split(', ')}">
+                                    <c:choose>
+                                        <c:when test="${split == 'Multillengua'}">
+                                            Multillengua
+                                        </c:when>
+                                        <c:otherwise>
+                                            <img src="<c:url value="/resources/img/banderas/${split}.png"/>" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis, ${joc.nom},  ${joc.idioma}">
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
+                               
                             </div>
                         </div>
                         <div class="row" id="infoCompres">
@@ -183,7 +194,7 @@
                 </div>
             </div>
             <div class="container">
-                <h4 class="titolsTaules">Streams ESP</h4>
+                <h4 class="titolsTaules">Streams</h4>
                 <div class="row" id="filaStreams"></div><!--S'omplira automaticament amb els top streamers-->
                 <div class="row" id="streamView"></div><!--Quan fem click a un stream, podrem veure el video dintre d'aquest div-->
             </div>
