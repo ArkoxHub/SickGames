@@ -103,27 +103,27 @@
                 <div class="row">
                     <div class="col-md-3">
                         <!---->
-                        <a href="<c:url value="/product?id=1"/>"><img src="<c:url value="/resources/portades/Overwatch.jpg"/>"></a> 
+                        <a href="<c:url value="/product?id=1"/>"><img src="<c:url value="/resources/img/portades/Overwatch.jpg"/>"></a> 
                         <img class="retirarWhishList" src="<c:url value="/resources/img/like.png"/>" alt="">
                     </div>
                     <div class="col-md-3">
                         <!---->
-                        <a href="<c:url value="/product?id=1"/>"><img src="<c:url value="/resources/portades/Overwatch.jpg"/>"></a> 
+                        <a href="<c:url value="/product?id=1"/>"><img src="<c:url value="/resources/img/portades/Overwatch.jpg"/>"></a> 
                         <img class="retirarWhishList" src="<c:url value="/resources/img/like.png"/>" alt="">
                     </div>
                     <div class="col-md-3">
                         <!---->
-                        <a href="<c:url value="/product?id=1"/>"><img src="<c:url value="/resources/portades/Overwatch.jpg"/>"></a> 
+                        <a href="<c:url value="/product?id=1"/>"><img src="<c:url value="/resources/img/portades/Overwatch.jpg"/>"></a> 
                         <img class="retirarWhishList" src="<c:url value="/resources/img/like.png"/>" alt="">
                     </div>
                     <div class="col-md-3">
                         <!---->
-                        <a href="<c:url value="/product?id=1"/>"><img src="<c:url value="/resources/portades/Overwatch.jpg"/>"></a> 
+                        <a href="<c:url value="/product?id=1"/>"><img src="<c:url value="/resources/img/portades/Overwatch.jpg"/>"></a> 
                         <img class="retirarWhishList" src="<c:url value="/resources/img/like.png"/>" alt="">
                     </div>
                     <div class="col-md-3">
                         <!---->
-                        <a href="<c:url value="/product?id=1"/>"><img src="<c:url value="/resources/portades/Overwatch.jpg"/>"></a> 
+                        <a href="<c:url value="/product?id=1"/>"><img src="<c:url value="/resources/img/portades/Overwatch.jpg"/>"></a> 
                         <img class="retirarWhishList" src="<c:url value="/resources/img/like.png"/>" alt="">
                     </div>
                 </div>
@@ -133,7 +133,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <!---->
-                        <a href="<c:url value="/product?id=1"/>"><img src="<c:url value="/resources/portades/Overwatch.jpg"/>"></a> 
+                        <a href="<c:url value="/product?id=1"/>"><img src="<c:url value="/resources/img/portades/Overwatch.jpg"/>"></a> 
                     </div>
                 </div>
             </div>            
