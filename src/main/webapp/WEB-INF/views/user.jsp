@@ -80,7 +80,7 @@
         <!--FI Secció top-->
         <section class="section-body">
             <div class="container">
-                <div class="row">
+                <div class="row"  id="jocsPerfil">
                     <div class="col-md-2 text-center center">
                         <img id="fotoPerfil"  src="<c:url value="/resources/img/fotosPerfil/user.jpg"/>">
                         <i class="fas fa-camera upload-button"></i>
@@ -98,42 +98,41 @@
                     </div>
                 </div>
             </div>
-            <div class="container" id="jocsPerfil">
-                <h4  id="jocsDesitjats">Llista de jocs desitjats</h4>
-                <div class="row">
-                    <div class="col-md-3">
+            <div class="container">
+                <h4  id="jocsH4">Llista de jocs desitjats</h4>
+                <div class="row" id="jocsPerfil">
+                    <div class="column">
                         <!---->
-                        <a href="<c:url value="/product?id=1"/>"><img src="<c:url value="/resources/img/portades/Overwatch.jpg"/>"></a> 
+                        <a href="<c:url value="/product?id=1"/>"><img id="portadaJoc" src="<c:url value="/resources/img/portades/Overwatch.jpg"/>"></a> 
                         <img class="retirarWhishList" src="<c:url value="/resources/img/like.png"/>" alt="">
+                        <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> 20% - Comprar</a>
                     </div>
-                    <div class="col-md-3">
+                    <div class="column">
                         <!---->
-                        <a href="<c:url value="/product?id=1"/>"><img src="<c:url value="/resources/img/portades/Overwatch.jpg"/>"></a> 
+                        <a href="<c:url value="/product?id=1"/>"><img id="portadaJoc" src="<c:url value="/resources/img/portades/Overwatch.jpg"/>"></a> 
                         <img class="retirarWhishList" src="<c:url value="/resources/img/like.png"/>" alt="">
+                        <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> 20% - Comprar</a>
                     </div>
-                    <div class="col-md-3">
+                    <div class="column">
                         <!---->
-                        <a href="<c:url value="/product?id=1"/>"><img src="<c:url value="/resources/img/portades/Overwatch.jpg"/>"></a> 
+                        <a href="<c:url value="/product?id=1"/>"><img id="portadaJoc" src="<c:url value="/resources/img/portades/Overwatch.jpg"/>"></a> 
                         <img class="retirarWhishList" src="<c:url value="/resources/img/like.png"/>" alt="">
+                        <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> 20% - Comprar</a>
                     </div>
-                    <div class="col-md-3">
+                    <div class="column">
                         <!---->
-                        <a href="<c:url value="/product?id=1"/>"><img src="<c:url value="/resources/img/portades/Overwatch.jpg"/>"></a> 
+                        <a href="<c:url value="/product?id=1"/>"><img id="portadaJoc" src="<c:url value="/resources/img/portades/Overwatch.jpg"/>"></a> 
                         <img class="retirarWhishList" src="<c:url value="/resources/img/like.png"/>" alt="">
-                    </div>
-                    <div class="col-md-3">
-                        <!---->
-                        <a href="<c:url value="/product?id=1"/>"><img src="<c:url value="/resources/img/portades/Overwatch.jpg"/>"></a> 
-                        <img class="retirarWhishList" src="<c:url value="/resources/img/like.png"/>" alt="">
+                        <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> 20% - Comprar</a>
                     </div>
                 </div>
             </div>
-            <div class="container" id="jocsPerfil">
-                <h4>Jocs comprats</h4>
-                <div class="row">
-                    <div class="col-md-3">
+            <div class="container">
+                <h4  id="jocsH4">Jocs comprats</h4>
+                <div class="row"  id="jocsPerfil">
+                    <div class="column">
                         <!---->
-                        <a href="<c:url value="/product?id=1"/>"><img src="<c:url value="/resources/img/portades/Overwatch.jpg"/>"></a> 
+                        <a href="<c:url value="/product?id=1"/>"><img id="portadaJoc" src="<c:url value="/resources/img/portades/Overwatch.jpg"/>"></a> 
                     </div>
                 </div>
             </div>            
