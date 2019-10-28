@@ -112,7 +112,6 @@
                                 </span>
                             </div>
                             <div class="column-6 text-right">
-                                <!--CAMBIAR BD LA COMA ENTRE IDIOMAS Y MODIFICAR ESTE SPLIT-->
                                 <c:forEach var="split" items="${joc.idioma.split(', ')}">
                                     <c:choose>
                                         <c:when test="${split == 'Multillengua'}">
