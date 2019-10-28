@@ -16,7 +16,7 @@ $(document).ready(function () {
     $.ajax({
         type: "GET",
         url: jocApi,
-        success: mostrarTop5,
+        success: mostrarTop4,
         headers: {
             'Client-ID': 'w202jotbdcd2zue6prnpvmyk7sbitc'
         },
@@ -25,14 +25,15 @@ $(document).ready(function () {
         }
     });
 
-    function mostrarTop5(datosStream) {
+    function mostrarTop4(datosStream) {
         for (var i = 0; i < datosStream.data.length; i++) {
             //Agafem el thumbnail (imatge previsualitzacio)
             var thumbnail = datosStream.data[i].thumbnail_url;
             //Modifiquem el thumbnail per aplicarli les mesures que desitjem
             var aplicarTamaño = thumbnail.replace("{width}x{height}", "500x500");
             $("#filaStreams").append($(
-                    '<div class="column">' +
+                    '<div class="column  text-center center">' +
+                    '<span class="viewers"><i class="fa fa-user"></i> '+datosStream.data[i].viewer_count+'</span>'+
                     '<a href="#streamView" class=' + datosStream.data[i].user_name + ' id="stream">' +
                     '<img src="' + aplicarTamaño + '">' +
                     '</a>' +

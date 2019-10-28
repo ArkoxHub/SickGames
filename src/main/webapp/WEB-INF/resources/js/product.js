@@ -87,6 +87,7 @@ $(document).ready(function () {
                     var aplicarTamaño = thumbnail.replace("{width}x{height}", "500x500");
                     $("#filaStreams").append($(
                             '<div class="column">' +
+                            '<span class="viewers"><i class="fa fa-user"></i> '+datosStream.data[i].viewer_count+'</span>'+
                             '<a href="#streamView" class=' + datosStream.data[i].user_name + ' id="stream">' +
                             '<img src="' + aplicarTamaño + '">' +
                             '</a>' +
@@ -147,6 +148,7 @@ $(document).ready(function () {
             var aplicarTamaño = thumbnail.replace("{width}x{height}", "500x500");
             $("#filaStreams").append($(
                     '<div class="column">' +
+                    '<span class="viewers"><i class="fa fa-user"></i> '+datosStream.data[i].viewer_count+'</span>'+
                     '<a href="#streamView" class=' + datosStream.data[i].user_name + ' id="stream">' +
                     '<img src="' + aplicarTamaño + '">' +
                     '</a>' +
