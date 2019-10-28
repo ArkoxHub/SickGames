@@ -166,7 +166,7 @@ $(document).ready(function () {
         $(".darkMode").toggle();
         $(".lightMode").toggle();
         $("body").css("color", "black")
-                .css("background", "#717070");
+                .css("background", "white");
         $(".section-top").css("background", "background: rgba(0, 0, 0, 0.22)");
         /*
          * $(".column-9").css("background-color", "white");
