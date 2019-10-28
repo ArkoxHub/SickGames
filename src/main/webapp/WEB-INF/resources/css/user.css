@@ -4,7 +4,6 @@ body{
     background-color: rgb(42, 41, 41);
     color: white;
     font-family: 'Archivo', sans-serif;
-    background: black;
     /*background-image: url("../img/backgrounds/dark/Overwatch.jpg");
    
     
@@ -140,7 +139,6 @@ html{
 }
 /*MARGEN CONTAINER TOP*/
 #container-top{
-    padding-top: 40px;
     padding-bottom: 4px;
 }
 .section-top{
@@ -148,6 +146,7 @@ html{
     -webkit-box-shadow: 0px 5px 5px 0px rgba(69,124,191,0.63);
     -moz-box-shadow: 0px 5px 5px 0px rgba(69,124,191,0.63);
     box-shadow: 0px 5px 5px 0px rgba(69,124,191,0.63);
+    padding-top:10px;
 }
 
 @media (max-width:996px){
@@ -221,6 +220,10 @@ html{
 /*FOOTER*/
 .section-footer{
     background: black;
+    -webkit-box-shadow: 0px -5px 5px 0px rgba(69,124,191,0.63);
+    -moz-box-shadow: 0px -5px 5px 0px rgba(69,124,191,0.63);
+    box-shadow: 0px -5px 5px 0px rgba(69,124,191,0.63);
+    margin-top:10px;
 }
 .container-fluid{
     padding-left: 0px !important;
@@ -230,11 +233,11 @@ html{
 /********************************/
 #fotoPerfil{
     border-radius: 50%;
-    height: 145px;
+    height: 135px;
     width: 100%;
 }
 .section-body{
-    margin-top: 20px;
+    margin-top: 50px;
     margin-bottom: 20px;
 }
 /*fa icon camara para editar imagen perfil*/
@@ -325,15 +328,17 @@ html{
 }
 #portadaJoc{
     width: 100%;
+    transition: 0.2s;
 }
 .retirarWhishList{
     position: absolute;
     width: 30px;
 }
 #portadaJoc:hover{
-    -webkit-box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 20px 3px rgba(69,124,191,0.63);
+    -moz-box-shadow: 0px 0px 20px 3px rgba(69,124,191,0.63);
+    box-shadow: 0px 0px 20px 3px rgba(69,124,191,0.63);
+    border:2px solid white;
 }
 #jocsPerfil .column .producteAComprar{
     text-align: center;

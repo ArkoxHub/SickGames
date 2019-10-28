@@ -30,8 +30,7 @@
 
     <body>
         <!--Secció top; Buscador, conta, logo....--> 
-        <section class="section-top">    
-            <a href="<c:url value="/admin/updateGame?id=${joc.codi_Joc}"/>">Modifica aquest videojoc</a>
+        <section class="section-top">
             <a href="<c:url value="/"/>"><img src="<c:url value="/resources/img/logo_sick.png"/>" alt="" class="logoMvl"></a>
             <nav class="container" id="container-top">
                 <div class="d-flex flex-row">
@@ -80,7 +79,9 @@
             </nav>
         </section>
         <!--FI Secció top-->
-
+        <div class="text-center center" style="margin-bottom:-38px">
+            <a  class="btn btn-primary" href="<c:url value="/admin/updateGame?id=${joc.codi_Joc}"/>">Modifica aquest videojoc</a>
+        </div>
         <!--Secció body; Jocs més venuts, valorats, millors ofertes, streams...-->
         <section class="section-body">
             <div class="container" >

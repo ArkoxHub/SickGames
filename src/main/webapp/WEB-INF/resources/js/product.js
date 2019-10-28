@@ -264,7 +264,7 @@ $(document).ready(function () {
         $(".darkMode").toggle();
         $(".lightMode").toggle();
         $("body").css("color", "black")
-                .css("background-color", "rgb(250, 250, 250)");
+                .css("background-color", "white");
         $(".section-top").css("background", "rgba(0, 0, 0)");
         $(".column-9").css("background-color", "white");
         $("#genere").css("color", "#132e4d");

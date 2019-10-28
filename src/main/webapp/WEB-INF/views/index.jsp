@@ -30,7 +30,6 @@
     <body>
         <!--Secció top: Buscador, conta, logo....--> 
         <section class="section-top">
-            <a href="<c:url value="/admin/addGame"/>">Afegir nou videojoc</a>
             <a href="<c:url value="/"/>"><img src="<c:url value="/resources/img/logo_sick.png"/>" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis" class="logoMvl"></a>
             <nav class="container" id="container-top">
                 <div class="d-flex flex-row">
@@ -79,7 +78,9 @@
             </nav>
         </section>
         <!--Fi Secció top-->
-
+        <div class="text-center center" style="margin-bottom:-38px">
+            <a class="btn btn-primary" href="<c:url value="/admin/addGame"/>">Afegir videojoc</a>
+        </div>
         <!--Secció body; Jocs més venuts, valorats, millors ofertes, streams...-->
         <section class="section-body">
             <div class="container">
@@ -105,7 +106,7 @@
                 <p class="tituloFilas">Jocs més valorats</p>
                 <div class="row" id="filaCatalogo">
                     <div class="column">
-                        <a href="<c:url value="/product"/>" class="imgProducteAComprar" id="overwatch"><img src="<c:url value="/resources/img/cover_test_juego.jpg"/>" alt="SickGames, codis jocs online, tenda de codis, ofertes jocs"><!--poner alt nombrejuego, oferta, nombreweb, juegobarato, etc-->
+                            <a href="<c:url value="/product"/>" class="imgProducteAComprar" id="overwatch"><img src="<c:url value="/resources/img/cover_test_juego.jpg"/>" alt="SickGames, codis jocs online, tenda de codis, ofertes jocs"><!--poner alt nombrejuego, oferta, nombreweb, juegobarato, etc-->
                             <div class="infoJoc">
                                 <span class="preu">28€</span>
                                 <div class="genere2"><span>Aventura</span></div><!--Genere(numero bd)-->
