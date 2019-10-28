@@ -4,17 +4,6 @@ body{
     background-color: rgb(42, 41, 41);
     color: white;
     font-family: 'Archivo', sans-serif;
-    background-image: url("../img/backgrounds/dark/Overwatch.jpg");
-    /* The image used */
-
-  /* Set a specific height */
-  min-height: 500px; 
-
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 html{
     scroll-behavior: smooth;
