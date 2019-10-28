@@ -130,7 +130,7 @@ $(document).ready(function () {
     if (window.localStorage.getItem('colorMode') === "darkMode") {
         $(".darkMode").css("display", "none");
         $("body").css("color", "white")
-                .css("background-image", "url('./resources/img/backgrounds/dark/Overwatch.jpg')");
+                .css("background", "rgb(42, 41, 41)");
         /*$(".soporte").css("color", "white");
          * $(".lightMode").css("color","white");
          * $(".darkMode").css("color","black");
@@ -140,7 +140,7 @@ $(document).ready(function () {
         $(".darkMode").toggle();
         $(".lightMode").css("display", "none");
         $("body").css("color", "black")
-                .css("background-image", "url('./resources/img/backgrounds/light/The Outer Worlds.jpg')");
+                .css("background", "#717070");
         /*
          * $(".section-top").css("background", "background: rgba(0, 0, 0, 0.22)");
          * $(".soporte").css("color", "black");
@@ -154,7 +154,7 @@ $(document).ready(function () {
         $(".darkMode").toggle();
         $(".lightMode").toggle();
         $("body").css("color", "white")
-                .css("background-image", "url('./resources/img/backgrounds/dark/Overwatch.jpg')");
+                .css("background", "rgb(42, 41, 41)");
         /*
          * $(".soporte").css("color", "white");
          * $(".column-9").css("background-color", "black");
@@ -166,7 +166,7 @@ $(document).ready(function () {
         $(".darkMode").toggle();
         $(".lightMode").toggle();
         $("body").css("color", "black")
-                .css("background-image", "url('./resources/img/backgrounds/light/The Outer Worlds.jpg')");
+                .css("background", "#717070");
         $(".section-top").css("background", "background: rgba(0, 0, 0, 0.22)");
         /*
          * $(".column-9").css("background-color", "white");

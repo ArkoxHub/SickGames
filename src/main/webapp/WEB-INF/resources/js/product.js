@@ -15,14 +15,26 @@ $(document).ready(function () {
     var jocStream = $("img[id^='stream']").val("");
     //console.log(jocStream[0].id);
     var obtenirNomJoc = jocStream[0].id.replace('stream','');
-    if (obtenirNomJoc == "Ark Survival Evolved") {
-        obtenirNomJoc = "ARK";
+    if (obtenirNomJoc == "Diablo III Reaper of Souls") {
+        obtenirNomJoc = "Diablo III: Reaper of Souls";
     }
-    if (obtenirNomJoc == "Fifa2020") {
-        obtenirNomJoc = "FIFA 20";
+    if (obtenirNomJoc == "Star Wars Jedi Fallen Order") {
+        obtenirNomJoc = "Star Wars Jedi: Fallen Order";
     }
-    if (obtenirNomJoc == "Euro Truck 2") {
-        obtenirNomJoc = "Euro Truck Simulator 2";
+    if (obtenirNomJoc == "Tom Clancy's Rainbow Six Siege") {
+        obtenirNomJoc = "Tom Clancy's Rainbow Six: Siege";
+    }
+    if (obtenirNomJoc == "The Legend of Zelda Link's Awakening") {
+        obtenirNomJoc = "The Legend of Zelda: Link's Awakening";
+    }
+    if (obtenirNomJoc == "Call of Duty Black Ops 4") {
+        obtenirNomJoc = "Call of Duty: Black Ops 4";
+    }
+    if (obtenirNomJoc == "Pokemon Escudo") {
+        obtenirNomJoc = "Pokemon Shield";
+    }
+    if (obtenirNomJoc == "Pokemon Espada") {
+        obtenirNomJoc = "Pokemon Sword";
     }
     var jocApi = "https://api.twitch.tv/helix/games?name="+obtenirNomJoc;
     $.ajax({
