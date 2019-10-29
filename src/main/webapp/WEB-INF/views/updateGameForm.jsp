@@ -70,20 +70,14 @@
                 <label for="data_Llançament">Data de llançament</label>
                 <form:input path="data_Llançament" type="date" class="form-control" id="data_Llançament" name="data_Llançament"/>
 
-                <label for="preu">Preu</label>
-                <form:input path="preu" type="number" step="0.01" class="form-control" id="preu" name="preu" placeholder="Preu en €"/>
+                <label for="pvp">Preu de Venta al públic</label>
+                <form:input path="pvp" type="number" step="0.01" class="form-control" id="pvp" name="pvp" placeholder="Preu en €"/>
 
                 <label for="idioma">Idioma</label>
                 <form:input path="idioma" type="text" maxlength="50" class="form-control" id="idioma" name="idioma" placeholder="ESP | ENG | ALM | ITL | FR"/>
-
-                <label for="oferta">Oferta</label>
-                <form:input path="oferta" type="number" step="0.1" class="form-control" id="oferta" name="oferta" max="99" placeholder="Oferta %"/>
-
-                <label for="qty_Available">Stock</label>
-                <form:input path="qty_Available" type="number" class="form-control" id="qty_Available" name="qty_Available" placeholder="Quantiat inicial en Stock"/>
-
-                <label for="plataforma">Plataforma</label>
-                <form:input path="plataforma" type="number" class="form-control" id="plataforma" name="plataforma" min="1" max="12" placeholder="Codi de la plataforma"/>
+                
+                <label for="generes">Gèneres</label>
+                <form:input path="generes" type="text" maxlength="100" class="form-control" id="generes" name="generes" placeholder="Acció, Aventures, MMO, RPG, FPS..."/>
 
                 <label for="descripcio">Descripció</label>
                 <form:textarea path="descripcio"  class="form-control" id="descripcio" name="descripcio" placeholder="El mon necesita herois..."/>

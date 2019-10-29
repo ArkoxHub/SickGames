@@ -92,12 +92,12 @@
                         <div class="column">
                             <a href="<c:url value="/product?id=${joc.codi_Joc}"/>" id="${joc.nom}"><img src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>" title="${joc.nom}" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis, ${joc.nom}">
                                 <div class="infoJoc">
-                                    <span class="preu">${joc.preu}€</span>
+                                    <span class="preu">${joc.pvp}€</span>
                                     <!--Aqui faltan los generes para que se creen solos-->
                                     <div class="genere1"><span>RPG</span></div><!--Genere(numero bd)-->
                                 </div>
                             </a>
-                            <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> ${joc.oferta}% - Comprar</a>
+                            <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> ${joc.nom}% - Comprar</a>
                         </div>
                     </c:forEach>
                 </div>
@@ -119,6 +119,7 @@
                     </div>
                 </div>
 
+                    <!-- TO BE FIXED !!!!!!!!!!!!!!!!!!!!
                 <!--TOP OFFERTS DESC-->
                 <p class="tituloFilas">Millors ofertes</p>
                 <div class="row" id="filaCatalogo">
@@ -127,7 +128,7 @@
                             <!-- SE TIENE QUE PASAR UNA EL NOMBRE O ID DEL PRODUCTO COMO ID EN LOS LINKS PARA PODER CREAR UNA WEB CON UN CONTENIDO U OTRO-->
                             <a href="<c:url value="/product?id=${joc_Oferta.codi_Joc}"/>" id="${joc_Oferta.nom}"><img src="<c:url value="/resources/img/portades/${joc_Oferta.nom}.jpg"/>" title="${joc_Oferta.codi_Joc}" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis, ${joc_Oferta.codi_Joc} , ${joc_Oferta.nom}"><!--poner alt nombrejuego, oferta, nombreweb, juegobarato, etc-->
                                 <div class="infoJoc">
-                                    <span class="preu">${joc_Oferta.preu}</span>
+                                    <span class="preu">${joc_Oferta.pvp}</span>
                                     <div class="genere2"><span>Aventura</span></div><!--Genere(numero bd)-->
                                     <div class="genere3"><span>Cundicció</span></div>
                                 </div>
@@ -136,7 +137,7 @@
                         </div>
                     </c:forEach>
                 </div>
-
+                -->
                 <!--Streams-->
                 <p class="tituloFilas">Top Streamers [ESP]</p>
                 <div class="row" id="filaStreams"></div><!--S'omplira automaticament amb els top streamers-->

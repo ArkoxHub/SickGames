@@ -108,7 +108,7 @@
                         </div>
                         <div class="row" id="stock">
                             <div class="column-6 text-left">
-                                <span class="stockSi">Stock disponible: ${joc.qty_Available}<!--si no hay stock , la class se llamara stockNo y no se mostrara el total-->
+                                <span class="stockSi">Stock disponible: ${joc.nom}<!--TO BE FIXED!!!!!!-->
                                     <i class="fa fa-times" id="cruz"></i>
                                 </span>
                             </div>
@@ -132,13 +132,13 @@
                             </div>
                             <div class="column-6 text-right">
                                 <span>
-                                    <i class="fa fa-arrow-down"></i> ${joc.oferta}%<!--Importar descompte joc-->
+                                    <i class="fa fa-arrow-down"></i> ${joc.nom}%<!--TO BE FIXED!!!!!!!-->
                                 </span>
                             </div>
                         </div>
                         <div class="row" id="preu">
                             <div class="column-12 text-center">
-                                <span>${joc.preu}€</span>
+                                <span>${joc.pvp}€</span>
                             </div>
                         </div>
                         <div class="row" id="comprarJoc">
