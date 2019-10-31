@@ -20,12 +20,14 @@ public interface VideojocDAO {
     
     public int getMaxID();
     
+    public List<Videojoc> getAllVideojocs();
+    
     public Videojoc getVideojocByCode(int codi);
     
     public List<Videojoc> getVideojocsByName(String name);
     
-    public List<Videojoc> getAllVideojocs();
+    public List<Videojoc> getVideojocsByGenere(String genere);
     
-    public List<Videojoc> getGamesByOfert(int ofertaStart, int ofertaEnd);
+    public List<Videojoc> getJocsByOferta();
     
 }

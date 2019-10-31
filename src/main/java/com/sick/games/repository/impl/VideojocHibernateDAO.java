@@ -14,6 +14,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,12 +24,12 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Adri
  */
 @Transactional
-@Repository
+@Repository("videoJocHibernateDAO")
 public class VideojocHibernateDAO implements VideojocDAO {
 
     @Autowired
     private SessionFactory sessionFactory;
-    
+
     @Override
     public void addVideojoc(Videojoc videojoc) {
         getSession().saveOrUpdate(videojoc);
@@ -37,6 +38,24 @@ public class VideojocHibernateDAO implements VideojocDAO {
     @Override
     public void removeVideojoc(Videojoc videojoc) {
         getSession().remove(videojoc);
+    }
+
+    @Override
+    public void updateVideojoc(Videojoc videojoc) {
+        getSession().merge(videojoc);
+    }
+
+    @Override
+    public int getMaxID() {
+        Criteria criteria = createEntityCriteria();
+        criteria.setProjection(Projections.max("codi_Joc"));
+        return (Integer) criteria.uniqueResult();
+    }
+
+    @Override
+    public List<Videojoc> getAllVideojocs() {
+        Criteria criteria = createEntityCriteria();
+        return (List<Videojoc>) criteria.list();
     }
 
     @Override
@@ -54,29 +73,26 @@ public class VideojocHibernateDAO implements VideojocDAO {
     }
 
     @Override
-    public void updateVideojoc(Videojoc videojoc) {
-        getSession().merge(videojoc);
-    }
-    
-    @Override
-    public int getMaxID() {
+    public List<Videojoc> getVideojocsByGenere(String genere) {
         Criteria criteria = createEntityCriteria();
-        criteria.setProjection(Projections.max("codi_Joc"));
-        return (Integer) criteria.uniqueResult();
-    }
-
-    @Override
-    public List<Videojoc> getAllVideojocs() {
-        Criteria criteria = createEntityCriteria();
+        criteria.add(Restrictions.eq("genere", genere));
         return (List<Videojoc>) criteria.list();
     }
 
     @Override
-    public List<Videojoc> getGamesByOfert(int ofertaStart, int ofertaEnd) {
-        Criteria criteria = createEntityCriteria();
-        criteria.add(Restrictions.between("oferta", ofertaStart, ofertaEnd));
-        criteria.addOrder(Order.desc("oferta"));
-        return (List<Videojoc>) criteria.list();
+    public List<Videojoc> getJocsByOferta() {
+//        Criteria criteria = createEntityCriteria();
+//        return (List<Videojoc>) criteria.createAlias("codi", "c")
+//                .setProjection(Projections.projectionList()
+//                        .add(Projections.property("nom"))
+//                        .add(Projections.property("c.oferta"))
+//                        .add(Projections.property("generes"))
+//                        .add(Projections.groupProperty("nom"))
+//                        .add(Projections.count("nom")))
+//                .addOrder(Order.desc("oferta"))
+//                .list();
+        Query query = getSession().createQuery("FROM Videojoc as joc");
+        return (List<Videojoc>) query.list();
     }
 
     // Connecta amb la Base de Dades

@@ -15,18 +15,22 @@ import java.util.List;
 public interface VideojocService {
 
     public void addVideojoc(Videojoc videojoc);
-
+    
     public void removeVideojoc(Videojoc videojoc);
-
+    
     public void updateVideojoc(Videojoc videojoc);
     
     public int getMaxID();
-
-    public Videojoc getVideojocByCode(int codi);
-
-    public List<Videojoc> getVideojocsByName(String name);
-
+    
     public List<Videojoc> getAllVideojocs();
-
-    public List<Videojoc> getGamesByOfert(int ofertaStart, int ofertaEnd);
+    
+    public Videojoc getVideojocByCode(int codi);
+    
+    public List<Videojoc> getVideojocsByName(String name);
+    
+    public List<Videojoc> getVideojocsByGenere(String genere);
+    
+    public List<Videojoc> getJocsByOferta();
+    
+    public List<Videojoc> testingJocs();
 }

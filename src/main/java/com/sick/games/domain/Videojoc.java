@@ -6,10 +6,12 @@
 package com.sick.games.domain;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -50,22 +52,16 @@ public class Videojoc implements Serializable {
     @Column(name = "generes")
     @Size(max = 100)
     private String generes;
-    
+
     @Column(name = "descripcio", columnDefinition = "TEXT")
     private String descripcio;
 
+    @OneToMany
+    @JoinColumn(name = "codi_Joc")
+    private Set<Codi> codis;
+
     // Empty Constructor
     public Videojoc() {
-    };
-
-    public Videojoc(int codi_Joc, String nom, java.sql.Date data_Llançament, float pvp, String idioma, String generes, String descripcio) {
-        this.codi_Joc = codi_Joc;
-        this.nom = nom;
-        this.data_Llançament = data_Llançament;
-        this.pvp = pvp;
-        this.idioma = idioma;
-        this.generes = generes;
-        this.descripcio = descripcio;
     }
 
     public int getCodi_Joc() {
@@ -123,7 +119,13 @@ public class Videojoc implements Serializable {
     public void setDescripcio(String descripcio) {
         this.descripcio = descripcio;
     }
-    
-    
-    
+
+    public Set<Codi> getCodis() {
+        return codis;
+    }
+
+    public void setCodis(Set<Codi> codis) {
+        this.codis = codis;
+    }
+
 }

@@ -33,6 +33,7 @@ public class HomeController {
         ModelAndView model = new ModelAndView("index");
         model.getModelMap().addAttribute("videojocs", videojocService.getAllVideojocs());
        // model.getModelMap().addAttribute("ofertes", videojocService.getGamesByOfert(60, 100));
+        model.getModelMap().addAttribute("ofertes", videojocService.testingJocs());
         return model;
     }
 }

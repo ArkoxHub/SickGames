@@ -97,7 +97,7 @@
                                     <div class="genere1"><span>RPG</span></div><!--Genere(numero bd)-->
                                 </div>
                             </a>
-                            <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> ${joc.nom}% - Comprar</a>
+                            <a href="<c:url value="/product?id=${joc.codi_Joc}"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> ${joc.nom}% - Comprar</a>
                         </div>
                     </c:forEach>
                 </div>
@@ -119,25 +119,28 @@
                     </div>
                 </div>
 
-                    <!-- TO BE FIXED !!!!!!!!!!!!!!!!!!!!
+
                 <!--TOP OFFERTS DESC-->
                 <p class="tituloFilas">Millors ofertes</p>
                 <div class="row" id="filaCatalogo">
-                    <c:forEach items="${ofertes}" var="joc_Oferta">
+                    <c:forEach var="oferta" items="${ofertes}">
+                        <c:set var="codi" value="${ofertes.codis}"></c:set>
                         <div class="column">
                             <!-- SE TIENE QUE PASAR UNA EL NOMBRE O ID DEL PRODUCTO COMO ID EN LOS LINKS PARA PODER CREAR UNA WEB CON UN CONTENIDO U OTRO-->
-                            <a href="<c:url value="/product?id=${joc_Oferta.codi_Joc}"/>" id="${joc_Oferta.nom}"><img src="<c:url value="/resources/img/portades/${joc_Oferta.nom}.jpg"/>" title="${joc_Oferta.codi_Joc}" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis, ${joc_Oferta.codi_Joc} , ${joc_Oferta.nom}"><!--poner alt nombrejuego, oferta, nombreweb, juegobarato, etc-->
+                            <a href="<c:url value="/product?id=${oferta.codi_Joc}"/>" id="${oferta.nom}">
+                                <img src="<c:url value="/resources/img/portades/${oferta.nom}.jpg"/>" 
+                                     title="${oferta.nom}" alt=""><!--poner alt nombrejuego, oferta, nombreweb, juegobarato, etc-->
                                 <div class="infoJoc">
-                                    <span class="preu">${joc_Oferta.pvp}</span>
+                                    <span class="preu">${oferta.nom}</span>
                                     <div class="genere2"><span>Aventura</span></div><!--Genere(numero bd)-->
                                     <div class="genere3"><span>Cundicció</span></div>
                                 </div>
                             </a>
-                            <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> ${joc_Oferta.oferta}% - Comprar</a>
+                            <a href="<c:url value="/product?id=${oferta.codi_Joc}"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> ${oferta.nom}% - Comprar</a>
                         </div>
                     </c:forEach>
                 </div>
-                -->
+   
                 <!--Streams-->
                 <p class="tituloFilas">Top Streamers [ESP]</p>
                 <div class="row" id="filaStreams"></div><!--S'omplira automaticament amb els top streamers-->
