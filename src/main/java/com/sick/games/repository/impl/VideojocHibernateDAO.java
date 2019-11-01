@@ -5,8 +5,11 @@
  */
 package com.sick.games.repository.impl;
 
+import com.sick.games.domain.CodeGame;
+import com.sick.games.domain.Codi;
 import com.sick.games.domain.Videojoc;
 import com.sick.games.repository.VideojocDAO;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -18,6 +21,8 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -29,6 +34,8 @@ public class VideojocHibernateDAO implements VideojocDAO {
 
     @Autowired
     private SessionFactory sessionFactory;
+    
+    private static final Logger logger = LoggerFactory.getLogger(VideojocHibernateDAO.class);
 
     @Override
     public void addVideojoc(Videojoc videojoc) {
@@ -54,45 +61,29 @@ public class VideojocHibernateDAO implements VideojocDAO {
 
     @Override
     public List<Videojoc> getAllVideojocs() {
-        Criteria criteria = createEntityCriteria();
-        return (List<Videojoc>) criteria.list();
+        return (List<Videojoc>) getSession().createQuery("FROM Videojoc").getResultList();
     }
 
     @Override
     public Videojoc getVideojocByCode(int codi) {
-        Criteria criteria = createEntityCriteria();
-        criteria.add(Restrictions.eq("codi_Joc", codi));
-        return (Videojoc) criteria.uniqueResult();
+        Videojoc videojoc = getSession().load(Videojoc.class, codi);
+        logger.info("Videojoc carregat correctament" + videojoc);
+        return videojoc;
     }
 
     @Override
     public List<Videojoc> getVideojocsByName(String name) {
-        Criteria criteria = createEntityCriteria();
-        criteria.add(Restrictions.eq("nom", name));
-        return (List<Videojoc>) criteria.list();
+        return (List<Videojoc>) getSession().load(Videojoc.class, name);
     }
 
     @Override
     public List<Videojoc> getVideojocsByGenere(String genere) {
-        Criteria criteria = createEntityCriteria();
-        criteria.add(Restrictions.eq("genere", genere));
-        return (List<Videojoc>) criteria.list();
+        return (List<Videojoc>) getSession().load(Videojoc.class, genere);
     }
 
     @Override
-    public List<Videojoc> getJocsByOferta() {
-//        Criteria criteria = createEntityCriteria();
-//        return (List<Videojoc>) criteria.createAlias("codi", "c")
-//                .setProjection(Projections.projectionList()
-//                        .add(Projections.property("nom"))
-//                        .add(Projections.property("c.oferta"))
-//                        .add(Projections.property("generes"))
-//                        .add(Projections.groupProperty("nom"))
-//                        .add(Projections.count("nom")))
-//                .addOrder(Order.desc("oferta"))
-//                .list();
-        Query query = getSession().createQuery("FROM Videojoc as joc");
-        return (List<Videojoc>) query.list();
+    public List<CodeGame> getJocsByOferta() {
+        return (List<CodeGame>) getSession().createQuery("SELECT v.codi_Joc, v.nom, v.generes, c.oferta, COUNT(v.nom) FROM Videojoc v, Codi c WHERE v.codi_Joc = c.codi_Joc GROUP BY v.codi_Joc ORDER BY c.oferta DESC").getResultList();
     }
 
     // Connecta amb la Base de Dades

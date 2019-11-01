@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -36,9 +37,6 @@ public class Codi implements Serializable {
     @Column(name = "serial", unique = true)
     private String serial;
 
-//    @Column(name = "preu")
-//    private float preu;
-
     @NotNull
     @Column(name = "oferta")
     private int oferta;
@@ -50,6 +48,9 @@ public class Codi implements Serializable {
     @NotNull
     @Column(name = "codi_Joc")
     private int codi_Joc;
+    
+    @ManyToOne
+    private Videojoc joc;
 
     // Empty Constructor
     public Codi() {
@@ -101,6 +102,14 @@ public class Codi implements Serializable {
 
     public void setCodi_Joc(int codi_Joc) {
         this.codi_Joc = codi_Joc;
+    }
+
+    public Videojoc getJoc() {
+        return joc;
+    }
+
+    public void setJoc(Videojoc joc) {
+        this.joc = joc;
     }
 
 }

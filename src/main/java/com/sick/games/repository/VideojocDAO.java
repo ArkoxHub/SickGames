@@ -3,6 +3,7 @@
  */
 package com.sick.games.repository;
 
+import com.sick.games.domain.CodeGame;
 import com.sick.games.domain.Videojoc;
 import java.util.List;
 
@@ -28,6 +29,6 @@ public interface VideojocDAO {
     
     public List<Videojoc> getVideojocsByGenere(String genere);
     
-    public List<Videojoc> getJocsByOferta();
+    public List<CodeGame> getJocsByOferta();
     
 }

@@ -5,6 +5,7 @@
  */
 package com.sick.games.service;
 
+import com.sick.games.domain.CodeGame;
 import com.sick.games.domain.Videojoc;
 import java.util.List;
 
@@ -30,7 +31,6 @@ public interface VideojocService {
     
     public List<Videojoc> getVideojocsByGenere(String genere);
     
-    public List<Videojoc> getJocsByOferta();
-    
-    public List<Videojoc> testingJocs();
+    public List<CodeGame> getJocsByOferta();
+
 }

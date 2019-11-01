@@ -6,6 +6,7 @@
 package com.sick.games.domain;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -57,8 +58,7 @@ public class Videojoc implements Serializable {
     private String descripcio;
 
     @OneToMany
-    @JoinColumn(name = "codi_Joc")
-    private Set<Codi> codis;
+    private List<Codi> codis;
 
     // Empty Constructor
     public Videojoc() {
@@ -120,11 +120,11 @@ public class Videojoc implements Serializable {
         this.descripcio = descripcio;
     }
 
-    public Set<Codi> getCodis() {
+    public List<Codi> getCodis() {
         return codis;
     }
 
-    public void setCodis(Set<Codi> codis) {
+    public void setCodis(List<Codi> codis) {
         this.codis = codis;
     }
 

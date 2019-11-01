@@ -5,13 +5,13 @@
  */
 package com.sick.games.service.impl;
 
+import com.sick.games.domain.CodeGame;
 import com.sick.games.domain.Videojoc;
 import com.sick.games.domain.Codi;
 import com.sick.games.repository.CodiDAO;
 import com.sick.games.repository.VideojocDAO;
 import com.sick.games.service.VideojocService;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,20 +71,8 @@ public class VideojocServiceImpl implements VideojocService {
     }
 
     @Override
-    public List<Videojoc> getJocsByOferta() {
+    public List<CodeGame> getJocsByOferta() {
         return videojocDAO.getJocsByOferta();
     }
 
-    @Override
-    public List<Videojoc> testingJocs() {
-        List<Videojoc> videojocs = videojocDAO.getAllVideojocs();
-
-        for (Videojoc joc : videojocs) {
-            List<Codi> codis = codiDAO.getCodisByCodisJoc(joc.getCodi_Joc());
-            Set<Codi> c = new HashSet<Codi>(codis);
-            joc.setCodis(c);
-        }
-
-        return videojocs;
-    }
 }

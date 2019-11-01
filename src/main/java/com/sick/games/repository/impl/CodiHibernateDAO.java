@@ -6,7 +6,6 @@
 package com.sick.games.repository.impl;
 
 import com.sick.games.domain.Codi;
-import com.sick.games.domain.Videojoc;
 import com.sick.games.repository.CodiDAO;
 import java.util.List;
 import java.util.Set;
