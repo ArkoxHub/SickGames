@@ -1,16 +1,3 @@
-/**
-
- * @fileoverview Archivo Js de la página user.html
-
- *
-
- * @author                  Kevin Merat <kevinmerat@hotmail.com>
-
- * @copyright               www.sickgames.com/copyright
-
- * 
-
-**/
 /* Menu login*/
 $(document).ready(function(){
     $('#test').hover(function(event) {
@@ -138,7 +125,7 @@ $(document).ready(function () {
         
 });
 
-//File reader
+//Mostrar carrito
 $(document).ready(function () {
     /*$("#carritoShow").click(function(){
        $("#llistaProductes").css("display","block");

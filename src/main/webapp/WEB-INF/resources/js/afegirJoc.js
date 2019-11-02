@@ -1,4 +1,3 @@
-
 var loadFile = function (event) {
     var reader = new FileReader();
     reader.onload = function () {

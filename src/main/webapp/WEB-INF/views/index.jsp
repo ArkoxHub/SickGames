@@ -78,13 +78,13 @@
             </nav>
         </section>
         <!--Fi Secció top-->
-        <div class="text-center center" style="margin-bottom:-38px">
+        <div class="text-center center" style="margin-bottom:-20px; margin-top:10px">
             <a class="btn btn-primary" href="<c:url value="/admin/addGame"/>">Afegir videojoc</a>
+            <a class="btn btn-primary" href="<c:url value="/cataleg"/>">Visitar Cataleg</a>
         </div>
         <!--Secció body; Jocs més venuts, valorats, millors ofertes, streams...-->
         <section class="section-body">
             <div class="container">
-
                 <!--MOST SELLED GAMES-->
                 <p class="tituloFilas">Jocs més venuts</p>
                 <div class="row" id="filaCatalogo">
@@ -97,11 +97,10 @@
                                     <div class="genere1"><span>RPG</span></div><!--Genere(numero bd)-->
                                 </div>
                             </a>
-                            <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> ${joc.oferta}% - Comprar</a>
+                            <a href="<c:url value="product?id=${joc.codi_Joc}"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> ${joc.oferta}% - Comprar</a>
                         </div>
                     </c:forEach>
                 </div>
-
                 <!--MOST VALORATED GAMES     NEED IMPLEMENTATION-->
                 <p class="tituloFilas">Jocs més valorats</p>
                 <div class="row" id="filaCatalogo">
@@ -122,7 +121,7 @@
                 <!--TOP OFFERTS DESC-->
                 <p class="tituloFilas">Millors ofertes</p>
                 <div class="row" id="filaCatalogo">
-                    <c:forEach items="${ofertes}" var="joc_Oferta">
+                    <c:forEach items="${ofertes}" var="joc_Oferta" begin="0" end="3">
                         <div class="column">
                             <!-- SE TIENE QUE PASAR UNA EL NOMBRE O ID DEL PRODUCTO COMO ID EN LOS LINKS PARA PODER CREAR UNA WEB CON UN CONTENIDO U OTRO-->
                             <a href="<c:url value="/product?id=${joc_Oferta.codi_Joc}"/>" id="${joc_Oferta.nom}"><img src="<c:url value="/resources/img/portades/${joc_Oferta.nom}.jpg"/>" title="${joc_Oferta.codi_Joc}" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis, ${joc_Oferta.codi_Joc} , ${joc_Oferta.nom}"><!--poner alt nombrejuego, oferta, nombreweb, juegobarato, etc-->
@@ -132,7 +131,7 @@
                                     <div class="genere3"><span>Cundicció</span></div>
                                 </div>
                             </a>
-                            <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> ${joc_Oferta.oferta}% - Comprar</a>
+                            <a href="<c:url value="/product?id=${joc_Oferta.codi_Joc}"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> ${joc_Oferta.oferta}% - Comprar</a>
                         </div>
                     </c:forEach>
                 </div>

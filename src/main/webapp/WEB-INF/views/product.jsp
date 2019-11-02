@@ -79,7 +79,7 @@
             </nav>
         </section>
         <!--FI Secció top-->
-        <div class="text-center center" style="margin-bottom:-38px">
+        <div class="text-center center" style="margin-top:10px;">
             <a  class="btn btn-primary" href="<c:url value="/admin/updateGame?id=${joc.codi_Joc}"/>">Modifica aquest videojoc</a>
         </div>
         <!--Secció body; Jocs més venuts, valorats, millors ofertes, streams...-->
