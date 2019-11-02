@@ -51,7 +51,7 @@ public class adminController {
         
         // Afegim joc a la base de dades
         newGame.setCodi_Joc(videojocService.getMaxID() + 1);
-        videojocService.addVideojoc(newGame);
+        videojocService.addGame(newGame);
 
         // Obtenim la imatge i la guardem al servidor
         try {
@@ -75,7 +75,7 @@ public class adminController {
     public ModelAndView updateGame(@RequestParam("id") int codi, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ModelAndView model = new ModelAndView("updateGameForm");
-        Videojoc game = videojocService.getVideojocByCode(codi);
+        Videojoc game = videojocService.getGameByCode(codi);
         model.getModelMap().addAttribute("game", game);
         return model;
     }
@@ -87,7 +87,7 @@ public class adminController {
             HttpServletResponse response) {
         
         // Update Game
-        videojocService.updateVideojoc(newGame);
+        videojocService.updateGame(newGame);
 
         // Obtenim la imatge i la guardem al servidor
         try {

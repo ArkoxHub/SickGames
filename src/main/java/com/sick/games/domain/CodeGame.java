@@ -22,7 +22,6 @@ public class CodeGame {
     private long stock;
     
     public CodeGame() {
-        
     }
 
     public CodeGame(int codi_Joc, String nom, int oferta, String generes, long stock) {
@@ -72,7 +71,5 @@ public class CodeGame {
     public void setStock(long stock) {
         this.stock = stock;
     }
-    
-    
-    
+
 }

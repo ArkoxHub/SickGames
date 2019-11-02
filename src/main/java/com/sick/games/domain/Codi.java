@@ -40,6 +40,9 @@ public class Codi implements Serializable {
     @NotNull
     @Column(name = "oferta")
     private int oferta;
+    
+//    @Column(name = "preu")
+//    private float preu;
 
     @NotNull
     @Column(name = "plataforma")

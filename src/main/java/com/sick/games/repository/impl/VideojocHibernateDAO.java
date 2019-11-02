@@ -6,18 +6,13 @@
 package com.sick.games.repository.impl;
 
 import com.sick.games.domain.CodeGame;
-import com.sick.games.domain.Codi;
 import com.sick.games.domain.Videojoc;
 import com.sick.games.repository.VideojocDAO;
-import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,21 +29,21 @@ public class VideojocHibernateDAO implements VideojocDAO {
 
     @Autowired
     private SessionFactory sessionFactory;
-    
+
     private static final Logger logger = LoggerFactory.getLogger(VideojocHibernateDAO.class);
 
     @Override
-    public void addVideojoc(Videojoc videojoc) {
+    public void addGame(Videojoc videojoc) {
         getSession().saveOrUpdate(videojoc);
     }
 
     @Override
-    public void removeVideojoc(Videojoc videojoc) {
+    public void removeGame(Videojoc videojoc) {
         getSession().remove(videojoc);
     }
 
     @Override
-    public void updateVideojoc(Videojoc videojoc) {
+    public void updateGame(Videojoc videojoc) {
         getSession().merge(videojoc);
     }
 
@@ -60,30 +55,46 @@ public class VideojocHibernateDAO implements VideojocDAO {
     }
 
     @Override
-    public List<Videojoc> getAllVideojocs() {
+    public List<Videojoc> getAllGames() {
         return (List<Videojoc>) getSession().createQuery("FROM Videojoc").getResultList();
     }
 
     @Override
-    public Videojoc getVideojocByCode(int codi) {
+    public Videojoc getGameByCode(int codi) {
         Videojoc videojoc = getSession().load(Videojoc.class, codi);
         logger.info("Videojoc carregat correctament" + videojoc);
         return videojoc;
     }
 
     @Override
-    public List<Videojoc> getVideojocsByName(String name) {
+    public List<Videojoc> getGamesByName(String name) {
         return (List<Videojoc>) getSession().load(Videojoc.class, name);
     }
 
     @Override
-    public List<Videojoc> getVideojocsByGenere(String genere) {
+    public List<Videojoc> getGamesByGenere(String genere) {
         return (List<Videojoc>) getSession().load(Videojoc.class, genere);
     }
 
     @Override
-    public List<CodeGame> getJocsByOferta() {
-        return (List<CodeGame>) getSession().createQuery("SELECT v.codi_Joc, v.nom, v.generes, c.oferta, COUNT(v.nom) FROM Videojoc v, Codi c WHERE v.codi_Joc = c.codi_Joc GROUP BY v.codi_Joc ORDER BY c.oferta DESC").getResultList();
+    public List<CodeGame> getGamesByOferta() {
+        List<CodeGame> codeGames;
+        codeGames = getSession().createQuery("SELECT v.codi_Joc, v.nom, v.generes, c.oferta, COUNT(v.nom) FROM Videojoc v, Codi c WHERE v.codi_Joc = c.codi_Joc GROUP BY v.codi_Joc ORDER BY c.oferta DESC").list();
+        return codeGames;
+    }
+
+    @Override
+    public List<CodeGame> getGamesByPrice() {
+        List<CodeGame> codeGames;
+        codeGames = getSession().createQuery("SELECT v.codi_Joc, v.nom, v.generes, c.oferta, COUNT(v.nom) FROM Videojoc v, Codi c WHERE v.codi_Joc = c.codi_Joc GROUP BY v.codi_Joc ORDER BY v.pvp ASC").list();
+        return codeGames;
+    }
+
+    @Override
+    public List<CodeGame> getGamesUpcoming() {
+        List<CodeGame> codeGames;
+        codeGames = getSession().createQuery("SELECT v.codi_Joc, v.nom, v.generes, c.oferta, COUNT(v.nom) FROM Videojoc v, Codi c WHERE v.codi_Joc = c.codi_Joc and v.data_Llançament > CURDATE() GROUP BY v.codi_Joc").list();
+        return codeGames;
     }
 
     // Connecta amb la Base de Dades

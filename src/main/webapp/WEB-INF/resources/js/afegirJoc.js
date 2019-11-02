@@ -18,7 +18,6 @@ function validacio() {
     var idioma = $("#idioma").val();
     var oferta = $("#oferta").val();
     var qty_Available = $("#qty_Available").val();
-    var plataforma = $("#plataforma").val();
     var descripcio = $("#descripcio").val();
     var fullPath = document.getElementById('logo').value;
     var comprobarJoc = "";
@@ -52,21 +51,6 @@ function validacio() {
     if (!idioma) {
         $("#idioma").after("<div class='alert error'>Introdueix l'idioma</div>");
         $("#idioma").focus();
-        return false;
-    }
-    if (!oferta) {
-        $("#oferta").after("<div class='alert error'>Introdueix l'oferta</div>");
-        $("#oferta").focus();
-        return false;
-    }
-    if (!qty_Available) {
-        $("#qty_Available").after("<div class='alert error'>Introdueix la cuantitat</div>");
-        $("#qty_Available").focus();
-        return false;
-    }
-    if (!plataforma) {
-        $("#plataforma").after("<div class='alert error'>Introdueix la plataforma</div>");
-        $("#plataforma").focus();
         return false;
     }
     if (!descripcio) {

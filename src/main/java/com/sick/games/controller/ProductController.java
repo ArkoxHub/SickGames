@@ -5,6 +5,7 @@
  */
 package com.sick.games.controller;
 
+import com.sick.games.service.CodiService;
 import com.sick.games.service.VideojocService;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -27,13 +28,18 @@ public class ProductController {
     
     @Autowired
     VideojocService videojocService;
+    
+    @Autowired
+    CodiService codiService;
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView product(@RequestParam(name = "id") String codi,HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int codiJoc = Integer.parseInt(codi);
         ModelAndView model = new ModelAndView("product");
-        model.getModelMap().addAttribute("joc", videojocService.getVideojocByCode(codiJoc));
+        model.getModelMap().addAttribute("joc", videojocService.getGameByCode(codiJoc));
+        model.getModelMap().addAttribute("codi", codiService.getNextCodeByCodiJoc(codiJoc));
+        model.getModelMap().addAttribute("stock", codiService.getTotalCodisByJoc(codiJoc));
         return model;
     }
 }
