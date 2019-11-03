@@ -1,16 +1,3 @@
-/**
- 
- * @fileoverview Archivo Js de la página product.html
- 
- *
- 
- * @author                  Kevin Merat <kevinmerat@hotmail.com>
- 
- * @copyright               www.sickgames.com/copyright
- 
- * 
- 
- **/
 $(document).ready(function () {
     var jocStream = $("img[id^='stream']").val("");
     //console.log(jocStream[0].id);

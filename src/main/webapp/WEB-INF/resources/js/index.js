@@ -1,16 +1,3 @@
-/**
- 
- * @fileoverview Archivo Js de la página index.html
- 
- *
- 
- * @author                  Kevin Merat <kevinmerat@hotmail.com>
- 
- * @copyright               www.sickgames.com/copyright
- 
- * 
- 
- **/
 $(document).ready(function () {
     var jocApi = "https://api.twitch.tv/helix/streams?first=4&language=es";
     $.ajax({

@@ -78,8 +78,9 @@
             </nav>
         </section>
         <!--Fi Secció top-->
-        <div class="text-center center" style="margin-bottom:-38px">
+        <div class="text-center center" style="margin-bottom:-20px; margin-top:10px">
             <a class="btn btn-primary" href="<c:url value="/admin/addGame"/>">Afegir videojoc</a>
+            <a class="btn btn-primary" href="<c:url value="/cataleg"/>">Visitar Cataleg</a>
         </div>
 
         <section class="section-body">
