@@ -1,6 +1,7 @@
 package com.sick.games.controller;
 
 import com.sick.games.domain.Videojoc;
+import com.sick.games.service.CodiService;
 import com.sick.games.service.VideojocService;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -29,6 +30,9 @@ public class adminController {
     @Autowired
     VideojocService videojocService;
 
+    @Autowired
+    CodiService codiService;
+
     @RequestMapping(value = "addGame", method = RequestMethod.GET)
     public ModelAndView addGame(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -38,38 +42,30 @@ public class adminController {
         return model;
     }
 
-    /**
-     * Rep l'objecte vinculat al formulari spring i l'afegeix a la BD
-     *
-     * @param newGame
-     * @return L'URL del nou objecte creat
-     */
     @RequestMapping(value = "addGame", method = RequestMethod.POST)
     public String processAddGameForm(@ModelAttribute("game") Videojoc newGame,
             @RequestParam("file") MultipartFile file, HttpServletRequest request,
             HttpServletResponse response) {
-        
-        // Afegim joc a la base de dades
+
+        // Add game to DB
         newGame.setCodi_Joc(videojocService.getMaxID() + 1);
         videojocService.addGame(newGame);
 
         // Obtenim la imatge i la guardem al servidor
         try {
-
             byte[] bytes = file.getBytes();
-            String rootPath = request.getServletContext().getRealPath("WEB-INF/resources/portades");
+            String rootPath = request.getServletContext().getRealPath("WEB-INF/resources/img/portades");
             File pathFile = new File(rootPath + File.separator + file.getOriginalFilename());
             BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(pathFile));
             stream.write(bytes);
             stream.close();
-            
         } catch (IOException e) {
             System.out.println("Error al carregar la imatge: " + e.getMessage());
         }
 
-        return "redirect:/product?id=" + newGame.getCodi_Joc();
+        return "redirect:/product/noStock?id=" + newGame.getCodi_Joc();
     }
-    
+
     // UPDATE GAME CREATE NEW MODEL ATTRIBUTE
     @RequestMapping(value = "updateGame", method = RequestMethod.GET)
     public ModelAndView updateGame(@RequestParam("id") int codi, HttpServletRequest request, HttpServletResponse response)
@@ -79,28 +75,31 @@ public class adminController {
         model.getModelMap().addAttribute("game", game);
         return model;
     }
-    
+
     // UPDATE GAME RECEIVE MODEL ATTRIBUTE FORM
     @RequestMapping(value = "updateGame", method = RequestMethod.POST)
     public String processUpdateGameForm(@ModelAttribute("game") Videojoc newGame,
             @RequestParam("file") MultipartFile file, HttpServletRequest request,
             HttpServletResponse response) {
-        
+
         // Update Game
         videojocService.updateGame(newGame);
 
         // Obtenim la imatge i la guardem al servidor
         try {
-
             byte[] bytes = file.getBytes();
-            String rootPath = request.getServletContext().getRealPath("WEB-INF/resources/portades");
+            String rootPath = request.getServletContext().getRealPath("WEB-INF/resources/img/portades");
             File pathFile = new File(rootPath + File.separator + file.getOriginalFilename());
             BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(pathFile));
             stream.write(bytes);
             stream.close();
-            
         } catch (IOException e) {
             System.out.println("Error al carregar la imatge: " + e.getMessage());
+        }
+
+        long stock = codiService.getTotalCodisByJoc(newGame.getCodi_Joc());
+        if (stock == 0) {
+            return "redirect:/product/noStock?id=" + newGame.getCodi_Joc();
         }
 
         return "redirect:/product?id=" + newGame.getCodi_Joc();

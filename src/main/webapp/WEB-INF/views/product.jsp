@@ -152,7 +152,7 @@
                                     Comprar
                                 </a>
                             </div>
-                            <div class="column-12 text-left" style="color: red; font-size: 15px">
+                            <div class="column-12 text-left" id="PVP">
                                 Preu d'origen: ${joc.pvp}€
                             </div>
                         </div>

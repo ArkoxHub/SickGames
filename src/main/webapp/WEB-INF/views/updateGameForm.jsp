@@ -67,8 +67,8 @@
             
             <h2 class="center">Formulari per afegir joc a la Base de Dades</h2>
             <form:form modelAttribute="game" id="form" method="post" onsubmit="return validacio();" enctype="multipart/form-data">
-                <label for="codi_Joc">Nom</label><br>
-                <form:input path="codi_Joc" type="number" class="form-control" id="codi_Joc" name="codi_Joc" disabled="true" placeholder="Codi del joc"/>
+                <label for="codi_Joc"></label>
+                <form:input path="codi_Joc" style="display:none" type="number" class="form-control" id="codi_Joc" name="codi_Joc" placeholder="Codi del joc"/>
                 
                 <label for="nom">Nom</label><br>
                 <form:input path="nom" type="text" maxlength="50" class="form-control" id="nom" name="nom" placeholder="Nom del joc"/>
@@ -92,7 +92,7 @@
                 <input type="file" name="file" id="logo" class="form-control" onchange="loadFile(event)" accept="jpg">
                 <img id="preview" style="max-width: 100%"/>
 
-                <input type="submit" id="submit" class="btn btn-primary" value="Crear Videojoc">
+                <input type="submit" id="submit" class="btn btn-primary" value="Actualitzar Videojoc">
                 <a class="btn btn-primary" id="back" href="<c:url value="/"/>">Cancel·lar</a>
             </form:form>
                 

@@ -42,19 +42,25 @@
 
         <!-- Hidden by default -->
         <div class="helpForm2">
-            <h4>Codis vàlits pel camp "PLATAFORMA"</h4>
-            <li>1 - Battle.Net</li>
-            <li>2 - Steam</li>
-            <li>3 - Uplay</li>
-            <li>4 - Origin</li>
-            <li>5 - Nintendo</li>
-            <li>6 - XBOX</li>
-            <li>7 - PlayStation</li>
-            <li>8 - Rockstar</li>
-            <li>9 - GOG</li>
-            <li>10 - Microsoft</li>
-            <li>11 - Mac</li>
-            <li>12 - Epic Games</li>
+            <h4>Generes pel camp "Gèneres"</h4>
+            <li>FPS</li>
+            <li>RPG</li>
+            <li>MMO</li>
+            <li>Acció</li>
+            <li>Deportiu</li>
+            <li>Aventura</li>
+            <li>Construcció</li>
+            <li>Conducció</li>
+            <li>Cooperació</li>
+            <li>Plataforma</li>
+            <li>Simulador</li>
+            <li>Survival</li>
+            <li>Gestió</li>
+            <li>Estratègia</li>
+            <li>Indies</li>
+            <li>Lluita</li>
+            <li>SinglePlayer</li>
+            <li>Multijugador</li>       
         </div>
 
         <div class="wrap">

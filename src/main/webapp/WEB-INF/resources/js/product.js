@@ -93,7 +93,7 @@ $(document).ready(function () {
                                 '<div class="col-12">' +
                                 '<div>' +
                                 '<a id="cerrar" href="#filaStreams">' +
-                                '<img src="/SickGames/resources/img/cruz.png" style="width:30px; float:right">' +
+                                '<img src="/sickgames/resources/img/cruz.png" style="width:30px; float:right">' +
                                 '</a>' +
                                 '</div>' +
                                 '</div>' +
@@ -154,7 +154,7 @@ $(document).ready(function () {
                         '<div class="col-12">' +
                         '<div>' +
                         '<a id="cerrar" href="#filaStreams">' +
-                        '<img src="/SickGames/resources/img/cruz.png" style="width:30px; float:right">' +
+                        '<img src="/sickgames/resources/img/cruz.png" style="width:30px; float:right">' +
                         '</a>' +
                         '</div>' +
                         '</div>' +

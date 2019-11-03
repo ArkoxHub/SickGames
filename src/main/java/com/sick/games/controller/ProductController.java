@@ -42,4 +42,14 @@ public class ProductController {
         model.getModelMap().addAttribute("stock", codiService.getTotalCodisByJoc(codi_Joc));
         return model;
     }
+
+    @RequestMapping(value = "/noStock" ,method = RequestMethod.GET)
+    public ModelAndView videoJocInfo(@RequestParam(name = "id") String codi, 
+        HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        int codi_Joc = Integer.parseInt(codi);
+        ModelAndView model = new ModelAndView("productNoStock");
+        model.getModelMap().addAttribute("joc", videojocService.getGameByCode(codi_Joc));
+        return model;
+    }
 }

@@ -45,6 +45,7 @@ public class VideojocHibernateDAO implements VideojocDAO {
     @Override
     public void updateGame(Videojoc videojoc) {
         getSession().merge(videojoc);
+        
     }
 
     @Override

@@ -14,7 +14,7 @@
         <!--Bootstrap CSS-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="true">
         <!--My css-->
-        <link href="<c:url value="/resources/css/cataleg.css"/>" rel="stylesheet" type="text/css"/>
+        <link href="<c:url value="/resources/css/product.css"/>" rel="stylesheet" type="text/css"/>
         <!--WebIcon-->
         <link rel="icon" href="<c:url value="/resources/img/logo_icon.png"/>" alt="Favicon">
         <!--FontsGoogle-->
@@ -25,10 +25,10 @@
         <!--Jquery-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <!--My javascript-->
-        <script src="<c:url value="/resources/js/cataleg.js"/>" type="text/javascript" ></script>
+        <script src="<c:url value="/resources/js/product.js"/>" type="text/javascript" ></script>
     </head>
 
-    <body>      
+    <body>
         <!--Secció top; Buscador, conta, logo....--> 
         <section class="section-top">
             <a href="<c:url value="/"/>"><img src="<c:url value="/resources/img/logo_sick.png"/>" alt="" class="logoMvl"></a>
@@ -79,124 +79,129 @@
             </nav>
         </section>
         <!--FI Secció top-->
-
-        <!--Secció body; Jocs més venuts, valorats, millors ofertes, streams...-->
-
         <div class="text-center center" style="margin-top:10px;">
-            <a class="btn btn-primary" href="<c:url value="/admin/addGame"/>">Afegir videojoc</a>
+            <a  class="btn btn-primary" href="<c:url value="/admin/updateGame?id=${joc.codi_Joc}"/>">Modifica aquest videojoc</a>
         </div>
+        <!--Secció body; Jocs més venuts, valorats, millors ofertes, streams...-->
         <section class="section-body">
-            <div class="container-cataleg">
-                <div class="row" id="filaCatalogo">
-                    <div class="col-md-2 menuPlataforma">
-                        <div class="row">
-                            <div class="col-md-12" id="marginMenuCalaleg">
-                                <button class="btn btn-primary" id="escollirPlataforma" href="">Plataforma</button>
-                                <form class="mostrarPlataforma">
-                                    <!--Plataformes per mostrar , foreach que recorri tote les plataformes, de mentres ho he creat per probar-ho-->
-                                    <div class="checkboxDiv">
-                                        <label for="Battlenet">Battle.net</label>
-                                        <input type="checkbox" class="checkbox" id="Battlenet" name="Battlenet"><br>
-                                    </div>
-                                    <div class="checkboxDiv">
-                                        <label for="Battlenet">Epic Games</label>
-                                        <input type="checkbox" class="checkbox" id="Battlenet" name="Battlenet"><br>
-                                    </div>
-                                    <div class="checkboxDiv">
-                                        <label for="Battlenet">Battle.net</label>
-                                        <input type="checkbox" class="checkbox" id="Battlenet" name="Battlenet"><br>
-                                    </div>
-                                    <div class="checkboxDiv">
-                                        <label for="Battlenet">Battle.net</label>
-                                        <input type="checkbox" class="checkbox" id="Battlenet" name="Battlenet"><br>
-                                    </div>
-                                    <div class="checkboxDiv">
-                                        <label for="Battlenet">Battle.net</label>
-                                        <input type="checkbox" class="checkbox" id="Battlenet" name="Battlenet"><br>
-                                    </div>
-                                    <div class="checkboxDiv">
-                                        <label for="Battlenet">Battle.net</label>
-                                        <input type="checkbox" class="checkbox" id="Battlenet" name="Battlenet"><br>
-                                    </div>
-                                    <div class="checkboxDiv">
-                                        <label for="Battlenet">Battle.net</label>
-                                        <input type="checkbox" class="checkbox" id="Battlenet" name="Battlenet"><br>
-                                    </div>
-                                    <div class="checkboxDiv">
-                                        <label for="Battlenet">Battle.net</label>
-                                        <input type="checkbox" class="checkbox" id="Battlenet" name="Battlenet"><br>
-                                    </div>
-
-                                </form>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12" id="marginMenuCalaleg">
-                                <button class="btn btn-primary" id="escollirGenere" >Genere</button>
-                                <form class="mostrarGenere">
-                                    <!--Generes per mostrar, foreach generes... -->
-                                    <div class="checkboxDiv">
-                                        <label for="RPG">RPG</label>
-                                        <input type="checkbox" class="checkbox" id="RPG" name="RPG"><br>
-                                    </div>
-                                    <div class="checkboxDiv">
-                                        <label for="RPG">Joc en solitari</label>
-                                        <input type="checkbox" class="checkbox" id="RPG" name="RPG"><br>
-                                    </div>
-                                    <div class="checkboxDiv">
-                                        <label for="RPG">RPG</label>
-                                        <input type="checkbox" class="checkbox" id="RPG" name="RPG"><br>
-                                    </div>
-                                    <div class="checkboxDiv">
-                                        <label for="RPG">RPG</label>
-                                        <input type="checkbox" class="checkbox" id="RPG" name="RPG"><br>
-                                    </div>
-                                    <div class="checkboxDiv">
-                                        <label for="RPG">RPG</label>
-                                        <input type="checkbox" class="checkbox" id="RPG" name="RPG"><br>
-                                    </div>
-                                    <div class="checkboxDiv">
-                                        <label for="RPG">RPG</label>
-                                        <input type="checkbox" class="checkbox" id="RPG" name="RPG"><br>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+            <div class="container" >
+                <div class="row" id="cartaJoc">
+                    <div class="column-3">
+                        <img id="stream${joc.nom}" class="portadaJoc" src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>">
+                        <img class="afegirWhishList" src="<c:url value="/resources/img/like.png"/>" title="${joc.nom}" alt="${joc.nom}">
                     </div>
-                    <div class="col-md-10">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <c:forEach var="joc" items="${videojocs}" begin="0" end="29">
-                                    <div class="column">
-                                        <a href="<c:url value="/product?id=${joc[0]}"/>" id="${joc[1]}"><img src="<c:url value="/resources/img/portades/${joc[1]}.jpg"/>" title="${joc[1]}" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis, ${joc[1]}">
-                                            <div class="infoJoc">
-                                                <span class="preu">${joc[5]}€</span>
-                                                <c:forEach var="g" items="${joc[2].split(', ')}">                                       
-                                                    <div class="genere2"><span>${g}</span></div>
-                                                </c:forEach>
-                                            </div>
-                                        </a>
-                                        <a href="<c:url value="product?id=${joc[0]}"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> ${joc[4]}% - Comprar</a>
-                                    </div>
+                    <div class="portada">
+                        <img class="portadaJocMvl" src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>">
+                    </div>
+                    <div class="column-9">
+                        <div class="row" id="titol">
+                            <div class="column-12 text-center">${joc.nom}</div>
+                        </div>
+                        <div class="row justify-content-md-center">                
+                        </div>
+                        <div class="row justify-content-md-center" id="genere">
+                            <c:forEach var="genere" items="${joc.generes.split(', ')}" varStatus="status">
+                                <c:choose>
+                                    <c:when test="${status.last}">
+                                        <c:out value="${genere}" escapeXml="false"></c:out>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:out value="${genere} -" escapeXml="false"></c:out>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
+                        </div>
+                        <div class="row" id="stock">
+                            <div class="column-6 text-left">
+                                <span class="stockSi">Stock disponible: <c:out value="0" escapeXml="false"></c:out>
+                                        <i class="fa fa-times" id="cruz"></i>
+                                    </span>
+                                </div>
+                                <div class="column-6 text-right">
+                                <c:forEach var="split" items="${joc.idioma.split(', ')}">
+                                    <c:choose>
+                                        <c:when test="${split == 'Multillengua'}">
+                                            Multillengua
+                                        </c:when>
+                                        <c:otherwise>
+                                            <img src="<c:url value="/resources/img/banderas/${split}.png"/>" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis, ${joc.nom}, ${joc.idioma}">
+                                        </c:otherwise>
+                                    </c:choose>
                                 </c:forEach>
                             </div>
-                        </div>  
+                        </div>
+                        <div class="row" id="infoCompres">
+                            <div class="column-6 text-left">
+                                <!--  <span>70 Adquisicions</span> TEA 3: Falta importat taules Detall i Comanda -->
+                            </div>
+                            <div class="column-6 text-right">
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="row" id="preu">
+                            <div class="column-12 text-center">
+                                <span>${joc.pvp}€</span>
+                            </div>
+                        </div>
+                        <div class="row" id="comprarJoc">
+                            <div class="column-12 text-center">
+                                <a href="#" class="producteAComprar" id="overwatch">
+                                    Sense Stock
+                                </a>
+                            </div>
+                            <div class="column-12 text-left" id="PVP">
+                                Preu d'origen: ${joc.pvp}€
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <nav>
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled"> <!--Cambiar el disabled si se encuentra en pagina 2 backend-->
-                        <a class="page-link" href="#" tabindex="-1"><i class="fas fa-arrow-left"></i></a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#"><i class="fas fa-arrow-right"></i></a>
-                    </li>
-                </ul>
-            </nav>
+                <div class="container" id="infoJoc">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 class="titolsTaules">Configuració mínima</h4>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="requisit">OS</td>
+                                        <td class="descripcioRequisit">64-bit Windows 10</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="requisit">CPU</td>
+                                        <td class="descripcioRequisit">I3-3220 or Equivalent</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="requisit">RAM</td>
+                                        <td class="descripcioRequisit">4 GB</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="requisit">GPU</td>
+                                        <td class="descripcioRequisit">GeForce GT 640 or Equivalent</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="requisit">HDD</td>
+                                        <td class="descripcioRequisit">15 GB</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="titolsTaules">Descripció</h4>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="requisit">${joc.descripcio}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <h4 class="titolsTaules">Streams</h4>
+                    <div class="row" id="filaStreams"></div><!--S'omplira automaticament amb els top streamers-->
+                    <div class="row" id="streamView"></div><!--Quan fem click a un stream, podrem veure el video dintre d'aquest div-->
+                </div>
         </section>
         <!--Fi secciÃ³ body-->
 
@@ -296,5 +301,13 @@
             </div>
             <!-- Footer -->   
         </section>
+        <!-- Load the Twitch embed script -->
+        <script src="https://embed.twitch.tv/embed/v1.js"></script>
+        <script type="text/javascript">
+            var dataFromParent;
+            function init() {
+                document.write(dataFromParent);
+            }
+        </script>
     </body>
 </html>
