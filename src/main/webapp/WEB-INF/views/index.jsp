@@ -98,7 +98,7 @@
                                     <span class="preu">${joc[5]}€</span>
                                     <c:forEach var="genere" items="${joc[2].split(', ')}">                                       
                                         <div class="genere2"><span>${genere}</span></div>
-                                            </c:forEach>
+                                    </c:forEach>
                                 </div>
                             </a>
                             <a href="<c:url value="/product?id=${joc[0]}"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> ${joc[3]}% - Comprar</a>
@@ -138,7 +138,7 @@
                                     <span class="preu">${preu[5]}€</span>
                                     <c:forEach var="genere" items="${preu[2].split(', ')}">                                       
                                         <div class="genere2"><span>${genere}</span></div>
-                                            </c:forEach>
+                                    </c:forEach>
                                 </div>
                             </a>
                             <a href="<c:url value="/product?id=${preu[0]}"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> ${preu[3]}% - Comprar</a>

@@ -36,5 +36,7 @@ public interface VideojocService {
     public List<CodeGame> getGamesByPrice();
     
     public List<CodeGame> getGamesUpcoming();
+    
+    public List<CodeGame> getGamesCataleg();
 
 }

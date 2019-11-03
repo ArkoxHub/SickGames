@@ -79,9 +79,9 @@
             </nav>
         </section>
         <!--FI Secció top-->
-        
+
         <!--Secció body; Jocs més venuts, valorats, millors ofertes, streams...-->
-        
+
         <div class="text-center center" style="margin-top:10px;">
             <a class="btn btn-primary" href="<c:url value="/admin/addGame"/>">Afegir videojoc</a>
         </div>
@@ -126,7 +126,7 @@
                                         <label for="Battlenet">Battle.net</label>
                                         <input type="checkbox" class="checkbox" id="Battlenet" name="Battlenet"><br>
                                     </div>
-                                    
+
                                 </form>
                             </div>
                         </div>
@@ -168,14 +168,15 @@
                             <div class="row">
                                 <c:forEach var="joc" items="${videojocs}" begin="0" end="19">
                                     <div class="column">
-                                        <a href="<c:url value="/product?id=${joc.codi_Joc}"/>" id="${joc.nom}"><img src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>" title="${joc.nom}" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis, ${joc.nom}">
+                                        <a href="<c:url value="/product?id=${joc[0]}"/>" id="${joc[1]}"><img src="<c:url value="/resources/img/portades/${joc[1]}.jpg"/>" title="${joc[1]}" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis, ${joc[1]}">
                                             <div class="infoJoc">
-                                                <span class="preu">${joc.preu}€</span>
-                                                <!--Aqui faltan los generes para que se creen solos-->
-                                                <div class="genere1"><span>RPG</span></div><!--Genere(numero bd)-->
+                                                <span class="preu">${joc[5]}€</span>
+                                                <c:forEach var="g" items="${joc[2].split(', ')}">                                       
+                                                    <div class="genere2"><span>${g}</span></div>
+                                                        </c:forEach>
                                             </div>
                                         </a>
-                                        <a href="<c:url value="product?id=${joc.codi_Joc}"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> ${joc.oferta}% - Comprar</a>
+                                        <a href="<c:url value="product?id=${joc[0]}"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> ${joc[4]}% - Comprar</a>
                                     </div>
                                 </c:forEach>
                             </div>

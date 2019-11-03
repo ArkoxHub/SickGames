@@ -81,5 +81,10 @@ public class VideojocServiceImpl implements VideojocService {
     public List<CodeGame> getGamesUpcoming() {
         return videojocDAO.getGamesUpcoming();
     }
+    
+    @Override
+    public List<CodeGame> getGamesCataleg() {
+        return videojocDAO.getGamesCataleg();
+    }
 
 }

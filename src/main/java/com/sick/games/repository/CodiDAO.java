@@ -21,7 +21,7 @@ public interface CodiDAO {
     
     public void removeCodi(Codi codi);
     
-    public Codi getNextCodeByCodiJoc(int codi_Joc);
+    public List<Codi> getNextCodeByCodiJoc(int codi_Joc);
     
     public List<Codi> getPlataformesByCodiJoc(int plataforma);
     

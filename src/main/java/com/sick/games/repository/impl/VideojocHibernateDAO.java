@@ -97,6 +97,13 @@ public class VideojocHibernateDAO implements VideojocDAO {
         return codeGames;
     }
 
+    @Override
+    public List<CodeGame> getGamesCataleg() {
+        List<CodeGame> codeGames;
+        codeGames = getSession().createQuery("SELECT v.codi_Joc, v.nom, v.generes, c.oferta, COUNT(v.nom), c.preu FROM Videojoc v, Codi c WHERE v.codi_Joc = c.codi_Joc GROUP BY v.codi_Joc").list();
+        return codeGames;
+    }
+
     // Connecta amb la Base de Dades
     protected Session getSession() {
         return sessionFactory.getCurrentSession();

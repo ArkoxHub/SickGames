@@ -35,4 +35,6 @@ public interface VideojocDAO {
     
     public List<CodeGame> getGamesUpcoming();
     
+    public List<CodeGame> getGamesCataleg();
+    
 }

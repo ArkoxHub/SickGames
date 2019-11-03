@@ -28,7 +28,7 @@ public class CodiHibernateDAO implements CodiDAO {
     @Autowired
     private SessionFactory sessionFactory;
 
-    private static final Logger logger = LoggerFactory.getLogger(VideojocHibernateDAO.class);
+    private static final Logger logger = LoggerFactory.getLogger(CodiHibernateDAO.class);
 
     @Override
     public void addCodi(Codi codi) {
@@ -46,9 +46,8 @@ public class CodiHibernateDAO implements CodiDAO {
     }
 
     @Override
-    public Codi getNextCodeByCodiJoc(int codi_Joc) {
-        Codi codi = (Codi) getSession().load(Codi.class, codi_Joc);
-        logger.info("Codi carregat correctament" + codi);
+    public List<Codi> getNextCodeByCodiJoc(int codi_Joc) {
+        List <Codi> codi = (List<Codi>) getSession().createQuery("FROM Codi WHERE codi_Joc = :codi ORDER BY preu ASC").setParameter("codi", codi_Joc).list();
         return codi;
     }
 

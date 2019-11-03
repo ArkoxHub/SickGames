@@ -9,14 +9,11 @@ var loadFile = function (event) {
 
 function validacio() {
     $(".alert").remove();
-
-
+    
     var nom = $("#nom").val();
     var data_Llançament = $("#data_Llançament").val();
     var preu = $("#preu").val();
     var idioma = $("#idioma").val();
-    var oferta = $("#oferta").val();
-    var qty_Available = $("#qty_Available").val();
     var descripcio = $("#descripcio").val();
     var fullPath = document.getElementById('logo').value;
     var comprobarJoc = "";
@@ -67,7 +64,7 @@ function validacio() {
 
 $(document).ready(function () {
     var language = document.getElementById("idioma");
-    var plataforma = document.getElementById("plataforma");
+    var plataforma = document.getElementById("generes");
     language.addEventListener("blur", deleteDiv);
     language.addEventListener("focus", addDiv);
     plataforma.addEventListener("blur", deleteDiv);

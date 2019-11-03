@@ -28,10 +28,10 @@ public class CatalegController {
     VideojocService videojocService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView homePage(HttpServletRequest request, HttpServletResponse response)
+    public ModelAndView initCataleg(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ModelAndView model = new ModelAndView("cataleg");
-        model.getModelMap().addAttribute("videojocs", videojocService.getAllGames());
+        model.getModelMap().addAttribute("videojocs", videojocService.getGamesCataleg());
         return model;
     }
 }
