@@ -133,7 +133,7 @@
                         </div>
                         <div class="row" id="infoCompres">
                             <div class="column-6 text-left">
-                                <span>70 Adquisicions</span> <!-- TEA 3: Falta importat taules Detall i Comanda -->
+                                <!--  <span>70 Adquisicions</span> TEA 3: Falta importat taules Detall i Comanda -->
                             </div>
                             <div class="column-6 text-right">
                                 <span>
@@ -143,7 +143,7 @@
                         </div>
                         <div class="row" id="preu">
                             <div class="column-12 text-center">
-                                <span>${joc.pvp}€</span>
+                                <span>${codi.preu}€</span>
                             </div>
                         </div>
                         <div class="row" id="comprarJoc">

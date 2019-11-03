@@ -25,22 +25,21 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/product")
 public class ProductController {
-    
+
     @Autowired
     VideojocService videojocService;
-    
+
     @Autowired
     CodiService codiService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView product(@RequestParam(name = "id") String codi,HttpServletRequest request, HttpServletResponse response)
+    public ModelAndView product(@RequestParam(name = "id") String codi, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int codiJoc = Integer.parseInt(codi);
+        int codi_Joc = Integer.parseInt(codi);
         ModelAndView model = new ModelAndView("product");
-        model.getModelMap().addAttribute("joc", videojocService.getGameByCode(codiJoc));
-        model.getModelMap().addAttribute("codi", codiService.getNextCodeByCodiJoc(codiJoc));
-        model.getModelMap().addAttribute("stock", codiService.getTotalCodisByJoc(codiJoc));
+        model.getModelMap().addAttribute("joc", videojocService.getGameByCode(codi_Joc));
+        model.getModelMap().addAttribute("codi", codiService.getNextCodeByCodiJoc(codi_Joc));
+        model.getModelMap().addAttribute("stock", codiService.getTotalCodisByJoc(codi_Joc));
         return model;
     }
 }
-

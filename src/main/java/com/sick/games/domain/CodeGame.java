@@ -21,6 +21,8 @@ public class CodeGame {
     
     private long stock;
     
+    private long preu;
+    
     public CodeGame() {
     }
 
@@ -70,6 +72,14 @@ public class CodeGame {
 
     public void setStock(long stock) {
         this.stock = stock;
+    }
+
+    public long getPreu() {
+        return preu;
+    }
+
+    public void setPreu(long preu) {
+        this.preu = preu;
     }
 
 }

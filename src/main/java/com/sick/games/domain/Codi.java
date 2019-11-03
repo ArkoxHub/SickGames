@@ -40,9 +40,10 @@ public class Codi implements Serializable {
     @NotNull
     @Column(name = "oferta")
     private int oferta;
-    
-//    @Column(name = "preu")
-//    private float preu;
+
+    @NotNull
+    @Column(name = "preu")
+    private float preu;
 
     @NotNull
     @Column(name = "plataforma")
@@ -51,7 +52,7 @@ public class Codi implements Serializable {
     @NotNull
     @Column(name = "codi_Joc")
     private int codi_Joc;
-    
+
     @ManyToOne
     private Videojoc joc;
 
@@ -75,20 +76,20 @@ public class Codi implements Serializable {
         this.serial = serial;
     }
 
-//    public float getPreu() {
-//        return preu;
-//    }
-//
-//    public void setPreu(float preu) {
-//        this.preu = preu;
-//    }
-
     public int getOferta() {
         return oferta;
     }
 
     public void setOferta(int oferta) {
         this.oferta = oferta;
+    }
+    
+        public float getPreu() {
+        return preu;
+    }
+
+    public void setPreu(float preu) {
+        this.preu = preu;
     }
 
     public int getPlataforma() {

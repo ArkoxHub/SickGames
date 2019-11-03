@@ -49,10 +49,9 @@ public class CodiHibernateDAO implements CodiDAO {
 
     @Override
     public Codi getNextCodeByCodiJoc(int codi_Joc) {
-        Codi codi = getSession().load(Codi.class, codi_Joc);
+        Codi codi = (Codi) getSession().load(Codi.class, codi_Joc);
         logger.info("Codi carregat correctament" + codi);
         return codi;
-
     }
 
     // Retorna els codis d'un joc concret
@@ -64,7 +63,8 @@ public class CodiHibernateDAO implements CodiDAO {
     // Retorna el STOCK de codis que tenim d'un videojoc concret
     @Override
     public long getTotalCodisByJoc(int codi_Joc) {
-        Long codis = (long) getSession().createQuery("SELECT COUNT(codi.codi_Joc) FROM Codi codi WHERE codi.codi_Joc = :codi").setParameter("codi", codi_Joc).uniqueResult();
+        Long codis = (long) getSession().createQuery("SELECT COUNT(codi.codi_Joc) FROM Codi codi WHERE codi.codi_Joc = :codi")
+                .setParameter("codi", codi_Joc).uniqueResult();
         return codis;
     }
 

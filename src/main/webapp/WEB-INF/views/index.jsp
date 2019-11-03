@@ -94,7 +94,7 @@
                                 <img src="<c:url value="/resources/img/portades/${joc[1]}.jpg"/>" 
                                      title="${joc[1]}" alt="${joc[1]}">
                                 <div class="infoJoc">
-                                    <span class="preu">${joc[5]}</span>
+                                    <span class="preu">${joc[5]}€</span>
                                     <c:forEach var="genere" items="${joc[2].split(', ')}">                                       
                                         <div class="genere2"><span>${genere}</span></div>
                                             </c:forEach>
@@ -114,7 +114,7 @@
                                 <img src="<c:url value="/resources/img/portades/${joc[1]}.jpg"/>" 
                                      title="${joc[1]}" alt="${joc[1]}">
                                 <div class="infoJoc">
-                                    <span class="preu">${joc[5]}</span>
+                                    <span class="preu">${joc[5]}€</span>
                                     <c:forEach var="genere" items="${joc[2].split(', ')}">                                       
                                         <div class="genere2"><span>${genere}</span></div>
                                             </c:forEach>
@@ -134,7 +134,7 @@
                                 <img src="<c:url value="/resources/img/portades/${preu[1]}.jpg"/>" 
                                      title="${preu[1]}" alt="${preu[1]}">
                                 <div class="infoJoc">
-                                    <span class="preu">${preu[5]}</span>
+                                    <span class="preu">${preu[5]}€</span>
                                     <c:forEach var="genere" items="${preu[2].split(', ')}">                                       
                                         <div class="genere2"><span>${genere}</span></div>
                                             </c:forEach>
