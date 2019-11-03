@@ -57,7 +57,7 @@ public class adminController {
         try {
 
             byte[] bytes = file.getBytes();
-            String rootPath = request.getServletContext().getRealPath("WEB-INF/resources/portades");
+            String rootPath = request.getServletContext().getRealPath("WEB-INF/resources/img/portades");
             File pathFile = new File(rootPath + File.separator + file.getOriginalFilename());
             BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(pathFile));
             stream.write(bytes);
@@ -93,7 +93,7 @@ public class adminController {
         try {
 
             byte[] bytes = file.getBytes();
-            String rootPath = request.getServletContext().getRealPath("WEB-INF/resources/portades");
+            String rootPath = request.getServletContext().getRealPath("WEB-INF/resources/img/portades");
             File pathFile = new File(rootPath + File.separator + file.getOriginalFilename());
             BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(pathFile));
             stream.write(bytes);

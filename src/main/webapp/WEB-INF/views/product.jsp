@@ -98,7 +98,7 @@
                             <div class="column-12 text-center">${joc.nom}</div>
                         </div>
                         <div class="row justify-content-md-center">     
-                            <img src="<c:url value="/resources/img/plataformes/${codi.plataforma}.png"/>" alt=""> <!-- TEA3:  Falta importat taula Plataforma -->                
+                            <img src="<c:url value="/resources/img/plataformes/${codi[nom.codi_Joc].plataforma}.png"/>" alt=""> <!-- TEA3:  Falta importat taula Plataforma -->                
                         </div>
                         <div class="row justify-content-md-center" id="genere">
                             <c:forEach var="genere" items="${joc.generes.split(', ')}" varStatus="status">
@@ -152,7 +152,7 @@
                                     Comprar
                                 </a>
                             </div>
-                            <div class="column-12 text-left" style="color: red; font-size: 15px">
+                            <div class="column-12 text-left" id="PVP">
                                 Preu d'origen: ${joc.pvp}€
                             </div>
                         </div>
