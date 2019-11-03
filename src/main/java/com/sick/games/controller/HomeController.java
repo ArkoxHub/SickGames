@@ -31,8 +31,9 @@ public class HomeController {
     public ModelAndView homePage(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ModelAndView model = new ModelAndView("index");
-        model.getModelMap().addAttribute("videojocs", videojocService.getAllVideojocs());
-        model.getModelMap().addAttribute("ofertes", videojocService.getGamesByOfert(60, 100));
+        model.getModelMap().addAttribute("upcoming", videojocService.getGamesUpcoming());
+        model.getModelMap().addAttribute("ofertes", videojocService.getGamesByOferta());
+        model.getModelMap().addAttribute("preus", videojocService.getGamesByPrice());
         return model;
     }
 }

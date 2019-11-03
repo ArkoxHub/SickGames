@@ -1,4 +1,3 @@
-
 var loadFile = function (event) {
     var reader = new FileReader();
     reader.onload = function () {
@@ -10,15 +9,12 @@ var loadFile = function (event) {
 
 function validacio() {
     $(".alert").remove();
-
-
+    
     var nom = $("#nom").val();
     var data_Llançament = $("#data_Llançament").val();
-    var preu = $("#preu").val();
+    var preu = $("#pvp").val();
     var idioma = $("#idioma").val();
-    var oferta = $("#oferta").val();
-    var qty_Available = $("#qty_Available").val();
-    var plataforma = $("#plataforma").val();
+    var generes = $("#generes").val();
     var descripcio = $("#descripcio").val();
     var fullPath = document.getElementById('logo').value;
     var comprobarJoc = "";
@@ -45,8 +41,8 @@ function validacio() {
         return false;
     }
     if (!preu) {
-        $("#preu").after("<div class='alert error'>Introdueix el preu</div>");
-        $("#preu").focus();
+        $("#pvp").after("<div class='alert error'>Introdueix el preu</div>");
+        $("#pvp").focus();
         return false;
     }
     if (!idioma) {
@@ -54,24 +50,14 @@ function validacio() {
         $("#idioma").focus();
         return false;
     }
-    if (!oferta) {
-        $("#oferta").after("<div class='alert error'>Introdueix l'oferta</div>");
-        $("#oferta").focus();
-        return false;
-    }
-    if (!qty_Available) {
-        $("#qty_Available").after("<div class='alert error'>Introdueix la cuantitat</div>");
-        $("#qty_Available").focus();
-        return false;
-    }
-    if (!plataforma) {
-        $("#plataforma").after("<div class='alert error'>Introdueix la plataforma</div>");
-        $("#plataforma").focus();
-        return false;
-    }
     if (!descripcio) {
         $("#descripcio").after("<div class='alert error'>Introdueix la descripcio</div>");
         $("#descripcio").focus();
+        return false;
+    }
+    if (!generes) {
+        $("#generes").after("<div class='alert error'>Introdueix el/s generes</div>");
+        $("#generes").focus();
         return false;
     }
     if (nom !== comprobarJoc) {
@@ -84,7 +70,7 @@ function validacio() {
 
 $(document).ready(function () {
     var language = document.getElementById("idioma");
-    var plataforma = document.getElementById("plataforma");
+    var plataforma = document.getElementById("generes");
     language.addEventListener("blur", deleteDiv);
     language.addEventListener("focus", addDiv);
     plataforma.addEventListener("blur", deleteDiv);

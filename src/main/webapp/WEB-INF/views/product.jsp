@@ -30,8 +30,7 @@
 
     <body>
         <!--Secció top; Buscador, conta, logo....--> 
-        <section class="section-top">    
-            <a href="<c:url value="/admin/updateGame?id=${joc.codi_Joc}"/>">Modifica aquest videojoc</a>
+        <section class="section-top">
             <a href="<c:url value="/"/>"><img src="<c:url value="/resources/img/logo_sick.png"/>" alt="" class="logoMvl"></a>
             <nav class="container" id="container-top">
                 <div class="d-flex flex-row">
@@ -80,65 +79,71 @@
             </nav>
         </section>
         <!--FI Secció top-->
-
+        <div class="text-center center" style="margin-top:10px;">
+            <a  class="btn btn-primary" href="<c:url value="/admin/updateGame?id=${joc.codi_Joc}"/>">Modifica aquest videojoc</a>
+        </div>
         <!--Secció body; Jocs més venuts, valorats, millors ofertes, streams...-->
         <section class="section-body">
             <div class="container" >
                 <div class="row" id="cartaJoc">
                     <div class="column-3">
                         <img id="stream${joc.nom}" class="portadaJoc" src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>">
-                        <img class="afegirWhishList" src="<c:url value="/resources/img/like.png"/>" alt=""> <!--Alt deberia ser el nombre del juego de la bd-->
+                        <img class="afegirWhishList" src="<c:url value="/resources/img/like.png"/>" title="${joc.nom}" alt="${joc.nom}">
                     </div>
                     <div class="portada">
                         <img class="portadaJocMvl" src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>">
                     </div>
                     <div class="column-9">
                         <div class="row" id="titol">
-                            <!--Importar nombre juego de la bd-->
                             <div class="column-12 text-center">${joc.nom}</div>
                         </div>
-                        <div class="row justify-content-md-center">           
-                            <img src="<c:url value="/resources/img/plataformes/battlenet.png"/>" alt="">
-                            <img src="<c:url value="/resources/img/plataformes/steam.png"/>" alt="">
-                            <img src="<c:url value="/resources/img/plataformes/uplay.png"/>" alt="">
+                        <div class="row justify-content-md-center">     
+                            <img src="<c:url value="/resources/img/plataformes/${codi.plataforma}.png"/>" alt=""> <!-- TEA3:  Falta importat taula Plataforma -->                
                         </div>
                         <div class="row justify-content-md-center" id="genere">
-                            RPG - Acció - Local <!--Imporatr genere de la bd/En js tendremos que meter los guiones de algun modo-->
+                            <c:forEach var="genere" items="${joc.generes.split(', ')}" varStatus="status">
+                                <c:choose>
+                                    <c:when test="${status.last}">
+                                        <c:out value="${genere}" escapeXml="false"></c:out>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:out value="${genere} -" escapeXml="false"></c:out>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
                         </div>
                         <div class="row" id="stock">
                             <div class="column-6 text-left">
-                                <span class="stockSi">Stock disponible: ${joc.qty_Available}<!--si no hay stock , la class se llamara stockNo y no se mostrara el total-->
-                                    <i class="fa fa-times" id="cruz"></i>
-                                </span>
-                            </div>
-                            <div class="column-6 text-right">
-                                <!--CAMBIAR BD LA COMA ENTRE IDIOMAS Y MODIFICAR ESTE SPLIT-->
+                                <span class="stockSi">Stock disponible: <c:out value="${stock}" escapeXml="false"></c:out>
+                                        <i class="fa fa-times" id="cruz"></i>
+                                    </span>
+                                </div>
+                                <div class="column-6 text-right">
                                 <c:forEach var="split" items="${joc.idioma.split(', ')}">
                                     <c:choose>
                                         <c:when test="${split == 'Multillengua'}">
                                             Multillengua
                                         </c:when>
                                         <c:otherwise>
-                                            <img src="<c:url value="/resources/img/banderas/${split}.png"/>" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis, ${joc.nom},  ${joc.idioma}">
+                                            <img src="<c:url value="/resources/img/banderas/${split}.png"/>" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis, ${joc.nom}, ${joc.idioma}">
                                         </c:otherwise>
                                     </c:choose>
                                 </c:forEach>
-                               
                             </div>
                         </div>
                         <div class="row" id="infoCompres">
                             <div class="column-6 text-left">
-                                <span>70 Adquisicions</span>
+                                <!--  <span>70 Adquisicions</span> TEA 3: Falta importat taules Detall i Comanda -->
                             </div>
                             <div class="column-6 text-right">
                                 <span>
-                                    <i class="fa fa-arrow-down"></i> ${joc.oferta}%<!--Importar descompte joc-->
+                                    <i class="fa fa-arrow-down"></i> ${codi.oferta}%
                                 </span>
                             </div>
                         </div>
                         <div class="row" id="preu">
                             <div class="column-12 text-center">
-                                <span>${joc.preu}€</span>
+                                <span>${codi.preu}€</span>
                             </div>
                         </div>
                         <div class="row" id="comprarJoc">
@@ -147,57 +152,59 @@
                                     Comprar
                                 </a>
                             </div>
+                            <div class="column-12 text-left" id="PVP">
+                                Preu d'origen: ${joc.pvp}€
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="container" id="infoJoc">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h4 class="titolsTaules">Configuració mínima</h4>
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td class="requisit">OS</td>
-                                    <td class="descripcioRequisit">64-bit Windows 10</td>
-                                </tr>
-                                <tr>
-                                    <td class="requisit">CPU</td>
-                                    <td class="descripcioRequisit">I3-3220 or Equivalent</td>
-                                </tr>
-                                <tr>
-                                    <td class="requisit">RAM</td>
-                                    <td class="descripcioRequisit">4 GB</td>
-                                </tr>
-                                <tr>
-                                    <td class="requisit">GPU</td>
-                                    <td class="descripcioRequisit">GeForce GT 640 or Equivalent</td>
-                                </tr>
-                                <tr>
-                                    <td class="requisit">HDD</td>
-                                    <td class="descripcioRequisit">15 GB</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col-md-6">
-                        <h4 class="titolsTaules">Descripció</h4>
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td class="requisit">${joc.descripcio}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <div class="container" id="infoJoc">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 class="titolsTaules">Configuració mínima</h4>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="requisit">OS</td>
+                                        <td class="descripcioRequisit">64-bit Windows 10</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="requisit">CPU</td>
+                                        <td class="descripcioRequisit">I3-3220 or Equivalent</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="requisit">RAM</td>
+                                        <td class="descripcioRequisit">4 GB</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="requisit">GPU</td>
+                                        <td class="descripcioRequisit">GeForce GT 640 or Equivalent</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="requisit">HDD</td>
+                                        <td class="descripcioRequisit">15 GB</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="titolsTaules">Descripció</h4>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="requisit">${joc.descripcio}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="container">
-                <h4 class="titolsTaules">Streams</h4>
-                <div class="row" id="filaStreams"></div><!--S'omplira automaticament amb els top streamers-->
-                <div class="row" id="streamView"></div><!--Quan fem click a un stream, podrem veure el video dintre d'aquest div-->
-            </div>
+                <div class="container">
+                    <h4 class="titolsTaules">Streams</h4>
+                    <div class="row" id="filaStreams"></div><!--S'omplira automaticament amb els top streamers-->
+                    <div class="row" id="streamView"></div><!--Quan fem click a un stream, podrem veure el video dintre d'aquest div-->
+                </div>
         </section>
         <!--Fi secciÃ³ body-->
 

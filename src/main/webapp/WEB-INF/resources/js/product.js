@@ -1,16 +1,3 @@
-/**
- 
- * @fileoverview Archivo Js de la página product.html
- 
- *
- 
- * @author                  Kevin Merat <kevinmerat@hotmail.com>
- 
- * @copyright               www.sickgames.com/copyright
- 
- * 
- 
- **/
 $(document).ready(function () {
     var jocStream = $("img[id^='stream']").val("");
     //console.log(jocStream[0].id);
@@ -87,6 +74,7 @@ $(document).ready(function () {
                     var aplicarTamaño = thumbnail.replace("{width}x{height}", "500x500");
                     $("#filaStreams").append($(
                             '<div class="column">' +
+                            '<span class="viewers"><i class="fa fa-user"></i> '+datosStream.data[i].viewer_count+'</span>'+
                             '<a href="#streamView" class=' + datosStream.data[i].user_name + ' id="stream">' +
                             '<img src="' + aplicarTamaño + '">' +
                             '</a>' +
@@ -105,7 +93,7 @@ $(document).ready(function () {
                                 '<div class="col-12">' +
                                 '<div>' +
                                 '<a id="cerrar" href="#filaStreams">' +
-                                '<img src="/SickGames/resources/img/cruz.png" style="width:30px; float:right">' +
+                                '<img src="/sickgames/resources/img/cruz.png" style="width:30px; float:right">' +
                                 '</a>' +
                                 '</div>' +
                                 '</div>' +
@@ -147,6 +135,7 @@ $(document).ready(function () {
             var aplicarTamaño = thumbnail.replace("{width}x{height}", "500x500");
             $("#filaStreams").append($(
                     '<div class="column">' +
+                    '<span class="viewers"><i class="fa fa-user"></i> '+datosStream.data[i].viewer_count+'</span>'+
                     '<a href="#streamView" class=' + datosStream.data[i].user_name + ' id="stream">' +
                     '<img src="' + aplicarTamaño + '">' +
                     '</a>' +
@@ -165,7 +154,7 @@ $(document).ready(function () {
                         '<div class="col-12">' +
                         '<div>' +
                         '<a id="cerrar" href="#filaStreams">' +
-                        '<img src="/SickGames/resources/img/cruz.png" style="width:30px; float:right">' +
+                        '<img src="/sickgames/resources/img/cruz.png" style="width:30px; float:right">' +
                         '</a>' +
                         '</div>' +
                         '</div>' +
@@ -264,7 +253,7 @@ $(document).ready(function () {
         $(".darkMode").toggle();
         $(".lightMode").toggle();
         $("body").css("color", "black")
-                .css("background-color", "rgb(250, 250, 250)");
+                .css("background-color", "white");
         $(".section-top").css("background", "rgba(0, 0, 0)");
         $(".column-9").css("background-color", "white");
         $("#genere").css("color", "#132e4d");

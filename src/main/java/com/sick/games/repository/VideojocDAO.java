@@ -3,6 +3,7 @@
  */
 package com.sick.games.repository;
 
+import com.sick.games.domain.CodeGame;
 import com.sick.games.domain.Videojoc;
 import java.util.List;
 
@@ -12,20 +13,28 @@ import java.util.List;
  */
 public interface VideojocDAO {
     
-    public void addVideojoc(Videojoc videojoc);
+    public void addGame(Videojoc videojoc);
     
-    public void removeVideojoc(Videojoc videojoc);
+    public void removeGame(Videojoc videojoc);
     
-    public void updateVideojoc(Videojoc videojoc);
+    public void updateGame(Videojoc videojoc);
     
     public int getMaxID();
     
-    public Videojoc getVideojocByCode(int codi);
+    public List<Videojoc> getAllGames();
     
-    public List<Videojoc> getVideojocsByName(String name);
+    public Videojoc getGameByCode(int codi);
     
-    public List<Videojoc> getAllVideojocs();
+    public List<Videojoc> getGamesByName(String name);
     
-    public List<Videojoc> getGamesByOfert(int ofertaStart, int ofertaEnd);
+    public List<Videojoc> getGamesByGenere(String genere);
+    
+    public List<CodeGame> getGamesByOferta();
+    
+    public List<CodeGame> getGamesByPrice();
+    
+    public List<CodeGame> getGamesUpcoming();
+    
+    public List<CodeGame> getGamesCataleg();
     
 }

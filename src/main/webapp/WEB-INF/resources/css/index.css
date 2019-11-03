@@ -1,3 +1,8 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
 body{
     max-width: 100%;
     height: 100vh;
@@ -15,7 +20,6 @@ html{
 }
 .logo:hover{
     transform: scale(1.2);
-    transition: 0.9s ease-in-out;
 }
 @media (max-width:770px){
     .logo{
@@ -129,7 +133,6 @@ html{
 }
 /*MARGEN CONTAINER TOP*/
 #container-top{
-    padding-top: 40px;
     padding-bottom: 4px;
 }
 .section-top{
@@ -137,6 +140,7 @@ html{
     -webkit-box-shadow: 0px 5px 5px 0px rgba(69,124,191,0.63);
     -moz-box-shadow: 0px 5px 5px 0px rgba(69,124,191,0.63);
     box-shadow: 0px 5px 5px 0px rgba(69,124,191,0.63);
+    padding-top:10px;
 }
 
 @media (max-width:996px){
@@ -209,7 +213,12 @@ html{
 }
 /*FOOTER*/
 .section-footer{
+    color: white;
     background: black;
+    -webkit-box-shadow: 0px -5px 5px 0px rgba(69,124,191,0.63);
+    -moz-box-shadow: 0px -5px 5px 0px rgba(69,124,191,0.63);
+    box-shadow: 0px -5px 5px 0px rgba(69,124,191,0.63);
+    margin-top:10px;
 }
 .container-fluid{
     padding-left: 0px !important;
@@ -230,53 +239,110 @@ html{
     text-align: center;
 }
 /*Catalogo juego texto*/
-[class*=genere]{
+div[class*=genere]{
     display: flex;
     text-align: center;
-    margin-left: -17px;
+    margin-left: -1.167em;
     font-size: 12px;
     color: black;
     font-weight: bold;
-    width: 90px;
+    max-width: 50%;
+    background-repeat: no-repeat;
     margin-bottom: 3px;
     margin-top: 5px;
     height: 30px;
     line-height: 24px;
+    pointer-events: none;    
 }
+.genereFPS{
+    background-image: url("../img/generos/Rojo.png");
+}
+.genereRPG{
+    background-image: url("../img/generos/Azul_marino.png");
+}
+.genereCooperació{
+    background-image: url("../img/generos/Aguamarina.png");
+}
+.genereDeportiu{
+    background-image: url("../img/generos/Cereza.png");
+}
+.genereMultijugador{
+    background-image: url("../img/generos/Verde.png");
+}
+.genereConstrucció{
+    background-image: url("../img/generos/Verde_azulado.png");
+}
+.genereAventura{
+    background-image: url("../img/generos/Violeta.png");
+}
+.genereSurvival{
+    background-image: url("../img/generos/Verde_pistacho.png");
+}
+.genereGestió{
+    background-image: url("../img/generos/Morado.png");
+}
+.genereEstratègia{
+    background-image: url("../img/generos/Cielo.png");
+}
+.genereSinglePlayer{
+    background-image: url("../img/generos/Fucsia.png");
+}
+.genereAcció{
+    background-image: url("../img/generos/Naranja.png");
+}
+.genereSimulador{
+    background-image: url("../img/generos/Ocre.png");
+}
+.genereMMO{
+    background-image: url("../img/generos/Naranja_brillante.png");
+}
+.genereIndies{
+    background-image: url("../img/generos/Purpura.png");
+}
+.genereConducció{
+    background-image: url("../img/generos/Turquesa.png");
+}
+.generePlataforma{
+    background-image: url("../img/generos/Rosa.png");
+}
+.genereLluita{
+    background-image: url("../img/generos/Turquesa_verdoso.png");
+}
+
+
 @media (max-width:770px){ 
-    [class*=genere]{
+    div[class*=genere]{
         display: flex;
         text-align: center;
         margin-left: -15px;
         font-size: 10px;
-        width: 70px;
         margin-bottom: 3px;
         margin-top: 5px;
     }
 }
 
-@media (max-width:315px){ 
-    [class*=genere]{
+@media (max-width:485px){ 
+    div[class*=genere]{
         display: flex;
         text-align: center;
         margin-left: -15px;
         font-size: 10px;
-        width: 70px;
+        max-width: 85px;
         margin-bottom: 3px;
         margin-top: 4px;
     }
 }
-[class*=genere] span{
+div[class*=genere] span{
     margin-left: 17px;
 }
 .preu{
     float: right;
     padding-left:2px;
-    margin-right: 2px;
     background-color: rgba(0, 0, 0, 0.404);
     font-size: 22px;
-    margin-top: 3px;
-    margin-right:-1px;
+    margin-top: 2px;
+    margin-right: 2px;
+    pointer-events: none;
 }
 .fa-arrow-down{
     color: rgb(150, 245, 150)
@@ -284,16 +350,20 @@ html{
 
 /*Catalogo juego filas y columnas */
 #filaCatalogo{
-    margin-left: 0px;
-    margin-right: 0px;
+    overflow: hidden;
 }
 #filaCatalogo .column img{
     width: 100%;
+    transition: 0.2s;
+    border:2px solid transparent;
 }
 #filaCatalogo .column img:hover{
-    -webkit-box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 20px 3px rgba(69,124,191,0.63);
+    -moz-box-shadow: 0px 0px 20px 3px rgba(69,124,191,0.63);
+    box-shadow: 0px 0px 20px 3px rgba(69,124,191,0.63);
+    border:2px solid white;
+    transform: scale(0.98);
+    
 }
 #filaCatalogo .column .producteAComprar{
     text-align: center;
@@ -306,7 +376,7 @@ html{
     position: relative;
     margin-top:15px;
 }
-@media (max-width:924px){
+@media (max-width:991px){
     #filaCatalogo .column{
         width: calc(100%/3 - 35px);
     }
@@ -314,6 +384,9 @@ html{
 @media (max-width:770px){
     #filaCatalogo .column{
         width: calc(100%/2 - 35px);
+    }
+    .preu{
+        font-size: 15px;
     }
 }
 
@@ -340,7 +413,6 @@ html{
     background-color: rgb(26, 53, 88);
     text-decoration: none;
     color: white;
-    transition: 0.3s ease-in-out;
     font-family: Arial;
     
 }
@@ -357,11 +429,25 @@ html{
 }
 
 /*Streams*/
+.viewers{
+    position: absolute;
+    z-index: 9999;
+    right: 0px;
+    top: 3px;
+    color:white;
+    background: rgba(0, 0, 0, 0.68);
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    pointer-events: none;
+}
+.viewers .fa-user{
+    color:red;
+}
 #filaStreams{
     margin-left: 0px;
 }
 #filaStreams .column img{
     width: 100%;
+    height: 130px;
 }
 
 #filaStreams .column{
@@ -370,10 +456,7 @@ html{
     margin-right: 15px;
     position: relative;
 }
-#filaStreams .column img{
-    height: 130px;
-}
-@media (max-width:924px){
+@media (max-width:991px){
     #filaStreams .column{
         width: calc(100%/3 - 15px);
     }
@@ -400,11 +483,14 @@ html{
     margin-top:3px;
     margin-bottom:5px;
     text-align: center;
+    transition: 0.3s ease-in-out;
 }
 #stream:hover{
-    -webkit-box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 20px 3px rgba(69,124,191,0.63);
+    -moz-box-shadow: 0px 0px 20px 3px rgba(69,124,191,0.63);
+    box-shadow: 0px 0px 20px 3px rgba(69,124,191,0.63);
+    text-decoration: none;
+    color: white;
 }
 #streamName{
     background-color: #4596F0;
@@ -418,73 +504,8 @@ html{
     text-align: center;
     transition: 0.3s ease-in-out;
 }
-
-#stream:hover{
-    background-color: rgb(26, 53, 88);
-    text-decoration: none;
-    color: white;
-    transition: 0.3s ease-in-out;
-}
 #streamName:hover{
     background-color: rgb(26, 53, 88);
     text-decoration: none;
     color: white;
-    transition: 0.3s ease-in-out;
 }
-
-
-.genere1{
-    background-image: url("../img/generos/Rojo.png");
-}
-.genere2{
-    background-image: url("../img/generos/Azul_marino.png");
-}
-.genere3{
-    background-image: url("../img/generos/Aguamarina.png");
-}
-.genere4{
-    background-image: url("../img/generos/Cereza.png");
-}
-.genere5{
-    background-image: url("../img/generos/Verde.png");
-}
-.genere6{
-    background-image: url("../img/generos/Verde_azulado.png");
-}
-.genere7{
-    background-image: url("../img/generos/Violeta.png");
-}
-.genere8{
-    background-image: url("../img/generos/Verde_pistacho.png");
-}
-.genere9{
-    background-image: url("../img/generos/Morado.png");
-}
-.genere10{
-    background-image: url("../img/generos/Cielo.png");
-}
-.genere11{
-    background-image: url("../img/generos/Fucsia.png");
-}
-.genere12{
-    background-image: url("../img/generos/Naranja.png");
-}
-.genere13{
-    background-image: url("../img/generos/Ocre.png");
-}
-.genere14{
-    background-image: url("../img/generos/Naranja_brillante.png");
-}
-.genere15{
-    background-image: url("../img/generos/Purpura.png");
-}
-.genere16{
-    background-image: url("../img/generos/Turquesa.png");
-}
-.genere17{
-    background-image: url("../img/generos/Rosa.png");
-}
-.genere18{
-    background-image: url("../img/generos/Turquesa_verdoso.png");
-}
-

@@ -5,6 +5,7 @@
  */
 package com.sick.games.service;
 
+import com.sick.games.domain.CodeGame;
 import com.sick.games.domain.Videojoc;
 import java.util.List;
 
@@ -14,19 +15,28 @@ import java.util.List;
  */
 public interface VideojocService {
 
-    public void addVideojoc(Videojoc videojoc);
-
-    public void removeVideojoc(Videojoc videojoc);
-
-    public void updateVideojoc(Videojoc videojoc);
+    public void addGame(Videojoc videojoc);
+    
+    public void removeGame(Videojoc videojoc);
+    
+    public void updateGame(Videojoc videojoc);
     
     public int getMaxID();
+    
+    public List<Videojoc> getAllGames();
+    
+    public Videojoc getGameByCode(int codi);
+    
+    public List<Videojoc> getGamesByName(String name);
+    
+    public List<Videojoc> getGamesByGenere(String genere);
+    
+    public List<CodeGame> getGamesByOferta();
+    
+    public List<CodeGame> getGamesByPrice();
+    
+    public List<CodeGame> getGamesUpcoming();
+    
+    public List<CodeGame> getGamesCataleg();
 
-    public Videojoc getVideojocByCode(int codi);
-
-    public List<Videojoc> getVideojocsByName(String name);
-
-    public List<Videojoc> getAllVideojocs();
-
-    public List<Videojoc> getGamesByOfert(int ofertaStart, int ofertaEnd);
 }

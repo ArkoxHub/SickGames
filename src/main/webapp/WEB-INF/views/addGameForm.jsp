@@ -42,19 +42,25 @@
 
         <!-- Hidden by default -->
         <div class="helpForm2">
-            <h4>Codis vàlits pel camp "PLATAFORMA"</h4>
-            <li>1 - Battle.Net</li>
-            <li>2 - Steam</li>
-            <li>3 - Uplay</li>
-            <li>4 - Origin</li>
-            <li>5 - Nintendo</li>
-            <li>6 - XBOX</li>
-            <li>7 - PlayStation</li>
-            <li>8 - Rockstar</li>
-            <li>9 - GOG</li>
-            <li>10 - Microsoft</li>
-            <li>11 - Mac</li>
-            <li>12 - Epic Games</li>
+            <h4>Generes pel camp "Gèneres"</h4>
+            <li>FPS</li>
+            <li>RPG</li>
+            <li>MMO</li>
+            <li>Acció</li>
+            <li>Deportiu</li>
+            <li>Aventura</li>
+            <li>Construcció</li>
+            <li>Conducció</li>
+            <li>Cooperació</li>
+            <li>Plataforma</li>
+            <li>Simulador</li>
+            <li>Survival</li>
+            <li>Gestió</li>
+            <li>Estratègia</li>
+            <li>Indies</li>
+            <li>Lluita</li>
+            <li>SinglePlayer</li>
+            <li>Multijugador</li>       
         </div>
 
         <div class="wrap">
@@ -67,20 +73,14 @@
                 <label for="data_Llançament">Data de llançament</label>
                 <form:input path="data_Llançament" type="date" class="form-control" id="data_Llançament" name="data_Llançament"/>
 
-                <label for="preu">Preu</label>
-                <form:input path="preu" type="number" step="0.01" class="form-control" id="preu" name="preu" placeholder="Preu en €"/>
+                <label for="pvp">Preu de Venta al Públic</label>
+                <form:input path="pvp" type="number" step="0.01" class="form-control" id="pvp" name="pvp" placeholder="Preu en €"/>
 
                 <label for="idioma">Idioma</label>
                 <form:input path="idioma" type="text" maxlength="50" class="form-control" id="idioma" name="idioma" placeholder="ESP | ENG | ALM | ITL | FR"/>
-
-                <label for="oferta">Oferta</label>
-                <form:input path="oferta" type="number" step="0.1" class="form-control" id="oferta" name="oferta" max="99" placeholder="Oferta %"/>
-
-                <label for="qty_Available">Stock</label>
-                <form:input path="qty_Available" type="number" class="form-control" id="qty_Available" name="qty_Available" placeholder="Quantiat inicial en Stock"/>
-
-                <label for="plataforma">Plataforma</label>
-                <form:input path="plataforma" type="number" class="form-control" id="plataforma" name="plataforma" min="1" max="12" placeholder="Codi de la plataforma"/>
+                
+                <label for="generes">Gèneres</label>
+                <form:input path="generes" type="text" maxlength="100" class="form-control" id="generes" name="generes" placeholder="Acció, Aventures, MMO, RPG, FPS..."/>
 
                 <label for="descripcio">Descripció</label>
                 <form:textarea path="descripcio"  class="form-control" id="descripcio" name="descripcio" placeholder="El mon necesita herois..."/>

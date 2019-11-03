@@ -1,22 +1,9 @@
-/**
- 
- * @fileoverview Archivo Js de la página index.html
- 
- *
- 
- * @author                  Kevin Merat <kevinmerat@hotmail.com>
- 
- * @copyright               www.sickgames.com/copyright
- 
- * 
- 
- **/
 $(document).ready(function () {
     var jocApi = "https://api.twitch.tv/helix/streams?first=4&language=es";
     $.ajax({
         type: "GET",
         url: jocApi,
-        success: mostrarTop5,
+        success: mostrarTop4,
         headers: {
             'Client-ID': 'w202jotbdcd2zue6prnpvmyk7sbitc'
         },
@@ -25,14 +12,15 @@ $(document).ready(function () {
         }
     });
 
-    function mostrarTop5(datosStream) {
+    function mostrarTop4(datosStream) {
         for (var i = 0; i < datosStream.data.length; i++) {
             //Agafem el thumbnail (imatge previsualitzacio)
             var thumbnail = datosStream.data[i].thumbnail_url;
             //Modifiquem el thumbnail per aplicarli les mesures que desitjem
             var aplicarTamaño = thumbnail.replace("{width}x{height}", "500x500");
             $("#filaStreams").append($(
-                    '<div class="column">' +
+                    '<div class="column  text-center center">' +
+                    '<span class="viewers"><i class="fa fa-user"></i> ' + datosStream.data[i].viewer_count + '</span>' +
                     '<a href="#streamView" class=' + datosStream.data[i].user_name + ' id="stream">' +
                     '<img src="' + aplicarTamaño + '">' +
                     '</a>' +
@@ -51,7 +39,7 @@ $(document).ready(function () {
                         '<div class="col-12">' +
                         '<div>' +
                         '<a id="cerrar" href="#filaStreams">' +
-                        '<img src="/SickGames/resources/img/cruz.png" style="width:30px; float:right">' +
+                        '<img src="/sickgames/resources/img/cruz.png" style="width:30px; float:right">' +
                         '</a>' +
                         '</div>' +
                         '</div>' +
@@ -166,7 +154,7 @@ $(document).ready(function () {
         $(".darkMode").toggle();
         $(".lightMode").toggle();
         $("body").css("color", "black")
-                .css("background", "#717070");
+                .css("background", "white");
         $(".section-top").css("background", "background: rgba(0, 0, 0, 0.22)");
         /*
          * $(".column-9").css("background-color", "white");

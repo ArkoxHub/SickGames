@@ -4,16 +4,6 @@ body{
     background-color: rgb(42, 41, 41);
     color: white;
     font-family: 'Archivo', sans-serif;
-    /* The image used */
-
-  /* Set a specific height */
-  min-height: 500px; 
-
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 html{
     scroll-behavior: smooth;
@@ -25,7 +15,6 @@ html{
 }
 .logo:hover{
     transform: scale(1.2);
-    transition: 0.9s ease-in-out;
 }
 @media (max-width:770px){
     .logo{
@@ -139,7 +128,6 @@ html{
 }
 /*MARGEN CONTAINER TOP*/
 #container-top{
-    padding-top: 40px;
     padding-bottom: 4px;
 }
 .section-top{
@@ -147,6 +135,7 @@ html{
     -webkit-box-shadow: 0px 5px 5px 0px rgba(69,124,191,0.63);
     -moz-box-shadow: 0px 5px 5px 0px rgba(69,124,191,0.63);
     box-shadow: 0px 5px 5px 0px rgba(69,124,191,0.63);
+    padding-top:10px;
 }
 
 @media (max-width:996px){
@@ -219,7 +208,12 @@ html{
 }
 /*FOOTER*/
 .section-footer{
+    color: white;
     background: black;
+    -webkit-box-shadow: 0px -5px 5px 0px rgba(69,124,191,0.63);
+    -moz-box-shadow: 0px -5px 5px 0px rgba(69,124,191,0.63);
+    box-shadow: 0px -5px 5px 0px rgba(69,124,191,0.63);
+    margin-top:10px;
 }
 .container-fluid{
     padding-left: 0px !important;
@@ -232,7 +226,7 @@ html{
 /*Panell lateral*/
 
 .section-body{
-    margin-top: 10px;
+    margin-top: 50px;
 }
 .afegirWhishList{
     position: absolute;
@@ -308,8 +302,15 @@ html{
     background-color: rgb(26, 53, 88);
     text-decoration: none;
     color: white;
-    transition: 0.3s ease-in-out;
 }
+#PVP{
+    color: red; 
+    font-size: 15px;
+    position: absolute;
+    bottom: 0px;
+    left: 15px;
+}
+
 #genere{
     bottom: 0;
     width: 100%;
@@ -475,6 +476,12 @@ html{
         margin-right: 15px;
         font-size: 14px;
     }
+    #PVP{
+        color: red; 
+        font-size: 12px;
+        bottom: 73px;
+        left: 15px;
+    }
 }
 
 /*********************/
@@ -483,7 +490,7 @@ html{
     width: calc(100%/4);
 }
 .column-9{
-    width: calc(100%/1.333334);
+    width: calc(100%/1.333334 - 1px);
     display: block;
     background-color:black;
     position: relative;
@@ -509,6 +516,7 @@ html{
     .portadaJoc{ 
         width: 100%;
         height: 400px;
+        -webkit-filter: blur(12px);
         filter: blur(12px);
         z-index: -1;
         position: absolute;
@@ -577,11 +585,25 @@ html{
     text-shadow: 1px 1px 1px black;
 }
 /*Streams*/
+.viewers{
+    position: absolute;
+    z-index: 9999;
+    right: 0px;
+    top: 3px;
+    color:white;
+    background: rgba(0, 0, 0, 0.68);
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    pointer-events: none;
+}
+.viewers .fa-user{
+    color:red;
+}
 #filaStreams{
     margin-left: 0px;
 }
 #filaStreams .column img{
     width: 100%;
+    height: 130px;
 }
 
 #filaStreams .column{
@@ -589,9 +611,6 @@ html{
     display: inline-block;
     margin-right: 15px;
     position: relative;
-}
-#filaStreams .column img{
-    height: 130px;
 }
 @media (max-width:924px){
     #filaStreams .column{
@@ -620,11 +639,14 @@ html{
     margin-top:3px;
     margin-bottom:5px;
     text-align: center;
+    transition: 0.3s ease-in-out;
 }
 #stream:hover{
-    -webkit-box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 20px 3px rgba(69,124,191,0.63);
+    -moz-box-shadow: 0px 0px 20px 3px rgba(69,124,191,0.63);
+    box-shadow: 0px 0px 20px 3px rgba(69,124,191,0.63);
+    text-decoration: none;
+    color: white;
 }
 #streamName{
     background-color: #4596F0;
@@ -638,18 +660,10 @@ html{
     text-align: center;
     transition: 0.3s ease-in-out;
 }
-
-#stream:hover{
-    background-color: rgb(26, 53, 88);
-    text-decoration: none;
-    color: white;
-    transition: 0.3s ease-in-out;
-}
 #streamName:hover{
     background-color: rgb(26, 53, 88);
     text-decoration: none;
     color: white;
-    transition: 0.3s ease-in-out;
 }
 #cartaJoc{
     margin-left: 0px;

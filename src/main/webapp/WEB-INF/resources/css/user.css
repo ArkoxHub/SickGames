@@ -4,7 +4,6 @@ body{
     background-color: rgb(42, 41, 41);
     color: white;
     font-family: 'Archivo', sans-serif;
-    background: black;
     /*background-image: url("../img/backgrounds/dark/Overwatch.jpg");
    
     
@@ -26,7 +25,6 @@ html{
 }
 .logo:hover{
     transform: scale(1.2);
-    transition: 0.9s ease-in-out;
 }
 @media (max-width:770px){
     .logo{
@@ -140,7 +138,6 @@ html{
 }
 /*MARGEN CONTAINER TOP*/
 #container-top{
-    padding-top: 40px;
     padding-bottom: 4px;
 }
 .section-top{
@@ -148,6 +145,7 @@ html{
     -webkit-box-shadow: 0px 5px 5px 0px rgba(69,124,191,0.63);
     -moz-box-shadow: 0px 5px 5px 0px rgba(69,124,191,0.63);
     box-shadow: 0px 5px 5px 0px rgba(69,124,191,0.63);
+    padding-top:10px;
 }
 
 @media (max-width:996px){
@@ -220,7 +218,12 @@ html{
 }
 /*FOOTER*/
 .section-footer{
+    color: white;
     background: black;
+    -webkit-box-shadow: 0px -5px 5px 0px rgba(69,124,191,0.63);
+    -moz-box-shadow: 0px -5px 5px 0px rgba(69,124,191,0.63);
+    box-shadow: 0px -5px 5px 0px rgba(69,124,191,0.63);
+    margin-top:10px;
 }
 .container-fluid{
     padding-left: 0px !important;
@@ -230,11 +233,11 @@ html{
 /********************************/
 #fotoPerfil{
     border-radius: 50%;
-    height: 145px;
+    height: 135px;
     width: 100%;
 }
 .section-body{
-    margin-top: 20px;
+    margin-top: 50px;
     margin-bottom: 20px;
 }
 /*fa icon camara para editar imagen perfil*/
@@ -323,17 +326,21 @@ html{
     margin-right: 0px;
     margin-top: 20px;
 }
-#portadaJoc{
-    width: 100%;
-}
 .retirarWhishList{
     position: absolute;
     width: 30px;
 }
+#portadaJoc{
+    width: 100%;
+    transition: 0.2s;
+    border:2px solid transparent;
+}
 #portadaJoc:hover{
-    -webkit-box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 20px 3px rgba(69,124,191,0.63);
+    -moz-box-shadow: 0px 0px 20px 3px rgba(69,124,191,0.63);
+    box-shadow: 0px 0px 20px 3px rgba(69,124,191,0.63);
+    border:2px solid white;
+    transform: scale(0.98);
 }
 #jocsPerfil .column .producteAComprar{
     text-align: center;
@@ -364,7 +371,6 @@ html{
     background-color: rgb(26, 53, 88);
     text-decoration: none;
     color: white;
-    transition: 0.3s ease-in-out;
     font-family: Arial;
     
 }

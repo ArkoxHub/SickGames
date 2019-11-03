@@ -115,7 +115,7 @@ form input[type="submit"]:hover {
     opacity: 0;
     position: absolute;
     margin-left: 0%;
-    top: 50%;
+    top: 45%;
     padding: 0.5%;
     transition: all 1s;
 }
@@ -127,7 +127,7 @@ form input[type="submit"]:hover {
     width: 15%;
     background-color: beige;
     margin-left: 18%;
-    top: 50%;
+    top: 45%;
     padding: 0.5%;
     transition: all 2s;
 }
@@ -136,7 +136,7 @@ form input[type="submit"]:hover {
     opacity: 0;
     position: absolute;
     margin-left: 0%;
-    top: 80%;
+    top: 50%;
     padding: 0.5%;
     transition: all 1s;
 }
@@ -148,7 +148,7 @@ form input[type="submit"]:hover {
     width: 15%;
     background-color: beige;
     margin-left: 18%;
-    top: 80%;
+    top: 50%;
     padding: 0.5%;
     transition: all 2s;
 }
