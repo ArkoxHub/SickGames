@@ -90,41 +90,81 @@
                 <div class="row" id="filaCatalogo">
                     <div class="col-md-2 menuPlataforma">
                         <div class="row">
-                            <div class="col-md-12" id="marginMenuCalaleg">
+                            <div class="col-md-12" id="marginMenuCalaleg"  style="display:none;">
                                 <button class="btn btn-primary" id="escollirPlataforma" href="">Plataforma</button>
                                 <form class="mostrarPlataforma">
                                     <!--Plataformes per mostrar , foreach que recorri tote les plataformes, de mentres ho he creat per probar-ho-->
                                     <div class="checkboxDiv">
-                                        <label for="Battlenet">Battle.net</label>
-                                        <input type="checkbox" class="checkbox" id="Battlenet" name="Battlenet"><br>
+                                        <label for="Battlenet">
+                                            <img src="<c:url value="/resources/img/plataformes/1.png"/>" alt="Battlenet">
+                                        </label>
+                                        <input type="checkbox" class="checkboxPlataforma" id="Battlenet" name="Battlenet"><br>
                                     </div>
                                     <div class="checkboxDiv">
-                                        <label for="Battlenet">Epic Games</label>
-                                        <input type="checkbox" class="checkbox" id="Battlenet" name="Battlenet"><br>
+                                        <label for="Steam">
+                                            <img src="<c:url value="/resources/img/plataformes/2.png"/>" alt="Steam">
+                                        </label>
+                                        <input type="checkbox" class="checkboxPlataforma" id="Steam" name="Steam"><br>
                                     </div>
                                     <div class="checkboxDiv">
-                                        <label for="Battlenet">Battle.net</label>
-                                        <input type="checkbox" class="checkbox" id="Battlenet" name="Battlenet"><br>
+                                        <label for="Uplay">
+                                            <img src="<c:url value="/resources/img/plataformes/3.png"/>" alt="Uplay">
+                                        </label>
+                                        <input type="checkbox" class="checkboxPlataforma" id="Uplay" name="Uplay"><br>
                                     </div>
                                     <div class="checkboxDiv">
-                                        <label for="Battlenet">Battle.net</label>
-                                        <input type="checkbox" class="checkbox" id="Battlenet" name="Battlenet"><br>
+                                        <label for="Origin">
+                                            <img src="<c:url value="/resources/img/plataformes/4.png"/>" alt="Origin">
+                                        </label>
+                                        <input type="checkbox" class="checkboxPlataforma" id="Origin" name="Origin"><br>
                                     </div>
                                     <div class="checkboxDiv">
-                                        <label for="Battlenet">Battle.net</label>
-                                        <input type="checkbox" class="checkbox" id="Battlenet" name="Battlenet"><br>
+                                        <label for="Nintendo">
+                                            <img src="<c:url value="/resources/img/plataformes/5.png"/>" alt="Nintendo">
+                                        </label>
+                                        <input type="checkbox" class="checkboxPlataforma" id="Nintendo" name="Nintendo"><br>
                                     </div>
                                     <div class="checkboxDiv">
-                                        <label for="Battlenet">Battle.net</label>
-                                        <input type="checkbox" class="checkbox" id="Battlenet" name="Battlenet"><br>
+                                        <label for="Xbox">
+                                            <img src="<c:url value="/resources/img/plataformes/6.png"/>" alt="Xbox">
+                                        </label>
+                                        <input type="checkbox" class="checkboxPlataforma" id="Xbox" name="Xbox"><br>
                                     </div>
                                     <div class="checkboxDiv">
-                                        <label for="Battlenet">Battle.net</label>
-                                        <input type="checkbox" class="checkbox" id="Battlenet" name="Battlenet"><br>
+                                        <label for="PlayStation">
+                                            <img src="<c:url value="/resources/img/plataformes/7.png"/>" alt="PlayStation">
+                                        </label>
+                                        <input type="checkbox" class="checkboxPlataforma" id="PlayStation" name="PlayStation"><br>
                                     </div>
                                     <div class="checkboxDiv">
-                                        <label for="Battlenet">Battle.net</label>
-                                        <input type="checkbox" class="checkbox" id="Battlenet" name="Battlenet"><br>
+                                        <label for="Rockstar">
+                                            <img src="<c:url value="/resources/img/plataformes/8.png"/>" alt="Rockstar">
+                                        </label>
+                                        <input type="checkbox" class="checkboxPlataforma" id="Rockstar" name="Rockstar" ><br>
+                                    </div>
+                                    <div class="checkboxDiv">
+                                        <label for="Gog">
+                                            <img src="<c:url value="/resources/img/plataformes/9.png"/>"
+                                        </label>
+                                        <input type="checkbox" class="checkboxPlataforma" id="Gog" name="Gog"><br>
+                                    </div>
+                                    <div class="checkboxDiv">
+                                        <label for="Windows Games">
+                                            <img src="<c:url value="/resources/img/plataformes/10.png"/>"
+                                        </label>
+                                        <input type="checkbox" class="checkboxPlataforma" id="Windows Games" name="Windows Games"><br>
+                                    </div>
+                                    <div class="checkboxDiv">
+                                        <label for="Apple">
+                                            <img src="<c:url value="/resources/img/plataformes/11.png"/>"
+                                        </label>
+                                        <input type="checkbox" class="checkboxPlataforma" id="Apple" name="Apple"><br>
+                                    </div>
+                                    <div class="checkboxDiv">
+                                        <label for="Epic Games">
+                                            <img src="<c:url value="/resources/img/plataformes/12.png"/>"
+                                        </label>
+                                        <input type="checkbox" class="checkboxPlataforma" id="Epic Games" name="Epic Games"><br>
                                     </div>
 
                                 </form>
@@ -135,29 +175,26 @@
                                 <button class="btn btn-primary" id="escollirGenere" >Genere</button>
                                 <form class="mostrarGenere">
                                     <!--Generes per mostrar, foreach generes... -->
-                                    <div class="checkboxDiv">
-                                        <label for="RPG">RPG</label>
-                                        <input type="checkbox" class="checkbox" id="RPG" name="RPG"><br>
-                                    </div>
-                                    <div class="checkboxDiv">
-                                        <label for="RPG">Joc en solitari</label>
-                                        <input type="checkbox" class="checkbox" id="RPG" name="RPG"><br>
-                                    </div>
-                                    <div class="checkboxDiv">
-                                        <label for="RPG">RPG</label>
-                                        <input type="checkbox" class="checkbox" id="RPG" name="RPG"><br>
-                                    </div>
-                                    <div class="checkboxDiv">
-                                        <label for="RPG">RPG</label>
-                                        <input type="checkbox" class="checkbox" id="RPG" name="RPG"><br>
-                                    </div>
-                                    <div class="checkboxDiv">
-                                        <label for="RPG">RPG</label>
-                                        <input type="checkbox" class="checkbox" id="RPG" name="RPG"><br>
-                                    </div>
-                                    <div class="checkboxDiv">
-                                        <label for="RPG">RPG</label>
-                                        <input type="checkbox" class="checkbox" id="RPG" name="RPG"><br>
+                                    <div class="row">
+                                        <%
+                                            String[] llistaGeneres = {
+                                                "FPS", "RPG", "Cooperació", "Deportiu", "Multijugador", 
+                                                "Construcció", "Aventura", "Survival", "Gestió", "Estratègia",
+                                                "SinglePlayer", "Acció", "Simulador", "MMO", "Indies",
+                                                "Conducció", "Plataforma", "Lluita"
+                                            };
+                                            pageContext.setAttribute("llistaGeneres",llistaGeneres);
+                                        %>
+                                        <c:forEach var="generes" items="${llistaGeneres}">
+                                        <div class="col-md-12 checkboxDiv">
+                                            <div id="formLeft">
+                                            <label for="${generes}">${generes}</label>
+                                            </div>
+                                            <div id="formRight">
+                                            <input type="checkbox" class="checkboxGenere" id="${generes}" name="${generes}"><br>
+                                            </div>
+                                        </div>
+                                        </c:forEach>
                                     </div>
                                 </form>
                             </div>
@@ -167,16 +204,16 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <c:forEach var="joc" items="${videojocs}" begin="0" end="29">
-                                    <div class="column">
+                                    <div class="column" id="${joc[2]}">
                                         <a href="<c:url value="/product?id=${joc[0]}"/>" id="${joc[1]}"><img src="<c:url value="/resources/img/portades/${joc[1]}.jpg"/>" title="${joc[1]}" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis, ${joc[1]}">
                                             <div class="infoJoc">
-                                                <span class="preu">${joc[5]}€</span>
-                                                <c:forEach var="g" items="${joc[2].split(', ')}">                                       
-                                                    <div class="genere2"><span>${g}</span></div>
-                                                </c:forEach>
+                                                <span class="preu"><i class="fa fa-arrow-down"></i> ${joc[4]}%</span>
+                                                <c:forTokens var="g" items="${joc[2]}" delims=", "> 
+                                                    <div class="genere${g}"><span>${g}</span></div>
+                                                </c:forTokens>
                                             </div>
                                         </a>
-                                        <a href="<c:url value="product?id=${joc[0]}"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> ${joc[4]}% - Comprar</a>
+                                        <a href="<c:url value="product?id=${joc[0]}"/>" class="producteAComprar" id="overwatch">${joc[5]}€ - Comprar</a>
                                     </div>
                                 </c:forEach>
                             </div>

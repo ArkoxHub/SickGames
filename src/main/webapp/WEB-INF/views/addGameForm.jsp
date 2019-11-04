@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type"  content="text/html; charset=UTF-8">
         <title>Formulari addGame</title>
         <!--WebIcon-->
         <link rel="icon" href="<c:url value="/resources/img/logo_icon.png"/>" alt="Favicon">

@@ -235,15 +235,13 @@ html{
     text-align: center;
     pointer-events: none;
 }
-
 div[class*=genere]{
     display: flex;
     text-align: center;
-    margin-left: -1.235em;
+    margin-left: -1.167em;
     font-size: 12px;
     color: black;
     font-weight: bold;
-    width: 100%;
     max-width: 50%;
     background-repeat: no-repeat;
     margin-bottom: 3px;
@@ -252,80 +250,81 @@ div[class*=genere]{
     line-height: 24px;
     pointer-events: none;
 }
-.genere1{
+.genereFPS{
     background-image: url("../img/generos/Rojo.png");
 }
-.genere2{
+.genereRPG{
     background-image: url("../img/generos/Azul_marino.png");
 }
-.genere3{
+.genereCooperació{
     background-image: url("../img/generos/Aguamarina.png");
 }
-.genere4{
+.genereDeportiu{
     background-image: url("../img/generos/Cereza.png");
 }
-.genere5{
+.genereMultijugador{
     background-image: url("../img/generos/Verde.png");
 }
-.genere6{
+.genereConstrucció{
     background-image: url("../img/generos/Verde_azulado.png");
 }
-.genere7{
+.genereAventura{
     background-image: url("../img/generos/Violeta.png");
 }
-.genere8{
+.genereSurvival{
     background-image: url("../img/generos/Verde_pistacho.png");
 }
-.genere9{
+.genereGestió{
     background-image: url("../img/generos/Morado.png");
 }
-.genere10{
+.genereEstratègia{
     background-image: url("../img/generos/Cielo.png");
 }
-.genere11{
+.genereSinglePlayer{
     background-image: url("../img/generos/Fucsia.png");
 }
-.genere12{
+.genereAcció{
     background-image: url("../img/generos/Naranja.png");
 }
-.genere13{
+.genereSimulador{
     background-image: url("../img/generos/Ocre.png");
 }
-.genere14{
+.genereMMO{
     background-image: url("../img/generos/Naranja_brillante.png");
 }
-.genere15{
+.genereIndies{
     background-image: url("../img/generos/Purpura.png");
 }
-.genere16{
+.genereConducció{
     background-image: url("../img/generos/Turquesa.png");
 }
-.genere17{
+.generePlataforma{
     background-image: url("../img/generos/Rosa.png");
 }
-.genere18{
+.genereLluita{
     background-image: url("../img/generos/Turquesa_verdoso.png");
 }
-
+div[class*=genere] span{
+    margin-left: 17px;
+}
 @media (max-width:770px){ 
-    [class*=genere]{
+    div[class*=genere]{
         display: flex;
         text-align: center;
         margin-left: -15px;
         font-size: 10px;
-        width: 70px;
         margin-bottom: 3px;
         margin-top: 5px;
     }
 }
 
-@media (max-width:315px){ 
-    [class*=genere]{
+@media (max-width:485px){ 
+    div[class*=genere]{
         display: flex;
         text-align: center;
         margin-left: -15px;
         font-size: 10px;
-        width: 70px;
+        max-width: 85px;
         margin-bottom: 3px;
         margin-top: 4px;
     }
@@ -457,6 +456,7 @@ div[class*=genere]{
 }
 
 #marginMenuCalaleg{
+    max-width: 200px !important;
     margin-bottom: 15px;
     padding: 0px; 
     border-left: 2px solid;
@@ -482,12 +482,22 @@ input[type=checkbox]{
     transform: scale(1.5);
     margin-top: 6px;
 }
-
+#formLeft{
+    width: 5px;
+    float:left;
+}
+#formRight{
+}
 .btn:focus{
     outline: none !important;
 }
-
-@media (max-width:790px){
+@media (max-width:1000px){
+    .menuPlataforma{
+        padding: 2px
+    }
+    
+}
+@media (max-width:767px){
     .container-fluid .row{
         margin-left: 0px;
     }
@@ -499,8 +509,6 @@ input[type=checkbox]{
     [class*=mostrar]{
         margin-top: 10px;
     }
-}
-@media (max-width:767px){
     #escollirGenere{
         margin-left: 20px
     }
@@ -510,6 +518,7 @@ input[type=checkbox]{
     #marginMenuCalaleg{
         margin-bottom: 15px;
         padding: 0px; 
+        max-width: 230px;
         border-left: none;
         border-right: none;
     }
@@ -517,13 +526,13 @@ input[type=checkbox]{
         margin-left: 27px;
     }
     [id*=escollir]{
-        width: 165px;
+        width: 185px;
         border-radius: 0px !important;
         border-left: 2px solid;
         border-right: 2px solid;
     }
     input[type=checkbox]{
-        position:absolute;
+        position:relative;
         left: 145px;
         transform: scale(1.5);
         margin-top: 6px;
