@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -13,10 +12,10 @@
         <!--Bootstrap CSS-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="true">
         <!--My css-->
-        <link href="<c:url value="/resources/css/index.css"/>" rel="stylesheet" type="text/css"/>
-        <link href="<c:url value="/resources/css/global.css"/>" rel="stylesheet" type="text/css"/>
+        <link href="<c:url value='/resources/css/index.css'/>" rel="stylesheet" type="text/css"/>
+        <link href="<c:url value='resources/css/global.css'/>" rel="stylesheet" type="text/css"/>
         <!--WebIcon-->
-        <link rel="icon" href="<c:url value="/resources/img/logo_icon.png"/>" alt="Favicon">
+        <link rel="icon" href="<c:url value='resources/img/logo_icon.png'/>" alt="Favicon">
         <!--FontsGoogle-->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="true">
         <link href="https://fonts.googleapis.com/css?family=Archivo&display=swap" rel="stylesheet">
@@ -25,60 +24,12 @@
         <!--Jquery-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <!--My javascript-->
-        <script src="<c:url value="/resources/js/index.js"/>" type="text/javascript" ></script>
-        <script src="<c:url value="/resources/js/funcions.js"/>" type="text/javascript" ></script>
+        <script src="<c:url value='/resources/js/index.js'/>" type="text/javascript" ></script>
+        <script src="<c:url value='/resources/js/funcions.js'/>" type="text/javascript" ></script>
     </head>
 
     <body>
-        <!--Secció top: Buscador, conta, logo....--> 
-        <section class="section-top">
-            <a href="<c:url value="/"/>"><img src="<c:url value="/resources/img/logo_sick.png"/>" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis" class="logoMvl"></a>
-            <nav class="container" id="container-top">
-                <div class="d-flex flex-row">
-                    <div class="col-2">
-                        <a href="<c:url value="/"/>"><img src="<c:url value="/resources/img/logo_sick.png"/>" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis" class="logo"></a>
-                    </div>
-                    <div class="col-6" id="colbuscador">
-                        <form action="/product" form="GET">
-                            <input autocomplete="off"  class="buscador" type="text" placeholder=" Cerca" name="search">
-                            <button class="botonBuscador" type="submit"><i class="fa fa-search"></i></button>
-                        </form>
-                    </div>
-                    <div class="col-4" id="colbuscador">
-                        <div class="d-flex flex-row" id="cuenta">
-                            <div class="col-4">
-                                <a href="#" class="soporte" >Suport 24/7</a>
-                                <a href="#" class="soporteMvl" ><i class="fa fa-comment fa-lg" aria-hidden="true"></i></a>
-                            </div>
-                            <div class="col-5">
-                                <div id="test" style="position: relative;">
-                                    <a href="#" class="soporte" id="compte">El meu compte</a>
-                                    <a href="#" class="soporteMvl" id="compteMvl"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
-                                    <ul  class="menuCompte">
-                                        <a href="<c:url value="/user"/>">
-                                            <li>Perfil</li>
-                                        </a>
-                                        <a href="<c:url value="/user"/>">
-                                            <li>Comandes</li>
-                                        </a>
-                                        <a href="<c:url value="/user"/>">
-                                            <li>Llista desitjos</li>
-                                        </a>
-                                        <a href="<c:url value="/user"/>">
-                                            <li>Tancar sessió</li>
-                                        </a>
-                                    </ul>
-                                </div>
-                            </div> 
-                            <div class="col-1">
-                                <a href="#" class="darkMode"><i class="fa fa-moon fa-lg" aria-hidden="true"></i></a>
-                                <a href="#" class="lightMode"><i class="fa fa-sun fa-lg" aria-hidden="true"></i></a>
-                            </div>                                                                               
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </section>
+        <jsp:include page="/WEB-INF/resources/headerAndFooter/header.jsp"></jsp:include>
         <!--Fi Secció top-->
         <div class="text-center center" style="margin-bottom:-20px; margin-top:10px">
             <a class="btn btn-primary" href="<c:url value="/admin/addGame"/>">Afegir videojoc</a>
@@ -90,12 +41,12 @@
                 <!--PRECOMPRA-->
                 <p class="tituloFilas">Próximes novetats</p>
                 <div class="row" id="filaCatalogo">
-                    <c:forEach var="joc" items="${upcoming}">
+                    <c:forEach var="joc" items="${upcoming}" begin="0" end="3">
                         <div class="column">
                             <!-- SE TIENE QUE PASAR UNA EL NOMBRE O ID DEL PRODUCTO COMO ID EN LOS LINKS PARA PODER CREAR UNA WEB CON UN CONTENIDO U OTRO-->
                             <a href="<c:url value="/product?id=${joc[0]}"/>" id="${joc[1]}">
                                 <img src="<c:url value="/resources/img/portades/${joc[1]}.jpg"/>" 
-                                     title="${joc[1]}" alt="${joc[1]}">
+                                     title="${joc[1]}" alt="SickGames ${joc[1]}">
                                 <div class="infoJoc">
                                     <span class="preu"><i class="fa fa-arrow-down"></i> ${joc[3]}%</span>
                                     <c:forEach var="genere" items="${joc[2].split(', ')}">                                       
@@ -103,7 +54,9 @@
                                             </c:forEach>
                                 </div>
                             </a>
-                            <a href="<c:url value="/product?id=${joc[0]}"/>" class="producteAComprar" id="overwatch"> ${joc[5]}€ - Comprar</a>
+                            <a href="<c:url value="/product?id=${joc[0]}"/>" class="producteAComprar" id="overwatch">
+                                <fmt:formatNumber value="${joc[5]}" type="currency"/> - Comprar
+                            </a>
                         </div>
                     </c:forEach>
                 </div> 
@@ -115,7 +68,7 @@
                         <div class="column">
                             <a href="<c:url value="/product?id=${joc[0]}"/>" id="${joc[1]}">
                                 <img src="<c:url value="/resources/img/portades/${joc[1]}.jpg"/>" 
-                                     title="${joc[1]}" alt="${joc[1]}">
+                                     title="${joc[1]}" alt="SickGames ${joc[1]}">
                                 <div class="infoJoc">
                                     <span class="preu"><i class="fa fa-arrow-down"></i> ${joc[3]}%</span>
                                     <c:forEach var="genere" items="${joc[2].split(', ')}">                                       
@@ -123,7 +76,9 @@
                                             </c:forEach>
                                 </div>
                             </a>
-                            <a href="<c:url value="/product?id=${joc[0]}"/>" class="producteAComprar" id="overwatch"> ${joc[5]}€ - Comprar</a>
+                            <a href="<c:url value="/product?id=${joc[0]}"/>" class="producteAComprar" id="overwatch">
+                                <fmt:formatNumber value="${joc[5]}" type="currency"/> - Comprar
+                            </a>
                         </div>
                     </c:forEach>
                 </div>
@@ -135,7 +90,7 @@
                         <div class="column">
                             <a href="<c:url value="/product?id=${preu[0]}"/>" id="${preu[1]}">
                                 <img src="<c:url value="/resources/img/portades/${preu[1]}.jpg"/>" 
-                                     title="${preu[1]}" alt="${preu[1]}">
+                                     title="${preu[1]}" alt="SickGames ${preu[1]}">
                                 <div class="infoJoc">
                                     <span class="preu"><i class="fa fa-arrow-down"></i> ${preu[3]}%</span>
                                     <c:forEach var="genere" items="${preu[2].split(', ')}">                                       
@@ -143,7 +98,8 @@
                                             </c:forEach>
                                 </div>
                             </a>
-                            <a href="<c:url value="/product?id=${preu[0]}"/>" class="producteAComprar" id="overwatch"> ${preu[5]}€ - Comprar</a>
+                            <a href="<c:url value="/product?id=${preu[0]}"/>" class="producteAComprar" id="overwatch"> 
+                                <fmt:formatNumber value="${preu[5]}" type="currency"/> - Comprar</a>
                         </div>
                     </c:forEach>
                 </div>
@@ -155,105 +111,4 @@
             </div>
         </section>
         <!--Fi secció body-->
-
-        <!--Secció footer-->
-        <section class="section-footer">
-            <!-- Footer -->
-            <div class="container">
-                <footer class="page-footer font-small blue pt-4">
-                    <!-- Footer Links -->
-                    <div class="container-fluid text-center text-md-left">
-
-                        <!-- Grid row -->
-                        <div class="row" >
-
-                            <!-- Grid column -->
-                            <div class="col-md-6 mt-md-0 mt-3">
-
-                                <!-- Content -->
-                                <h5 class="text-uppercase">Gràcies per confiar en SickGames</h5>
-                                <ul class="list-unstyled">
-                                    <li>
-                                        Adrià
-                                    </li>
-                                    <li>
-                                        Oscar
-                                    </li>
-                                    <li>
-                                        Kevin
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- Grid column -->
-
-                            <hr class="clearfix w-100 d-md-none pb-3">
-
-                            <!-- Grid column -->
-                            <div class="col-md-3 mb-md-0 mb-3">
-
-                                <!-- Links -->
-                                <h5 class="text-uppercase">Links</h5>
-
-                                <ul class="list-unstyled">
-                                    <li>
-                                        <a href="#!">Link 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#!">Link 2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#!">Link 3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#!">Link 4</a>
-                                    </li>
-                                </ul>
-
-                            </div>
-                            <!-- Grid column -->
-
-                            <!-- Grid column -->
-                            <div class="col-md-3 mb-md-0 mb-3">
-
-                                <!-- Links -->
-                                <h5 class="text-uppercase">Links</h5>
-
-                                <ul class="list-unstyled">
-                                    <li>
-                                        <a href="#!">Link 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#!">Link 2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#!">Link 3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#!">Link 4</a>
-                                    </li>
-                                </ul>
-
-                            </div>
-                            <!-- Grid column -->
-
-                        </div>
-                        <!-- Grid row -->
-
-                    </div>
-                    <!-- Footer Links -->
-
-                    <!-- Copyright -->
-                    <div class="footer-copyright text-center py-3">© 2019 Copyright:
-                        <a href="<c:url value="/"/>">SickGames</a>
-                    </div>
-                    <!-- Copyright -->
-
-                </footer>
-            </div>
-            <!-- Footer -->   
-        </section>
-        <!-- Load the Twitch embed script -->
-        <script src="https://embed.twitch.tv/embed/v1.js"></script>
-
-    </body>
-</html>
+        <jsp:include page="/WEB-INF/resources/headerAndFooter/footer.jsp"></jsp:include>

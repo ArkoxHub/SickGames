@@ -101,40 +101,7 @@ div[class*=genere] span{
         margin-top: 4px;
     }
 }
-.preu{
-    padding-left:2px;
-    background-color: rgba(0, 0, 0, 0.404);
-    font-size: 19px;
-    margin-top: 2px;
-    right: 1px;
-    pointer-events: none;
-    position: absolute;
-    z-index: 99;
-}
-.fa-arrow-down{
-    color: rgb(150, 245, 150)
-}
 
-/*Catalogo juego filas y columnas */
-#filaCatalogo{
-    overflow: hidden;
-}
-#filaCatalogo .column img{
-    width: 100%;
-    transition: 0.2s;
-    border:2px solid transparent;
-}
-#filaCatalogo .column img:hover{
-    -webkit-box-shadow: 0px 0px 20px 3px rgba(69,124,191,0.63);
-    -moz-box-shadow: 0px 0px 20px 3px rgba(69,124,191,0.63);
-    box-shadow: 0px 0px 20px 3px rgba(69,124,191,0.63);
-    border:2px solid white;
-    transform: scale(0.98);
-    
-}
-#filaCatalogo .column .producteAComprar{
-    text-align: center;
-}
 #filaCatalogo .column{
     width: calc(100%/5 - 35px);
     display: inline-block;
