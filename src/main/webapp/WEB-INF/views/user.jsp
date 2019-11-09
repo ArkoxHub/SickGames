@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="true">
         <!--My css-->
         <link href="<c:url value="/resources/css/user.css"/>" rel="stylesheet" type="text/css"/>
+        <link href="<c:url value="/resources/css/global.css"/>" rel="stylesheet" type="text/css"/>
         <!--WebIcon-->
         <link rel="icon" href="<c:url value="/resources/img/logo_icon.png"/>" alt="Favicon">
         <!--FontsGoogle-->
@@ -25,6 +26,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <!--My javascript-->
         <script src="<c:url value="/resources/js/user.js"/>" type="text/javascript" ></script>
+        <script src="<c:url value="/resources/js/funcions.js"/>" type="text/javascript" ></script>
     </head>
     
     <body>
