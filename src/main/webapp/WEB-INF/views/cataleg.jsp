@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="true">
         <!--My css-->
         <link href="<c:url value='/resources/css/cataleg.css'/>" rel="stylesheet" type="text/css"/>
-        <link href="<c:url value='resources/css/global.css'/>" rel="stylesheet" type="text/css"/>
+        <link href="<c:url value='/resources/css/global.css'/>" rel="stylesheet" type="text/css"/>
         <!--WebIcon-->
         <link rel="icon" href="<c:url value='resources/img/logo_icon.png'/>" alt="Favicon">
         <!--FontsGoogle-->
@@ -138,13 +138,22 @@
                                             };
                                             pageContext.setAttribute("llistaGeneres",llistaGeneres);
                                         %>
+                                        <div class="col-md-12 checkboxDiv">
+                                            <div id="formLeft">
+                                            <label for="generesTots">Tots</label>
+                                            </div>
+                                            <div id="formRight">
+                                            <input type="checkbox" class="generesTots" id="generesTots" name="generesTots" value="on" checked><br>
+                                            </div>
+                                        </div>
+                                        <hr>
                                         <c:forEach var="generes" items="${llistaGeneres}">
                                         <div class="col-md-12 checkboxDiv">
                                             <div id="formLeft">
                                             <label for="${generes}">${generes}</label>
                                             </div>
                                             <div id="formRight">
-                                            <input type="checkbox" class="checkboxGenere" id="${generes}" name="${generes}"><br>
+                                            <input type="checkbox" class="checkboxGenere" data-target="${generes}" id="${generes}" name="gen"><br>
                                             </div>
                                         </div>
                                         </c:forEach>
@@ -157,7 +166,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <c:forEach var="joc" items="${videojocs}" begin="0" end="29">
-                                    <div class="column" id="${joc[2]}">
+                                    <div class="column <c:forTokens var="token" items="${joc[2]}" delims=","> ${token} </c:forTokens>">
                                         <a href="<c:url value="/product?id=${joc[0]}"/>" id="${joc[1]}"><img src="<c:url value="/resources/img/portades/${joc[1]}.jpg"/>" title="${joc[1]}" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis, ${joc[1]}">
                                             <div class="infoJoc">
                                                 <span class="preu"><i class="fa fa-arrow-down"></i> ${joc[4]}%</span>

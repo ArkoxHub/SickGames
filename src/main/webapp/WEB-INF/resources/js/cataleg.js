@@ -11,43 +11,55 @@ $(document).ready(function(){
 
 });
 //CHECKBOX MOSTRAR o OCULTAR
-$( window ).ready(function(){ 
-    checkboxGenere("FPS");
-    checkboxGenere("RPG");
-    checkboxGenere("Cooperació");
-    checkboxGenere("Deportiu");
-    checkboxGenere("Multijugador");
-    checkboxGenere("Construcció");
-    checkboxGenere("Aventura");
-    checkboxGenere("Survival");
-    checkboxGenere("Gestió");
-    checkboxGenere("Estratègia");
-    checkboxGenere("SinglePlayer");
-    checkboxGenere("Acció");
-    checkboxGenere("Simulador");
-    checkboxGenere("MMO");
-    checkboxGenere("Indies");
-    checkboxGenere("Conducció");
-    checkboxGenere("Plataforma");
-    checkboxGenere("Lluita");
+$( window ).ready(function(){
+    //Desactivamos el checkbox de mostrar todos los generos (ya que viene por defecto activa)
+    $('.generesTots').prop( "disabled", true);
     
-    function checkboxGenere(genere){
-        $('#'+genere).change(function(){
-            if(this.checked){
-               $(".column").not("div[id*="+genere+"]").fadeOut("slow");
-            }else{
-               $(".column").not("div[id*="+genere+"]").slideDown("slow");
-            }
+    //Si el checkbox de los generos cambia....
+    $('.generesTots').on('change', function(){
+        // Mostramos todas las columnas
+        // Deshabilitamos el boton de todos
+        // Limpiamos los checkbox de los generos
+        if ($('.generesTots').is(':checked')) {
+            $('.column').show();
+            $('.checkboxGenere').prop("checked", false);
+            $('.generesTots').prop( "disabled", true);
+        }
+        //Sino... Activamos la opción de mostrar todos
+        else{
+            $('.generesTots').prop( "disabled", false);
+        }
+    });
+    $('.checkboxGenere').on('change', function(){
+        // Coge los marcados
+        let marcados = $('.checkboxGenere:checked');
+        
+        //Cambiamos el checkbox generesTots
+        if (marcados.length === 0){
+            $('.generesTots').prop("checked", true).change();
+        }else{
+            $('.generesTots').prop("checked", false).change();
+        }
+
+        // Coge los targets
+        let targets = '';
+        $.each(marcados, function(i, checkbox){
+            let target = $(this).data('target');
+            targets += '.'+target;
         });
-    }
-    function checkboxPlataforma(plataforma){
-        $('#'+plataforma).change(function(){
-            if(this.checked){
-                console.log("Esta es:"+ test[0]);
-               $(".column").not("div[id*="+plataforma+"]").fadeOut("slow");
+
+        // Si hay marcados, muestralos
+        if(targets.length !== 0){
+            $('.column'+targets).show();
+            $('.column').not('.column'+targets).hide();
+            if($('.column'+targets).show().length === 0){
+                var salu2 = '<div class="text-center center salu2" ><h2>No hi ha jocs amb aquest generes</h2></div>'
+                $('.container-fluid').append(salu2);
             }else{
-               $(".column").not("div[id*="+plataforma+"]").slideDown("slow");
+                $('.salu2').remove();
             }
-        });
-    }
+        }else{
+            
+        }
+    });
 });
