@@ -176,7 +176,7 @@
                                                 </c:forEach>
                                             </div>
                                         </a>
-                                        <a href="<c:url value="product?id=${joc[0]}"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> ${joc[4]}% - Comprar</a>
+                                        <a href="<c:url value="product?id=${joc[0]}"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> ${joc[3]}% - Comprar</a>
                                     </div>
                                 </c:forEach>
                             </div>
