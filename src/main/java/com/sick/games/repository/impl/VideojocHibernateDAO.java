@@ -87,7 +87,7 @@ public class VideojocHibernateDAO implements VideojocDAO {
     @Override
     public List<CodeGame> getGamesByPrice() {
         List<CodeGame> codeGames;
-        codeGames = getSession().createQuery("SELECT v.codi_Joc, v.nom, v.generes, c.oferta, COUNT(v.nom), c.preu FROM Videojoc v, Codi c WHERE v.codi_Joc = c.codi_Joc GROUP BY v.codi_Joc ORDER BY v.pvp ASC").list();
+        codeGames = getSession().createQuery("SELECT v.codi_Joc, v.nom, v.generes, c.oferta, COUNT(v.nom), c.preu FROM Videojoc v, Codi c WHERE v.codi_Joc = c.codi_Joc GROUP BY v.codi_Joc ORDER BY c.preu ASC").list();
         return codeGames;
     }
 

@@ -1,86 +1,65 @@
-/* Menu login*/
-$(document).ready(function(){
-    $('#test').hover(function(event) {
-        clearTimeout($(this).data('timeout'));
-        $(this).data('timeout', setTimeout(function() {
-          $('.menuCompte').slideDown('fast');
-        },100));
-      }, function(event) {
-        clearTimeout($(this).data('timeout'));
-        $('.menuCompte').slideUp(200, function() {
-          $(this).hide();
-        });
-      });
-
-});
 //lateral cataleg
 $(document).ready(function(){
     $("#escollirPlataforma").click(function(){
-        $(".mostrarPlataforma").slideToggle("fast");        
+        $(".mostrarPlataforma").slideToggle("fast"); 
         
     });
     $("#escollirGenere").click(function(){
-        $(".mostrarGenere").slideToggle("fast");      
+        $(".mostrarGenere").slideToggle("fast");    
     });
     
 
 });
-
-//Dark y light Mode 
-$(document).ready(function(){
-    function setLocalStorage(c_name, value) {
-        var exdays = 30;
-        // if localStorage is present, use that
-        if (('localStorage' in window) && window.localStorage !== null) {
-            localStorage[c_name] = value;
-        } else {
-            var exdate = new Date();
-            exdate.setDate(exdate.getDate() + exdays);
-            var c_value = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString());
-            document.cookie = c_name + "=" + c_value;
+//CHECKBOX MOSTRAR o OCULTAR
+$( window ).ready(function(){
+    //Desactivamos el checkbox de mostrar todos los generos (ya que viene por defecto activa)
+    $('.generesTots').prop( "disabled", true);
+    
+    //Si el checkbox de los generos cambia....
+    $('.generesTots').on('change', function(){
+        // Mostramos todas las columnas
+        // Deshabilitamos el boton de todos
+        // Limpiamos los checkbox de los generos
+        if ($('.generesTots').is(':checked')) {
+            $('.column').show();
+            $('.checkboxGenere').prop("checked", false);
+            $('.generesTots').prop( "disabled", true);
         }
-    }
-            
-    
-    if (window.localStorage.getItem('colorMode') == "darkMode"){
-        $(".darkMode").css("display","none");
-        $("body").css("color","white")
-                .css("background-color","rgb(42, 41, 41)");
-        $(".soporte").css("color","white");
-        $(".column-9").css("background-color","black");
-        $("#genere").css("color","#4596F0");
-    }
-    if (window.localStorage.getItem('colorMode') == "lightMode"){
-        $(".darkMode").toggle();
-        $(".lightMode").css("display","none");
-        $("body").css("color","black")
-                .css("background-color","rgb(250, 250, 250)");
-        $(".section-top").css("background","rgba(0, 0, 0)");
-        $(".column-9").css("background-color","white");
-        $("#genere").css("color","#004085");
-    }
-
-    
-    $(".darkMode").click(function(){
-        $(".darkMode").toggle();
-        $(".lightMode").toggle();
-        $("body").css("color","white")
-                .css("background-color","rgb(42, 41, 41)");
-        $(".soporte").css("color","white");
-        $(".column-9").css("background-color","black");
-        $("#genere").css("color","#4596F0");
-        setLocalStorage("colorMode", "darkMode");
+        //Sino... Activamos la opción de mostrar todos
+        else{
+            $('.generesTots').prop( "disabled", false);
+        }
     });
-    $(".lightMode").click(function(){
-        $(".darkMode").toggle();
-        $(".lightMode").toggle();
-        $("body").css("color","black")
-                .css("background-color","rgb(250, 250, 250)");
-        $(".section-top").css("background","rgba(0, 0, 0)");
-        $(".column-9").css("background-color","white");
-        $("#genere").css("color","#132e4d");      
-        setLocalStorage("colorMode", "lightMode");
+    $('.checkboxGenere').on('change', function(){
+        // Coge los marcados
+        let marcados = $('.checkboxGenere:checked');
         
+        //Cambiamos el checkbox generesTots
+        if (marcados.length === 0){
+            $('.generesTots').prop("checked", true).change();
+        }else{
+            $('.generesTots').prop("checked", false).change();
+        }
+
+        // Coge los targets
+        let targets = '';
+        $.each(marcados, function(i, checkbox){
+            let target = $(this).data('target');
+            targets += '.'+target;
+        });
+
+        // Si hay marcados, muestralos
+        if(targets.length !== 0){
+            $('.column'+targets).show();
+            $('.column').not('.column'+targets).hide();
+            if($('.column'+targets).show().length === 0){
+                var salu2 = '<div class="text-center center salu2" ><h2>No hi ha jocs amb aquest generes</h2></div>'
+                $('.container-fluid').append(salu2);
+            }else{
+                $('.salu2').remove();
+            }
+        }else{
+            
+        }
     });
-    
 });
