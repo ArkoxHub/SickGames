@@ -132,3 +132,12 @@ $(document).ready(function () {
         $('.menuCompte').stop().slideUp('fast');
     });
 });
+
+$(document).ready(function () {
+    $('#conectarse, #conectarseMvl').on('click', function(){
+        $('#id01').css("display","block");
+    });
+    $('.close, .cancelbtn').on('click', function(){
+        $('#id01').hide("slow");
+    });
+});

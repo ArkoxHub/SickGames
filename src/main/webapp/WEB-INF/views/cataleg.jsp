@@ -169,7 +169,7 @@
                                     <div class="column <c:forTokens var="token" items="${joc[2]}" delims=","> ${token} </c:forTokens>">
                                         <a href="<c:url value="/product?id=${joc[0]}"/>" id="${joc[1]}"><img src="<c:url value="/resources/img/portades/${joc[1]}.jpg"/>" title="${joc[1]}" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis, ${joc[1]}">
                                             <div class="infoJoc">
-                                                <span class="preu"><i class="fa fa-arrow-down"></i> ${joc[4]}%</span>
+                                                <span class="preu"><i class="fa fa-arrow-down"></i> ${joc[3]}%</span>
                                                 <c:forTokens var="g" items="${joc[2]}" delims=", "> 
                                                     <div class="genere${g}"><span>${g}</span></div>
                                                 </c:forTokens>

@@ -5,7 +5,6 @@
  */
 package com.sick.games.controller;
 
-import com.sick.games.service.CodiService;
 import com.sick.games.service.VideojocService;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -27,8 +26,7 @@ public class CatalegController {
 
     @Autowired
     VideojocService videojocService;
-    @Autowired
-    CodiService codiService;
+
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView initCataleg(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

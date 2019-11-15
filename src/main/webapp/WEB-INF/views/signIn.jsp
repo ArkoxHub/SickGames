@@ -39,7 +39,7 @@
                     <div class="col-md-3 register-left">
                         <h3>Benvingut/da a</h3>
                         <img src="<c:url value='/resources/img/logo_sick.png'/>" alt=""/><br/>
-                        <a href="#" class="btn btn-primary btnRegister">Login</a>
+                        <a href="<c:url value='/login'/>" class="btn btn-primary btnRegister">Login</a>
                     </div>
                     <div class="col-md-9 register-right">
                         <div class="tab-content" id="myTabContent">
