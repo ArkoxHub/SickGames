@@ -175,7 +175,9 @@
                                                 </c:forTokens>
                                             </div>
                                         </a>
-                                        <a href="<c:url value="product?id=${joc[0]}"/>" class="producteAComprar" id="overwatch">${joc[5]}€ - Comprar</a>
+                                        <a href="<c:url value="product?id=${joc[0]}"/>" class="producteAComprar" id="overwatch">
+                                           <fmt:formatNumber value="${joc[5]}" currencySymbol="€" type="currency" pattern="###,###.00 ¤"/>- Comprar
+                                        </a>
                                     </div>
                                 </c:forEach>
                             </div>

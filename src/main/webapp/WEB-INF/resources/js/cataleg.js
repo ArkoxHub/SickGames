@@ -53,7 +53,7 @@ $( window ).ready(function(){
             $('.column'+targets).show();
             $('.column').not('.column'+targets).hide();
             if($('.column'+targets).show().length === 0){
-                var salu2 = '<div class="text-center center salu2" ><h2>No hi ha jocs amb aquest generes</h2></div>'
+                var salu2 = '<div class="text-center center salu2" ><h2>No hi ha jocs amb aquest generes</h2></div>';
                 $('.container-fluid').append(salu2);
             }else{
                 $('.salu2').remove();

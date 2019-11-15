@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -55,7 +56,7 @@
                                 </div>
                             </a>
                             <a href="<c:url value="/product?id=${joc[0]}"/>" class="producteAComprar" id="overwatch">
-                                <fmt:formatNumber value="${joc[5]}" type="currency"/> - Comprar
+                                <fmt:formatNumber value="${joc[5]}" currencySymbol="€" type="currency" pattern="###,###.00 ¤"/> - Comprar
                             </a>
                         </div>
                     </c:forEach>
@@ -77,7 +78,7 @@
                                 </div>
                             </a>
                             <a href="<c:url value="/product?id=${joc[0]}"/>" class="producteAComprar" id="overwatch">
-                                <fmt:formatNumber value="${joc[5]}" type="currency"/> - Comprar
+                                <fmt:formatNumber value="${joc[5]}" currencySymbol="€" type="currency" pattern="###,###.00 ¤"/> - Comprar
                             </a>
                         </div>
                     </c:forEach>
@@ -99,7 +100,7 @@
                                 </div>
                             </a>
                             <a href="<c:url value="/product?id=${preu[0]}"/>" class="producteAComprar" id="overwatch"> 
-                                <fmt:formatNumber value="${preu[5]}" type="currency"/> - Comprar</a>
+                                <fmt:formatNumber value="${preu[5]}" currencySymbol="€" type="currency" pattern="###,###.00 ¤"/> - Comprar</a>
                         </div>
                     </c:forEach>
                 </div>

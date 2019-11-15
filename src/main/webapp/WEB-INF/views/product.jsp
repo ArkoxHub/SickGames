@@ -96,8 +96,8 @@
                             </div>
                         </div>
                         <div class="row" id="preu">
-                            <div class="column-12 text-center">
-                                <span><fmt:formatNumber value="${codi.preu}" type="currency"/></span>
+                            <div class="column-12 text-center"> 
+                                <span><fmt:formatNumber value="${codi.preu}" currencySymbol="€" type="currency" pattern="###,###.00 ¤"/></span>
                             </div>
                         </div>
                         <div class="row" id="comprarJoc">
@@ -107,7 +107,7 @@
                                 </a>
                             </div>
                             <div class="column-12 text-left" id="PVP">
-                                Preu d'origen: <fmt:formatNumber value="${joc.pvp}" type="currency"/>
+                                Preu d'origen: <fmt:formatNumber value="${joc.pvp}" currencySymbol="€" type="currency" pattern="###,###.00 ¤"/>
                             </div>
                         </div>
                     </div>

@@ -24,8 +24,10 @@
                         <a href="#" class="soporte" >Suport 24/7</a>
                         <a href="#" class="soporteMvl" ><i class="fa fa-comment fa-lg" aria-hidden="true"></i></a>
                     </div>
+                    
+                    <!--Si l'usuari esta logejat es mostraria el menu :-->
                     <div class="col-5">
-                        <div id="test" style="position: relative;">
+                        <div id="menuUser" style="position: relative;">
                             <a href="#" class="soporte" id="compte">El meu compte</a>
                             <a href="#" class="soporteMvl" id="compteMvl"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
                             <ul  class="menuCompte">
@@ -43,7 +45,14 @@
                                 </a>
                             </ul>
                         </div>
-                    </div> 
+                    </div>
+                    <!--Si l'usuari no te la sessio activa :-->
+                    <div class="col-5">
+                        <div id="menuLogin" style="position: relative;">
+                            <a href="<c:url value='/signIn'/>" class="soporte" id="nouCompte">Crear Compte</a>
+                            <a href="<c:url value='/signIn'/>" class="soporteMvl" id="compteMvl"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
+                        </div>
+                    </div>   
                     <div class="col-1">
                         <a href="#" class="darkMode"><i class="fa fa-moon fa-lg" aria-hidden="true"></i></a>
                         <a href="#" class="lightMode"><i class="fa fa-sun fa-lg" aria-hidden="true"></i></a>
