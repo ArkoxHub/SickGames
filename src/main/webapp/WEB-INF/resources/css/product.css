@@ -271,18 +271,19 @@
 .column-9{
     width: calc(100%/1.333334 - 1px);
     display: block;
-    background-color:black;
     position: relative;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(45, 72, 128, 0.42));
+    background: linear-gradient(rgba(45, 72, 128, 1) ,rgba(0, 0, 0, 1));
 }
 .column-12{
-    width: 100%;
+    width: 100%; 
+    color: white;   
 }
 .column-4{
     width: calc(100%/3 - 4px);
 }
 .column-6{
     width: calc(100%/2 - 4px);
+    color: white;
 }
 .portada{
     display:none;

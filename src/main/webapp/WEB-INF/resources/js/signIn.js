@@ -1,23 +1,6 @@
 
 $(document).ready(function () {
-    /*****************Partner********************/
-    //Dejamos el input partner oculto
-    $("#partner").hide(); 
-    
-    //Si esta checked se muestra el input
-    $("input[type='checkbox']").change(function(){
-        if($(this).is(':checked')){
-            $("#partner").stop().slideDown();
-            $("#twitch").attr('required','required');
-        
-        }if(!$(this).is(':checked')){
-            $("#twitch").removeAttr('required');
-            $("#partner").stop().slideUp();
-        }
-
-    });
-    
-    /*****************Contraseña********************/
+    /*************Contraseña********************/
     //Mostrar contraseña cuando hacemos hover al fa-eye
     $('.fa-eye').hover(function(){
         $('#contrasenya').attr('type', 'text'); 
