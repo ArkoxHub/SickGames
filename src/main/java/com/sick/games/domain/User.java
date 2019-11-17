@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -28,6 +30,7 @@ public class User implements Serializable {
     private static final long serialVersionUID = 1L;
     
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
     @Column(name = "id_Usuari")
     private int id_Usuari;
@@ -55,7 +58,7 @@ public class User implements Serializable {
     private String direccio;
     
     @NotNull
-    @Size(max = 20)
+    @Size(max = 100)
     @Column(name = "email", unique = true)
     private String email;
     

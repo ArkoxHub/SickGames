@@ -36,7 +36,7 @@ public class UsersHibernateDAO implements UsersDAO {
 
     @Override
     public void addUser(User user) {
-        getSession().saveOrUpdate(user);
+        getSession().save(user);
     }
 
     @Override
@@ -96,7 +96,7 @@ public class UsersHibernateDAO implements UsersDAO {
 
     @Override
     public User getUserByeMail(String email) {
-        User user = getSession().load(User.class, email);
+        User user = (User) getSession().createQuery("FROM User user WHERE email = :mail").setParameter("mail", email).uniqueResult();
         logger.info("Usuari obtingut correctament" + user);
         return user;
     }

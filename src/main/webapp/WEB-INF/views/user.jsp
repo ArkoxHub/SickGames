@@ -40,7 +40,7 @@
                         <input class="file-upload" type="file" accept="image/*"/>
                     </div>
                     <div class="col-md-8">
-                        <h2>Pepito</h2>
+                        <h2>${user.nom}</h2>
                         <p>Carrito de la compra: <a class="btn btn-primary" id="carritoShow">Mostrar productes</a> <a class="btn btn-primary" id="carritoHide">Ocultar productes</a></p>
                         <ul id="llistaProductes">
                             <li>Overwatch - 24€</li>

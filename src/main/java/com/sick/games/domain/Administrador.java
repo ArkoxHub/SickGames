@@ -66,5 +66,5 @@ public class Administrador extends User {
     public void setRol(String rol) {
         this.rol = rol;
     }
-    
+   
 }
