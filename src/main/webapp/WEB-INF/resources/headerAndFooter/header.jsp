@@ -26,11 +26,11 @@
                     </div>
                     <c:choose>
                         <c:when test="${not empty user}">
-                            <div class="col-3">
+                            <div class="col-5">
                                 <div id="menuUser">
                                     <a href="#" class="soporte" id="compte">Hola ${user.nom}</a>
                                     <a href="#" class="soporteMvl" id="compteMvl"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
-                                    <ul  class="menuCompte">
+                                    <ul id="menuCompte" class="menuCompte">
                                         <a href="<c:url value='/user'/>">
                                             <li>Perfil</li>
                                         </a>
@@ -46,6 +46,32 @@
                                     </ul>
                                 </div>
                             </div>
+                            <div class="col-1" id="menuCarrito">            
+                                <a href="#"><i class="fas fa-shopping-cart"></i></a><!--Redirect a una pagina para comprar y pagar?-->
+                                <ul id="productesComprats" class="productesComprats">
+                                    <li class="cesta">
+                                        <div style="display:inline-block">
+                                            <img src="<c:url value="/resources/img/portades/World of Warcraft Shadowlands.jpg"/>"> 
+                                            <span> <!--Aqui poner una cruz al lado del producto para quitarlo del carro?-->
+                                                 World of Warcraft:Shadowlands - 60€
+                                            </span>
+                                        </div>
+                                    </li>
+                                    <li class="cesta">
+                                        <div style="display:inline-block">
+                                            <img src="<c:url value="/resources/img/portades/World of Warcraft Shadowlands.jpg"/>"> 
+                                            <span> <!--Aqui poner una cruz al lado del producto para quitarlo del carro?-->
+                                                 World of Warcraft:Shadowlands - 60€
+                                            </span>
+                                        </div>
+                                    </li>
+                                    <!--También iria a la pagina para comprar y pagar-->
+                                    <hr>
+                                    <a href="#">
+                                        <li>Comprar = 999€</li>
+                                    </a>
+                                </ul>
+                            </div>
                         </c:when>
                         <c:otherwise>
                             <div class="col-3">
@@ -59,14 +85,13 @@
                                     <a href="<c:url value='/user/signIn'/>" class="soporte" id="nouCompte">Nou Usuari</a>
                                     <a href="<c:url value='/user/signIn'/>" class="soporteMvl" id="compteMvl"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
                                 </div>
-                            </div>   
-                            <div class="col-1">
-                                <a href="#" class="darkMode"><i class="fa fa-moon fa-lg" aria-hidden="true"></i></a>
-                                <a href="#" class="lightMode"><i class="fa fa-sun fa-lg" aria-hidden="true"></i></a>
                             </div>  
                         </c:otherwise>
                     </c:choose>
-
+                    <div class="col-1">
+                        <a href="#" class="darkMode"><i class="fa fa-moon fa-lg" aria-hidden="true"></i></a>
+                        <a href="#" class="lightMode"><i class="fa fa-sun fa-lg" aria-hidden="true"></i></a>
+                    </div>
                 </div>
             </div>
         </div>

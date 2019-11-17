@@ -46,8 +46,10 @@
                         <div class="column">
                             <!-- SE TIENE QUE PASAR UNA EL NOMBRE O ID DEL PRODUCTO COMO ID EN LOS LINKS PARA PODER CREAR UNA WEB CON UN CONTENIDO U OTRO-->
                             <a href="<c:url value="/product?id=${joc[0]}"/>" id="${joc[1]}">
-                                <img src="<c:url value="/resources/img/portades/${joc[1]}.jpg"/>" 
-                                     title="${joc[1]}" alt="SickGames ${joc[1]}">
+                                <div id="imgOverflow">
+                                    <img src="<c:url value="/resources/img/portades/${joc[1]}.jpg"/>" 
+                                         title="${joc[1]}" alt="SickGames ${joc[1]}">
+                                </div>
                                 <div class="infoJoc">
                                     <span class="preu"><i class="fa fa-arrow-down"></i> ${joc[3]}%</span>
                                     <c:forEach var="genere" items="${joc[2].split(', ')}">                                       
@@ -68,8 +70,10 @@
                     <c:forEach var="joc" items="${ofertes}" begin="0" end="3">
                         <div class="column">
                             <a href="<c:url value="/product?id=${joc[0]}"/>" id="${joc[1]}">
-                                <img src="<c:url value="/resources/img/portades/${joc[1]}.jpg"/>" 
-                                     title="${joc[1]}" alt="SickGames ${joc[1]}">
+                                <div id="imgOverflow">
+                                    <img src="<c:url value="/resources/img/portades/${joc[1]}.jpg"/>" 
+                                         title="${joc[1]}" alt="SickGames ${joc[1]}">
+                                </div>
                                 <div class="infoJoc">
                                     <span class="preu"><i class="fa fa-arrow-down"></i> ${joc[3]}%</span>
                                     <c:forEach var="genere" items="${joc[2].split(', ')}">                                       
@@ -90,8 +94,10 @@
                     <c:forEach var="joc" items="${preus}" begin="0" end="3">
                         <div class="column">
                             <a href="<c:url value="/product?id=${joc[0]}"/>" id="${joc[1]}">
-                                <img src="<c:url value="/resources/img/portades/${joc[1]}.jpg"/>" 
-                                     title="${joc[1]}" alt="SickGames ${joc[1]}">
+                                <div id="imgOverflow">
+                                    <img src="<c:url value="/resources/img/portades/${joc[1]}.jpg"/>" 
+                                         title="${joc[1]}" alt="SickGames ${joc[1]}">
+                                </div>
                                 <div class="infoJoc">
                                     <span class="preu"><i class="fa fa-arrow-down"></i> ${joc[3]}%</span>
                                     <c:forEach var="genere" items="${joc[2].split(', ')}">                                       

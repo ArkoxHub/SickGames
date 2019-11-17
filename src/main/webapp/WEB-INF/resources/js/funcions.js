@@ -15,7 +15,7 @@ function rellenarStreams(datosStream){
                 '<div class="column">' +
                 '<span class="viewers"><i class="fa fa-user"></i> '+datosStream.data[i].viewer_count+'</span>'+
                 '<a href="#streamView" class=' + datosStream.data[i].user_name + ' id="stream">' +
-                '<img src="' + aplicarTamaño + '">' +
+                '<div id="imgOverflow"><img src="' + aplicarTamaño + '"></div>' +
                 '</a>' +
                 '<a href="#streamView" class=' + datosStream.data[i].user_name + ' id="streamName">' +
                 datosStream.data[i].user_name +
@@ -23,27 +23,35 @@ function rellenarStreams(datosStream){
                 '</div>'));
 
         $("." + datosStream.data[i].user_name).click(function () {
-            $("#streamView").show("slow");
             var existeStream = $("#streamView");
+            console.log(this.className);
             if (existeStream.length >= 1) {
                 $("#streamView").empty();
             }
+            $("#streamView").hide();
             $("#streamView").append($(
                     '<div class="col-12">' +
                     '<div>' +
                     '<a id="cerrar" href="#filaStreams">' +
-                    '<img src="/sickgames/resources/img/cruz.png" style="width:30px; float:right">' +
+                    '<div class="text-center center" id="cerrarStream"><i class="fas fa-chevron-down"></i></div>' +
                     '</a>' +
                     '</div>' +
                     '</div>' +
                     '<div class="col-12">' +
                     '<div id="twitch-embed"></div>' +
-                    '</div>').show("slow"));
-
-
+                    '</div>'));
+            
+            $("#streamView").slideDown("slow");
+            
+            $('html, body').animate({
+                scrollTop: $("#filaStreams").offset().top
+            }, 700);     
+            
             $("#cerrar").click(function () {
-                $("#streamView").hide("slow");
-                $("#streamView").empty();
+                $("#streamView").slideUp("slow");
+                setTimeout(function () {
+                    $("#streamView").children().detach().remove();
+                }, 800);
             })
 
             if (window.matchMedia('(max-width: 600px)').matches) {
@@ -81,63 +89,81 @@ $(document).ready(function () {
 
 
     if (window.localStorage.getItem('colorMode') == "darkMode") {
-        $(".darkMode").css("display", "none");
-        $("body").css("color", "white")
-                .css("background-color", "rgb(42, 41, 41)");
-        $(".soporte").css("color", "white");
-        $(".column-9").css("background-color", "black");
-        $("#genere").css("color", "#4596F0");
+        colorsDark();
     }
     if (window.localStorage.getItem('colorMode') == "lightMode") {
-        $(".darkMode").toggle();
-        $(".lightMode").css("display", "none");
-        $("body").css("color", "black")
-                .css("background-color", "rgb(250, 250, 250)");
-        $(".section-top").css("background", "rgba(0, 0, 0)");
-        $(".column-9").css("background-color", "white");
-        $("#genere").css("color", "#004085");
+        colorsLight();
     }
-
-
     $(".darkMode").click(function () {
-        $(".darkMode").toggle();
-        $(".lightMode").toggle();
-        $("body").css("color", "white")
-                .css("background-color", "rgb(42, 41, 41)");
-        $(".soporte").css("color", "white");
-        $(".column-9").css("background-color", "black");
-        $("#genere").css("color", "#4596F0");
+        colorsDark();
         setLocalStorage("colorMode", "darkMode");
     });
     $(".lightMode").click(function () {
-        $(".darkMode").toggle();
-        $(".lightMode").toggle();
+        colorsLight();
+        setLocalStorage("colorMode", "lightMode");
+
+    });
+    function colorsLight(){
+        $(".lightMode").css("display", "none");
+        $(".darkMode").css("display", "block");
         $("body").css("color", "black")
                 .css("background-color", "white");
         $(".section-top").css("background", "rgba(0, 0, 0)");
         $(".column-9").css("background-color", "white");
-        $("#genere").css("color", "#132e4d");
-        setLocalStorage("colorMode", "lightMode");
-
-    });
+    }
+    function colorsDark(){
+        $(".darkMode").css("display", "none");
+        $(".lightMode").css("display", "block");
+        $("body").css("color", "white")
+                .css("background-color", "rgb(42, 41, 41)");
+        $(".soporte").css("color", "white");
+        $(".column-9").css("background-color", "black");
+    }
 
 });
 
 
 /* Menu login*/
 $(document).ready(function () {
+    var hoverTimeOut;
     $('#menuUser').hover(function (event) {
-        $('.menuCompte').stop().slideDown('fast');
-    }, function (event) {
-        $('.menuCompte').stop().slideUp('fast');
+        clearTimeout(hoverTimeOut);
+        $('#menuCompte').stop().slideDown('fast');
+    }, function (event) {        
+        hoverTimeOut = setTimeout(function() {
+            $("#menuCompte").stop().slideUp("fast");
+        },200);
+    });
+    
+    $('#menuCarrito').hover(function (event) {
+        $('#menuCompte').stop().hide();
     });
 });
 
+/* Carrito de la compra nav*/
 $(document).ready(function () {
-    $('#conectarse, #conectarseMvl').on('click', function(){
+    $('#menuCarrito').hover(function (event) {
+        var hoverTimeOut;
+        clearTimeout(hoverTimeOut);
+        if($('ul#productesComprats li').length > 1){
+            $("#productesComprats").stop().slideDown("fast");
+        }
+    }, function (event) {        
+        hoverTimeOut = setTimeout(function() {
+            $("#productesComprats").stop().slideUp("fast");
+        },200);
+    });
+    $('#menuUser').hover(function (event) {
+        $('#productesComprats').stop().hide();
+    });
+});
+
+/*Abrir menu login*/
+$(document).ready(function () {
+    $('#conectarse, #conectarseMvl, #login').on('click', function(){
         $('#id01').css("display","block");
     });
     $('.close, .cancelbtn').on('click', function(){
-        $('#id01').hide("slow");
+        $('#id01').hide();
     });
 });

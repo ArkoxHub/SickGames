@@ -8,6 +8,7 @@ package com.sick.games.repository.impl;
 import com.sick.games.domain.CodeGame;
 import com.sick.games.domain.Videojoc;
 import com.sick.games.repository.VideojocDAO;
+import java.util.Collections;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -102,6 +103,7 @@ public class VideojocHibernateDAO implements VideojocDAO {
     public List<CodeGame> getGamesCataleg() {
         List<CodeGame> codeGames;
         codeGames = getSession().createQuery("SELECT v.codi_Joc, v.nom, v.generes, c.oferta, COUNT(v.nom), c.preu FROM Videojoc v, Codi c WHERE v.codi_Joc = c.codi_Joc GROUP BY v.codi_Joc").list();
+        Collections.shuffle(codeGames);
         return codeGames;
     }
 
