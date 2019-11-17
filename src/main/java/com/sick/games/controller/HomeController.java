@@ -5,9 +5,11 @@
  */
 package com.sick.games.controller;
 
+import com.sick.games.service.UsersService;
 import com.sick.games.service.VideojocService;
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,9 @@ public class HomeController {
 
     @Autowired
     VideojocService videojocService;
+    
+    @Autowired 
+    UsersService usersService;
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView homePage(HttpServletRequest request, HttpServletResponse response)
@@ -34,6 +39,13 @@ public class HomeController {
         model.getModelMap().addAttribute("upcoming", videojocService.getGamesUpcoming());
         model.getModelMap().addAttribute("ofertes", videojocService.getGamesByOferta());
         model.getModelMap().addAttribute("preus", videojocService.getGamesByPrice());
+        if (request.getCookies() != null) {
+            for (Cookie cookie : request.getCookies()) {
+                if (cookie.getName().equals("userMail")) {
+                    model.getModelMap().addAttribute("user", usersService.getUserByeMail(cookie.getValue()));
+                }
+            }
+        }
         return model;
     }
 }

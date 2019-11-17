@@ -126,15 +126,18 @@ $(document).ready(function () {
 
 /* Menu login*/
 $(document).ready(function () {
-    $('#test').hover(function (event) {
-        clearTimeout($(this).data('timeout'));
-        $(this).data('timeout', setTimeout(function () {
-            $('.menuCompte').slideDown('fast');
-        }, 100));
+    $('#menuUser').hover(function (event) {
+        $('.menuCompte').stop().slideDown('fast');
     }, function (event) {
-        clearTimeout($(this).data('timeout'));
-        $(this).data('timeout', setTimeout(function () {
-            $('.menuCompte').slideUp('fast');
-        }, 100));
+        $('.menuCompte').stop().slideUp('fast');
+    });
+});
+
+$(document).ready(function () {
+    $('#conectarse, #conectarseMvl').on('click', function(){
+        $('#id01').css("display","block");
+    });
+    $('.close, .cancelbtn').on('click', function(){
+        $('#id01').hide("slow");
     });
 });
