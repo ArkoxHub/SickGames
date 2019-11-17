@@ -17,7 +17,7 @@
         <link href="<c:url value='/resources/css/signIn.css'/>" rel="stylesheet" type="text/css"/>
         <link href="<c:url value='/resources/css/global.css'/>" rel="stylesheet" type="text/css"/>
         <!--WebIcon-->
-        <link rel="icon" href="<c:url value='resources/img/logo_icon.png'/>" alt="Favicon">
+        <link rel="icon" href="<c:url value='../resources/img/logo_icon.png'/>" alt="Favicon">
         <!--FontsGoogle-->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="true">
         <link href="https://fonts.googleapis.com/css?family=Archivo&display=swap" rel="stylesheet">
@@ -41,7 +41,7 @@
                         <div class="col-md-3 register-left">
                             <h3>Benvingut/da a</h3>
                             <img src="<c:url value='/resources/img/logo_sick.png'/>" alt=""/><br/>
-                            <a href="<c:url value='/login'/>" class="btn btn-primary btnRegister">Login</a>
+                            <a id="login" class="btn btn-primary btnRegister">Login</a>
                         </div>
                         <div class="col-md-9 register-right">
                             <div class="tab-content" id="myTabContent">
@@ -78,13 +78,6 @@
                                                     <i class="fa fa-eye icon"></i>
                                                 </div>
                                             </div>
-                                            <div class="form-group" id="confirmarContrasenya">
-                                                <label for="contrasenyaConfirm">Confirma la contrasenya</label>
-                                                <div class="input-container" id="checkThis">
-                                                    <i class="fa fa-key icon"></i>
-                                                    <input type="password" id="contrasenyaConfirm" maxlength="20" class="input-field" required="true"/>
-                                                </div>
-                                            </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -108,10 +101,16 @@
                                                     <form:input path="direccio" type="text" id="direccio" class="input-field" required="true"/>
                                                 </div>
                                             </div>
+                                            <div class="form-group" id="confirmarContrasenya">
+                                                <label for="contrasenyaConfirm">Confirma la contrasenya</label>
+                                                <div class="input-container" id="checkThis">
+                                                    <i class="fa fa-key icon"></i>
+                                                    <input type="password" id="contrasenyaConfirm" maxlength="20" class="input-field" required="true"/>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <input type="submit" class="btnRegister"  value="Registrarse"/>
-                                        </div>
+                                    <div class="form-group" id="submitButton">
+                                        <input type="submit" class="btn btn-primary btnRegister"  value="Registrarse"/>
                                     </div>
                                 </div>
                             </div>

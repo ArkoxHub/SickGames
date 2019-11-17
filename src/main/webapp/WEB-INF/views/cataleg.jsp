@@ -31,12 +31,12 @@
     </head>
 
     <body>
-<jsp:include page="/WEB-INF/resources/headerAndFooter/header.jsp"></jsp:include>
+        <jsp:include page="/WEB-INF/resources/headerAndFooter/header.jsp"></jsp:include>
 
-        <!--Secció body; Jocs més venuts, valorats, millors ofertes, streams...-->
+            <!--Secció body; Jocs més venuts, valorats, millors ofertes, streams...-->
 
-        <div class="text-center center" style="margin-top:10px;">
-            <a class="btn btn-primary" href="<c:url value="/admin/addGame"/>">Afegir videojoc</a>
+            <div class="text-center center" style="margin-top:10px;">
+                <a class="btn btn-primary" href="<c:url value="/admin/addGame"/>">Afegir videojoc</a>
         </div>
         <section class="section-body">
             <div class="container-cataleg">
@@ -131,31 +131,31 @@
                                     <div class="row">
                                         <%
                                             String[] llistaGeneres = {
-                                                "FPS", "RPG", "Cooperació", "Deportiu", "Multijugador", 
+                                                "FPS", "RPG", "Cooperació", "Deportiu", "Multijugador",
                                                 "Construcció", "Aventura", "Survival", "Gestió", "Estratègia",
                                                 "SinglePlayer", "Acció", "Simulador", "MMO", "Indies",
                                                 "Conducció", "Plataforma", "Lluita"
                                             };
-                                            pageContext.setAttribute("llistaGeneres",llistaGeneres);
+                                            pageContext.setAttribute("llistaGeneres", llistaGeneres);
                                         %>
                                         <div class="col-md-12 checkboxDiv">
                                             <div id="formLeft">
-                                            <label for="generesTots">Tots</label>
+                                                <label for="generesTots">Tots</label>
                                             </div>
                                             <div id="formRight">
-                                            <input type="checkbox" class="generesTots" id="generesTots" name="generesTots" value="on" checked><br>
+                                                <input type="checkbox" class="generesTots" id="generesTots" name="generesTots" value="on" checked><br>
                                             </div>
                                         </div>
                                         <hr>
                                         <c:forEach var="generes" items="${llistaGeneres}">
-                                        <div class="col-md-12 checkboxDiv">
-                                            <div id="formLeft">
-                                            <label for="${generes}">${generes}</label>
+                                            <div class="col-md-12 checkboxDiv">
+                                                <div id="formLeft">
+                                                    <label for="${generes}">${generes}</label>
+                                                </div>
+                                                <div id="formRight">
+                                                    <input type="checkbox" class="checkboxGenere" data-target="${generes}" id="${generes}" name="gen"><br>
+                                                </div>
                                             </div>
-                                            <div id="formRight">
-                                            <input type="checkbox" class="checkboxGenere" data-target="${generes}" id="${generes}" name="gen"><br>
-                                            </div>
-                                        </div>
                                         </c:forEach>
                                     </div>
                                 </form>
@@ -167,16 +167,19 @@
                             <div class="row">
                                 <c:forEach var="joc" items="${videojocs}" begin="0" end="29">
                                     <div class="column <c:forTokens var="token" items="${joc[2]}" delims=","> ${token} </c:forTokens>">
-                                        <a href="<c:url value="/product?id=${joc[0]}"/>" id="${joc[1]}"><img src="<c:url value="/resources/img/portades/${joc[1]}.jpg"/>" title="${joc[1]}" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis, ${joc[1]}">
+                                        <a href="<c:url value="/product?id=${joc[0]}"/>" id="${joc[1]}">
+                                            <div id="imgOverflow">
+                                                <img src="<c:url value="/resources/img/portades/${joc[1]}.jpg"/>" title="${joc[1]}" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis, ${joc[1]}">
+                                            </div>
                                             <div class="infoJoc">
                                                 <span class="preu"><i class="fa fa-arrow-down"></i> ${joc[3]}%</span>
                                                 <c:forTokens var="g" items="${joc[2]}" delims=", "> 
                                                     <div class="genere${g}"><span>${g}</span></div>
-                                                </c:forTokens>
+                                                        </c:forTokens>
                                             </div>
                                         </a>
                                         <a href="<c:url value="product?id=${joc[0]}"/>" class="producteAComprar" id="overwatch">
-                                           <fmt:formatNumber value="${joc[5]}" currencySymbol="€" type="currency" pattern="###,###.00 ¤"/>- Comprar
+                                            <fmt:formatNumber value="${joc[5]}" currencySymbol="€" type="currency" pattern="###,###.00 ¤"/>- Comprar
                                         </a>
                                     </div>
                                 </c:forEach>
@@ -199,5 +202,5 @@
                 </ul>
             </nav>
         </section>
-        <!--Fi secciÃ³ body-->
-<jsp:include page="/WEB-INF/resources/headerAndFooter/footer.jsp"></jsp:include>
+        <!--Fi secció body-->
+        <jsp:include page="/WEB-INF/resources/headerAndFooter/footer.jsp"></jsp:include>

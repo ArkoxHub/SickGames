@@ -132,6 +132,10 @@ html{
 #container-top{
     padding-bottom: 4px;
 }
+#container-top .row{
+    max-width: 100%;
+}
+
 .section-top{
     background: black;
     -webkit-box-shadow: 0px 5px 5px 0px rgba(69,124,191,0.63);
@@ -139,17 +143,6 @@ html{
     box-shadow: 0px 5px 5px 0px rgba(69,124,191,0.63);
     padding-top:10px;
 }
-
-@media (max-width:996px){
-    .soporte{
-        display: none;
-    }
-    
-    #suportCol{
-        max-width: 10%;
-    }
-}
-
 .soporteMvl{
     text-decoration: none;
     color: white;
@@ -162,6 +155,9 @@ html{
     color: white;
 }
 @media (max-width:996px){
+    .soporte{
+        display: none;
+    }
     .soporteMvl{
         display: inline;
     }
@@ -169,12 +165,15 @@ html{
 #cuenta{
     margin-bottom:2px;
 }
-
-.menuCompte{
+#menuUser, #menuCarrito{
+    display: inline-block;
+}
+.menuCompte {
     display: none;
+    overflow: auto;  
     position: absolute;
     z-index: 99999;
-    width: 120px;
+    min-width: 120px;
     background-color: #0A0909;
     padding-left: 5px;
     list-style-type: none;
@@ -182,12 +181,43 @@ html{
     border: 1px solid #4e77d3;
 
 }
+.menuCompte li, .productesComprats li{
+    margin-top:5px;
+    color: white;
+}
+.menuCompte a:hover, .productesComprats a:hover{
+    text-decoration: none;
+    color: white;
+    text-shadow: 0 0 15px rgba(255,255,255,.5), 0 0 10px rgba(255,255,255,.5), 0px -1px 4px rgba(255,255,255,0);
+}
+.productesComprats {
+    display: none;
+    overflow: auto;  
+    z-index: 99999;
+    background-color: #0A0909;
+    padding-left: 5px;
+    border: 1px solid #4e77d3;
+    list-style-type: none;
+    position: absolute;
+    width: 360px;
+    display: none;
+    margin-left: -310px;
+}
+.productesComprats img{
+    width: 50px;
+}
+.menuCompte li:hover{
+    -webkit-box-shadow: 8px 0px 0px 0px rgba(78,118,211,1);
+    -moz-box-shadow: 8px 0px 0px 0px rgba(78,118,211,1);
+    box-shadow: 8px 0px 0px 0px rgba(78,118,211,1);
+    margin-left: 5px;
+}
 @media (max-width:996px){
-    .menuCompte{
+    .menuCompte, .productesComprats{
         display: none;
         position: absolute;
         z-index: 99999;
-        width: 120px;
+        min-width: 120px;
         background-color: #0A0909;
         padding-left: 5px;
         list-style-type: none;
@@ -195,22 +225,9 @@ html{
         border: 1px solid #4e77d3;
     }
 }
-.menuCompte li{
-    margin-top:5px;
-    color: white;
-}
-.menuCompte a:hover{
-    text-decoration: none;
-    color: white;
-    text-shadow: 0 0 15px rgba(255,255,255,.5), 0 0 10px rgba(255,255,255,.5), 0px -1px 4px rgba(255,255,255,0);
-    
-    
-}
-.menuCompte li:hover{
-    -webkit-box-shadow: 8px 0px 0px 0px rgba(78,118,211,1);
-    -moz-box-shadow: 8px 0px 0px 0px rgba(78,118,211,1);
-    box-shadow: 8px 0px 0px 0px rgba(78,118,211,1);
-    margin-left: 5px;
+.productesComprats hr{
+    border-top: 1px solid white;
+    margin-left: -5px;
 }
 /*FOOTER*/
 .section-footer{
@@ -232,8 +249,7 @@ html{
     padding-left:2px;
     background-color: rgba(0, 0, 0, 0.604);
     font-size: 19px;
-    margin-top: 0.1em;
-    right: 0.1em;
+    right: 0;
     pointer-events: none;
     position: absolute;
     z-index: 99;
@@ -249,16 +265,21 @@ html{
 }
 #filaCatalogo .column img{
     width: 100%;
-    transition: 0.2s;
-    border:2px solid transparent;
+    transition: 0.5s;
 }
 #filaCatalogo .column img:hover{
-    -webkit-box-shadow: 0px 0px 20px 3px rgba(69,124,191,0.63);
     -moz-box-shadow: 0px 0px 20px 3px rgba(69,124,191,0.63);
+    transform: scale(1.09);
+}
+#imgOverflow{
+    overflow: hidden;
+    opacity: 0.8;
+}
+#imgOverflow:hover{
+    -webkit-box-shadow: 0px 0px 20px 3px rgba(69,124,191,0.63);
     box-shadow: 0px 0px 20px 3px rgba(69,124,191,0.63);
-    border:2px solid white;
-    transform: scale(0.98);
-    
+    opacity: 1;
+    /*border:2px solid white;*/
 }
 #filaCatalogo .column .producteAComprar{
     text-align: center;
@@ -311,7 +332,6 @@ html{
 }
 
 #stream{
-    background-color: #4596F0;
     text-decoration: none;
     color: white !important;
     margin-left:auto;
@@ -347,8 +367,23 @@ html{
     text-decoration: none;
     color: white;
 }
+#cerrarStream{
+    height: 23px;
+    background: #4596f0;
+    color: white;
+}
+.fa-chevron-down{
+    transition: 0.5s;
+}
+#cerrarStream:hover .fa-chevron-down{
+    transform: scale(2);
+    transform: rotate(180deg);
+}
 /***************MENU LOGIN********************/
 /* Full-width input fields */
+.fa-shopping-cart{
+    font-size:21px;
+}
 .inputLogin{
     width: 100%;
     padding: 12px 20px;
@@ -396,13 +431,11 @@ html{
     width: 40%;
 }
 
-.container {
-    padding: 16px;
-}
 
 span.psw {
     float: right;
     padding-top: 16px;
+    margin-bottom: 20px;
 }
 
 /* The Modal (background) */

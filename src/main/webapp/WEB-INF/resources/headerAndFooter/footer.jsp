@@ -5,7 +5,7 @@
         <!--Secció footer-->
         <section class="section-footer">
             <!-- Footer -->
-            <div class="container">
+            <div class="container" id="footer">
                 <footer class="page-footer font-small blue pt-4">
                     <!-- Footer Links -->
                     <div class="container-fluid text-center text-md-left">
