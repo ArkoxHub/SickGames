@@ -126,6 +126,13 @@ public class UsersHibernateDAO implements UsersDAO {
     }
 
     @Override
+    public User getUserByNick(String nickname) {
+        User user = (User) getSession().createQuery("FROM User user WHERE nickname = :nick").setParameter("nick", nickname).uniqueResult();
+        logger.info("Usuari obtingut correctament" + user);
+        return user;
+    }
+
+    @Override
     public List<User> getAllUsers() {
         return (List<User>) getSession().createQuery("FROM Users").getResultList();
     }

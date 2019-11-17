@@ -25,10 +25,10 @@
                         <a href="#" class="soporteMvl" ><i class="fa fa-comment fa-lg" aria-hidden="true"></i></a>
                     </div>
                     <c:choose>
-                        <c:when test="${not empty user}">
+                        <c:when test="${not empty cookie.userMail.name}">
                             <div class="col-3">
                                 <div id="menuUser">
-                                    <a href="#" class="soporte" id="compte">Hola ${user.nom}</a>
+                                    <a href="#" class="soporte" id="compte">Hola ${cookie.userNick.value}</a>
                                     <a href="#" class="soporteMvl" id="compteMvl"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
                                     <ul  class="menuCompte">
                                         <a href="<c:url value='/user'/>">
@@ -40,7 +40,7 @@
                                         <a href="<c:url value='/user'/>">
                                             <li>Llista desitjos</li>
                                         </a>
-                                        <a href="<c:url value='/user'/>">
+                                        <a href="<c:url value='/user/logoff'/>">
                                             <li>Tancar sessió</li>
                                         </a>
                                     </ul>
@@ -72,20 +72,20 @@
         </div>
     </nav>
     <div id="id01" class="modal">
-        <form class="modal-content animate" action="#" method="post">
+        <form class="modal-content animate" action="user/login" method="post">
             <div class="imgcontainer">
                 <span class="close" title="Tancar finestra">&times;</span>
                 <img title="Logo Web" src="<c:url value='/resources/img/logo_sick.png'/>" alt="Avatar" class="avatar">
             </div>
 
             <div class="container">
-                <label for="uname"><b>Username</b></label>
-                <input title="Introdueix l'usuari" type="text" placeholder="Nom de l'usuari" name="uname" class="inputLogin" required>
+                    <label for="nickname"><b>Nick</b></label>
+                    <input title="Introdueix l'usuari" type="text" placeholder="Nom de l'usuari" name="nickname" class="inputLogin" required>
 
-                <label for="psw"><b>Password</b></label>
-                <input title="Introdueix la contrasenya" type="password" placeholder="Contrasenya" name="psw" class="inputLogin" required>
-
-                <button title="Fer login" type="submit" class="buttonLogin">Login</button>
+                    <label for="psw"><b>Contrasenya</b></label>
+                    <input title="Introdueix la contrasenya" type="password" placeholder="Introdueix contrasenya" name="password" class="inputLogin" required>
+                    
+                    <input title="Fer login" type="submit" class="buttonLogin" value="Login">
             </div>
 
             <div class="container">

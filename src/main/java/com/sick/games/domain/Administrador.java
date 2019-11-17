@@ -36,8 +36,8 @@ public class Administrador extends User {
     public Administrador() {
     }
    
-    public Administrador(int id_Administrador, float sou, String rol, int id_Usuari, String nom, String cognom1, String cognom2, Date data_Alta, String direccio, String email, String contrasenya, int telefon) {
-        super(id_Usuari, nom, cognom1, cognom2, data_Alta, direccio, email, contrasenya, telefon);
+    public Administrador(int id_Administrador, float sou, String rol, int id_Usuari, String nom, String cognoms, String nickname, Date data_Alta, String direccio, String email, String contrasenya, int telefon) {
+        super(id_Usuari, nom, cognoms, nickname, data_Alta, direccio, email, contrasenya, telefon);
         this.id_Administrador = id_Administrador;
         this.sou = sou;
         this.rol = rol;

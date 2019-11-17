@@ -32,8 +32,8 @@ public class Partner extends User {
     public Partner() {
     }
 
-    public Partner(int id_Partner, String userName, float sou, int id_Usuari, String nom, String cognom1, String cognom2, Date data_Alta, String direccio, String email, String contrasenya, int telefon) {
-        super(id_Usuari, nom, cognom1, cognom2, data_Alta, direccio, email, contrasenya, telefon);
+    public Partner(int id_Partner, String userName, float sou, int id_Usuari, String nom, String cognoms, String nickname, Date data_Alta, String direccio, String email, String contrasenya, int telefon) {
+        super(id_Usuari, nom, cognoms, nickname, data_Alta, direccio, email, contrasenya, telefon);
         this.id_Partner = id_Partner;
         this.userName = userName;
         this.sou = sou;

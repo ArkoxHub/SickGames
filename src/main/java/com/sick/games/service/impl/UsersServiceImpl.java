@@ -104,6 +104,11 @@ public class UsersServiceImpl implements UsersService {
     public Partner getPartnerByEmail(String email) {
         return usersDAO.getPartnerByEmail(email);
     }
+    
+    @Override
+    public User getUserByNick(String nickname) {
+        return usersDAO.getUserByNick(nickname);
+    }
 
     @Override
     public List<User> getAllUsers() {

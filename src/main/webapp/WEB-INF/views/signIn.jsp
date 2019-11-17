@@ -57,17 +57,17 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="cognom1">Primer Cognom</label>
+                                                <label for="cognoms">Cognoms</label>
                                                 <div class="input-container">
                                                     <i class="fa fa-user icon"></i>
-                                                    <form:input path="cognom1" type="text" id="cognom1" class="input-field" required="true"/>
+                                                    <form:input path="cognoms" type="text" id="cognoms" class="input-field" required="true"/>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="cognom2">Segon Cognom</label>
+                                                <label for="nickname">Nickname</label>
                                                 <div class="input-container">
                                                     <i class="fa fa-user icon"></i>
-                                                    <form:input path="cognom2" type="text" id="cognom2" class="input-field" required="true"/>
+                                                    <form:input path="nickname" type="text" id="nickname" class="input-field" required="true"/>
                                                 </div>
                                             </div>
                                             <div class="form-group" id="pass">
