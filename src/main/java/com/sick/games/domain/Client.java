@@ -33,8 +33,8 @@ public class Client extends User {
     public Client() {
     }
 
-    public Client(int id_Client, int punts, String compte_Bancari, int id_Usuari, String nom, String cognom1, String cognom2, Date data_Alta, String direccio, String email, String contrasenya, int telefon) {
-        super(id_Usuari, nom, cognom1, cognom2, data_Alta, direccio, email, contrasenya, telefon);
+    public Client(int id_Client, int punts, String compte_Bancari, int id_Usuari, String nom, String cognoms, String nickname, Date data_Alta, String direccio, String email, String contrasenya, int telefon) {
+        super(id_Usuari, nom, cognoms, nickname, data_Alta, direccio, email, contrasenya, telefon);
         this.id_Client = id_Client;
         this.punts = punts;
         this.compte_Bancari = compte_Bancari;

@@ -39,13 +39,13 @@ public class HomeController {
         model.getModelMap().addAttribute("upcoming", videojocService.getGamesUpcoming());
         model.getModelMap().addAttribute("ofertes", videojocService.getGamesByOferta());
         model.getModelMap().addAttribute("preus", videojocService.getGamesByPrice());
-        if (request.getCookies() != null) {
-            for (Cookie cookie : request.getCookies()) {
-                if (cookie.getName().equals("userMail")) {
-                    model.getModelMap().addAttribute("user", usersService.getUserByeMail(cookie.getValue()));
-                }
-            }
-        }
+//        if (request.getCookies() != null) {
+//            for (Cookie cookie : request.getCookies()) {
+//                if (cookie.getName().equals("userMail")) {
+//                    model.getModelMap().addAttribute("user", usersService.getUserByeMail(cookie.getValue()));
+//                }
+//            }
+//        }
         return model;
     }
 }

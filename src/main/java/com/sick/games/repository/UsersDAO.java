@@ -65,6 +65,10 @@ public interface UsersDAO {
     
     public Partner getPartnerByEmail(String email); 
     
+    // GET users / admins / clients / partners by nickname
+    
+    public User getUserByNick(String nickname);
+    
     // GET ALL USERS
     public List<User> getAllUsers();
     

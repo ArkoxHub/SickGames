@@ -48,6 +48,8 @@ public interface UsersService {
     public Client getClientByEmail(String emial);
 
     public Partner getPartnerByEmail(String email);
+    
+    public User getUserByNick(String nickname);
 
     public List<User> getAllUsers();
 }

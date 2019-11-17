@@ -41,13 +41,13 @@ public class User implements Serializable {
     private String nom;
     
     @NotNull
-    @Size(max = 20)
-    @Column(name = "cognom1")
-    private String cognom1;
+    @Size(max = 50)
+    @Column(name = "cognoms")
+    private String cognoms;
     
     @Size(max = 20)
-    @Column(name = "cognom2")
-    private String cognom2;
+    @Column(name = "nickname")
+    private String nickname;
     
     @NotNull
     @Column(name = "data_Alta")
@@ -73,11 +73,11 @@ public class User implements Serializable {
         
     }
 
-    public User(int id_Usuari, String nom, String cognom1, String cognom2, Date data_Alta, String direccio, String email, String contrasenya, int telefon) {
+    public User(int id_Usuari, String nom, String cognoms, String nickname, Date data_Alta, String direccio, String email, String contrasenya, int telefon) {
         this.id_Usuari = id_Usuari;
         this.nom = nom;
-        this.cognom1 = cognom1;
-        this.cognom2 = cognom2;
+        this.cognoms = cognoms;
+        this.nickname = nickname;
         this.data_Alta = data_Alta;
         this.direccio = direccio;
         this.email = email;
@@ -101,20 +101,20 @@ public class User implements Serializable {
         this.nom = nom;
     }
 
-    public String getCognom1() {
-        return cognom1;
+    public String getCognoms() {
+        return cognoms;
     }
 
-    public void setCognom1(String cognom1) {
-        this.cognom1 = cognom1;
+    public void setCognoms(String cognoms) {
+        this.cognoms = cognoms;
     }
 
-    public String getCognom2() {
-        return cognom2;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setCognom2(String cognom2) {
-        this.cognom2 = cognom2;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public Date getData_Alta() {
