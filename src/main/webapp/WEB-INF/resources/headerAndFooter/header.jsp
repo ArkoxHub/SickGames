@@ -5,6 +5,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!--Secció top: Buscador, conta, logo....--> 
+<div id="page-container">
 <section class="section-top">
     <a href="<c:url value='/'/>"><img src="<c:url value='/resources/img/logo_icon.png'/>" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis" class="logoMvl"></a>
     <nav class="container" id="container-top">
@@ -21,8 +22,8 @@
             <div class="col-5" id="colbuscador">
                 <div class="d-flex flex-row" id="cuenta">
                     <div class="col-4" id="suportCol">
-                        <a href="#" class="soporte" >Suport 24/7</a>
-                        <a href="#" class="soporteMvl" ><i class="fa fa-comment fa-lg" aria-hidden="true"></i></a>
+                        <a href="<c:url value='/suport'/>" class="soporte" >Suport 24/7</a>
+                        <a href="<c:url value='/suport'/>" class="soporteMvl" ><i class="fa fa-comment fa-lg" aria-hidden="true"></i></a>
                     </div>
                     <c:choose>
                         <c:when test="${not empty cookie.userMail.name}">

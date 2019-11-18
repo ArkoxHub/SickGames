@@ -96,6 +96,7 @@
 
                 </footer>
             </div>
+        </div>
             <!-- Footer -->   
         </section>
         <!-- Load the Twitch embed script -->
