@@ -5,10 +5,13 @@
  */
 package com.sick.games.controller;
 
+import com.sick.games.domain.User;
 import com.sick.games.service.CodiService;
+import com.sick.games.service.UsersService;
 import com.sick.games.service.VideojocService;
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +34,9 @@ public class ProductController {
 
     @Autowired
     CodiService codiService;
+    
+    @Autowired
+    UsersService usersService;
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView product(@RequestParam(name = "id") String codi, HttpServletRequest request, HttpServletResponse response)
@@ -40,12 +46,27 @@ public class ProductController {
         model.getModelMap().addAttribute("joc", videojocService.getGameByCode(codi_Joc));
         model.getModelMap().addAttribute("codi", codiService.getNextCodeByCodiJoc(codi_Joc));
         model.getModelMap().addAttribute("stock", codiService.getTotalCodisByJoc(codi_Joc));
+
+        User user = null;
+        if (request.getCookies() != null) {
+            for (Cookie cookie : request.getCookies()) {
+                if (cookie.getName().equals("userMail")) {
+                    try {
+                        user = usersService.getUserByeMail(cookie.getValue());
+                        model.getModelMap().addAttribute("user", user);
+                    } catch (NullPointerException e) {
+                        System.out.println("No s'ha trobat usuari equivalent a la base de dades actual");
+                    }
+                }
+            }
+        }
+
         return model;
     }
 
-    @RequestMapping(value = "/noStock" ,method = RequestMethod.GET)
-    public ModelAndView videoJocInfo(@RequestParam(name = "id") String codi, 
-        HttpServletRequest request, HttpServletResponse response)
+    @RequestMapping(value = "/noStock", method = RequestMethod.GET)
+    public ModelAndView videoJocInfo(@RequestParam(name = "id") String codi,
+            HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int codi_Joc = Integer.parseInt(codi);
         ModelAndView model = new ModelAndView("productNoStock");

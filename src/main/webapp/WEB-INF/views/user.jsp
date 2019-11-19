@@ -30,12 +30,12 @@
     </head>
 
     <body>
-    <jsp:include page="/WEB-INF/resources/headerAndFooter/header.jsp"></jsp:include>
-        <section class="section-body">
-            <div class="container">
-                <div class="row"  id="jocsPerfil">
-                    <div class="col-md-2 text-center center">
-                        <img id="fotoPerfil"  src="<c:url value="/resources/img/fotosPerfil/user.jpg"/>">
+        <jsp:include page="/WEB-INF/resources/headerAndFooter/header.jsp"></jsp:include>
+            <section class="section-body">
+                <div class="container">
+                    <div class="row"  id="jocsPerfil">
+                        <div class="col-md-2 text-center center">
+                            <img id="fotoPerfil"  src="<c:url value="/resources/img/fotosPerfil/user.jpg"/>">
                         <i class="fas fa-camera upload-button"></i>
                         <input class="file-upload" type="file" accept="image/*"/>
                     </div>
@@ -43,10 +43,11 @@
                         <h2>${user.nom}</h2>
                         <p>Carrito de la compra: <a class="btn btn-primary" id="carritoShow">Mostrar productes</a> <a class="btn btn-primary" id="carritoHide">Ocultar productes</a></p>
                         <ul id="llistaProductes">
-                            <li>Overwatch - 24€</li>
-                            <li>Overwatch - 25€</li>
-                            <li>Overwatch - 25€</li>
+                            <c:forEach var="joc" items="${videjocs}">
+                                <li>${joc.nom}</li>
+                            </c:forEach>
                         </ul>
+
                         <p>Preu total a pagar: 108€</p><a class="btn btn-primary" id="realitzarPagament">Pagar</a>
                     </div>
                 </div>
@@ -90,4 +91,4 @@
                 </div>
             </div>            
         </section>
-<jsp:include page="/WEB-INF/resources/headerAndFooter/footer.jsp"></jsp:include>
+        <jsp:include page="/WEB-INF/resources/headerAndFooter/footer.jsp"></jsp:include>

@@ -5,10 +5,16 @@
  */
 package com.sick.games.controller;
 
+import com.sick.games.domain.Codi;
 import com.sick.games.domain.User;
+import com.sick.games.domain.Videojoc;
+import com.sick.games.service.CodiService;
 import com.sick.games.service.UsersService;
+import com.sick.games.service.VideojocService;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -32,10 +38,45 @@ public class UserController {
     @Autowired
     UsersService usersService;
 
+    @Autowired
+    VideojocService videojocSercice;
+
+    @Autowired
+    CodiService codiService;
+
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView userMainPage(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ModelAndView model = new ModelAndView("user");
+
+        // Obtenim l'objecte Usuari de les cookies | Ha fet el login abans d'entrar aquí!
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("userNick")) {
+
+                // Add user to Model Response
+                User user = usersService.getUserByNick(cookie.getValue());
+                model.getModelMap().addAttribute("user", user);
+                
+                System.out.println("HOLAAAAAAAAAAAAAAAAAAAAA");
+                for (Videojoc joc : user.getJocs()) {
+                    System.out.println("GAMEEEEEE " + joc.getNom());
+                }
+
+                // Add Games and their respective code to Model Response
+                if (user.getJocs() != null) {
+
+                    List<Codi> codis = new ArrayList<>();
+                    for (Videojoc joc : user.getJocs()) {
+                        codis.add(codiService.getNextCodeByCodiJoc(joc.getCodi_Joc()));
+                    }
+
+                    model.getModelMap().addAttribute("videojocs", user.getJocs());
+                    model.getModelMap().addAttribute("codis", codis);
+                }
+            }
+        }
+
         return model;
     }
 
@@ -118,14 +159,14 @@ public class UserController {
     }
 
     /**
-     * 
+     *
      * @param userNick
      * @param userPwd
      * @param request
      * @param response
      * @return
      * @throws ServletException
-     * @throws IOException 
+     * @throws IOException
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String userLogin(@RequestParam(name = "nickname") String userNick, @RequestParam(name = "password") String userPwd,
@@ -159,5 +200,31 @@ public class UserController {
         }
 
         return "redirect:/";
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public String addGameCar(@RequestParam(name = "jocId") String jocId, @RequestParam(name = "nickname") String nickname,
+            HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        try {
+            User user = usersService.getUserByNick(nickname);
+            
+            int codiJoc = Integer.parseInt(jocId);
+            List<Videojoc> jocs = new ArrayList();
+
+            jocs = user.getJocs();
+            jocs.add(videojocSercice.getGameByCode(codiJoc));
+            user.setJocs(jocs);
+
+            for (Videojoc joc : user.getJocs()) {
+                System.out.println("JOOOOOC " + joc.getNom());
+            }
+
+        } catch (NullPointerException e) {
+            System.out.println("Aquest usuari no està a la base de dades");
+        }
+
+        return "redirect:/user";
     }
 }

@@ -102,9 +102,18 @@
                         </div>
                         <div class="row" id="comprarJoc">
                             <div class="column-12 text-center">
-                                <a href="#" class="producteAComprar" id="overwatch">
-                                    Comprar
-                                </a>
+                                <c:choose>
+                                    <c:when test="${not empty user}">
+                                        <a href="user/add?jocId=${joc.codi_Joc}&nickname=${user.nickname}" class="producteAComprar" id="${joc.nom}">
+                                            Comprar
+                                        </a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <a href="#" class="producteAComprar" id="NoLogin"><!--S'ha de posar que si es fa click aquí, surti un avís de que ha de fer login o donar-se d'alta-->
+                                            Comprar
+                                        </a>
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                             <div class="column-12 text-left" id="PVP">
                                 Preu d'origen: <fmt:formatNumber value="${joc.pvp}" currencySymbol="€" type="currency" pattern="###,###.00 ¤"/>
@@ -160,6 +169,5 @@
                     <div class="row" id="streamView"></div><!--Quan fem click a un stream, podrem veure el video dintre d'aquest div-->
                 </div>
         </section>
-        <!--Fi secciÃ³ body-->
-
+        <!--Fi secció body-->
         <jsp:include page="/WEB-INF/resources/headerAndFooter/footer.jsp"></jsp:include>

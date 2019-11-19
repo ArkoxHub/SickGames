@@ -25,10 +25,10 @@
                         <a href="#" class="soporteMvl" ><i class="fa fa-comment fa-lg" aria-hidden="true"></i></a>
                     </div>
                     <c:choose>
-                        <c:when test="${not empty cookie.userMail.name}">
+                        <c:when test="${not empty user}">
                             <div class="col-3">
                                 <div id="menuUser">
-                                    <a href="#" class="soporte" id="compte">Hola ${cookie.userNick.value}</a>
+                                    <a href="#" class="soporte" id="compte">Hola ${user.nickname}</a>
                                     <a href="#" class="soporteMvl" id="compteMvl"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
                                     <ul id="menuCompte" class="menuCompte">
                                         <a href="<c:url value='/user'/>">
