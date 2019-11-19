@@ -41,7 +41,7 @@
         <section class="section-body">
             <div class="container-cataleg">
                 <div class="row" id="filaCatalogo">
-                    <div class="col-md-2 menuPlataforma">
+                    <div class="col-md-3 menuPlataforma">
                         <div class="row">
                             <div class="col-md-12" id="marginMenuCalaleg"  style="display:none;">
                                 <button class="btn btn-primary" id="escollirPlataforma" href="">Plataforma</button>
@@ -162,7 +162,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-9">
                         <div class="container-fluid">
                             <div class="row">
                                 <c:forEach var="joc" items="${videojocs}" begin="0" end="29">

@@ -38,7 +38,7 @@
         </div>
 
         <section class="section-body">
-            <div class="container">
+            <div class="container-cataleg">
                 <!--PRECOMPRA-->
                 <p class="tituloFilas">Próximes novetats</p>
                 <div class="row" id="filaCatalogo">

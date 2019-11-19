@@ -9,19 +9,23 @@
 <section class="section-top">
     <a href="<c:url value='/'/>"><img src="<c:url value='/resources/img/logo_icon.png'/>" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis" class="logoMvl"></a>
     <nav class="container" id="container-top">
-        <div class="d-flex flex-row">
-            <div class="col-2">
-                <a href="<c:url value='/'/>"><img src="<c:url value='/resources/img/logo_sick.png'/>" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis" class="logo"></a>
+        <div class="row">
+            <div class="col-5">
+                <div class="row">
+                    <div class="col-12" id="colbuscador" style="display:inline-flex">
+                        <div class="col-6" id="showHideLogo">
+                            <a href="<c:url value='/'/>"><img src="<c:url value='/resources/img/logo_sick.png'/>" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis" class="logo"></a>
+                        </div>
+                        <form action="/product" form="GET">
+                            <input autocomplete="off"  class="buscador" type="text" placeholder=" Cerca" name="search">
+                            <button class="botonBuscador" type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="col-5" id="colbuscador">
-                <form action="/product" form="GET">
-                    <input autocomplete="off"  class="buscador" type="text" placeholder=" Cerca" name="search">
-                    <button class="botonBuscador" type="submit"><i class="fa fa-search"></i></button>
-                </form>
-            </div>
-            <div class="col-5" id="colbuscador">
+            <div class="col-7" id="colbuscador">
                 <div class="d-flex flex-row" id="cuenta">
-                    <div class="col-4" id="suportCol">
+                    <div class="col-3" id="suportCol">
                         <a href="<c:url value='/suport'/>" class="soporte" >Suport 24/7</a>
                         <a href="<c:url value='/suport'/>" class="soporteMvl" ><i class="fa fa-comment fa-lg" aria-hidden="true"></i></a>
                     </div>
@@ -47,7 +51,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-1" id="menuCarrito">            
+                            <div class="col-3" id="menuCarrito">            
                                 <a href="#"><i class="fas fa-shopping-cart"></i></a><!--Redirect a una pagina para comprar y pagar?-->
                                 <ul id="productesComprats" class="productesComprats">
                                     <li class="cesta">
@@ -69,7 +73,7 @@
                                     <!--También iria a la pagina para comprar y pagar-->
                                     <hr>
                                     <a href="#">
-                                        <li>Comprar = 999€</li>
+                                        <li>Realitzar la compra = 999€</li>
                                     </a>
                                 </ul>
                             </div>
@@ -81,7 +85,7 @@
                                     <a href="#" class="soporteMvl" id="conectarseMvl">Login</a>
                                 </div>
                             </div> 
-                            <div class="col-4">
+                            <div class="col-3">
                                 <div id="menuLogin">
                                     <a href="<c:url value='/user/signIn'/>" class="soporte" id="nouCompte">Nou Usuari</a>
                                     <a href="<c:url value='/user/signIn'/>" class="soporteMvl" id="compteMvl"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
@@ -89,7 +93,7 @@
                             </div>  
                         </c:otherwise>
                     </c:choose>
-                    <div class="col-1">
+                    <div class="col-3">
                         <a href="#" class="darkMode"><i class="fa fa-moon fa-lg" aria-hidden="true"></i></a>
                         <a href="#" class="lightMode"><i class="fa fa-sun fa-lg" aria-hidden="true"></i></a>
                     </div>

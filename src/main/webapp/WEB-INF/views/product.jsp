@@ -102,7 +102,7 @@
                         </div>
                         <div class="row" id="comprarJoc">
                             <div class="column-12 text-center">
-                                <a href="#" class="producteAComprar" id="overwatch">
+                                <a href="#" class="productToBuy" id="overwatch">
                                     Comprar
                                 </a>
                             </div>

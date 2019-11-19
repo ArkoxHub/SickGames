@@ -3,7 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+/*Funcio cambiar fons random */ 
+$(document).ready(function () {
+    var img = 1 + Math.floor(Math.random() * 9);
+    $("body").css("background-image", "url('../SickGames/resources/img/backgrounds/"+img+".png')");
+    /*Aixo esta així perque per alguna rao ens funciona diferent*/
+    if ($('body').css('background-image') == 'none') {
+        $("body").css("background-image", "url('../sickgames/resources/img/backgrounds/"+img+".png')");
+    }
+});
 //Funció per omplir streams
 function rellenarStreams(datosStream){
     for (var i = 0; i < datosStream.data.length; i++) {
@@ -44,7 +52,7 @@ function rellenarStreams(datosStream){
             $("#streamView").slideDown("slow");
             
             $('html, body').animate({
-                scrollTop: $("#filaStreams").offset().top
+                scrollTop: $($(this).attr('href')).offset().top
             }, 700);     
             
             $("#cerrar").click(function () {
