@@ -3,7 +3,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<!--Cookies div fixed-->
+<div class="cookiesAccept">
+    <div class="container-cataleg">
+        <h3 id="titleCookie">La teva privacitat és important</h3>
+        <p id="textCookie">La teva informació personal es molt sensible, a SickGames les cookies només 
+            seran utilitzades implicitament per millorar la pàgina y mai serà venguda
+            a tercers ni utilitzada per fins publicitaris.
+        </p>
+        <a class="btn btn-primary" id="acceptarCookie">Acceptar</a>
+        <a href="#">Més informació</a>
+    </div>
+</div>
 <!--Secció top: Buscador, conta, logo....--> 
 <div id="page-container">
 <section class="section-top">

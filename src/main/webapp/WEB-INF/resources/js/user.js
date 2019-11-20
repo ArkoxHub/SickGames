@@ -1,9 +1,18 @@
 //File reader
 $(document).ready(function () {
+    /*
+     * 
+     * @param {type} input
+     * @returns {undefined}
+     */
     var readURL = function (input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-
+            /*
+             * 
+             * @param {type} e
+             * @returns {undefined}
+             */
             reader.onload = function (e) {
                 $('#fotoPerfil').attr('src', e.target.result);
                 var imatge =  $('#fotoPerfil').val('');
@@ -25,7 +34,12 @@ $(document).ready(function () {
     });
     
     
-    
+    /*
+     * 
+     * @param {type} c_name
+     * @param {type} value
+     * @returns {undefined}
+     */
     function setLocalStorage(c_name, value) {
         var exdays = 30;
         // if localStorage is present, use that
@@ -51,17 +65,6 @@ $(document).ready(function () {
 
 //Mostrar carrito
 $(document).ready(function () {
-    /*$("#carritoShow").click(function(){
-       $("#llistaProductes").css("display","block");
-       $("#carritoShow").css("display", "none");
-       $("#carritoHide").css("display", "inline-flex");
-    });
-    
-    $("#carritoHide").click(function(){
-       $("#llistaProductes").css("display","none");
-       $("#carritoShow").css("display", "inline-flex");
-       $("#carritoHide").css("display", "none");
-    });*/
     $('#carritoShow').click(function() {
         $('#llistaProductes').slideDown('slow');
         $("#llistaProductes").css("display","block");

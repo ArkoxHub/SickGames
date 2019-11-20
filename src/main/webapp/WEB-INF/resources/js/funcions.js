@@ -3,16 +3,69 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/*Funcio cambiar fons random */ 
+/*Funció acceptar cookies*/
 $(document).ready(function () {
+    $("#acceptarCookie").click(function(){
+        setCookie('CookiesLlei','Acceptades',999);
+        console.log("hola");
+        $(".cookiesAccept").css("display","none");
+    });
+    if (comprobarCookie('CookiesLlei') == 'Acceptades'){
+        $(".cookiesAccept").css("display","none");
+    }else{
+        $(".cookiesAccept").css("display","block");
+    }
+    /*
+     * 
+     * @param {type} nomCookie
+     * @param {type} text
+     * @param {type} caducitat
+     * @returns {undefined}
+     */
+    function setCookie(nomCookie,text,caducitat){
+        var exdate = new Date();
+        exdate.setDate(exdate.getDate() + caducitat);
+        var c_value = escape(text) + ((caducitat == null) ? "" : "; expires=" + exdate.toUTCString());
+        document.cookie = nomCookie + "=" + c_value;
+    };
+    /*
+     * 
+     * @param {type} nomCookie
+     * @returns {String}
+     */
+    function comprobarCookie(nomCookie){
+        //Codi de w3 schools, com agafar una cookie
+        var name = nomCookie + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return name;
+    }
+});
+
+/*Funcio cambiar fons random*/
+window.onload = function () {
     var img = 1 + Math.floor(Math.random() * 9);
     $("body").css("background-image", "url('../SickGames/resources/img/backgrounds/"+img+".png')");
     /*Aixo esta així perque per alguna rao ens funciona diferent*/
     if ($('body').css('background-image') == 'none') {
         $("body").css("background-image", "url('../sickgames/resources/img/backgrounds/"+img+".png')");
     }
-});
+};
 //Funció per omplir streams
+/*
+ * 
+ * @param {type} datosStream
+ * @returns {undefined}
+ */
 function rellenarStreams(datosStream){
     for (var i = 0; i < datosStream.data.length; i++) {
         //Agafem el thumbnail (imatge previsualitzacio)
@@ -82,9 +135,15 @@ function rellenarStreams(datosStream){
 }
 //Dark y light Mode 
 $(document).ready(function () {
+    /*
+     * 
+     * @param {type} c_name
+     * @param {type} value
+     * @returns {undefined}
+     */
     function setLocalStorage(c_name, value) {
         var exdays = 30;
-        // if localStorage is present, use that
+        
         if (('localStorage' in window) && window.localStorage !== null) {
             localStorage[c_name] = value;
         } else {
@@ -167,6 +226,7 @@ $(document).ready(function () {
 });
 
 /*Abrir menu login*/
+
 $(document).ready(function () {
     $('#conectarse, #conectarseMvl, #login').on('click', function(){
         $('#id01').css("display","block");
