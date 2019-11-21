@@ -121,7 +121,7 @@
 
             <div class="container">
                     <label for="nickname"><b>Nick</b></label>
-                    <input title="Introdueix l'usuari" type="text" placeholder="Nom de l'usuari" name="nickname" class="inputLogin" required>
+                    <input title="Introdueix el teu nick" type="text" placeholder="Nom de l'usuari" name="nickname" class="inputLogin" required>
 
                     <label for="psw"><b>Contrasenya</b></label>
                     <input title="Introdueix la contrasenya" type="password" placeholder="Introdueix contrasenya" name="password" class="inputLogin" required>

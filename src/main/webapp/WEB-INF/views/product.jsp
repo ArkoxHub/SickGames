@@ -38,7 +38,7 @@
         </div>
         <!--Secció body; Jocs més venuts, valorats, millors ofertes, streams...-->
         <section class="section-body">
-            <div class="container">
+            <div class="container-cataleg">
                 <div class="row" id="cartaJoc">
                     <div class="column-3">
                         <img id="stream${joc.nom}" class="portadaJoc" src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>">
@@ -102,7 +102,7 @@
                         </div>
                         <div class="row" id="comprarJoc">
                             <div class="column-12 text-center">
-                                <a href="#" class="productToBuy" id="overwatch">
+                                <a class="productToBuy" id="overwatch">
                                     Comprar
                                 </a>
                             </div>
@@ -112,7 +112,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="container" id="infoJoc">
+                <div id="infoJoc">
                     <div class="row">
                         <div class="col-md-6">
                             <h4 class="titolsTaules">Configuració mínima</h4>
@@ -154,7 +154,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="container">
+                <div id="cartaJoc">
                     <h4 class="titolsTaules">Streams</h4>
                     <div class="row" id="filaStreams"></div><!--S'omplira automaticament amb els top streamers-->
                     <div class="row" id="streamView"></div><!--Quan fem click a un stream, podrem veure el video dintre d'aquest div-->

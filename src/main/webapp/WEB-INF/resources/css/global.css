@@ -703,7 +703,7 @@ div[class*=genere] span{
     border: none;
     border-radius: 1.5rem;
     padding: 2%;
-    background: #0062cc;
+    background: #d25757;
     color: #fff;
     font-weight: 600;
     width: 50%;
@@ -820,7 +820,7 @@ span.psw {
     0% {
         opacity: 0;
         transform-origin: 50% 50%;
-        transform: scale(2, 2);
+        transform: scale(1.4, 1.4);
         filter: blur(90px);
     }
     100% {
@@ -835,7 +835,7 @@ span.psw {
     0% {
         opacity: 0;
         transform-origin: 50% 50%;
-        transform: scale(2, 2);
+        transform: scale(1.4, 1.4);
         filter: blur(90px);
     }
     100% {
@@ -863,7 +863,7 @@ span.psw {
   100% {
     opacity: 0;
     transform-origin: 50% 50%;
-    transform: scale(2, 2);
+    transform: scale(1.4, 1.4);
     filter: blur(20px);
     display: none;
   }
@@ -879,7 +879,7 @@ span.psw {
   100% {
     opacity: 0;
     transform-origin: 50% 50%;
-    transform: scale(2, 2);
+    transform: scale(1.4, 1.4);
     filter: blur(20px);
     display: none;
   }
@@ -898,5 +898,36 @@ span.psw {
 @media (max-width:500px){
     .preu{
         font-size: 12px;
+    }
+}
+
+
+
+
+.mvlGeneres{
+    display:none;
+}
+@media (max-width:500px){
+    .mvlGeneres{
+        background-image: url("../img/generos/Cielo.png");
+        display: flex;
+        text-align: center;
+        font-size: 11px;
+        color: black;
+        width: 85px;
+        background-repeat: no-repeat;
+        height: 30px;
+        line-height: 24px;
+        pointer-events: all !important;
+        position: absolute;
+        top: 4px;
+        z-index: 9;
+        left: -1.55em;
+    }
+    .mvlGeneres span{
+        margin-left:6px;
+    }
+    div[class*=genere]{
+        display:none
     }
 }

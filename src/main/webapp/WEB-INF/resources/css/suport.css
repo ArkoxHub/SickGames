@@ -43,10 +43,17 @@ and open the template in the editor.
     font-size: 20px;
     display:none;
 }
-
+#suportRow{
+    margin-left: 20px;
+    margin-right: 31px;
+}
 @media (max-width:770px){
     .divTitol{
         font-size: 24px;
+    }
+    #suportRow{
+        margin-left: 0px;
+        margin-right: 0px;
     }
 }
 @media (max-width:470px){

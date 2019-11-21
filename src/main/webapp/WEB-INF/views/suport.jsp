@@ -36,8 +36,8 @@
         </div>
 
         <section class="section-body">
-            <div class="container">
-                <div class="row">
+            <div class="container-cataleg">
+                <div class="row" id="suportRow">
                     <div class="col-md-12 text-center divTitol">
                         <span class="textTitol">Com activar el codi adquirit</span>
                         <div class="text-left descripcioSuport">

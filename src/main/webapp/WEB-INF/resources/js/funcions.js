@@ -1,8 +1,4 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 /*Funció acceptar cookies*/
 $(document).ready(function () {
     $("#acceptarCookie").click(function(){
@@ -53,11 +49,11 @@ $(document).ready(function () {
 
 /*Funcio cambiar fons random*/
 window.onload = function () {
-    var img = 1 + Math.floor(Math.random() * 9);
-    $("body").css("background-image", "url('../SickGames/resources/img/backgrounds/"+img+".png')");
+    var img = 1 + Math.floor(Math.random() * 8);
+    $("body").css("background-image", "url('../../SickGames/resources/img/backgrounds/"+img+".png')");
     /*Aixo esta així perque per alguna rao ens funciona diferent*/
     if ($('body').css('background-image') == 'none') {
-        $("body").css("background-image", "url('../sickgames/resources/img/backgrounds/"+img+".png')");
+        $("body").css("background-image", "url('../../sickgames/resources/img/backgrounds/"+img+".png')");
     }
 };
 //Funció per omplir streams
@@ -67,71 +63,78 @@ window.onload = function () {
  * @returns {undefined}
  */
 function rellenarStreams(datosStream){
-    for (var i = 0; i < datosStream.data.length; i++) {
-        //Agafem el thumbnail (imatge previsualitzacio)
-        var thumbnail = datosStream.data[i].thumbnail_url;
-        //Modifiquem el thumbnail per aplicarli les mesures que desitjem
-        var aplicarTamaño = thumbnail.replace("{width}x{height}", "500x500");
-        $("#filaStreams").append($(
-                '<div class="column">' +
-                '<span class="viewers"><i class="fa fa-user"></i> '+datosStream.data[i].viewer_count+'</span>'+
-                '<a href="#streamView" class=' + datosStream.data[i].user_name + ' id="stream">' +
-                '<div id="imgOverflow"><img src="' + aplicarTamaño + '"></div>' +
-                '</a>' +
-                '<a href="#streamView" class=' + datosStream.data[i].user_name + ' id="streamName">' +
-                datosStream.data[i].user_name +
-                '</a>' +
-                '</div>'));
 
-        $("." + datosStream.data[i].user_name).click(function () {
-            var existeStream = $("#streamView");
-            console.log(this.className);
-            if (existeStream.length >= 1) {
-                $("#streamView").empty();
-            }
-            $("#streamView").hide();
-            $("#streamView").append($(
-                    '<div class="col-12">' +
-                    '<div>' +
-                    '<a id="cerrar" href="#filaStreams">' +
-                    '<div class="text-center center" id="cerrarStream"><i class="fas fa-chevron-down"></i></div>' +
+    //Si no troba cap stream mostrarem que no n'hi han
+    if (datosStream.data.length == 0){
+        $("#filaStreams").append($('<p>No hi ha streamers en aquest moment</p>'));
+    }
+    //En cas de que si que hi trobem streams mostrarem els de parla espanyola
+    else{
+        for (var i = 0; i < datosStream.data.length; i++) {
+            //Agafem el thumbnail (imatge previsualitzacio)
+            var thumbnail = datosStream.data[i].thumbnail_url;
+            //Modifiquem el thumbnail per aplicarli les mesures que desitjem
+            var aplicarTamaño = thumbnail.replace("{width}x{height}", "500x500");
+            $("#filaStreams").append($(
+                    '<div class="column">' +
+                    '<span class="viewers"><i class="fa fa-user"></i> '+datosStream.data[i].viewer_count+'</span>'+
+                    '<a href="#streamView" class=' + datosStream.data[i].user_name + ' id="stream">' +
+                    '<div id="imgOverflow"><img src="' + aplicarTamaño + '"></div>' +
                     '</a>' +
-                    '</div>' +
-                    '</div>' +
-                    '<div class="col-12">' +
-                    '<div id="twitch-embed"></div>' +
+                    '<a href="#streamView" class=' + datosStream.data[i].user_name + ' id="streamName">' +
+                    datosStream.data[i].user_name +
+                    '</a>' +
                     '</div>'));
-            
-            $("#streamView").slideDown("slow");
-            
-            $('html, body').animate({
-                scrollTop: $($(this).attr('href')).offset().top
-            }, 700);     
-            
-            $("#cerrar").click(function () {
-                $("#streamView").slideUp("slow");
-                setTimeout(function () {
-                    $("#streamView").children().detach().remove();
-                }, 800);
-            })
 
-            if (window.matchMedia('(max-width: 600px)').matches) {
-                new Twitch.Embed("twitch-embed", {
-                    width: "100%",
-                    height: 250,
-                    layout: "video",
-                    channel: this.className //devuelve el nombre del streamer, ya que la class es el nombre
-                });
-            } else {
-                new Twitch.Embed("twitch-embed", {
-                    width: "100%",
-                    height: 625,
-                    layout: "video",
-                    channel: this.className //devuelve el nombre del streamer, ya que la class es el nombre
-                });
-            }
-        });
-    };
+            $("." + datosStream.data[i].user_name).click(function () {
+                var existeStream = $("#streamView");
+                if (existeStream.length >= 1) {
+                    $("#streamView").empty();
+                }
+                $("#streamView").hide();
+                $("#streamView").append($(
+                        '<div class="col-12">' +
+                        '<div>' +
+                        '<a id="cerrar" href="#filaStreams">' +
+                        '<div class="text-center center" id="cerrarStream"><i class="fas fa-chevron-down"></i></div>' +
+                        '</a>' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="col-12">' +
+                        '<div id="twitch-embed"></div>' +
+                        '</div>'));
+
+                $("#streamView").slideDown("slow");
+
+                $('html, body').animate({
+                    scrollTop: $($(this).attr('href')).offset().top
+                }, 700);     
+
+                $("#cerrar").click(function () {
+                    $("#streamView").slideUp("slow");
+                    setTimeout(function () {
+                        $("#streamView").children().detach().remove();
+                    }, 800);
+                })
+
+                if (window.matchMedia('(max-width: 600px)').matches) {
+                    new Twitch.Embed("twitch-embed", {
+                        width: "100%",
+                        height: 250,
+                        layout: "video",
+                        channel: this.className //devuelve el nombre del streamer, ya que la class es el nombre
+                    });
+                } else {
+                    new Twitch.Embed("twitch-embed", {
+                        width: "100%",
+                        height: 625,
+                        layout: "video",
+                        channel: this.className //devuelve el nombre del streamer, ya que la class es el nombre
+                    });
+                }
+            });
+        };
+    }
 }
 //Dark y light Mode 
 $(document).ready(function () {
@@ -225,13 +228,20 @@ $(document).ready(function () {
     });
 });
 
-/*Abrir menu login*/
-
+/*Obrir menu login*/
 $(document).ready(function () {
     $('#conectarse, #conectarseMvl, #login').on('click', function(){
         $('#id01').css("display","block");
     });
     $('.close, .cancelbtn').on('click', function(){
         $('#id01').hide();
+    });
+});
+
+/*Mostrar generes al fer click en versió movil*/
+$(document).ready(function () {
+    $('.mvlGeneres').on('click', function(){
+        $(this).parent('.outClick').find('.liMvl').css("display","flex");
+        $(this).parent('.outClick').find('.mvlGeneres').css("display", "none");
     });
 });
