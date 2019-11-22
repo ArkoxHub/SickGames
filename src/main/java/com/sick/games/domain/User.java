@@ -10,7 +10,6 @@ import java.sql.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -71,10 +70,7 @@ public class User implements Serializable {
 
     @Column(name = "telefon")
     private int telefon;
-
-    @OneToMany(fetch = FetchType.EAGER)
-    private List<Videojoc> jocs;
-
+    
     public User() {
     }
 
@@ -160,14 +156,6 @@ public class User implements Serializable {
 
     public void setTelefon(int telefon) {
         this.telefon = telefon;
-    }
-
-    public List<Videojoc> getJocs() {
-        return jocs;
-    }
-
-    public void setJocs(List<Videojoc> jocs) {
-        this.jocs = jocs;
     }
 
 }

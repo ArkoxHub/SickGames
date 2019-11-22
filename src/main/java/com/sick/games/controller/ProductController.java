@@ -6,10 +6,13 @@
 package com.sick.games.controller;
 
 import com.sick.games.domain.User;
+import com.sick.games.domain.Videojoc;
 import com.sick.games.service.CodiService;
 import com.sick.games.service.UsersService;
 import com.sick.games.service.VideojocService;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -34,19 +37,28 @@ public class ProductController {
 
     @Autowired
     CodiService codiService;
-    
+
     @Autowired
     UsersService usersService;
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView product(@RequestParam(name = "id") String codi, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        // Iniciem la variable de sessio carro si no ho està
+        if (request.getSession().getAttribute("carro") == null) {
+            List<Videojoc> carro = new ArrayList();
+            request.getSession().setAttribute("carro", carro);
+        }
+
+        // Afegim informació sobre el joc que vol consultar a la vista (El joc, el seu pròxim codi i l'stock)
         int codi_Joc = Integer.parseInt(codi);
         ModelAndView model = new ModelAndView("product");
         model.getModelMap().addAttribute("joc", videojocService.getGameByCode(codi_Joc));
         model.getModelMap().addAttribute("codi", codiService.getNextCodeByCodiJoc(codi_Joc));
         model.getModelMap().addAttribute("stock", codiService.getTotalCodisByJoc(codi_Joc));
 
+        // Mirem si esta loguejat, si ho està retornem a la vista l'usuari (s'usa pel Wishlist)
         User user = null;
         if (request.getCookies() != null) {
             for (Cookie cookie : request.getCookies()) {
@@ -68,6 +80,13 @@ public class ProductController {
     public ModelAndView videoJocInfo(@RequestParam(name = "id") String codi,
             HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        // Iniciem la variable de sessio carro si no ho està
+        if (request.getSession().getAttribute("carro") == null) {
+            List<Videojoc> carro = new ArrayList();
+            request.getSession().setAttribute("carro", carro);
+        }
+
         int codi_Joc = Integer.parseInt(codi);
         ModelAndView model = new ModelAndView("productNoStock");
         model.getModelMap().addAttribute("joc", videojocService.getGameByCode(codi_Joc));

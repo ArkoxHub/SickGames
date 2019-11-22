@@ -1,3 +1,5 @@
+<%@page import="com.sick.games.domain.Videojoc"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -42,7 +44,16 @@
                 <div class="row" id="cartaJoc">
                     <div class="column-3">
                         <img id="stream${joc.nom}" class="portadaJoc" src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>">
-                        <img class="afegirWhishList" src="<c:url value="/resources/img/like.png"/>" title="${joc.nom}" alt="${joc.nom}">
+                        <c:choose>
+                            <c:when test="${not empty user}">
+                                <a href="<c:url value="/user/addWishlist?item=${joc.codi_Joc}&nickname=${user.nickname}"></c:url>">
+                                    <img class="afegirWhishList" src="<c:url value="/resources/img/like.png"/>" title="${joc.nom}" alt="${joc.nom}">
+                                </a>
+                            </c:when>
+                            <c:otherwise>
+                                <img class="afegirWhishList" src="<c:url value="/resources/img/like.png"/>" title="${joc.nom}" alt="${joc.nom}">
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                     <div class="portada">
                         <img class="portadaJocMvl" src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>">

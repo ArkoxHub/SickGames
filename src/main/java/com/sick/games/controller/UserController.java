@@ -8,13 +8,18 @@ package com.sick.games.controller;
 import com.sick.games.domain.Codi;
 import com.sick.games.domain.User;
 import com.sick.games.domain.Videojoc;
+import com.sick.games.domain.Wishlist;
 import com.sick.games.service.CodiService;
 import com.sick.games.service.UsersService;
 import com.sick.games.service.VideojocService;
+import com.sick.games.service.WishlistService;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import javax.ejb.DuplicateKeyException;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -44,42 +49,57 @@ public class UserController {
     @Autowired
     CodiService codiService;
 
+    @Autowired
+    WishlistService wishlistService;
+
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView userMainPage(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ModelAndView model = new ModelAndView("user");
 
+        // Iniciem la variable de sessio carro si no ho està un cop l'usuari carrega l'index
+        if (request.getSession().getAttribute("carro") == null) {
+            List<Videojoc> carro = new ArrayList();
+            request.getSession().setAttribute("carro", carro);
+        } else {
+            List<Codi> codis = new ArrayList();
+            List<Videojoc> videojocs = (List<Videojoc>) request.getSession().getAttribute("carro");
+            for (Videojoc joc : videojocs) {
+                codis.add(codiService.getNextCodeByCodiJoc(joc.getCodi_Joc()));
+            }
+
+            // Retornem els codis de cada joc a la vista (estan en el mateix ordre).
+            model.getModelMap().addAttribute("codis", codis);
+        }
+
+        // Retornem els jocs que l'usuari a fet clic en comprar.
+        model.getModelMap().addAttribute("carro", request.getSession().getAttribute("carro"));
+
         // Obtenim l'objecte Usuari de les cookies | Ha fet el login abans d'entrar aquí!
+        User user = null;
         Cookie[] cookies = request.getCookies();
         for (Cookie cookie : cookies) {
             if (cookie.getName().equals("userNick")) {
-
                 // Add user to Model Response
-                User user = usersService.getUserByNick(cookie.getValue());
+                user = usersService.getUserByNick(cookie.getValue());
                 model.getModelMap().addAttribute("user", user);
-                
-                System.out.println("HOLAAAAAAAAAAAAAAAAAAAAA");
-                for (Videojoc joc : user.getJocs()) {
-                    System.out.println("GAMEEEEEE " + joc.getNom());
-                }
-
-                // Add Games and their respective code to Model Response
-                if (user.getJocs() != null) {
-
-                    List<Codi> codis = new ArrayList<>();
-                    for (Videojoc joc : user.getJocs()) {
-                        codis.add(codiService.getNextCodeByCodiJoc(joc.getCodi_Joc()));
-                    }
-
-                    model.getModelMap().addAttribute("videojocs", user.getJocs());
-                    model.getModelMap().addAttribute("codis", codis);
-                }
             }
         }
+
+        // Carreguem el Wishlist
+        List<Videojoc> wishlistgames = new ArrayList();
+        List<Codi> wishlidtCodes = new ArrayList();
+        for (Wishlist list : wishlistService.getWishlistByUserId(user.getId_Usuari())) {
+            wishlistgames.add(videojocSercice.getGameByCode(list.getCodi_Joc()));
+            wishlidtCodes.add(codiService.getNextCodeByCodiJoc(list.getCodi_Joc()));
+        }
+        model.getModelMap().addAttribute("wishlistgames", wishlistgames);
+        model.getModelMap().addAttribute("wishlistcodes", wishlidtCodes);
 
         return model;
     }
 
+    // Quan l'usuari prem sobre "Nou Usuari" li retornem la vista per a que ompli el formulari
     @RequestMapping(value = "/signIn", method = RequestMethod.GET)
     public ModelAndView userRegister(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -110,6 +130,7 @@ public class UserController {
         newUser.setData_Alta(date);
         usersService.addUser(newUser);
 
+        // Afegim les 3 cookies per a una navegació més cómode a l'usuari
         Cookie cookieMail = new Cookie("userMail", newUser.getEmail());
         cookieMail.setMaxAge(60 * 60 * 24 * 365 * 10); // 10 anys expiració
         cookieMail.setPath("/");
@@ -129,10 +150,13 @@ public class UserController {
     }
 
     /**
+     * Quan l'usuari prem sobre "Tancar sessió" li eliminem totes les cookies
+     * referents a sickgames i el valor de les variables de sessió referents al
+     * carro de compra.
      *
      * @param request
      * @param response
-     * @return
+     * @return redirecció a la pàgina d'inici
      * @throws ServletException
      * @throws IOException
      */
@@ -155,6 +179,10 @@ public class UserController {
         cookiePwd.setPath("/");
         response.addCookie(cookiePwd);
 
+        // Esborrem la variable de sessio carro, l'usuari perdrà tot el carro
+        if (request.getSession().getAttribute("carro") != null) {
+            request.getSession().removeAttribute("carro");
+        }
         return "redirect:/";
     }
 
@@ -209,22 +237,49 @@ public class UserController {
 
         try {
             User user = usersService.getUserByNick(nickname);
-            
-            int codiJoc = Integer.parseInt(jocId);
-            List<Videojoc> jocs = new ArrayList();
 
-            jocs = user.getJocs();
-            jocs.add(videojocSercice.getGameByCode(codiJoc));
-            user.setJocs(jocs);
-
-            for (Videojoc joc : user.getJocs()) {
-                System.out.println("JOOOOOC " + joc.getNom());
-            }
+            // CARRO DE COMPRA USING SESSION ATTRIBUTES
+            List<Videojoc> carro = (List<Videojoc>) request.getSession().getAttribute("carro");
+            carro.add(videojocSercice.getGameByCode(Integer.parseInt(jocId)));
+            request.getSession().setAttribute("carro", carro);
 
         } catch (NullPointerException e) {
             System.out.println("Aquest usuari no està a la base de dades");
         }
 
+        return "redirect:/user";
+    }
+
+    @RequestMapping(value = "/addWishlist", method = RequestMethod.GET)
+    public String addGameWishlist(@RequestParam(name = "item") String jocId,
+            @RequestParam(name = "nickname") String nickname,
+            HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        User user = usersService.getUserByNick(nickname);
+        Wishlist wishlist = new Wishlist();
+        wishlist.setCodi_Joc(Integer.parseInt(jocId));
+        wishlist.setId_Usuari(user.getId_Usuari());
+
+        try {
+            wishlistService.addWishlist(wishlist);
+            throw new SQLIntegrityConstraintViolationException();
+        } catch (SQLIntegrityConstraintViolationException e) {
+            System.out.println("Error intern, torna a intentar-ho si us plau.");
+        }
+
+        return "redirect:/user";
+    }
+
+    @RequestMapping(value = "/removeWishlist", method = RequestMethod.GET)
+    public String removeGameWishlist(@RequestParam(name = "item") String jocId,
+            @RequestParam(name = "nickname") String nickname,
+            HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        User user = usersService.getUserByNick(nickname);
+        // FALTA IMPLEMENTAR
+        
         return "redirect:/user";
     }
 }
