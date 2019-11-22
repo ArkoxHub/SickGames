@@ -115,12 +115,12 @@
                             <div class="column-12 text-center">
                                 <c:choose>
                                     <c:when test="${not empty user}">
-                                        <a href="user/add?jocId=${joc.codi_Joc}&nickname=${user.nickname}" class="producteAComprar" id="${joc.nom}">
+                                        <a href="user/add?jocId=${joc.codi_Joc}&nickname=${user.nickname}" class="productToBuy" id="${joc.nom}">
                                             Comprar
                                         </a>
                                     </c:when>
                                     <c:otherwise>
-                                        <a href="#" class="producteAComprar" id="NoLogin"><!--S'ha de posar que si es fa click aquí, surti un avís de que ha de fer login o donar-se d'alta-->
+                                        <a href="#" class="productToBuy" id="NoLogin"><!--S'ha de posar que si es fa click aquí, surti un avís de que ha de fer login o donar-se d'alta-->
                                             Comprar
                                         </a>
                                     </c:otherwise>

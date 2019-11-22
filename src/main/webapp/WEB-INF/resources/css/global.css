@@ -353,7 +353,7 @@ html{
     border: 1px solid #4e77d3;
     list-style-type: none;
     position: absolute;
-    width: 360px;
+    width: max-content;
     display: none;
 }
 .productesComprats img{

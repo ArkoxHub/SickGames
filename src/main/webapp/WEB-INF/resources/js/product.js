@@ -73,8 +73,8 @@ $(document).ready(function () {
         }
     }
 });
-
-    $(document).ready(function () {
+/* Es podria implementar més endevant
+$(document).ready(function () {
     $('.productToBuy').on('click', function () {
         if($('.portadaJoc').css("filter") == "blur(12px)" || $('.portadaJoc').css("-webkit-filter") == "blur(12px)" ){
             var cart = $('.fa-shopping-cart');
@@ -141,3 +141,4 @@ $(document).ready(function () {
         }
     });
 });
+*/

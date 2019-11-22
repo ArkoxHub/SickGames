@@ -47,7 +47,7 @@
                         <ul id="llistaProductes">
                             <c:forEach var="joc" items="${carro}" varStatus="status">
                                 <li><pre style="color: white">Producte: ${joc.nom}    -   ${codis[status.index].preu} €</pre></li>
-                                </c:forEach>
+                            </c:forEach>
                             <p>===============================</p>
                         </ul>
                         <c:forEach var="codi" items="${codis}">

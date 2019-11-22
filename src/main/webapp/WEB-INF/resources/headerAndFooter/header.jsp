@@ -64,7 +64,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-1" id="menuCarrito">   
+                            <div class="col-3" id="menuCarrito">   
                                 <!-- KEVIN LAMEYEMA ARREGLA AIXÒ QUE QUEDA LLEIG -->
                                 <%
                                     List<Videojoc> carro = (List<Videojoc>) request.getSession().getAttribute("carro");
@@ -76,27 +76,25 @@
                                 <%=total%>
                                 <a href="#"><i class="fas fa-shopping-cart"></i></a><!--Redirect a una pagina para comprar y pagar?-->
                                 <ul id="productesComprats" class="productesComprats">
-                                    <li class="cesta">
-                                        <div style="display:inline-block">
-                                            <img src="<c:url value="/resources/img/portades/World of Warcraft Shadowlands.jpg"/>"> 
-                                            <span> <!--Aqui poner una cruz al lado del producto para quitarlo del carro?-->
-                                                World of Warcraft:Shadowlands - 60€
-                                            </span>
-                                        </div>
-                                    </li>
-                                    <li class="cesta">
-                                        <div style="display:inline-block">
-                                            <img src="<c:url value="/resources/img/portades/World of Warcraft Shadowlands.jpg"/>"> 
-                                            <span> <!--Aqui poner una cruz al lado del producto para quitarlo del carro?-->
-                                                World of Warcraft:Shadowlands - 60€
-                                            </span>
-                                        </div>
-                                    </li>
-                                    <!--También iria a la pagina para comprar y pagar-->
+                                    <c:forEach var="joc" items="${carro}" varStatus="status">
+                                        <li class="cesta">
+                                            <div style="display:inline-block">
+                                                <img src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>" alt="${joc.nom}" title="${joc.nom}"> 
+                                                <span style="margin-right: 5px;"> <!--Aqui poner una cruz al lado del producto para quitarlo del carro?-->
+                                                    ${joc.nom} - ${codis[status.index].preu} €
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </c:forEach>
                                     <hr>
-                                    <a href="#">
-                                        <li>Realitzar la compra = 999€</li>
-                                    </a>
+                                    <c:forEach var="codi" items="${codis}">
+                                        <c:set var="total" value="${ total + codi.preu}"/>
+                                    </c:forEach>
+                                    <c:if test="${total > 0}">
+                                        <a href="#">
+                                            <li>Realitzar pagament - <fmt:formatNumber value="${total}"currencySymbol="€" type="currency" pattern="###,###.00 ¤"/></li>
+                                        </a>
+                                    </c:if>
                                 </ul>
                             </div>
                         </c:when>

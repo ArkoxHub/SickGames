@@ -50,11 +50,7 @@ $(document).ready(function () {
 /*Funcio cambiar fons random*/
 window.onload = function () {
     var img = 1 + Math.floor(Math.random() * 8);
-    $("body").css("background-image", "url('../../SickGames/resources/img/backgrounds/"+img+".png')");
-    /*Aixo esta així perque per alguna rao ens funciona diferent*/
-    if ($('body').css('background-image') == 'none') {
-        $("body").css("background-image", "url('../../sickgames/resources/img/backgrounds/"+img+".png')");
-    }
+    $("body").css("background-image", "url('../../sickgames/resources/img/backgrounds/"+img+".png')");
 };
 //Funció per omplir streams
 /*
@@ -230,7 +226,7 @@ $(document).ready(function () {
 
 /*Obrir menu login*/
 $(document).ready(function () {
-    $('#conectarse, #conectarseMvl, #login').on('click', function(){
+    $('#conectarse, #conectarseMvl, #login, #NoLogin').on('click', function(){
         $('#id01').css("display","block");
     });
     $('.close, .cancelbtn').on('click', function(){
