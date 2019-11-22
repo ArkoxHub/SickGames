@@ -125,5 +125,5 @@ public class Videojoc implements Serializable {
     public void setCodis(List<Codi> codis) {
         this.codis = codis;
     }
-
+    
 }

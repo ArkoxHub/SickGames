@@ -48,7 +48,7 @@ public class Codi implements Serializable {
     @NotNull
     @Column(name = "plataforma")
     private int plataforma;
-
+ 
     @NotNull
     @Column(name = "codi_Joc")
     private int codi_Joc;

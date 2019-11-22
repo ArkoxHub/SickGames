@@ -1,3 +1,5 @@
+<%@page import="com.sick.games.domain.Videojoc"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -42,7 +44,16 @@
                 <div class="row" id="cartaJoc">
                     <div class="column-3">
                         <img id="stream${joc.nom}" class="portadaJoc" src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>">
-                        <img class="afegirWhishList" src="<c:url value="/resources/img/like.png"/>" title="${joc.nom}" alt="${joc.nom}">
+                        <c:choose>
+                            <c:when test="${not empty user}">
+                                <a href="<c:url value="/user/addWishlist?item=${joc.codi_Joc}&nickname=${user.nickname}"></c:url>">
+                                    <img class="afegirWhishList" src="<c:url value="/resources/img/like.png"/>" title="${joc.nom}" alt="${joc.nom}">
+                                </a>
+                            </c:when>
+                            <c:otherwise>
+                                <img class="afegirWhishList" src="<c:url value="/resources/img/like.png"/>" title="${joc.nom}" alt="${joc.nom}">
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                     <div class="portada">
                         <img class="portadaJocMvl" src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>">
@@ -102,9 +113,18 @@
                         </div>
                         <div class="row" id="comprarJoc">
                             <div class="column-12 text-center">
-                                <a href="#" class="producteAComprar" id="overwatch">
-                                    Comprar
-                                </a>
+                                <c:choose>
+                                    <c:when test="${not empty user}">
+                                        <a href="user/add?jocId=${joc.codi_Joc}&nickname=${user.nickname}" class="producteAComprar" id="${joc.nom}">
+                                            Comprar
+                                        </a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <a href="#" class="producteAComprar" id="NoLogin"><!--S'ha de posar que si es fa click aquí, surti un avís de que ha de fer login o donar-se d'alta-->
+                                            Comprar
+                                        </a>
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                             <div class="column-12 text-left" id="PVP">
                                 Preu d'origen: <fmt:formatNumber value="${joc.pvp}" currencySymbol="€" type="currency" pattern="###,###.00 ¤"/>
@@ -160,6 +180,5 @@
                     <div class="row" id="streamView"></div><!--Quan fem click a un stream, podrem veure el video dintre d'aquest div-->
                 </div>
         </section>
-        <!--Fi secciÃ³ body-->
-
+        <!--Fi secció body-->
         <jsp:include page="/WEB-INF/resources/headerAndFooter/footer.jsp"></jsp:include>
