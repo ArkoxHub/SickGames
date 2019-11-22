@@ -16,7 +16,7 @@
         <link href="<c:url value='/resources/css/index.css'/>" rel="stylesheet" type="text/css"/>
         <link href="<c:url value='/resources/css/global.css'/>" rel="stylesheet" type="text/css"/>
         <!--WebIcon-->
-        <link rel="icon" href="<c:url value='resources/img/logo_icon.png'/>" alt="Favicon">
+        <link rel="icon" href="<c:url value='/resources/img/logo_icon.png'/>" alt="Favicon">
         <!--FontsGoogle-->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="true">
         <link href="https://fonts.googleapis.com/css?family=Archivo&display=swap" rel="stylesheet">
@@ -38,25 +38,29 @@
         </div>
 
         <section class="section-body">
-            <div class="container">
+            <div class="container-cataleg">
                 <!--PRECOMPRA-->
                 <p class="tituloFilas">Próximes novetats</p>
                 <div class="row" id="filaCatalogo">
                     <c:forEach var="joc" items="${upcoming}" begin="0" end="3">
                         <div class="column">
-                            <!-- SE TIENE QUE PASAR UNA EL NOMBRE O ID DEL PRODUCTO COMO ID EN LOS LINKS PARA PODER CREAR UNA WEB CON UN CONTENIDO U OTRO-->
-                            <a href="<c:url value="/product?id=${joc[0]}"/>" id="${joc[1]}">
-                                <div id="imgOverflow">
-                                    <img src="<c:url value="/resources/img/portades/${joc[1]}.jpg"/>" 
-                                         title="${joc[1]}" alt="SickGames ${joc[1]}">
+                            <div class="outClick">
+                                <div class="mvlGeneres">
+                                    <span>Veure Generes</span>
                                 </div>
-                                <div class="infoJoc">
-                                    <span class="preu"><i class="fa fa-arrow-down"></i> ${joc[3]}%</span>
-                                    <c:forEach var="genere" items="${joc[2].split(', ')}">                                       
-                                        <div class="genere${genere}"><span>${genere}</span></div>
-                                            </c:forEach>
-                                </div>
-                            </a>
+                                <a href="<c:url value="/product?id=${joc[0]}"/>" id="${joc[1]}">
+                                    <div id="imgOverflow">
+                                        <img src="<c:url value="/resources/img/portades/${joc[1]}.jpg"/>" 
+                                             title="${joc[1]}" alt="SickGames ${joc[1]}">
+                                    </div>
+                                    <div class="infoJoc">
+                                        <span class="preu"><i class="fa fa-arrow-down"></i> ${joc[3]}%</span>
+                                        <c:forEach var="genere" items="${joc[2].split(', ')}">                                       
+                                            <div class="genere${genere} liMvl"><span>${genere}</span></div>
+                                        </c:forEach>
+                                    </div>
+                                </a>
+                            </div>        
                             <a href="<c:url value="/product?id=${joc[0]}"/>" class="producteAComprar" id="overwatch">
                                 <fmt:formatNumber value="${joc[5]}" currencySymbol="€" type="currency" pattern="###,###.00 ¤"/> - Comprar
                             </a>
@@ -69,18 +73,23 @@
                 <div class="row" id="filaCatalogo">
                     <c:forEach var="joc" items="${ofertes}" begin="0" end="3">
                         <div class="column">
-                            <a href="<c:url value="/product?id=${joc[0]}"/>" id="${joc[1]}">
-                                <div id="imgOverflow">
-                                    <img src="<c:url value="/resources/img/portades/${joc[1]}.jpg"/>" 
-                                         title="${joc[1]}" alt="SickGames ${joc[1]}">
+                            <div class="outClick">
+                                <div class="mvlGeneres">
+                                    <span>Veure Generes</span>
                                 </div>
-                                <div class="infoJoc">
-                                    <span class="preu"><i class="fa fa-arrow-down"></i> ${joc[3]}%</span>
-                                    <c:forEach var="genere" items="${joc[2].split(', ')}">                                       
-                                        <div class="genere${genere}"><span>${genere}</span></div>
-                                            </c:forEach>
-                                </div>
-                            </a>
+                                <a href="<c:url value="/product?id=${joc[0]}"/>" id="${joc[1]}">
+                                    <div id="imgOverflow">
+                                        <img src="<c:url value="/resources/img/portades/${joc[1]}.jpg"/>" 
+                                             title="${joc[1]}" alt="SickGames ${joc[1]}">
+                                    </div>
+                                    <div class="infoJoc">
+                                        <span class="preu"><i class="fa fa-arrow-down"></i> ${joc[3]}%</span>
+                                        <c:forEach var="genere" items="${joc[2].split(', ')}">                                       
+                                            <div class="genere${genere} liMvl"><span>${genere}</span></div>
+                                        </c:forEach>
+                                    </div>
+                                </a>
+                            </div>
                             <a href="<c:url value="/product?id=${joc[0]}"/>" class="producteAComprar" id="overwatch">
                                 <fmt:formatNumber value="${joc[5]}" currencySymbol="€" type="currency" pattern="###,###.00 ¤"/> - Comprar
                             </a>
@@ -93,18 +102,23 @@
                 <div class="row" id="filaCatalogo">
                     <c:forEach var="joc" items="${preus}" begin="0" end="3">
                         <div class="column">
-                            <a href="<c:url value="/product?id=${joc[0]}"/>" id="${joc[1]}">
-                                <div id="imgOverflow">
-                                    <img src="<c:url value="/resources/img/portades/${joc[1]}.jpg"/>" 
-                                         title="${joc[1]}" alt="SickGames ${joc[1]}">
+                            <div class="outClick">
+                                <div class="mvlGeneres">
+                                    <span>Veure Generes</span>
                                 </div>
-                                <div class="infoJoc">
-                                    <span class="preu"><i class="fa fa-arrow-down"></i> ${joc[3]}%</span>
-                                    <c:forEach var="genere" items="${joc[2].split(', ')}">                                       
-                                        <div class="genere${genere}"><span>${genere}</span></div>
-                                            </c:forEach>
-                                </div>
-                            </a>
+                                <a href="<c:url value="/product?id=${joc[0]}"/>" id="${joc[1]}">
+                                    <div id="imgOverflow">
+                                        <img src="<c:url value="/resources/img/portades/${joc[1]}.jpg"/>" 
+                                             title="${joc[1]}" alt="SickGames ${joc[1]}">
+                                    </div>
+                                    <div class="infoJoc">
+                                        <span class="preu"><i class="fa fa-arrow-down"></i> ${joc[3]}%</span>
+                                        <c:forEach var="genere" items="${joc[2].split(', ')}">                                       
+                                            <div class="genere${genere} liMvl"><span>${genere}</span></div>
+                                        </c:forEach>
+                                    </div>
+                                </a>
+                            </div>
                             <a href="<c:url value="/product?id=${joc[0]}"/>" class="producteAComprar" id="overwatch"> 
                                 <fmt:formatNumber value="${joc[5]}" currencySymbol="€" type="currency" pattern="###,###.00 ¤"/> - Comprar
                             </a>

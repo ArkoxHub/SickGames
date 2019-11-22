@@ -87,7 +87,7 @@ $(document).ready(function () {
             div.classList.add("helpForm2Show");
         }
     };
-
+   
     function deleteDiv() {
         if (this.getAttribute("id") === "idioma") {
             var div = document.querySelector(".helpForm1Show");

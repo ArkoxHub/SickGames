@@ -73,7 +73,7 @@ public class User implements Serializable {
     
     public User() {
     }
-
+    
     public User(int id_Usuari, String nom, String cognoms, String nickname, Date data_Alta, String direccio, String email, String contrasenya, int telefon) {
         this.id_Usuari = id_Usuari;
         this.nom = nom;

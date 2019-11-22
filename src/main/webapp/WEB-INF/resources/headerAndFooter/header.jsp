@@ -5,26 +5,42 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<!--Cookies div fixed-->
+<div class="cookiesAccept">
+    <div class="container-cataleg">
+        <h3 id="titleCookie">La teva privacitat és important</h3>
+        <p id="textCookie">La teva informació personal es molt sensible, a SickGames les cookies només 
+            seran utilitzades implicitament per millorar la pàgina y mai serà venguda
+            a tercers ni utilitzada per fins publicitaris.
+        </p>
+        <a class="btn btn-primary" id="acceptarCookie">Acceptar</a>
+        <a href="#">Més informació</a>
+    </div>
+</div>
 <!--Secció top: Buscador, conta, logo....--> 
+<div id="page-container">
 <section class="section-top">
     <a href="<c:url value='/'/>"><img src="<c:url value='/resources/img/logo_icon.png'/>" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis" class="logoMvl"></a>
     <nav class="container" id="container-top">
-        <div class="d-flex flex-row">
-            <div class="col-2">
-                <a href="<c:url value='/'/>"><img src="<c:url value='/resources/img/logo_sick.png'/>" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis" class="logo"></a>
+        <div class="row">
+            <div class="col-5">
+                <div class="row">
+                    <div class="col-12" id="colbuscador" style="display:inline-flex">
+                        <div class="col-6" id="showHideLogo">
+                            <a href="<c:url value='/'/>"><img src="<c:url value='/resources/img/logo_sick.png'/>" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis" class="logo"></a>
+                        </div>
+                        <form action="/product" form="GET">
+                            <input autocomplete="off"  class="buscador" type="text" placeholder=" Cerca" name="search">
+                            <button class="botonBuscador" type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="col-5" id="colbuscador">
-                <form action="/product" form="GET">
-                    <input autocomplete="off"  class="buscador" type="text" placeholder=" Cerca" name="search">
-                    <button class="botonBuscador" type="submit"><i class="fa fa-search"></i></button>
-                </form>
-            </div>
-            <div class="col-5" id="colbuscador">
+            <div class="col-7" id="colbuscador">
                 <div class="d-flex flex-row" id="cuenta">
-                    <div class="col-4" id="suportCol">
-                        <a href="#" class="soporte" >Suport 24/7</a>
-                        <a href="#" class="soporteMvl" ><i class="fa fa-comment fa-lg" aria-hidden="true"></i></a>
+                    <div class="col-3" id="suportCol">
+                        <a href="<c:url value='/suport'/>" class="soporte" >Suport 24/7</a>
+                        <a href="<c:url value='/suport'/>" class="soporteMvl" ><i class="fa fa-comment fa-lg" aria-hidden="true"></i></a>
                     </div>
                     <c:choose>
                         <c:when test="${not empty user}">
@@ -48,7 +64,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-1" id="menuCarrito">   
+                            <div class="col-3" id="menuCarrito">   
                                 <!-- KEVIN LAMEYEMA ARREGLA AIXÒ QUE QUEDA LLEIG -->
                                 <%
                                     List<Videojoc> carro = (List<Videojoc>) request.getSession().getAttribute("carro");
@@ -60,27 +76,25 @@
                                 <%=total%>
                                 <a href="#"><i class="fas fa-shopping-cart"></i></a><!--Redirect a una pagina para comprar y pagar?-->
                                 <ul id="productesComprats" class="productesComprats">
-                                    <li class="cesta">
-                                        <div style="display:inline-block">
-                                            <img src="<c:url value="/resources/img/portades/World of Warcraft Shadowlands.jpg"/>"> 
-                                            <span> <!--Aqui poner una cruz al lado del producto para quitarlo del carro?-->
-                                                World of Warcraft:Shadowlands - 60€
-                                            </span>
-                                        </div>
-                                    </li>
-                                    <li class="cesta">
-                                        <div style="display:inline-block">
-                                            <img src="<c:url value="/resources/img/portades/World of Warcraft Shadowlands.jpg"/>"> 
-                                            <span> <!--Aqui poner una cruz al lado del producto para quitarlo del carro?-->
-                                                World of Warcraft:Shadowlands - 60€
-                                            </span>
-                                        </div>
-                                    </li>
-                                    <!--También iria a la pagina para comprar y pagar-->
+                                    <c:forEach var="joc" items="${carro}" varStatus="status">
+                                        <li class="cesta">
+                                            <div style="display:inline-block">
+                                                <img src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>" alt="${joc.nom}" title="${joc.nom}"> 
+                                                <span style="margin-right: 5px;"> <!--Aqui poner una cruz al lado del producto para quitarlo del carro?-->
+                                                    ${joc.nom} - ${codis[status.index].preu} €
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </c:forEach>
                                     <hr>
-                                    <a href="#">
-                                        <li>Comprar = 999€</li>
-                                    </a>
+                                    <c:forEach var="codi" items="${codis}">
+                                        <c:set var="total" value="${ total + codi.preu}"/>
+                                    </c:forEach>
+                                    <c:if test="${total > 0}">
+                                        <a href="#">
+                                            <li>Realitzar pagament - <fmt:formatNumber value="${total}"currencySymbol="€" type="currency" pattern="###,###.00 ¤"/></li>
+                                        </a>
+                                    </c:if>
                                 </ul>
                             </div>
                         </c:when>
@@ -91,7 +105,7 @@
                                     <a href="#" class="soporteMvl" id="conectarseMvl">Login</a>
                                 </div>
                             </div> 
-                            <div class="col-4">
+                            <div class="col-3">
                                 <div id="menuLogin">
                                     <a href="<c:url value='/user/signIn'/>" class="soporte" id="nouCompte">Nou Usuari</a>
                                     <a href="<c:url value='/user/signIn'/>" class="soporteMvl" id="compteMvl"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
@@ -99,7 +113,7 @@
                             </div>  
                         </c:otherwise>
                     </c:choose>
-                    <div class="col-1">
+                    <div class="col-3">
                         <a href="#" class="darkMode"><i class="fa fa-moon fa-lg" aria-hidden="true"></i></a>
                         <a href="#" class="lightMode"><i class="fa fa-sun fa-lg" aria-hidden="true"></i></a>
                     </div>

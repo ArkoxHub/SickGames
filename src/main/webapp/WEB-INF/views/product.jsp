@@ -40,7 +40,7 @@
         </div>
         <!--Secció body; Jocs més venuts, valorats, millors ofertes, streams...-->
         <section class="section-body">
-            <div class="container">
+            <div class="container-cataleg">
                 <div class="row" id="cartaJoc">
                     <div class="column-3">
                         <img id="stream${joc.nom}" class="portadaJoc" src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>">
@@ -115,12 +115,12 @@
                             <div class="column-12 text-center">
                                 <c:choose>
                                     <c:when test="${not empty user}">
-                                        <a href="user/add?jocId=${joc.codi_Joc}&nickname=${user.nickname}" class="producteAComprar" id="${joc.nom}">
+                                        <a href="user/add?jocId=${joc.codi_Joc}&nickname=${user.nickname}" class="productToBuy" id="${joc.nom}">
                                             Comprar
                                         </a>
                                     </c:when>
                                     <c:otherwise>
-                                        <a href="#" class="producteAComprar" id="NoLogin"><!--S'ha de posar que si es fa click aquí, surti un avís de que ha de fer login o donar-se d'alta-->
+                                        <a href="#" class="productToBuy" id="NoLogin"><!--S'ha de posar que si es fa click aquí, surti un avís de que ha de fer login o donar-se d'alta-->
                                             Comprar
                                         </a>
                                     </c:otherwise>
@@ -132,7 +132,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="container" id="infoJoc">
+                <div id="infoJoc">
                     <div class="row">
                         <div class="col-md-6">
                             <h4 class="titolsTaules">Configuració mínima</h4>
@@ -174,7 +174,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="container">
+                <div id="cartaJoc">
                     <h4 class="titolsTaules">Streams</h4>
                     <div class="row" id="filaStreams"></div><!--S'omplira automaticament amb els top streamers-->
                     <div class="row" id="streamView"></div><!--Quan fem click a un stream, podrem veure el video dintre d'aquest div-->

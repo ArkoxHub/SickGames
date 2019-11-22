@@ -41,7 +41,7 @@
         <section class="section-body">
             <div class="container-cataleg">
                 <div class="row" id="filaCatalogo">
-                    <div class="col-md-2 menuPlataforma">
+                    <div class="col-md-3 menuPlataforma">
                         <div class="row">
                             <div class="col-md-12" id="marginMenuCalaleg"  style="display:none;">
                                 <button class="btn btn-primary" id="escollirPlataforma" href="">Plataforma</button>
@@ -162,25 +162,30 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-9">
                         <div class="container-fluid">
                             <div class="row">
                                 <c:forEach var="joc" items="${videojocs}" begin="0" end="29">
                                     <div class="column <c:forTokens var="token" items="${joc[2]}" delims=","> ${token} </c:forTokens>">
-                                        <a href="<c:url value="/product?id=${joc[0]}"/>" id="${joc[1]}">
-                                            <div id="imgOverflow">
-                                                <img src="<c:url value="/resources/img/portades/${joc[1]}.jpg"/>" title="${joc[1]}" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis, ${joc[1]}">
+                                        <div class="outClick">
+                                            <div class="mvlGeneres">
+                                                <span>Veure Generes</span>
                                             </div>
-                                            <div class="infoJoc">
-                                                <span class="preu"><i class="fa fa-arrow-down"></i> ${joc[3]}%</span>
-                                                <c:forTokens var="g" items="${joc[2]}" delims=", "> 
-                                                    <div class="genere${g}"><span>${g}</span></div>
-                                                        </c:forTokens>
-                                            </div>
-                                        </a>
-                                        <a href="<c:url value="product?id=${joc[0]}"/>" class="producteAComprar" id="overwatch">
-                                            <fmt:formatNumber value="${joc[5]}" currencySymbol="€" type="currency" pattern="###,###.00 ¤"/>- Comprar
-                                        </a>
+                                            <a href="<c:url value="/product?id=${joc[0]}"/>" id="${joc[1]}">
+                                                <div id="imgOverflow">
+                                                    <img src="<c:url value="/resources/img/portades/${joc[1]}.jpg"/>" title="${joc[1]}" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis, ${joc[1]}">
+                                                </div>
+                                                <div class="infoJoc">
+                                                    <span class="preu"><i class="fa fa-arrow-down"></i> ${joc[3]}%</span>
+                                                    <c:forTokens var="g" items="${joc[2]}" delims=", "> 
+                                                        <div class="genere${g} liMvl"><span>${g}</span></div>
+                                                    </c:forTokens>
+                                                </div>
+                                            </a>
+                                            <a href="<c:url value="product?id=${joc[0]}"/>" class="producteAComprar" id="overwatch">
+                                                <fmt:formatNumber value="${joc[5]}" currencySymbol="€" type="currency" pattern="###,###.00 ¤"/>- Comprar
+                                            </a>
+                                        </div>
                                     </div>
                                 </c:forEach>
                             </div>

@@ -2,109 +2,9 @@
 
 
 /*Catalogo juegos*/
-.infoJoc{
-    position: absolute;
-    width: 100%;
-    color: white;
-    top:0;
-    text-align: center;
-    pointer-events: none;
-}
-/*Catalogo juego texto*/
-div[class*=genere]{
-    display: flex;
-    text-align: center;
-    font-size: 12px;
-    color: black;
-    font-weight: bold;
-    width: 100px;
-    background-repeat: no-repeat;
-    margin-bottom: 3px;
-    margin-top: 5px;
-    height: 30px;
-    line-height: 24px;
-    pointer-events: none;
-    position: relative;
-    left: -1.2em;   
-}
-.genereFPS{
-    background-image: url("../img/generos/Rojo.png");
-}
-.genereRPG{
-    background-image: url("../img/generos/Azul_marino.png");
-}
-.genereCooperació{
-    background-image: url("../img/generos/Aguamarina.png");
-}
-.genereDeportiu{
-    background-image: url("../img/generos/Cereza.png");
-}
-.genereMultijugador{
-    background-image: url("../img/generos/Verde.png");
-}
-.genereConstrucció{
-    background-image: url("../img/generos/Verde_azulado.png");
-}
-.genereAventura{
-    background-image: url("../img/generos/Violeta.png");
-}
-.genereSurvival{
-    background-image: url("../img/generos/Verde_pistacho.png");
-}
-.genereGestió{
-    background-image: url("../img/generos/Morado.png");
-}
-.genereEstratègia{
-    background-image: url("../img/generos/Cielo.png");
-}
-.genereSinglePlayer{
-    background-image: url("../img/generos/Fucsia.png");
-}
-.genereAcció{
-    background-image: url("../img/generos/Naranja.png");
-}
-.genereSimulador{
-    background-image: url("../img/generos/Ocre.png");
-}
-.genereMMO{
-    background-image: url("../img/generos/Naranja_brillante.png");
-}
-.genereIndies{
-    background-image: url("../img/generos/Purpura.png");
-}
-.genereConducció{
-    background-image: url("../img/generos/Turquesa.png");
-}
-.generePlataforma{
-    background-image: url("../img/generos/Rosa.png");
-}
-.genereLluita{
-    background-image: url("../img/generos/Turquesa_verdoso.png");
-}
-div[class*=genere] span{
-    margin-left: 17px;
-}
-
-@media (max-width:770px){ 
-    div[class*=genere]{
-        display: flex;
-        text-align: center;
-        font-size: 10px;
-        margin-bottom: 3px;
-        margin-top: 5px;
-        left:-1.45em;
-    }
-}
-
-@media (max-width:485px){ 
-    div[class*=genere]{
-        display: flex;
-        text-align: center;
-        font-size: 10px;
-        max-width: 85px;
-        margin-bottom: 3px;
-        margin-top: 4px;
-    }
+#filaCatalogo{
+    margin-left: 30px;
+    margin-right: 20px;
 }
 #filaCatalogo .column{
     width: calc(100%/4 - 35px);
@@ -114,39 +14,23 @@ div[class*=genere] span{
     position: relative;
     margin-top:15px;
 }
-@media (max-width:991px){
-    #filaCatalogo .column{
-        width: calc(100%/3 - 35px);
-    }
-}
-@media (max-width:770px){
-    #filaCatalogo .column{
-        width: calc(100%/2 - 35px);
-    }
-    .preu{
-        font-size: 15px;
+@media (max-width:1130px){
+    #filaCatalogo{
+        margin-left: 10px;
+        margin-right: 0px;
     }
 }
 @media (max-width:991px){
-    .preu{
-        font-size: 17px;
-    }
     #filaCatalogo .column{
         width: calc(100%/4 - 35px);
     }
 }
 @media (max-width:770px){
-    .preu{
-        font-size: 14px;
-    }
     #filaCatalogo .column{
         width: calc(100%/3 - 35px);
     }
 }
-@media (max-width:600px){
-    .preu{
-        font-size: 20px;
-    }
+@media (max-width:670px){
     #filaCatalogo .column{
         width: calc(100%/2 - 35px);
     }
@@ -156,37 +40,56 @@ div[class*=genere] span{
     margin-top:25px;
     font-size: 20px;
     font-weight: bold;
-}
-.producteAComprar{
-    background-color: #4596F0;
-    text-decoration: none;
-    color: white !important;
-    font-family: Arial;
-    margin-left:auto;
-    margin-right:auto;
-    display:block;
-    position: relative;
-    margin-top:3px;
-    margin-bottom:5px;
-    transition: 0.3s ease-in-out;
+    margin-left: 30px;
 }
 
-.producteAComprar:hover{
-    background-color: rgb(26, 53, 88);
-    text-decoration: none;
-    color: white;
-    font-family: Arial;
-    
+
+/*Streams*/
+#filaStreams{
+    margin-left: 30px;
+    margin-right: 20px;
 }
-.imgProducteAComprar{
-    background-color: #4596F0;
-    text-decoration: none;
-    color: white !important;
-    margin-left:auto;
-    margin-right:auto;
-    display:block;
+#streamView{
+    margin-left: 15px;
+    margin-right: 20px;
+}
+#filaStreams .column img{
+    width: 100%;
+    height: 130px;
+}
+
+#filaStreams .column{
+    width: calc(100%/4 - 15px);
+    display: inline-block;
+    margin-right: 15px;
     position: relative;
-    margin-top:3px;
-    margin-bottom:5px;
+}
+@media (max-width:1130px){
+    #filaStreams{
+        margin-left: 10px;
+        margin-right: 0px;
+    }
+    #streamView{
+        margin-left: -5px;
+        margin-right: 0px;
+    }
+}
+@media (max-width:991px){
+    #filaStreams .column{
+        width: calc(100%/3 - 15px);
+    }
+    .preu{
+        font-size: 17px;
+    }
+}
+@media (max-width:770px){
+    #filaStreams .column{
+        width: calc(100%/2 - 15px);
+    }
+}
+@media (max-width:500px){
+    #filaStreams .column{
+        width: calc(100%/1 - 15px);
+    }
 }
 
