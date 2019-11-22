@@ -7,6 +7,7 @@ package com.sick.games.domain;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -24,53 +26,52 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "usuari")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class User implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
     @Column(name = "id_Usuari")
     private int id_Usuari;
-      
+
     @NotNull
     @Size(max = 20)
     @Column(name = "nom")
     private String nom;
-    
+
     @NotNull
     @Size(max = 50)
     @Column(name = "cognoms")
     private String cognoms;
-    
+
     @Size(max = 20)
-    @Column(name = "nickname")
+    @Column(name = "nickname", unique = true)
     private String nickname;
-    
+
     @NotNull
     @Column(name = "data_Alta")
     private java.sql.Date data_Alta;
-    
+
     @Size(max = 50)
     @Column(name = "direccio")
     private String direccio;
-    
+
     @NotNull
     @Size(max = 100)
     @Column(name = "email", unique = true)
     private String email;
-    
+
     @NotNull
     @Column(name = "contrasenya")
     private String contrasenya;
-    
+
     @Column(name = "telefon")
     private int telefon;
     
     public User() {
-        
     }
     
     public User(int id_Usuari, String nom, String cognoms, String nickname, Date data_Alta, String direccio, String email, String contrasenya, int telefon) {
@@ -156,5 +157,5 @@ public class User implements Serializable {
     public void setTelefon(int telefon) {
         this.telefon = telefon;
     }
-    
+
 }

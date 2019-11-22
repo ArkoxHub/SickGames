@@ -1,3 +1,5 @@
+<%@page import="com.sick.games.domain.Videojoc"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -41,10 +43,10 @@
                         <a href="<c:url value='/suport'/>" class="soporteMvl" ><i class="fa fa-comment fa-lg" aria-hidden="true"></i></a>
                     </div>
                     <c:choose>
-                        <c:when test="${not empty cookie.userMail.name}">
+                        <c:when test="${not empty user}">
                             <div class="col-3">
                                 <div id="menuUser">
-                                    <a href="#" class="soporte" id="compte">Hola ${cookie.userNick.value}</a>
+                                    <a href="#" class="soporte" id="compte">Hola ${user.nickname}</a>
                                     <a href="#" class="soporteMvl" id="compteMvl"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
                                     <ul id="menuCompte" class="menuCompte">
                                         <a href="<c:url value='/user'/>">
@@ -62,14 +64,23 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-3" id="menuCarrito">            
+                            <div class="col-1" id="menuCarrito">   
+                                <!-- KEVIN LAMEYEMA ARREGLA AIXÒ QUE QUEDA LLEIG -->
+                                <%
+                                    List<Videojoc> carro = (List<Videojoc>) request.getSession().getAttribute("carro");
+                                    String total = "";
+                                    if (carro.size() != 0) {
+                                        total = Integer.toString(carro.size());
+                                    }
+                                %>
+                                <%=total%>
                                 <a href="#"><i class="fas fa-shopping-cart"></i></a><!--Redirect a una pagina para comprar y pagar?-->
                                 <ul id="productesComprats" class="productesComprats">
                                     <li class="cesta">
                                         <div style="display:inline-block">
                                             <img src="<c:url value="/resources/img/portades/World of Warcraft Shadowlands.jpg"/>"> 
                                             <span> <!--Aqui poner una cruz al lado del producto para quitarlo del carro?-->
-                                                 World of Warcraft:Shadowlands - 60€
+                                                World of Warcraft:Shadowlands - 60€
                                             </span>
                                         </div>
                                     </li>
@@ -77,7 +88,7 @@
                                         <div style="display:inline-block">
                                             <img src="<c:url value="/resources/img/portades/World of Warcraft Shadowlands.jpg"/>"> 
                                             <span> <!--Aqui poner una cruz al lado del producto para quitarlo del carro?-->
-                                                 World of Warcraft:Shadowlands - 60€
+                                                World of Warcraft:Shadowlands - 60€
                                             </span>
                                         </div>
                                     </li>
@@ -120,13 +131,13 @@
             </div>
 
             <div class="container">
-                    <label for="nickname"><b>Nick</b></label>
-                    <input title="Introdueix el teu nick" type="text" placeholder="Nom de l'usuari" name="nickname" class="inputLogin" required>
+                <label for="nickname"><b>Nick</b></label>
+                <input title="Introdueix l'usuari" type="text" placeholder="Nom de l'usuari" name="nickname" class="inputLogin" required>
 
-                    <label for="psw"><b>Contrasenya</b></label>
-                    <input title="Introdueix la contrasenya" type="password" placeholder="Introdueix contrasenya" name="password" class="inputLogin" required>
-                    
-                    <input title="Fer login" type="submit" class="buttonLogin" value="Login">
+                <label for="psw"><b>Contrasenya</b></label>
+                <input title="Introdueix la contrasenya" type="password" placeholder="Introdueix contrasenya" name="password" class="inputLogin" required>
+
+                <input title="Fer login" type="submit" class="buttonLogin" value="Login">
             </div>
 
             <div class="container">

@@ -30,64 +30,60 @@
     </head>
 
     <body>
-    <jsp:include page="/WEB-INF/resources/headerAndFooter/header.jsp"></jsp:include>
-        <section class="section-body">
-            <div class="container">
-                <div class="row"  id="jocsPerfil">
-                    <div class="col-md-2 text-center center">
-                        <img id="fotoPerfil"  src="<c:url value="/resources/img/fotosPerfil/user.jpg"/>">
+        <jsp:include page="/WEB-INF/resources/headerAndFooter/header.jsp"></jsp:include>
+            <section class="section-body">
+                <div class="container">
+                    <div class="row"  id="jocsPerfil">
+                        <div class="col-md-2 text-center center">
+                            <img id="fotoPerfil"  src="<c:url value="/resources/img/fotosPerfil/user.jpg"/>">
                         <i class="fas fa-camera upload-button"></i>
                         <input class="file-upload" type="file" accept="image/*"/>
                     </div>
+                    <c:out value="&emsp;" escapeXml="false"/>
                     <div class="col-md-8">
                         <h2>${user.nom}</h2>
-                        <p>Carrito de la compra: <a class="btn btn-primary" id="carritoShow">Mostrar productes</a> <a class="btn btn-primary" id="carritoHide">Ocultar productes</a></p>
+                        <h5>Rebràs els codis al següent correu electrònc: ${user.email}</h5>
+                        <p>Carro de la compra: <a class="btn btn-primary" id="carritoShow">Mostrar productes</a> <a class="btn btn-primary" id="carritoHide">Ocultar productes</a></p>
                         <ul id="llistaProductes">
-                            <li>Overwatch - 24€</li>
-                            <li>Overwatch - 25€</li>
-                            <li>Overwatch - 25€</li>
+                            <c:forEach var="joc" items="${carro}" varStatus="status">
+                                <li><pre style="color: white">Producte: ${joc.nom}    -   ${codis[status.index].preu} €</pre></li>
+                                </c:forEach>
+                            <p>===============================</p>
                         </ul>
-                        <p>Preu total a pagar: 108€</p><a class="btn btn-primary" id="realitzarPagament">Pagar</a>
+                        <c:forEach var="codi" items="${codis}">
+                            <c:set var="total" value="${ total + codi.preu}"/>
+                        </c:forEach>
+                        <c:if test="${total > 0}">
+                            <p>Preu total a pagar - <fmt:formatNumber value="${total}"currencySymbol="€" type="currency" pattern="###,###.00 ¤"/></p>
+                            <a class="btn btn-primary" id="realitzarPagament">Pagar</a>
+                        </c:if>
                     </div>
                 </div>
             </div>
             <div class="container">
                 <h4  id="jocsH4">Llista de jocs desitjats</h4>
                 <div class="row" id="jocsPerfil">
-                    <div class="column">
-                        <!---->
-                        <a href="<c:url value="/product?id=1"/>"><img id="portadaJoc" src="<c:url value="/resources/img/portades/Overwatch.jpg"/>"></a> 
-                        <img class="retirarWhishList" src="<c:url value="/resources/img/like.png"/>" alt="">
-                        <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> 20% - Comprar</a>
-                    </div>
-                    <div class="column">
-                        <!---->
-                        <a href="<c:url value="/product?id=1"/>"><img id="portadaJoc" src="<c:url value="/resources/img/portades/Overwatch.jpg"/>"></a> 
-                        <img class="retirarWhishList" src="<c:url value="/resources/img/like.png"/>" alt="">
-                        <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> 20% - Comprar</a>
-                    </div>
-                    <div class="column">
-                        <!---->
-                        <a href="<c:url value="/product?id=1"/>"><img id="portadaJoc" src="<c:url value="/resources/img/portades/Overwatch.jpg"/>"></a> 
-                        <img class="retirarWhishList" src="<c:url value="/resources/img/like.png"/>" alt="">
-                        <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> 20% - Comprar</a>
-                    </div>
-                    <div class="column">
-                        <!---->
-                        <a href="<c:url value="/product?id=1"/>"><img id="portadaJoc" src="<c:url value="/resources/img/portades/Overwatch.jpg"/>"></a> 
-                        <img class="retirarWhishList" src="<c:url value="/resources/img/like.png"/>" alt="">
-                        <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> 20% - Comprar</a>
-                    </div>
+                    <c:forEach var="joc" items="${wishlistgames}" varStatus="status">
+                        <div class="column">
+                            <a href="<c:url value="/product?id=${joc.codi_Joc}"/>"><img id="portadaJoc" src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>"></a> 
+                            <a href="<c:url value="/user/removeWishlist?item=${joc.codi_Joc}&nickname=${user.nickname}"></c:url>">
+                                <img class="retirarWhishList" src="<c:url value="/resources/img/like.png"/>" title="${joc.nom}" alt="${joc.nom}">
+                            </a>
+                            <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> ${wishlistcodes[status.index].oferta}% - Comprar</a>
+                        </div>
+                    </c:forEach>
                 </div>
             </div>
-            <div class="container">
-                <h4  id="jocsH4">Jocs comprats</h4>
-                <div class="row"  id="jocsPerfil">
-                    <div class="column">
-                        <!---->
-                        <a href="<c:url value="/product?id=1"/>"><img id="portadaJoc" src="<c:url value="/resources/img/portades/Overwatch.jpg"/>"></a> 
-                    </div>
-                </div>
-            </div>            
+
+            <!--Falta importar taules Detall i Comanda per tal de poder mostrar aquest apartat (no és fàcil)... 
+     <div class="container">
+         <h4  id="jocsH4">Jocs comprats</h4>
+         <div class="row"  id="jocsPerfil">
+             <div class="column">
+                 <a href="<c:url value="/product?id=1"/>"><img id="portadaJoc" src="<c:url value="/resources/img/portades/Overwatch.jpg"/>"></a> 
+             </div>
+         </div>
+     </div>  
+            -->
         </section>
-<jsp:include page="/WEB-INF/resources/headerAndFooter/footer.jsp"></jsp:include>
+        <jsp:include page="/WEB-INF/resources/headerAndFooter/footer.jsp"></jsp:include>

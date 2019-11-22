@@ -5,9 +5,13 @@
  */
 package com.sick.games.controller;
 
+import com.sick.games.domain.User;
+import com.sick.games.domain.Videojoc;
 import com.sick.games.service.UsersService;
 import com.sick.games.service.VideojocService;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -28,24 +32,59 @@ public class HomeController {
 
     @Autowired
     VideojocService videojocService;
-    
-    @Autowired 
+
+    @Autowired
     UsersService usersService;
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView homePage(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        // Iniciem la variable de sessio carro si no ho està un cop l'usuari carrega l'index
+        if (request.getSession().getAttribute("carro") == null) {
+            List<Videojoc> carro = new ArrayList();
+            request.getSession().setAttribute("carro", carro);
+        }
+
         ModelAndView model = new ModelAndView("index");
         model.getModelMap().addAttribute("upcoming", videojocService.getGamesUpcoming());
         model.getModelMap().addAttribute("ofertes", videojocService.getGamesByOferta());
         model.getModelMap().addAttribute("preus", videojocService.getGamesByPrice());
-//        if (request.getCookies() != null) {
-//            for (Cookie cookie : request.getCookies()) {
-//                if (cookie.getName().equals("userMail")) {
-//                    model.getModelMap().addAttribute("user", usersService.getUserByeMail(cookie.getValue()));
-//                }
-//            }
-//        }
+
+        /**
+         * Si l'usuari té les cookies conforma ha iniciat sessió alguna vegada,
+         * comprovem que existeixi encara a la base de dades... 
+         * Si no està a la base de dades, li fem el favor d'eliminar la seva cookie :D
+         */
+        User user = null;
+        if (request.getCookies() != null) {
+            for (Cookie cookie : request.getCookies()) {
+                if (cookie.getName().equals("userMail")) {
+                    try {
+                        user = usersService.getUserByeMail(cookie.getValue());
+                        model.getModelMap().addAttribute("user", user);
+                    } catch (NullPointerException e) {
+                        System.out.println("No s'ha trobat usuari equivalent a la base de dades actual");
+                    }
+                }
+            }
+        }
+        if (user == null) {
+            Cookie cookieMail = new Cookie("userMail", "");
+            cookieMail.setMaxAge(0);
+            cookieMail.setPath("/");
+            response.addCookie(cookieMail);
+
+            Cookie cookieNick = new Cookie("userNick", "");
+            cookieNick.setMaxAge(0);
+            cookieNick.setPath("/");
+            response.addCookie(cookieNick);
+
+            Cookie cookiePwd = new Cookie("userPwd", "");
+            cookiePwd.setMaxAge(0);
+            cookiePwd.setPath("/");
+            response.addCookie(cookiePwd);
+        }
+
         return model;
     }
 }

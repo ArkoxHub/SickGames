@@ -103,25 +103,22 @@ public class UsersHibernateDAO implements UsersDAO {
 
     @Override
     public Administrador getAdminByEmail(String email) {
-        User user = getSession().load(User.class, email);
-        Administrador admin = getSession().load(Administrador.class, user.getId_Usuari());
-        logger.info("Administrador obtingut correctament" + admin);
+        Administrador admin = (Administrador) getSession().createQuery("FROM Administrador admin WHERE email = :mail").setParameter("mail", email).uniqueResult();
+        logger.info("Usuari admin obtingut correctament" + admin);
         return admin;
     }
 
     @Override
     public Client getClientByEmail(String email) {
-        User user = getSession().load(User.class, email);
-        Client client = getSession().load(Client.class, user.getId_Usuari());
-        logger.info("Client obtingut correctament" + client);
+        Client client = (Client) getSession().createQuery("FROM Client client WHERE email = :mail").setParameter("mail", email).uniqueResult();
+        logger.info("Usuari client obtingut correctament" + client);
         return client;
     }
 
     @Override
     public Partner getPartnerByEmail(String email) {
-        User user = getSession().load(User.class, email);
-        Partner partner = getSession().load(Partner.class, user.getId_Usuari());
-        logger.info("Partner obtingut correctament" + partner);
+        Partner partner = (Partner) getSession().createQuery("FROM Partner partner WHERE email = :mail").setParameter("mail", email).uniqueResult();
+        logger.info("Usuari partner obtingut correctament" + partner);
         return partner;
     }
 
