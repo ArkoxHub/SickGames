@@ -14,12 +14,10 @@ import com.sick.games.service.UsersService;
 import com.sick.games.service.VideojocService;
 import com.sick.games.service.WishlistService;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import javax.ejb.DuplicateKeyException;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -57,7 +55,7 @@ public class UserController {
             throws ServletException, IOException {
         ModelAndView model = new ModelAndView("user");
 
-        // Iniciem la variable de sessio carro si no ho està un cop l'usuari carrega l'index
+        // Iniciem la variable de sessio carro si no ho està
         if (request.getSession().getAttribute("carro") == null) {
             List<Videojoc> carro = new ArrayList();
             request.getSession().setAttribute("carro", carro);
@@ -278,7 +276,12 @@ public class UserController {
             throws ServletException, IOException {
 
         User user = usersService.getUserByNick(nickname);
-        // FALTA IMPLEMENTAR
+        List<Wishlist> wishlist = wishlistService.getWishlistByUserId(user.getId_Usuari());
+        for (Wishlist item : wishlist) {
+            if (item.getCodi_Joc() == Integer.parseInt(jocId)) {
+                wishlistService.removeWishlist(item);
+            }
+        }
         
         return "redirect:/user";
     }

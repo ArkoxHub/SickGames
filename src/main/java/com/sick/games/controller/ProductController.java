@@ -5,6 +5,7 @@
  */
 package com.sick.games.controller;
 
+import com.sick.games.domain.Codi;
 import com.sick.games.domain.User;
 import com.sick.games.domain.Videojoc;
 import com.sick.games.service.CodiService;
@@ -45,18 +46,30 @@ public class ProductController {
     public ModelAndView product(@RequestParam(name = "id") String codi, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Iniciem la variable de sessio carro si no ho està
-        if (request.getSession().getAttribute("carro") == null) {
-            List<Videojoc> carro = new ArrayList();
-            request.getSession().setAttribute("carro", carro);
-        }
-
         // Afegim informació sobre el joc que vol consultar a la vista (El joc, el seu pròxim codi i l'stock)
         int codi_Joc = Integer.parseInt(codi);
         ModelAndView model = new ModelAndView("product");
         model.getModelMap().addAttribute("joc", videojocService.getGameByCode(codi_Joc));
         model.getModelMap().addAttribute("codi", codiService.getNextCodeByCodiJoc(codi_Joc));
         model.getModelMap().addAttribute("stock", codiService.getTotalCodisByJoc(codi_Joc));
+
+        // Iniciem la variable de sessio carro si no ho està
+        if (request.getSession().getAttribute("carro") == null) {
+            List<Videojoc> carro = new ArrayList();
+            request.getSession().setAttribute("carro", carro);
+        } else {
+            List<Codi> codis = new ArrayList();
+            List<Videojoc> videojocs = (List<Videojoc>) request.getSession().getAttribute("carro");
+            for (Videojoc joc : videojocs) {
+                codis.add(codiService.getNextCodeByCodiJoc(joc.getCodi_Joc()));
+            }
+
+            // Retornem els codis de cada joc a la vista (estan en el mateix ordre).
+            model.getModelMap().addAttribute("codis", codis);
+        }
+
+        // Retornem els jocs que l'usuari a fet clic en comprar.
+        model.getModelMap().addAttribute("carro", request.getSession().getAttribute("carro"));
 
         // Mirem si esta loguejat, si ho està retornem a la vista l'usuari (s'usa pel Wishlist)
         User user = null;
