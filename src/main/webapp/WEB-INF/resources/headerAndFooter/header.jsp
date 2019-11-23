@@ -65,7 +65,6 @@
                                 </div>
                             </div>
                             <div class="col-3" id="menuCarrito">   
-                                <!-- KEVIN LAMEYEMA ARREGLA AIXÒ QUE QUEDA LLEIG -->
                                 <%
                                     List<Videojoc> carro = (List<Videojoc>) request.getSession().getAttribute("carro");
                                     String total = "";

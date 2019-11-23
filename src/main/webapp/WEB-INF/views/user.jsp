@@ -67,7 +67,7 @@
                         <div class="column">
                             <a href="<c:url value="/product?id=${joc.codi_Joc}"/>"><img id="portadaJoc" src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>"></a> 
                             <a href="<c:url value="/user/removeWishlist?item=${joc.codi_Joc}&nickname=${user.nickname}"></c:url>">
-                                <img class="retirarWhishList" src="<c:url value="/resources/img/like.png"/>" title="${joc.nom}" alt="${joc.nom}">
+                                <img class="retirarWhishList" src="<c:url value="/resources/img/dislike.png"/>" title="${joc.nom}" alt="${joc.nom}">
                             </a>
                             <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> ${wishlistcodes[status.index].oferta}% - Comprar</a>
                         </div>
