@@ -34,8 +34,7 @@
         <jsp:include page="/WEB-INF/resources/headerAndFooter/header.jsp"></jsp:include>
             <!--Fi Secció top-->
             <section class="section-body">
-                <div class="container register">
-
+                <div class="container-cataleg register">
                 <form:form modelAttribute="user" method="POST">
                     <div class="row">
                         <div class="col-md-3 register-left">

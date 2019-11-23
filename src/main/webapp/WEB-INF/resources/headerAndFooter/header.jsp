@@ -18,10 +18,11 @@
     </div>
 </div>
 <!--Secció top: Buscador, conta, logo....--> 
+<div id="fondo"></div>
 <div id="page-container">
 <section class="section-top">
     <a href="<c:url value='/'/>"><img src="<c:url value='/resources/img/logo_icon.png'/>" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis" class="logoMvl"></a>
-    <nav class="container" id="container-top">
+    <nav class="container-cataleg" id="container-top">
         <div class="row">
             <div class="col-5">
                 <div class="row">

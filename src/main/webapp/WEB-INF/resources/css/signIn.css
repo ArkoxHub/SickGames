@@ -1,5 +1,5 @@
-.register{
-    margin-top: 3%;
+#fondo{
+    background: url("../../../sickgames/resources/img/backgrounds/4.png") center 0px no-repeat rgb(7, 14, 37) !important;
 }
 .register-left{
     text-align: center;
@@ -84,8 +84,7 @@
     margin-bottom: -15%;
 }
 .register{
-    background: linear-gradient(rgba(45, 72, 128, 1) ,rgba(0, 0, 0, 1));
-    margin-bottom: 2%;
+    background: linear-gradient(rgba(45, 72, 128, 1) ,rgba(0, 0, 0, 1)) !important;
     color:white;
 }
 .checkbox{

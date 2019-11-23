@@ -35,12 +35,12 @@
     <body>
         <jsp:include page="/WEB-INF/resources/headerAndFooter/header.jsp"></jsp:include>
             <!--FI Secció top-->
-            <div class="text-center center" style="margin-top:10px;">
-                <a  class="btn btn-primary" href="<c:url value="/admin/updateGame?id=${joc.codi_Joc}"/>">Modifica aquest videojoc</a>
-        </div>
         <!--Secció body; Jocs més venuts, valorats, millors ofertes, streams...-->
         <section class="section-body">
             <div class="container-cataleg">
+                <div class="text-center center" style="padding-top:10px;">
+                    <a  class="btn btn-primary" href="<c:url value="/admin/updateGame?id=${joc.codi_Joc}"/>">Modifica aquest videojoc</a>
+                </div>
                 <div class="row" id="cartaJoc">
                     <div class="column-3">
                         <img id="stream${joc.nom}" class="portadaJoc" src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>">
@@ -50,9 +50,6 @@
                                     <img class="afegirWhishList" src="<c:url value="/resources/img/like.png"/>" title="${joc.nom}" alt="${joc.nom}">
                                 </a>
                             </c:when>
-                            <c:otherwise>
-                                <img class="afegirWhishList" src="<c:url value="/resources/img/like.png"/>" title="${joc.nom}" alt="${joc.nom}">
-                            </c:otherwise>
                         </c:choose>
                     </div>
                     <div class="portada">

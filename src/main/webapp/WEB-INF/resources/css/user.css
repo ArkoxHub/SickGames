@@ -4,10 +4,6 @@
     height: 135px;
     width: 100%;
 }
-.section-body{
-    margin-top: 50px;
-    margin-bottom: 20px;
-}
 /*fa icon camara para editar imagen perfil*/
 .fa-camera{
     visibility: hidden;
@@ -40,12 +36,14 @@
 .retirarWhishList{
     position: absolute;
     width: 30px;
-    z-index: 99999;
-    left: 20px;
+    z-index: 999;
+    right: 3px;
+    opacity: 0.8;
     top:0;
 }
 .retirarWhishList:hover{
     transform: scale(1.2);
+    opacity: 1;
 }
 
 #llistaProductes{
@@ -84,31 +82,26 @@
 /*Jocs desitjats*/
 
 #jocsH4{
-    margin: 20px 15px;
+    margin-top: 25px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 30px;
 }
 .section-body .row .col-md-3{
     margin-bottom: 40px;
 }
 #jocsPerfil{
-    margin-left: 0px;
-    margin-right: 0px;
-    margin-top: 20px;
-}
-.retirarWhishList{
-    position: absolute;
-    width: 30px;
+    margin-left: 30px;
+    margin-right: 20px;
+    padding-top: 20px;
 }
 #portadaJoc{
     width: 100%;
-    transition: 0.2s;
-    border:2px solid transparent;
+    transition: 0.5s;
 }
 #portadaJoc:hover{
-    -webkit-box-shadow: 0px 0px 20px 3px rgba(69,124,191,0.63);
     -moz-box-shadow: 0px 0px 20px 3px rgba(69,124,191,0.63);
-    box-shadow: 0px 0px 20px 3px rgba(69,124,191,0.63);
-    border:2px solid white;
-    transform: scale(0.98);
+    transform: scale(1.09);
 }
 #jocsPerfil .column .producteAComprar{
     text-align: center;
@@ -141,6 +134,15 @@
     color: white;
     font-family: Arial;
     
+}
+#black{
+    background: black;
+}
+@media (max-width:1130px){
+    #jocsPerfil{
+        margin-left: 10px;
+        margin-right: 0px;
+    }
 }
 @media (max-width:924px){
     #jocsPerfil .column{

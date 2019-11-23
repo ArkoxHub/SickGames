@@ -17,6 +17,12 @@ body{
 html{
     scroll-behavior: smooth;
 }
+#fondo{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 122px;
+}
 /*Cookies*/
 .cookiesAccept{
     position: fixed;
@@ -248,30 +254,20 @@ html{
 }
 /*MARGEN CONTAINER TOP*/
 #container-top{
-    padding-bottom: 4px;
+    background: black !important;
 }
 
 .container-cataleg{
-    margin-top: 65px;
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
+    background: rgb(42, 41, 41);
 }
 @media (min-width: 1200px){
     .container-cataleg {
-        max-width: 1200px;
-    }
-}
-@media (max-width: 1200px){
-    .container-cataleg {
-        max-width: 1200px;
-    }
-    
-    #container-top{
-        padding-bottom: 4px;
-        max-width: 100% !important;
+        max-width: 1160px;
     }
 }
 @media (max-width: 992px){
@@ -283,10 +279,6 @@ html{
     .container-cataleg {
         max-width: 1100px;
     }
-    #container-top{
-        padding-bottom: 4px;
-        max-width: 100% !important;
-    }
 }
 .section-top{
     background: black;
@@ -294,6 +286,7 @@ html{
     -moz-box-shadow: 0px 5px 5px 0px rgba(69,124,191,0.63);
     box-shadow: 0px 5px 5px 0px rgba(69,124,191,0.63);
     padding-top:10px;
+    position:relative;
 }
 .soporteMvl{
     text-decoration: none;
@@ -578,6 +571,9 @@ div[class*=genere] span{
 
 
 /*Catalogo juego filas y columnas */
+.outClick{
+    background: black;
+}
 #filaCatalogo{
     overflow: hidden;
 }
@@ -930,4 +926,20 @@ span.psw {
     div[class*=genere]{
         display:none
     }
+}
+
+@media screen and (min-width: 1400px) {
+  .container-cataleg {
+    width: 1370px;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .container-cataleg {
+    width: 1570px;
+  }
+}
+@media screen and (min-width: 1900px) {
+  .container-cataleg {
+    width: 1870px;
+  }
 }

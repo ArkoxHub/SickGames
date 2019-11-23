@@ -32,9 +32,6 @@
     <body>
         <jsp:include page="/WEB-INF/resources/headerAndFooter/header.jsp"></jsp:include>
             <!--Fi Secció top-->
-        <div class="text-center center" style="margin-bottom:-20px; margin-top:10px">
-        </div>
-
         <section class="section-body">
             <div class="container-cataleg">
                 <div class="row" id="suportRow">
