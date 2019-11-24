@@ -50,10 +50,18 @@ $(document).ready(function () {
 /*Funcio cambiar fons random*/
 window.onload = function () {
     
+    /*
+     * Recogemos la distancia a la que se encuentra
+     * el fondo de top en el momento de cargar la página.
+     * Le quitamos el texto px para hacer el calculo
+     */
     var topFondo = $("#fondo").css("top").valueOf();
     topFondo = topFondo.slice(0, -2);
     
     var scrollToponLoad = $(window).scrollTop();
+    /*
+     * Si no nos encontramos arriba de la página se ajustará el fondo
+     */
     if(scrollToponLoad >= 0 && scrollToponLoad <= topFondo){
         var toponLoad = topFondo - scrollToponLoad;
         $("#fondo").css("top", toponLoad+"px");

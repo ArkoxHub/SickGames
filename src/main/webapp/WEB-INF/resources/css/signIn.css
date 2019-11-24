@@ -18,9 +18,6 @@
     margin-bottom: 3%;
     cursor: pointer;
 }
-.register-right{
-    
-}
 .register-left img{
     margin-top: 10%;
     width: 50%;
@@ -84,7 +81,7 @@
     margin-bottom: -15%;
 }
 .register{
-    background: linear-gradient(rgba(45, 72, 128, 1) ,rgba(0, 0, 0, 1)) !important;
+    background: linear-gradient(rgba(45, 72, 128, 1) ,rgb(7, 14, 37)) !important;
     color:white;
 }
 .checkbox{
