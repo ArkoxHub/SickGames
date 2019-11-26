@@ -100,7 +100,7 @@
     margin-left: 0;
     font-size: 16px; 
     border-bottom: 1px solid;
-    color: #4596F0;
+    color: white;
 }
 /*Medida de los elementos descriptivos del producto: precio, stock, idioma, titulo...*/
 @media (max-width:1204px){

@@ -313,6 +313,20 @@ html{
 }
 #menuUser, #menuCarrito{
     display: inline-block;
+    padding: 0px;
+    color:white;
+}
+.eliminarProducte {
+    color: rgba(255, 0, 0, 0.59) ;
+    font-size: 35px;
+    font-weight: bold;
+}
+.eliminarProducte:hover,
+.eliminarProducte:focus {
+    color: red !important;
+    cursor: pointer;
+    text-shadow: none !important;
+    text-decoration: none;
 }
 .menuCompte {
     display: none;

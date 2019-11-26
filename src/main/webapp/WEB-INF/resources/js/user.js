@@ -63,19 +63,3 @@ $(document).ready(function () {
         
 });
 
-//Mostrar carrito
-$(document).ready(function () {
-    $('#carritoShow').click(function() {
-        $('#llistaProductes').slideDown('slow');
-        $("#llistaProductes").css("display","block");
-        $("#carritoShow").css("display", "none");
-        $("#carritoHide").css("display", "inline-flex");
-        
-    });
-    $('#carritoHide').click(function() {
-        $('#llistaProductes').slideUp('slow');
-        $("#carritoShow").css("display", "inline-flex");
-        $("#carritoHide").css("display", "none");
-    });
-
-});

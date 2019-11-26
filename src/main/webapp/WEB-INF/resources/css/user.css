@@ -47,8 +47,19 @@
 }
 
 #llistaProductes{
-    display:none;
-    list-style-type: none;
+    display: block;
+}
+.table td{
+    vertical-align: middle !important;
+}
+#jocCarroPerfil{
+    width: 100px;
+}
+
+@media (max-width:535px){
+    #jocCarroPerfil{
+        width: 80px;
+    }
 }
 #carritoHide{
     display:none;

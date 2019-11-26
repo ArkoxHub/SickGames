@@ -2,30 +2,22 @@ $(document).ready(function () {
     var jocStream = $("img[id^='stream']").val("");
     var obtenirNomJoc = jocStream[0].id.replace('stream','');
     //Alguns jocs a twitch tenen els dos punts, però les imatges no admeten dos punts (així que en cas de coincidir es tenene que afegir)
-    if (obtenirNomJoc == "Diablo III Reaper of Souls") {
-        obtenirNomJoc = "Diablo III: Reaper of Souls";
-    }
-    if (obtenirNomJoc == "Star Wars Jedi Fallen Order") {
-        obtenirNomJoc = "Star Wars Jedi: Fallen Order";
-    }
-    if (obtenirNomJoc == "Tom Clancy's Rainbow Six Siege") {
-        obtenirNomJoc = "Tom Clancy's Rainbow Six: Siege";
-    }
-    if (obtenirNomJoc == "The Legend of Zelda Link's Awakening") {
-        obtenirNomJoc = "The Legend of Zelda: Link's Awakening";
-    }
-    if (obtenirNomJoc == "Call of Duty Black Ops 4") {
-        obtenirNomJoc = "Call of Duty: Black Ops 4";
-    }
-    if (obtenirNomJoc == "Pokemon Escudo") {
-        obtenirNomJoc = "Pokemon Shield";
-    }
-    if (obtenirNomJoc == "Pokemon Espada") {
-        obtenirNomJoc = "Pokemon Sword";
-    }
-    if (obtenirNomJoc == "World of Warcraft Shadowlands") {
-        obtenirNomJoc = "World of Warcraft";
-    }
+    if (obtenirNomJoc == "Diablo III Reaper of Souls") obtenirNomJoc = "Diablo III: Reaper of Souls";
+    
+    if (obtenirNomJoc == "Star Wars Jedi Fallen Order") obtenirNomJoc = "Star Wars Jedi: Fallen Order";
+    
+    if (obtenirNomJoc == "Tom Clancy's Rainbow Six Siege") obtenirNomJoc = "Tom Clancy's Rainbow Six: Siege";
+    
+    if (obtenirNomJoc == "The Legend of Zelda Link's Awakening") obtenirNomJoc = "The Legend of Zelda: Link's Awakening";
+    
+    if (obtenirNomJoc == "Call of Duty Black Ops 4") obtenirNomJoc = "Call of Duty: Black Ops 4";
+    
+    if (obtenirNomJoc == "Pokemon Escudo") obtenirNomJoc = "Pokemon Shield";
+    
+    if (obtenirNomJoc == "Pokemon Espada") obtenirNomJoc = "Pokemon Sword";
+    
+    if (obtenirNomJoc == "World of Warcraft Shadowlands") obtenirNomJoc = "World of Warcraft";
+    
     //Comprobem que hi han streams sobre el joc en concret
     var jocApi = "https://api.twitch.tv/helix/games?name="+obtenirNomJoc;
     $.ajax({

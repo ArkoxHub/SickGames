@@ -83,6 +83,7 @@
                                                 <span style="margin-right: 5px;"> <!--Aqui poner una cruz al lado del producto para quitarlo del carro?-->
                                                     ${joc.nom} - ${codis[status.index].preu} €
                                                 </span>
+                                                <a href="#" class="eliminarProducte" title="Eliminar producte">&times;</a>
                                             </div>
                                         </li>
                                     </c:forEach>

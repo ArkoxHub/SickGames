@@ -109,7 +109,7 @@
                                 <a href="<c:url value="/product?id=${joc[0]}"/>" id="${joc[1]}">
                                     <div id="imgOverflow">
                                         <img src="<c:url value="/resources/img/portades/${joc[1]}.jpg"/>" 
-                                             title="${joc[1]}" alt="SickGames ${joc[1]}">
+                                             title="${joc[1]}" alt="SickGames ${joc[1]}">                                        
                                     </div>
                                     <div class="infoJoc">
                                         <span class="preu"><i class="fa fa-arrow-down"></i> ${joc[3]}%</span>
