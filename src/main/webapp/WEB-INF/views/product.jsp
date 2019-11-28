@@ -50,9 +50,6 @@
                                     <img class="afegirWhishList" src="<c:url value="/resources/img/like.png"/>" title="${joc.nom}" alt="${joc.nom}">
                                 </a>
                             </c:when>
-                            <c:otherwise>
-                                <img class="afegirWhishList" src="<c:url value="/resources/img/like.png"/>" title="${joc.nom}" alt="${joc.nom}">
-                            </c:otherwise>
                         </c:choose>
                     </div>
                     <div class="portada">

@@ -274,11 +274,13 @@ public class UserController {
             @RequestParam(name = "nickname") String nickname,
             HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        int codi_Joc = Integer.parseInt(jocId);
 
         User user = usersService.getUserByNick(nickname);
         List<Wishlist> wishlist = wishlistService.getWishlistByUserId(user.getId_Usuari());
         for (Wishlist item : wishlist) {
-            if (item.getCodi_Joc() == Integer.parseInt(jocId)) {
+            if (item.getCodi_Joc() == codi_Joc) {
                 wishlistService.removeWishlist(item);
             }
         }
