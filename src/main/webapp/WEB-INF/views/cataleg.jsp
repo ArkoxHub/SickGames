@@ -34,12 +34,11 @@
         <jsp:include page="/WEB-INF/resources/headerAndFooter/header.jsp"></jsp:include>
 
             <!--Secció body; Jocs més venuts, valorats, millors ofertes, streams...-->
-
-            <div class="text-center center" style="margin-top:10px;">
-                <a class="btn btn-primary" href="<c:url value="/admin/addGame"/>">Afegir videojoc</a>
-        </div>
         <section class="section-body">
             <div class="container-cataleg">
+                <div class="text-center center" style="padding-top:10px;">
+                    <a class="btn btn-primary" href="<c:url value="/admin/addGame"/>">Afegir videojoc</a>
+                </div>
                 <div class="row" id="filaCatalogo">
                     <div class="col-md-3 menuPlataforma">
                         <div class="row">

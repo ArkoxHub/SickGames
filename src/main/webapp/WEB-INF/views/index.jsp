@@ -32,13 +32,13 @@
     <body>
         <jsp:include page="/WEB-INF/resources/headerAndFooter/header.jsp"></jsp:include>
             <!--Fi Secció top-->
-            <div class="text-center center" style="margin-bottom:-20px; margin-top:10px">
-                <a class="btn btn-primary" href="<c:url value="/admin/addGame"/>">Afegir videojoc</a>
-            <a class="btn btn-primary" href="<c:url value="/cataleg"/>">Visitar Cataleg</a>
-        </div>
-
         <section class="section-body">
             <div class="container-cataleg">
+                
+                <div class="text-center center" style="padding-top:10px">
+                    <a class="btn btn-primary" href="<c:url value="/admin/addGame"/>">Afegir videojoc</a>
+                    <a class="btn btn-primary" href="<c:url value="/cataleg"/>">Visitar Cataleg</a>
+                </div>   
                 <!--PRECOMPRA-->
                 <p class="tituloFilas">Próximes novetats</p>
                 <div class="row" id="filaCatalogo">
@@ -109,7 +109,7 @@
                                 <a href="<c:url value="/product?id=${joc[0]}"/>" id="${joc[1]}">
                                     <div id="imgOverflow">
                                         <img src="<c:url value="/resources/img/portades/${joc[1]}.jpg"/>" 
-                                             title="${joc[1]}" alt="SickGames ${joc[1]}">
+                                             title="${joc[1]}" alt="SickGames ${joc[1]}">                                        
                                     </div>
                                     <div class="infoJoc">
                                         <span class="preu"><i class="fa fa-arrow-down"></i> ${joc[3]}%</span>
