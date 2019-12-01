@@ -14,6 +14,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Formulari addGame</title>
+        <!--This css-->
+        <link href="<c:url value='/resources/css/afegirJoc.css'/>" rel="stylesheet" type="text/css"/>
+        <!--This javascript-->
+        <script src="<c:url value='/resources/js/afegirJoc.js'/>" type="text/javascript" ></script>
+        
         <!--WebIcon-->
         <link rel="icon" href="<c:url value="/resources/img/logo_icon.png"/>" alt="Favicon">
         <!--My css-->

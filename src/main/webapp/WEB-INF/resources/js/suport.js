@@ -7,14 +7,14 @@
 
 $(document).ready(function () {
     $(".divTitol").on('click', function(){
-        $('.bla', this).slideToggle("slow");
-        
-        if($('.bla', this).hasClass("vanishIn")){
-            $('.bla', this).removeClass("vanishIn");
-            $('.bla', this).addClass("vanishOut");
+        var mostrarText = $(this).closest('div').nextAll(':has(.bla):first').find('.bla');
+        mostrarText.slideToggle("slow");
+        if(mostrarText.hasClass("vanishIn")){
+            mostrarText.removeClass("vanishIn");
+            mostrarText.addClass("vanishOut");
         }else{
-            $('.bla', this).addClass("vanishIn");
-            $('.bla', this).removeClass("vanishOut");
+            mostrarText.addClass("vanishIn");
+            mostrarText.removeClass("vanishOut");
         }
     });
 });
