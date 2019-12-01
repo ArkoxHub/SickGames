@@ -1,0 +1,17 @@
+
+#productesCompratsRow{
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.imgProducteComprat{
+    width: 150px;
+}
+.table td{
+    vertical-align: middle !important;
+}
+
+@media (max-width:535px){
+    .imgProducteComprat{
+        width: 100px;
+    }
+}

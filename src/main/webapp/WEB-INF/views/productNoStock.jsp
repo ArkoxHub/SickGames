@@ -13,9 +13,9 @@
         <!--Jquery-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <!--This css-->
-        <link href="<c:url value='/resources/css/productNoStock.css'/>" rel="stylesheet" type="text/css"/>
+        <link href="<c:url value='/resources/css/product.css'/>" rel="stylesheet" type="text/css"/>
         <!--This javascript-->
-        <script src="<c:url value='/resources/js/productNoStock.js'/>" type="text/javascript" ></script>
+        <script src="<c:url value='/resources/js/product.js'/>" type="text/javascript" ></script>
     <jsp:include page="/WEB-INF/resources/headerAndFooter/header.jsp"></jsp:include>
     <!--Secció body; Jocs més venuts, valorats, millors ofertes, streams...-->
     <section class="section-body">

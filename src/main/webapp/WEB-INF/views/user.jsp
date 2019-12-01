@@ -25,6 +25,7 @@
                     <i class="fas fa-camera upload-button"></i>
                     <input class="file-upload" type="file" accept="image/*"/>
                     <h4>${user.nom}</h4>
+                    <a class="btn btn-primary" href="<c:url value="/user/productesComprats"/>">Jocs Comprats</a>
                     </div>
                     <c:out value="&emsp;" escapeXml="false"/>
                     <div class="col-md-9">
@@ -50,7 +51,7 @@
                                 <c:set var="total" value="${ total + codi.preu}"/>
                             </c:forEach>
                             <c:if test="${total > 0}">
-                                <button class="btn btn-primary" id="realitzarPagament">Pagar - <fmt:formatNumber value="${total}"currencySymbol="€" type="currency" pattern="###,###.00 ¤"/></button>
+                                <a href="<c:url value="/user/realitzarPagament"/>" class="btn btn-primary" id="realitzarPagament">Pagar - <fmt:formatNumber value="${total}"currencySymbol="€" type="currency" pattern="###,###.00 ¤"/></a>
                             </c:if>
                     </div>
                 </div>
@@ -72,16 +73,6 @@
                         </div>
                     </c:forEach>
                 </div>
-        <!--Falta importar taules Detall i Comanda per tal de poder mostrar aquest apartat (no és fàcil)... 
-        <div class="container-cataleg">
-            <h4  id="jocsH4">Jocs comprats</h4>
-            <div class="row"  id="jocsPerfil">
-                <div class="column">
-                    <a href="<c:url value="/product?id=1"/>"><img id="portadaJoc" src="<c:url value="/resources/img/portades/Overwatch.jpg"/>"></a> 
-                </div>
-            </div>
-        </div>  
-        -->
             </div>
         </section>
     <jsp:include page="/WEB-INF/resources/headerAndFooter/footer.jsp"></jsp:include>

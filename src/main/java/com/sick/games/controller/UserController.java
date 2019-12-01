@@ -285,4 +285,18 @@ public class UserController {
         
         return "redirect:/user";
     }
+    //Llista productes comprats
+    @RequestMapping(value = "/productesComprats", method = RequestMethod.GET)
+    public ModelAndView productesComprats(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        ModelAndView model = new ModelAndView("productesComprats");
+        return model;
+    }
+    //Realitzar pagament
+    @RequestMapping(value = "/realitzarPagament", method = RequestMethod.GET)
+    public ModelAndView realitzarPagament(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        ModelAndView model = new ModelAndView("realitzarPagament");
+        return model;
+    }
 }
