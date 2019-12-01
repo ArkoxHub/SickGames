@@ -20,6 +20,10 @@ public interface CodiService {
     
     public void removeCodi(Codi codi);
     
+    public Codi getCodi(int codi);
+    
+    public List<Codi> getCodisByCodiJoc(int codi);
+    
     public Codi getNextCodeByCodiJoc(int codi_Joc);
     
     public List<Codi> getPlataformesByCodiJoc(int codi_Joc);

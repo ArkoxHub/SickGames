@@ -49,8 +49,55 @@ $(document).ready(function () {
 
 /*Funcio cambiar fons random*/
 window.onload = function () {
+    
+    /*
+     * Recogemos la distancia a la que se encuentra
+     * el fondo de top en el momento de cargar la página.
+     * Le quitamos el texto px para hacer el calculo
+     */
+    var topFondo = $("#fondo").css("top").valueOf();
+    topFondo = topFondo.slice(0, -2);
+    
+    var scrollToponLoad = $(window).scrollTop();
+    /*
+     * Si no nos encontramos arriba de la página se ajustará el fondo
+     */
+    if(scrollToponLoad >= 0 && scrollToponLoad <= topFondo){
+        var toponLoad = topFondo - scrollToponLoad;
+        $("#fondo").css("top", toponLoad+"px");
+    }else{
+        $("#fondo").css("top", "0px");
+    }
+    /*
+     * Cada vez que se haga scroll se calculara la distancia con el top
+     */
+    document.addEventListener('scroll', function (event) {
+        var scrollTop = $(window).scrollTop();
+        for (var i = 0; i <= topFondo; i++){
+            //Si es mayor a 0 calcularemos la distancia 
+            if(scrollTop >= i){
+                var top = topFondo - i;
+                $("#fondo").css("top", top);
+            }
+        }
+    });
+    
     var img = 1 + Math.floor(Math.random() * 8);
-    $("body").css("background-image", "url('../../sickgames/resources/img/backgrounds/"+img+".png')");
+    var colorImg;
+    
+    if (img == 1){colorImg ="#2a0203"};/*color*/
+    if (img == 2){colorImg ="#bdeaddb5"};/*color*/
+    if (img == 3){colorImg ="#444957"};/*color*/
+    if (img == 4){colorImg ="#070e25"};/*color*/
+    if (img == 5){colorImg ="#024b9069"};/*color*/
+    if (img == 6){colorImg ="#432a25"};/*color*/
+    if (img == 7){colorImg ="#27817e"};/*color*/
+    if (img == 8){colorImg ="#101007"};/*color*/
+    
+    //guardar cookie imagen fondo durante 30min
+        
+    
+    $("#fondo").css("background", "url('../../sickgames/resources/img/backgrounds/"+img+".png') center 0px no-repeat "+colorImg);
 };
 //Funció per omplir streams
 /*
@@ -172,16 +219,16 @@ $(document).ready(function () {
     function colorsLight(){
         $(".lightMode").css("display", "none");
         $(".darkMode").css("display", "block");
-        $("body").css("color", "black")
-                .css("background-color", "white");
+        $("body").css("color", "black");
+        $(".container-cataleg").css("background-color", "white");
         $(".section-top").css("background", "rgba(0, 0, 0)");
         $(".column-9").css("background-color", "white");
     }
     function colorsDark(){
         $(".darkMode").css("display", "none");
         $(".lightMode").css("display", "block");
-        $("body").css("color", "white")
-                .css("background-color", "rgb(42, 41, 41)");
+        $("body").css("color", "white");
+        $(".container-cataleg").css("background-color", "rgb(42, 41, 41)");
         $(".soporte").css("color", "white");
         $(".column-9").css("background-color", "black");
     }

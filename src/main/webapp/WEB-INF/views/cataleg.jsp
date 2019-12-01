@@ -34,12 +34,11 @@
         <jsp:include page="/WEB-INF/resources/headerAndFooter/header.jsp"></jsp:include>
 
             <!--Secció body; Jocs més venuts, valorats, millors ofertes, streams...-->
-
-            <div class="text-center center" style="margin-top:10px;">
-                <a class="btn btn-primary" href="<c:url value="/admin/addGame"/>">Afegir videojoc</a>
-        </div>
         <section class="section-body">
             <div class="container-cataleg">
+                <div class="text-center center" style="padding-top:10px;">
+                    <a class="btn btn-primary" href="<c:url value="/admin/addGame"/>">Afegir videojoc</a>
+                </div>
                 <div class="row" id="filaCatalogo">
                     <div class="col-md-3 menuPlataforma">
                         <div class="row">
@@ -165,7 +164,7 @@
                     <div class="col-md-9">
                         <div class="container-fluid">
                             <div class="row">
-                                <c:forEach var="joc" items="${videojocs}" begin="0" end="29">
+                                <c:forEach var="joc" items="${videojocs}">
                                     <div class="column <c:forTokens var="token" items="${joc[2]}" delims=","> ${token} </c:forTokens>">
                                         <div class="outClick">
                                             <div class="mvlGeneres">

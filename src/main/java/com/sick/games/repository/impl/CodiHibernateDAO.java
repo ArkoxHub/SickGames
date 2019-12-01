@@ -32,7 +32,7 @@ public class CodiHibernateDAO implements CodiDAO {
 
     @Override
     public void addCodi(Codi codi) {
-        getSession().saveOrUpdate(codi);
+        getSession().save(codi);
     }
 
     @Override
@@ -43,6 +43,16 @@ public class CodiHibernateDAO implements CodiDAO {
     @Override
     public void removeCodi(Codi codi) {
         getSession().remove(codi);
+    }
+    
+    @Override
+    public Codi getCodi(int codi) {
+        return (Codi) getSession().createQuery("FROM Codi WHERE codi = :codi").setParameter("codi", codi).uniqueResult();
+    }
+    
+    @Override
+    public List<Codi> getCodisByCodiJoc(int codi) {
+        return (List<Codi>) getSession().createQuery("FROM Codi WHERE codi_Joc = :codi").setParameter("codi", codi).getResultList();
     }
 
     @Override
