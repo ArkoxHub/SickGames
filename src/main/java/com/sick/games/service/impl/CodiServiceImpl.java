@@ -36,6 +36,16 @@ public class CodiServiceImpl implements CodiService {
     public void removeCodi(Codi codi) {
         codiDAO.removeCodi(codi);
     }
+    
+    @Override
+    public Codi getCodi(int codi) {
+        return codiDAO.getCodi(codi);
+    }
+    
+    @Override
+    public List<Codi> getCodisByCodiJoc(int codi) {
+        return codiDAO.getCodisByCodiJoc(codi);
+    }
 
     // Retornem el següent codi més barat retornat per la query
     @Override

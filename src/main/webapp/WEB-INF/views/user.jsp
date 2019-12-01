@@ -16,19 +16,21 @@
         <!--This javascript-->
         <script src="<c:url value='/resources/js/user.js'/>" type="text/javascript" ></script>
 
-    <jsp:include page="/WEB-INF/resources/headerAndFooter/header.jsp"></jsp:include>
-        <section class="section-body">
-            <div class="container-cataleg">
-                <div class="row"  id="jocsPerfil">
-                    <div class="col-md-2 text-center center">
-                        <img id="fotoPerfil"  src="<c:url value="/resources/img/fotosPerfil/user.jpg"/>">
-                    <i class="fas fa-camera upload-button"></i>
-                    <input class="file-upload" type="file" accept="image/*"/>
-                    <h4>${user.nom}</h4>
-                    <a class="btn btn-primary" href="<c:url value="/user/productesComprats"/>">Jocs Comprats</a>
+    <body>
+        <jsp:include page="/WEB-INF/resources/headerAndFooter/header.jsp"></jsp:include>
+            <section class="section-body">
+                <div class="container-cataleg">
+                    <div class="row"  id="jocsPerfil">
+                        <div class="col-md-2 text-center center">
+                            <img id="fotoPerfil"  src="<c:url value="/resources/img/fotosPerfil/user.jpg"/>">
+                        <i class="fas fa-camera upload-button"></i>
+                        <input class="file-upload" type="file" accept="image/*"/>
+                        <h4>${user.nom}</h4>
+                        <a class="btn btn-primary" href="<c:url value="/user/productesComprats"/>">Jocs Comprats</a>
                     </div>
                     <c:out value="&emsp;" escapeXml="false"/>
-                    <div class="col-md-9">
+                    <c:if test="${not empty carro}">
+                        <div class="col-md-9">
                             <table class="table table-striped table-dark">
                                 <thead>
                                     <tr>
@@ -42,8 +44,8 @@
                                         <tr>
                                             <td><img id="jocCarroPerfil" src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>"> ${joc.nom}</td>
                                             <td>${codis[status.index].preu} € </td>
-                                            <td><a href="#" class="eliminarProducte" title="Eliminar producte">&times;</a></td>
-                                        </tr>
+                                            <td><a href="<c:url value="/user/remove?item=${joc.codi_Joc}&nickname=${user.nickname}"></c:url>" class="eliminarProducte" title="Eliminar producte">&times;</a></td>
+                                            </tr>
                                     </c:forEach>
                                 </tbody>
                             </table>

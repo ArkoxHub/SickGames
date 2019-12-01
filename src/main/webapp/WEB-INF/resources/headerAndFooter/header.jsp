@@ -99,9 +99,9 @@
                                                     <span style="margin-right: 5px;"> <!--Aqui poner una cruz al lado del producto para quitarlo del carro?-->
                                                         ${joc.nom} - ${codis[status.index].preu} €
                                                     </span>
-                                                    <a href="#" class="eliminarProducte" title="Eliminar producte">&times;</a>
-                                                </div>
-                                            </li>
+                                                    <a href="<c:url value="/user/remove?item=${joc.codi_Joc}&nickname=${user.nickname}"></c:url>" class="eliminarProducte" title="Eliminar producte">&times;</a>
+                                                    </div>
+                                                </li>
                                         </c:forEach>
                                         <hr>
                                         <c:forEach var="codi" items="${codis}">

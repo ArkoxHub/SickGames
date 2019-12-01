@@ -50,6 +50,21 @@ public class UserController {
     @Autowired
     WishlistService wishlistService;
 
+    /**
+     * - Es crea la variable de sessio carro que guardarà objectes Videojoc -
+     * Paral·lelament es crea un Arralist de carros que contindrà en el mateix
+     * ordre que els videojocs, el següent codi disponible a la venta. - Llegin
+     * els valors de les cookies per obtenir les seves dades - Carreguem de la
+     * base de dades la wishlist de l'usuari i instanciem els valors a les
+     * llistes wishlistgames, wishlistcodes.
+     *
+     * @param request
+     * @param response
+     * @return s'adjunta al model les variables "carro", "codis, "user",
+     * "wishlistgames", "wishlistcodes"
+     * @throws ServletException
+     * @throws IOException
+     */
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView userMainPage(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -115,7 +130,7 @@ public class UserController {
      * @param newUser Objecte resultant de les dades introduides per l'usuari al
      * formulari
      * @param request
-     * @param response
+     * @param response 
      * @return redirecció a l'inici de la pàgina web
      * @throws ServletException
      * @throws IOException
@@ -185,7 +200,9 @@ public class UserController {
     }
 
     /**
-     *
+     * Rep el formulari empleat per l'usuari per a fer LOG IN
+     * Comprova si la password introduida per l'usuari coincideix amb la del usuari de la base de dades
+     * Crea les cookies si no ho estàn per tal d'indentificar-lo i fer una navegació millor (UX)
      * @param userNick
      * @param userPwd
      * @param request
@@ -228,12 +245,24 @@ public class UserController {
         return "redirect:/";
     }
 
+    /**
+     * Afegeix un joc a la variable llista sessió "carro"
+     *
+     * @param jocId id del joc
+     * @param nickname nickname de l'usuari
+     * @param request
+     * @param response
+     * @return redirecció a pàgina principal o bé perfil d'usuari
+     * @throws ServletException
+     * @throws IOException
+     */
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String addGameCar(@RequestParam(name = "jocId") String jocId, @RequestParam(name = "nickname") String nickname,
             HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         try {
+            // Es comprova que l'usuari existeixi a la base de dades
             User user = usersService.getUserByNick(nickname);
 
             // CARRO DE COMPRA USING SESSION ATTRIBUTES
@@ -248,6 +277,61 @@ public class UserController {
         return "redirect:/user";
     }
 
+    /**
+     * Elimina el joc de la variable llista carro
+     * Si es prem eliminar des de la pàgina de perfil d'usuari, farà redirect a aquesta secció.
+     * En canvi, si es fa des de el carro, farà redirect a l'inici (que és on se suposa que està en aquest moment)
+     * @param jocId id del joc
+     * @param nickname nickname de l'usuari
+     * @param request
+     * @param response
+     * @return redirecció a pàgina principal o bé perfil d'usuari
+     * @throws ServletException
+     * @throws IOException 
+     */
+    @RequestMapping(value = "/remove", method = RequestMethod.GET)
+    public String removeGameCar(@RequestParam(name = "item") int jocId, @RequestParam(name = "nickname") String nickname,
+            HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        String redirect = "redirect:/user";
+        if (request.getRequestURI() != redirect) {
+            redirect = "redirect:/";
+        }
+
+        try {
+            // Es comprova que l'usuari existeixi a la base de dades
+            User user = usersService.getUserByNick(nickname);
+
+            // CARRO DE COMPRA USING SESSION ATTRIBUTES
+            List<Videojoc> carro = (List<Videojoc>) request.getSession().getAttribute("carro");
+
+            for (Videojoc joc : carro) {
+                if (joc.getCodi_Joc() == jocId) {
+                    carro.remove(joc);
+                    break;
+                }
+            }
+
+            request.getSession().setAttribute("carro", carro);
+
+        } catch (NullPointerException e) {
+            System.out.println("Aquest usuari no està a la base de dades");
+        }
+
+        return redirect;
+    }
+
+    /**
+     * Afegeix un joc a la base de dades amb les dades de l'usuari i el joc concret
+     * @param jocId id del joc
+     * @param nickname nickname de l'usuari
+     * @param request
+     * @param response
+     * @return redirecció pàgina perfil d'usuari
+     * @throws ServletException
+     * @throws IOException 
+     */
     @RequestMapping(value = "/addWishlist", method = RequestMethod.GET)
     public String addGameWishlist(@RequestParam(name = "item") String jocId,
             @RequestParam(name = "nickname") String nickname,
@@ -269,20 +353,32 @@ public class UserController {
         return "redirect:/user";
     }
 
+    /**
+     * Elimina el joc passat per la URL de la base de dades de l'usuari concret
+     * @param jocId id del joc
+     * @param nickname nickanem de l'usuari
+     * @param request
+     * @param response
+     * @return redirecció a la pàgina perfil de l'usuari
+     * @throws ServletException
+     * @throws IOException 
+     */
     @RequestMapping(value = "/removeWishlist", method = RequestMethod.GET)
     public String removeGameWishlist(@RequestParam(name = "item") String jocId,
             @RequestParam(name = "nickname") String nickname,
             HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        int codi_Joc = Integer.parseInt(jocId);
+
         User user = usersService.getUserByNick(nickname);
         List<Wishlist> wishlist = wishlistService.getWishlistByUserId(user.getId_Usuari());
         for (Wishlist item : wishlist) {
-            if (item.getCodi_Joc() == Integer.parseInt(jocId)) {
+            if (item.getCodi_Joc() == codi_Joc) {
                 wishlistService.removeWishlist(item);
             }
         }
-        
+
         return "redirect:/user";
     }
     //Llista productes comprats
