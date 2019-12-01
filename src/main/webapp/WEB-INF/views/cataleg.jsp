@@ -164,7 +164,7 @@
                     <div class="col-md-9">
                         <div class="container-fluid">
                             <div class="row">
-                                <c:forEach var="joc" items="${videojocs}" begin="0" end="29">
+                                <c:forEach var="joc" items="${videojocs}">
                                     <div class="column <c:forTokens var="token" items="${joc[2]}" delims=","> ${token} </c:forTokens>">
                                         <div class="outClick">
                                             <div class="mvlGeneres">
