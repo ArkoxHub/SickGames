@@ -149,7 +149,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <c:forEach var="joc" items="${videojocs}">
-                                <div class="column <c:forTokens var="token" items="${joc[2]}" delims=","> ${token} </c:forTokens>">
+                                <div class="column <c:forTokens var="token" items="${joc[2]}" delims=","> ${token} </c:forTokens> ${joc[1]}">
                                     <div class="outClick">
                                         <div class="mvlGeneres">
                                             <span>Veure Generes</span>

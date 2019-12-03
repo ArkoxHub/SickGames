@@ -12,7 +12,15 @@ $(document).ready(function () {
         $(".cookiesAccept").css("display","block");
     }
 });
+$(document).ready(function () {
+    var searchParams = new URLSearchParams(window.location.search);
 
+    //Itera los parámetros de búsqueda.
+    for (let busqueda of searchParams) {
+        //La posición 0 es el name del form y la 1 la busqueda
+        $('.column:not([class*='+ busqueda[1] +'])').hide();
+    }
+});
 /*Funcio cambiar fons random*/
 $(document).ready(function () {
     

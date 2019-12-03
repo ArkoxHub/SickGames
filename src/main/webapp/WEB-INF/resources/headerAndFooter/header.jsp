@@ -5,8 +5,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<html lang="cat">
+    <head>
+        <title>SickGames</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--Jquery-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <!--Bootstrap CSS-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="true">
+        <!--Global javascript-->
+        <script src="<c:url value='/resources/js/funcions.js'/>" type="text/javascript" ></script>
         <!--Global css-->
         <link href="<c:url value='/resources/css/global.css'/>" rel="stylesheet" type="text/css"/>
         <!--WebIcon-->
@@ -16,8 +26,6 @@
         <link href="https://fonts.googleapis.com/css?family=Archivo&display=swap" rel="stylesheet">
         <!--FontAwesome js-->
         <script src="https://use.fontawesome.com/384f95a176.js"></script>
-        <!--Global javascript-->
-        <script src="<c:url value='/resources/js/funcions.js'/>" type="text/javascript" ></script>
     </head>
 
     <body>
@@ -46,8 +54,8 @@
                             <div class="col-6" id="showHideLogo">
                                 <a href="<c:url value='/'/>"><img src="<c:url value='/resources/img/logo_sick.png'/>" role="banner" alt="SickGames  ofertes jocs codis jocs online tenda de codis" class="logo"></a>
                             </div>
-                            <form action="/product" form="GET">
-                                <input autocomplete="off" title="Buscar Videojoc" class="buscador" type="text" placeholder=" Cerca" name="search">
+                            <form action="/sickgames/cataleg" form="GET">
+                                <input autocomplete="on" title="Buscar Videojoc" class="buscador" type="text" placeholder=" Cerca" name="search">
                                 <button class="botonBuscador" type="submit" title="Realitzar Busqueda"><i class="fa fa-search"></i></button>
                             </form>
                         </div>
