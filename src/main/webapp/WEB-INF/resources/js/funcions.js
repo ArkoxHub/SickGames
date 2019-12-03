@@ -11,44 +11,18 @@ $(document).ready(function () {
     }else{
         $(".cookiesAccept").css("display","block");
     }
-    /*
-     * 
-     * @param {type} nomCookie
-     * @param {type} text
-     * @param {type} caducitat
-     * @returns {undefined}
-     */
-    function setCookie(nomCookie,text,caducitat){
-        var exdate = new Date();
-        exdate.setDate(exdate.getDate() + caducitat);
-        var c_value = escape(text) + ((caducitat == null) ? "" : "; expires=" + exdate.toUTCString());
-        document.cookie = nomCookie + "=" + c_value;
-    };
-    /*
-     * 
-     * @param {type} nomCookie
-     * @returns {String}
-     */
-    function comprobarCookie(nomCookie){
-        //Codi de w3 schools, com agafar una cookie
-        var name = nomCookie + "=";
-        var decodedCookie = decodeURIComponent(document.cookie);
-        var ca = decodedCookie.split(';');
-        for(var i = 0; i <ca.length; i++) {
-          var c = ca[i];
-          while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-          }
-          if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-          }
-        }
-        return name;
+});
+$(document).ready(function () {
+    var searchParams = new URLSearchParams(window.location.search);
+
+    //Itera los parámetros de búsqueda.
+    for (let busqueda of searchParams) {
+        //La posición 0 es el name del form y la 1 la busqueda
+        $('.column:not([class*='+ busqueda[1] +'])').hide();
     }
 });
-
 /*Funcio cambiar fons random*/
-window.onload = function () {
+$(document).ready(function () {
     
     /*
      * Recogemos la distancia a la que se encuentra
@@ -82,23 +56,39 @@ window.onload = function () {
         }
     });
     
-    var img = 1 + Math.floor(Math.random() * 8);
-    var colorImg;
     
-    if (img == 1){colorImg ="#2a0203"};/*color*/
-    if (img == 2){colorImg ="#bdeaddb5"};/*color*/
-    if (img == 3){colorImg ="#444957"};/*color*/
-    if (img == 4){colorImg ="#070e25"};/*color*/
-    if (img == 5){colorImg ="#024b9069"};/*color*/
-    if (img == 6){colorImg ="#432a25"};/*color*/
-    if (img == 7){colorImg ="#27817e"};/*color*/
-    if (img == 8){colorImg ="#101007"};/*color*/
     
     //guardar cookie imagen fondo durante 30min
         
-    
-    $("#fondo").css("background", "url('../../sickgames/resources/img/backgrounds/"+img+".png') center 0px no-repeat "+colorImg);
-};
+    var colorImg;
+    if (comprobarCookie('Background') >= 1 || comprobarCookie('Background') <= 8){
+        let img = parseInt(comprobarCookie('Background'));
+        colorFons(img);
+        $("#fondo").css("background", "url('/../sickgames/resources/img/backgrounds/"+img+".png') center 0px no-repeat "+colorImg);
+    }else{
+        let img = 1 + Math.floor(Math.random() * 8);
+        colorFons(img);
+        setCookie('Background',img, 1);
+        $("#fondo").css("background", "url('../../sickgames/resources/img/backgrounds/"+img+".png') center 0px no-repeat "+colorImg);
+    }
+
+    //Assginar color fons
+    /*
+     * 
+     * @param {type} img
+     * @returns {undefined}
+     */
+    function colorFons(img){
+        if (img == 1){colorImg ="#2a0203"};/*color*/
+        if (img == 2){colorImg ="#bdeaddb5"};/*color*/
+        if (img == 3){colorImg ="#444957"};/*color*/
+        if (img == 4){colorImg ="#070e25"};/*color*/
+        if (img == 5){colorImg ="#024b9069"};/*color*/
+        if (img == 6){colorImg ="#432a25"};/*color*/
+        if (img == 7){colorImg ="#27817e"};/*color*/
+        if (img == 8){colorImg ="#101007"};/*color*/
+    }
+});
 //Funció per omplir streams
 /*
  * 
@@ -122,7 +112,7 @@ function rellenarStreams(datosStream){
                     '<div class="column">' +
                     '<span class="viewers"><i class="fa fa-user"></i> '+datosStream.data[i].viewer_count+'</span>'+
                     '<a href="#streamView" class=' + datosStream.data[i].user_name + ' id="stream">' +
-                    '<div id="imgOverflow"><img src="' + aplicarTamaño + '"></div>' +
+                    '<div id="imgOverflow"><img  title='+ datosStream.data[i].user_name +' src="' + aplicarTamaño + '"></div>' +
                     '</a>' +
                     '<a href="#streamView" class=' + datosStream.data[i].user_name + ' id="streamName">' +
                     datosStream.data[i].user_name +
@@ -288,3 +278,40 @@ $(document).ready(function () {
         $(this).parent('.outClick').find('.mvlGeneres').css("display", "none");
     });
 });
+
+
+//Cookies Functions
+/*
+ * 
+ * @param {type} nomCookie
+ * @param {type} text
+ * @param {type} caducitat
+ * @returns {undefined}
+ */
+function setCookie(nomCookie,text,caducitat){
+    var exdate = new Date();
+    exdate.setDate(exdate.getDate() + caducitat);
+    var c_value = escape(text) + ((caducitat == null) ? "" : "; expires=" + exdate.toUTCString());
+    document.cookie = nomCookie + "=" + c_value;
+};
+/*
+ * 
+ * @param {type} nomCookie
+ * @returns {String}
+ */
+function comprobarCookie(nomCookie){
+    //Codi de w3 schools, com agafar una cookie
+    var name = nomCookie + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return name;
+}

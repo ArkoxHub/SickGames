@@ -5,6 +5,7 @@ hr{
     margin-top: 0.3em;
     margin-bottom: 0.1rem;
     border: 1px solid white;
+    background: white;
 }
 
 #filaCatalogo .column{
@@ -66,6 +67,7 @@ hr{
 .menuPlataforma{
     display:block;
     left:30px;
+    margin-top: 20px;
 }
 .section-body .row{
     margin-right: 0px; 
