@@ -66,6 +66,9 @@
                             ${status}
                         </div>
                     </c:if>
+                    <c:if test="${not empty videojoc}">
+                        <h2>Videojoc: ${videojoc.nom}</h2>
+                    </c:if>
                     <c:forEach items="${codis}" var="codi">
                         <c:if test="${option == 'Modify'}">
                             <li class="gameList">

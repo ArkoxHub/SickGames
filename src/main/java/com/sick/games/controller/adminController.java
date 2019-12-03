@@ -44,7 +44,7 @@ public class adminController {
         return model;
     }
 
-    @RequestMapping(value = "/admin/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/spring/login", method = RequestMethod.GET)
     public ModelAndView adminLogin(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ModelAndView model = new ModelAndView("adminLogin");
@@ -214,6 +214,8 @@ public class adminController {
 
         if (codis.isEmpty()) {
             model.getModelMap().addAttribute("error", "No hi ha codis amb aquest codi de Videojoc");
+        } else {
+            model.getModelMap().addAttribute("videojoc", videojocService.getGameByCode(codi));
         }
 
         return model;
