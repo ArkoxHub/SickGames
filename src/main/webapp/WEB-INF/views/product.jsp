@@ -23,22 +23,21 @@
     <!--Secció body; Jocs més venuts, valorats, millors ofertes, streams...-->
     <section class="section-body">
         <div class="container-cataleg">
-            <div class="text-center center" style="padding-top:10px;">
-                <a  class="btn btn-primary" href="<c:url value="/admin/updateGame?id=${joc.codi_Joc}"/>">Modifica aquest videojoc</a>
+            <div class="text-center center" style="padding-top:30px;">
             </div>
             <div class="row" id="cartaJoc">
                 <div class="column-3">
-                    <img id="stream${joc.nom}" class="portadaJoc" src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>">
+                    <img id="stream${joc.nom}" class="portadaJoc" src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>" alt="${joc.nom}">
                     <c:choose>
                         <c:when test="${not empty user}">
                             <a href="<c:url value="/user/addWishlist?item=${joc.codi_Joc}&nickname=${user.nickname}"></c:url>">
-                                <img class="afegirWhishList" src="<c:url value="/resources/img/like.png"/>" title="${joc.nom}" alt="${joc.nom}">
+                                <img class="afegirWhishList" src="<c:url value="/resources/img/like.png"/>" title="Afegir a la whishlist" alt="Afegir a la wishlish ${joc.nom}">
                             </a>
                         </c:when>
                     </c:choose>
                 </div>
                 <div class="portada">
-                    <img class="portadaJocMvl" src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>">
+                    <img class="portadaJocMvl" src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>" alt="${joc.nom}">
                 </div>
                 <div class="column-9">
                     <div class="row" id="titol">

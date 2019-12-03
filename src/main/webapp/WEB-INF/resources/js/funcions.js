@@ -56,7 +56,7 @@ $(document).ready(function () {
     if (comprobarCookie('Background') >= 1 || comprobarCookie('Background') <= 8){
         let img = parseInt(comprobarCookie('Background'));
         colorFons(img);
-        $("#fondo").css("background", "url('../../sickgames/resources/img/backgrounds/"+img+".png') center 0px no-repeat "+colorImg);
+        $("#fondo").css("background", "url('/../sickgames/resources/img/backgrounds/"+img+".png') center 0px no-repeat "+colorImg);
     }else{
         let img = 1 + Math.floor(Math.random() * 8);
         colorFons(img);

@@ -22,7 +22,6 @@
     <section class="section-body">
         <div class="container-cataleg">
             <div class="text-center center" style="padding-top:10px;">
-                <a class="btn btn-primary" href="<c:url value="/admin/addGame"/>">Afegir videojoc</a>
             </div>
             <div class="row" id="filaCatalogo">
                 <div class="col-md-3 menuPlataforma">
@@ -167,7 +166,7 @@
                                             </div>
                                         </a>
                                         <a href="<c:url value="product?id=${joc[0]}"/>" class="producteAComprar" id="overwatch">
-                                            <fmt:formatNumber value="${joc[5]}" currencySymbol="€" type="currency" pattern="###,###.00 ¤"/>- Comprar
+                                            <fmt:formatNumber value="${joc[5]}" currencySymbol="€" type="currency" pattern="###,###.00 ¤"/> - Comprar
                                         </a>
                                     </div>
                                 </div>

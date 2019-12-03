@@ -16,7 +16,6 @@
         <!--This javascript-->
         <script src="<c:url value='/resources/js/user.js'/>" type="text/javascript" ></script>
 
-    <body>
         <jsp:include page="/WEB-INF/resources/headerAndFooter/header.jsp"></jsp:include>
             <section class="section-body">
                 <div class="container-cataleg">
@@ -55,7 +54,8 @@
                             <c:if test="${total > 0}">
                                 <a href="<c:url value="/user/realitzarPagament"/>" class="btn btn-primary" id="realitzarPagament">Pagar - <fmt:formatNumber value="${total}"currencySymbol="€" type="currency" pattern="###,###.00 ¤"/></a>
                             </c:if>
-                    </div>
+                        </div>
+                    </c:if>
                 </div>
                 <h4  id="jocsH4">Llista de jocs desitjats</h4>
                 <div class="row" id="jocsPerfil">

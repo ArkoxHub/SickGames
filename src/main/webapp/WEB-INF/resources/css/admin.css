@@ -30,7 +30,7 @@ and open the template in the editor.
 .accio {
     border: 2px solid rgba(69, 124, 191, 1);
     padding: 10px;
-    box-shadow: 0px 5px 5px 0px rgba(69, 124, 191, 1);
+    box-shadow: 0px 1px 7px 0px rgba(69, 124, 191, 1);
     min-height: 200px;
 }
 
@@ -46,13 +46,14 @@ a {
 }
 
 a:hover {
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 li {
     list-style: none;
     padding: 5px;
     text-transform: uppercase;
+    border: 1px solid transparent;
     margin-bottom: 4px;
 }
 
@@ -69,4 +70,13 @@ li:hover {
 
 .logout {
     margin-bottom: 30px;
+}
+.logout a{
+    margin-right: 15px;
+}
+#adminRow{
+    padding-top: 30px;
+}
+.btn-success{
+    max-width: fit-content;
 }

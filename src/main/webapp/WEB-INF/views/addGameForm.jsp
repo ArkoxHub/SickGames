@@ -95,7 +95,7 @@
                 <img id="preview" style="max-width: 100%"/>
 
                 <input type="submit" id="submit" class="btn btn-primary" value="Crear Videojoc">
-                <a class="btn btn-primary" id="back" href="<c:url value="/"/>">Cancel·lar</a>
+                <a class="btn btn-primary" id="back" href="<c:url value="/admin"/>">Cancel·lar</a>
             </form:form>
                 
         </div>

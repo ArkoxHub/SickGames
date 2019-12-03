@@ -21,7 +21,6 @@
         <div class="container-cataleg">
 
             <div class="text-center center" style="padding-top:10px">
-                <a class="btn btn-primary" href="<c:url value="/admin/addGame"/>">Afegir videojoc</a>
                 <a class="btn btn-primary" href="<c:url value="/cataleg"/>">Visitar Cataleg</a>
             </div>   
             <!--PRECOMPRA-->
