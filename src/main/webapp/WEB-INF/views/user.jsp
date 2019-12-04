@@ -25,7 +25,6 @@
                         <i class="fas fa-camera upload-button"></i>
                         <input class="file-upload" type="file" accept="image/*"/>
                         <h4>${user.nom}</h4>
-                        <a class="btn btn-primary" href="<c:url value="/user/productesComprats"/>">Jocs Comprats</a>
                     </div>
                     <c:out value="&emsp;" escapeXml="false"/>
                     <c:if test="${not empty carro}">
@@ -52,7 +51,7 @@
                                 <c:set var="total" value="${ total + codi.preu}"/>
                             </c:forEach>
                             <c:if test="${total > 0}">
-                                <a href="<c:url value="/user/realitzarPagament"/>" class="btn btn-primary" id="realitzarPagament">Pagar - <fmt:formatNumber value="${total}"currencySymbol="€" type="currency" pattern="###,###.00 ¤"/></a>
+                                <a href="<c:url value="/user/buyout/${total}"/>" class="btn btn-primary" id="realitzarPagament">Pagar - <fmt:formatNumber value="${total}"currencySymbol="€" type="currency" pattern="###,###.00 ¤"/></a>
                             </c:if>
                         </div>
                     </c:if>
