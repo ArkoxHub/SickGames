@@ -5,34 +5,58 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!--Cookies div fixed-->
-<div class="cookiesAccept">
-    <div class="container-cataleg">
-        <h3 id="titleCookie">La teva privacitat és important</h3>
-        <p id="textCookie">La teva informació personal es molt sensible, a SickGames les cookies només 
-            seran utilitzades implicitament per millorar la pàgina y mai serà venguda
-            a tercers ni utilitzada per fins publicitaris.
-        </p>
-        <a class="btn btn-primary" id="acceptarCookie">Acceptar</a>
-        <a href="#">Més informació</a>
+
+<html lang="cat">
+    <head>
+        <title>SickGames</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--Jquery-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <!--Bootstrap CSS-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="true">
+        <!--Global javascript-->
+        <script src="<c:url value='/resources/js/funcions.js'/>" type="text/javascript" ></script>
+        <!--Global css-->
+        <link href="<c:url value='/resources/css/global.css'/>" rel="stylesheet" type="text/css"/>
+        <!--WebIcon-->
+        <link rel="icon" href="<c:url value='/resources/img/logo_icon.png'/>" alt="Favicon">
+        <!--FontsGoogle-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="true">
+        <link href="https://fonts.googleapis.com/css?family=Archivo&display=swap" rel="stylesheet">
+        <!--FontAwesome js-->
+        <script src="https://use.fontawesome.com/384f95a176.js"></script>
+    </head>
+
+    <body>
+    <!--Cookies div fixed-->
+    <div class="cookiesAccept">
+        <div class="container-cataleg">
+            <h3 id="titleCookie">La teva privacitat és important</h3>
+            <p id="textCookie">La teva informació personal es molt sensible, a SickGames les cookies només 
+                seran utilitzades implicitament per millorar la pàgina y mai serà venguda
+                a tercers ni utilitzada per fins publicitaris.
+            </p>
+            <a class="btn btn-primary" id="acceptarCookie">Acceptar</a>
+            <a href="#">Més informació</a>
+        </div>
     </div>
-</div>
-<!--Secció top: Buscador, conta, logo....--> 
-<div id="fondo"></div>
-<div id="page-container">
+    <!--Secció top: Buscador, conta, logo....--> 
+    <div id="fondo"></div>
+    <div id="page-container">
     <section class="section-top">
-        <a href="<c:url value='/'/>"><img src="<c:url value='/resources/img/logo_icon.png'/>" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis" class="logoMvl"></a>
-        <nav class="container-cataleg" id="container-top">
+        <a href="<c:url value='/'/>"><img src="<c:url value='/resources/img/logo_icon.png'/>" role="banner" alt="SickGames  ofertes jocs  codis jocs online tenda de codis" class="logoMvl"></a>
+        <nav class="container-cataleg" id="container-top" role="navigation">
             <div class="row">
                 <div class="col-5">
                     <div class="row">
                         <div class="col-12" id="colbuscador" style="display:inline-flex">
                             <div class="col-6" id="showHideLogo">
-                                <a href="<c:url value='/'/>"><img src="<c:url value='/resources/img/logo_sick.png'/>" alt="SickGames,  ofertes jocs, codis jocs online, tenda de codis" class="logo"></a>
+                                <a href="<c:url value='/'/>"><img src="<c:url value='/resources/img/logo_sick.png'/>" role="banner" alt="SickGames  ofertes jocs codis jocs online tenda de codis" class="logo"></a>
                             </div>
-                            <form action="/product" form="GET">
-                                <input autocomplete="off"  class="buscador" type="text" placeholder=" Cerca" name="search">
-                                <button class="botonBuscador" type="submit"><i class="fa fa-search"></i></button>
+                            <form action="/sickgames/cataleg" form="GET">
+                                <input autocomplete="on" title="Buscar Videojoc" class="buscador" type="text" placeholder=" Cerca" name="search">
+                                <button class="botonBuscador" type="submit" title="Realitzar Busqueda"><i class="fa fa-search"></i></button>
                             </form>
                         </div>
                     </div>
@@ -115,8 +139,8 @@
                             </c:otherwise>
                         </c:choose>
                         <div class="col-3">
-                            <a href="#" class="darkMode"><i class="fa fa-moon fa-lg" aria-hidden="true"></i></a>
-                            <a href="#" class="lightMode"><i class="fa fa-sun fa-lg" aria-hidden="true"></i></a>
+                            <a href="#" class="darkMode" title="Dark Mode"><i class="fa fa-moon fa-lg" aria-hidden="true"></i></a>
+                            <a href="#" class="lightMode" title="Dark Mode"><i class="fa fa-sun fa-lg" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>

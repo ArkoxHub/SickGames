@@ -9,27 +9,13 @@
         <title>SickGames</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <!--Bootstrap CSS-->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="true">
-        <!--My css-->
-        <link href="<c:url value='/resources/css/user.css'/>" rel="stylesheet" type="text/css"/>
-        <link href="<c:url value='/resources/css/global.css'/>" rel="stylesheet" type="text/css"/>
-        <!--WebIcon-->
-        <link rel="icon" href="<c:url value='resources/img/logo_icon.png'/>" alt="Favicon">
-        <!--FontsGoogle-->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="true">
-        <link href="https://fonts.googleapis.com/css?family=Archivo&display=swap" rel="stylesheet">
-        <!--FontAwesome js-->
-        <script src="https://use.fontawesome.com/384f95a176.js"></script>
         <!--Jquery-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <!--My javascript-->
+        <!--This css-->
+        <link href="<c:url value='/resources/css/user.css'/>" rel="stylesheet" type="text/css"/>
+        <!--This javascript-->
         <script src="<c:url value='/resources/js/user.js'/>" type="text/javascript" ></script>
-        <script src="<c:url value='/resources/js/funcions.js'/>" type="text/javascript" ></script>
-    </head>
 
-    <body>
         <jsp:include page="/WEB-INF/resources/headerAndFooter/header.jsp"></jsp:include>
             <section class="section-body">
                 <div class="container-cataleg">
@@ -62,10 +48,10 @@
                                 </tbody>
                             </table>
                             <c:forEach var="codi" items="${codis}">
-                                <c:set var="total" value="${total + codi.preu}"/>
+                                <c:set var="total" value="${ total + codi.preu}"/>
                             </c:forEach>
                             <c:if test="${total > 0}">
-                                <button class="btn btn-primary" id="realitzarPagament">Pagar - <fmt:formatNumber value="${total}"currencySymbol="€" type="currency" pattern="###,###.00 ¤"/></button>
+                                <a href="<c:url value="/user/buyout/${total}"/>" class="btn btn-primary" id="realitzarPagament">Pagar - <fmt:formatNumber value="${total}"currencySymbol="€" type="currency" pattern="###,###.00 ¤"/></a>
                             </c:if>
                         </div>
                     </c:if>
@@ -88,19 +74,6 @@
                         </div>
                     </c:forEach>
                 </div>
-
-                <!--Falta importar taules Detall i Comanda per tal de poder mostrar aquest apartat (no és fàcil)... 
-         <div class="container-cataleg">
-             <h4  id="jocsH4">Jocs comprats</h4>
-             <div class="row"  id="jocsPerfil">
-                 <div class="column">
-                     <a href="<c:url value="/product?id=1"/>"><img id="portadaJoc" src="<c:url value="/resources/img/portades/Overwatch.jpg"/>"></a> 
-                 </div>
-             </div>
-         </div>  
-                -->
             </div>
         </section>
-        <jsp:include page="/WEB-INF/resources/headerAndFooter/footer.jsp"></jsp:include>
-    </body>
-</html>
+    <jsp:include page="/WEB-INF/resources/headerAndFooter/footer.jsp"></jsp:include>

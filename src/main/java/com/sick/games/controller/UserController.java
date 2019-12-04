@@ -25,6 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -130,7 +131,7 @@ public class UserController {
      * @param newUser Objecte resultant de les dades introduides per l'usuari al
      * formulari
      * @param request
-     * @param response 
+     * @param response
      * @return redirecció a l'inici de la pàgina web
      * @throws ServletException
      * @throws IOException
@@ -200,9 +201,11 @@ public class UserController {
     }
 
     /**
-     * Rep el formulari empleat per l'usuari per a fer LOG IN
-     * Comprova si la password introduida per l'usuari coincideix amb la del usuari de la base de dades
-     * Crea les cookies si no ho estàn per tal d'indentificar-lo i fer una navegació millor (UX)
+     * Rep el formulari empleat per l'usuari per a fer LOG IN Comprova si la
+     * password introduida per l'usuari coincideix amb la del usuari de la base
+     * de dades Crea les cookies si no ho estàn per tal d'indentificar-lo i fer
+     * una navegació millor (UX)
+     *
      * @param userNick
      * @param userPwd
      * @param request
@@ -278,22 +281,24 @@ public class UserController {
     }
 
     /**
-     * Elimina el joc de la variable llista carro
-     * Si es prem eliminar des de la pàgina de perfil d'usuari, farà redirect a aquesta secció.
-     * En canvi, si es fa des de el carro, farà redirect a l'inici (que és on se suposa que està en aquest moment)
+     * Elimina el joc de la variable llista carro Si es prem eliminar des de la
+     * pàgina de perfil d'usuari, farà redirect a aquesta secció. En canvi, si
+     * es fa des de el carro, farà redirect a l'inici (que és on se suposa que
+     * està en aquest moment)
+     *
      * @param jocId id del joc
      * @param nickname nickname de l'usuari
      * @param request
      * @param response
      * @return redirecció a pàgina principal o bé perfil d'usuari
      * @throws ServletException
-     * @throws IOException 
+     * @throws IOException
      */
     @RequestMapping(value = "/remove", method = RequestMethod.GET)
     public String removeGameCar(@RequestParam(name = "item") int jocId, @RequestParam(name = "nickname") String nickname,
             HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String redirect = "redirect:/user";
         if (request.getRequestURI() != redirect) {
             redirect = "redirect:/";
@@ -323,14 +328,16 @@ public class UserController {
     }
 
     /**
-     * Afegeix un joc a la base de dades amb les dades de l'usuari i el joc concret
+     * Afegeix un joc a la base de dades amb les dades de l'usuari i el joc
+     * concret
+     *
      * @param jocId id del joc
      * @param nickname nickname de l'usuari
      * @param request
      * @param response
      * @return redirecció pàgina perfil d'usuari
      * @throws ServletException
-     * @throws IOException 
+     * @throws IOException
      */
     @RequestMapping(value = "/addWishlist", method = RequestMethod.GET)
     public String addGameWishlist(@RequestParam(name = "item") String jocId,
@@ -355,13 +362,14 @@ public class UserController {
 
     /**
      * Elimina el joc passat per la URL de la base de dades de l'usuari concret
+     *
      * @param jocId id del joc
      * @param nickname nickanem de l'usuari
      * @param request
      * @param response
      * @return redirecció a la pàgina perfil de l'usuari
      * @throws ServletException
-     * @throws IOException 
+     * @throws IOException
      */
     @RequestMapping(value = "/removeWishlist", method = RequestMethod.GET)
     public String removeGameWishlist(@RequestParam(name = "item") String jocId,
@@ -380,5 +388,65 @@ public class UserController {
         }
 
         return "redirect:/user";
+    }
+
+    //Llista productes comprats
+    @RequestMapping(value = "/comandes", method = RequestMethod.GET)
+    public ModelAndView comandes(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        ModelAndView model = new ModelAndView("comandes");
+
+        // Obtenim l'objecte Usuari de les cookies | Ha fet el login abans d'entrar aquí!
+        User user = null;
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("userNick")) {
+                // Add user to Model Response
+                user = usersService.getUserByNick(cookie.getValue());
+                model.getModelMap().addAttribute("user", user);
+            }
+        }
+
+        return model;
+    }
+
+    //Realitzar pagament
+    @RequestMapping(value = "/buyout/{total}", method = RequestMethod.GET)
+    public ModelAndView realitzarPagament(@PathVariable("total")int total, HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        ModelAndView model = new ModelAndView("realitzarPagament");
+        
+        // Obtenim l'objecte Usuari de les cookies | Ha fet el login abans d'entrar aquí!
+        User user = null;
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("userNick")) {
+                // Add user to Model Response
+                user = usersService.getUserByNick(cookie.getValue());
+                model.getModelMap().addAttribute("user", user);
+            }
+        }
+        
+        List<Videojoc> videojocs;
+        if (request.getSession().getAttribute("carro") != null) {
+            videojocs = (List<Videojoc>) request.getSession().getAttribute("carro");
+            model.getModelMap().addAttribute("carro", videojocs);
+            
+            // Càlcul dels punts guanyats per la transició
+            int punts = 0;
+            if (total >= 60) {
+                punts = 30;
+            } else if (total >= 40) {
+                punts = 10;
+            } else if (total >= 20) {
+                punts = 5;
+            } else if (total >= 5) {
+                punts = 2;
+            }
+            
+            model.getModelMap().addAttribute("punts", punts);
+        }
+        
+        return model;
     }
 }
