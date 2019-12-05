@@ -77,10 +77,10 @@
                                             <a href="<c:url value='/user'/>">
                                                 <li>Perfil</li>
                                             </a>
-                                            <a href="<c:url value='/user'/>">
+                                            <a href="<c:url value='/user/comandes'/>">
                                                 <li>Comandes</li>
                                             </a>
-                                            <a href="<c:url value='/user'/>">
+                                            <a href="<c:url value='/user/wishlist'/>">
                                                 <li>Llista desitjos</li>
                                             </a>
                                             <a href="<c:url value='/user/logoff'/>">

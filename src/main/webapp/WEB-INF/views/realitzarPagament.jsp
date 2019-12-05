@@ -32,7 +32,7 @@
             <div class="container-cataleg">
                 <div class="row" id="pagamentRow">
                     <div class="col-md-6">
-                        <form style="max-width: 300px" class="bla" action="/buyout" method="post" >
+                        <form action="buyout" method="POST">
                             <label for="nomTitular">Titular de la tarjeta:</label>
                             <input class="form-control" type="text" name="nomTitular" required><br/>
 
@@ -47,17 +47,29 @@
 
                             <label for="cvc">Codi CVC2</label>
                             <input class="form-control" type="number" name="cvc" required><br/>
-                            
-                            <input type="hidden" name="punts" value="${punts}">
 
-                            <input class="btn btn-primary" type="submit" value="Enviar">
-                        </form>                        
-                    </div>
-                    <div class="col-md-6">
-                        <div class="tarjeta"></div>
-                    </div>
+                            <input type="hidden" name="punts" value="${punts}">
+                            <input type="hidden" name="jocs" value="${carro}">
+                            <input type="hidden" name="codis" value="${codis}">
+                            <input type="hidden" name="factura" value="${total}">
+                            <input type="hidden" name="user" value="${user}">
+
+                        <input class="btn btn-primary" type="submit" value="Comprar">
+                    </form>                        
                 </div>
-                <h3>Punts adquirits per aquesta transicció: <span style="color: green">${punts}</span></h3>
+                <div class="col-md-6">
+                    <div class="tarjeta"></div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-sm-4" style="border: 1px dotted yellowgreen;">
+                    <p>Productes:</p>
+                    <c:forEach items="${carro}" var="joc" varStatus="status">              
+                        <p><span style="color: green;">${joc.nom}</span> - <span style="color: orangered;">${codis[status.index].preu}€</span></p>
+                    </c:forEach>
+                    <h5>Import total: <fmt:formatNumber value="${total}"currencySymbol="€" type="currency" pattern="###,###.00 ¤"/></h5>
+                    <h5>Total punts al realitzar la compra: <span style="color: green">${punts}</span></h5>
+                </div>
+            </div>
+
             <hr>
             <div>
                 <p>

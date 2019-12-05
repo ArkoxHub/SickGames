@@ -25,7 +25,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -411,11 +410,12 @@ public class UserController {
     }
 
     //Realitzar pagament
-    @RequestMapping(value = "/buyout/{total}", method = RequestMethod.GET)
-    public ModelAndView realitzarPagament(@PathVariable("total")int total, HttpServletRequest request, HttpServletResponse response)
+    @RequestMapping(value = "/buyout", method = RequestMethod.GET)
+    public ModelAndView realitzarPagament(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        double total = 0;
         ModelAndView model = new ModelAndView("realitzarPagament");
-        
+
         // Obtenim l'objecte Usuari de les cookies | Ha fet el login abans d'entrar aquí!
         User user = null;
         Cookie[] cookies = request.getCookies();
@@ -426,12 +426,20 @@ public class UserController {
                 model.getModelMap().addAttribute("user", user);
             }
         }
-        
-        List<Videojoc> videojocs;
+
+        // Obtenim els items del carro de l'usuari i els punts que guanyarà
+        List<Videojoc> videojocs = new ArrayList();
         if (request.getSession().getAttribute("carro") != null) {
             videojocs = (List<Videojoc>) request.getSession().getAttribute("carro");
-            model.getModelMap().addAttribute("carro", videojocs);
-            
+
+            // Obtenim els codis de cada joc
+            List<Codi> codis = new ArrayList();
+            for (Videojoc joc : videojocs) {
+                Codi codi = codiService.getNextCodeByCodiJoc(joc.getCodi_Joc());
+                codis.add(codi);
+                total += codi.getPreu();
+            }
+
             // Càlcul dels punts guanyats per la transició
             int punts = 0;
             if (total >= 60) {
@@ -443,10 +451,22 @@ public class UserController {
             } else if (total >= 5) {
                 punts = 2;
             }
-            
+
+            model.getModelMap().addAttribute("carro", videojocs);
+            model.getModelMap().addAttribute("codis", codis);
+            model.getModelMap().addAttribute("total", total);
             model.getModelMap().addAttribute("punts", punts);
         }
-        
+
         return model;
     }
+
+    @RequestMapping(value = "/buyout", method = RequestMethod.POST)
+    public String finalitzarPagament(@RequestParam("punts") int punts, @RequestParam("factura") double factura)
+            throws ServletException, IOException {
+        System.out.println("PUNTTTTTS" + punts);
+        System.out.println("A PAGAR NINIO" + factura);
+        return "redirect:/user/comandes";
+    }
+
 }

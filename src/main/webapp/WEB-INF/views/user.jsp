@@ -51,7 +51,7 @@
                                 <c:set var="total" value="${ total + codi.preu}"/>
                             </c:forEach>
                             <c:if test="${total > 0}">
-                                <a href="<c:url value="/user/buyout/${total}"/>" class="btn btn-primary" id="realitzarPagament">Pagar - <fmt:formatNumber value="${total}"currencySymbol="€" type="currency" pattern="###,###.00 ¤"/></a>
+                                <a href="<c:url value="/user/buyout"/>" class="btn btn-primary" id="realitzarPagament">Pagar - <fmt:formatNumber value="${total}"currencySymbol="€" type="currency" pattern="###,###.00 ¤"/></a>
                             </c:if>
                         </div>
                     </c:if>
