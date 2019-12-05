@@ -32,15 +32,15 @@
                                     <tbody>
                                         <tr>
                                             <td><img class="imgProducteComprat" src="<c:url value="/resources/img/portades/ARK.jpg"/>"></td><!--Tambien joc nom-->
-                                        <td id="serial"><span>El codigo</span>  <i class="far fa-copy"></i></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                            <td id="serial"><span>El codigo</span>  <i class="far fa-copy"></i></td>
+                                        </tr>
+                                    </tbody>
+                                 </table>
+                            </div>
                         </div>
                     </div>
-                </div>
                 <!-- fi foreach -->
+                </div>
             </div>
-        </div>
-    </section>
-    <jsp:include page="/WEB-INF/resources/headerAndFooter/footer.jsp"></jsp:include>
+        </section>
+        <jsp:include page="/WEB-INF/resources/headerAndFooter/footer.jsp"></jsp:include>

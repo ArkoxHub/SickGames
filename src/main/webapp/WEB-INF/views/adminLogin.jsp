@@ -21,6 +21,7 @@
         <!--My css-->
         <link href="<c:url value='/resources/css/admin.css'/>" rel="stylesheet" type="text/css"/>
         <jsp:include page="/WEB-INF/resources/headerAndFooter/header.jsp"></jsp:include>
+        <section class="section-body">
             <div class="container-cataleg">
                 <div class="row" id="adminRow">
                     <div class="col-sm-12, col-md-12 col-lg-8 col-xl-6 text-center">
@@ -29,26 +30,27 @@
                                 <h3 class="panel-title">Introdueixi les dades d'accés</h3>
                             </div>
                             <div class="panel-body">
-                            <c:if test="${not empty error}">
-                                <div class="alert alert-danger">
-                                    Dades incorrectes
-                                </div>
-                            </c:if>
-                            <form action="<c:url value="/j_spring_security_check"> </c:url>" method="post">
-                                <fieldset>
-                                    <div class="form-group">
-                                        <input class="form-control" placeholder="Usuari" name='j_username' type="text">
+                                <c:if test="${not empty error}">
+                                    <div class="alert alert-danger">
+                                        Dades incorrectes
                                     </div>
-                                    <div class="form-group">
-                                        <input class="form-control" placeholder="Contrasenya" name='j_password' type="password">
-                                    </div>
-                                    <input class="btn btn-lg btn-success btn-block" type="submit" value="Connectar">
-                                </fieldset>
-                            </form>
+                                </c:if>
+                                <form action="<c:url value="/j_spring_security_check"> </c:url>" method="post">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <input class="form-control" placeholder="Usuari" name='j_username' type="text">
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control" placeholder="Contrasenya" name='j_password' type="password">
+                                        </div>
+                                        <input class="btn btn-lg btn-success btn-block" type="submit" value="Connectar">
+                                    </fieldset>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </body>
 </html>

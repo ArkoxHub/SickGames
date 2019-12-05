@@ -12,3 +12,25 @@ and open the template in the editor.
     padding-top: 20px;
     padding-bottom: 10px;
 }
+.table td{
+    vertical-align: middle !important;
+}
+#formPagament{
+    padding-bottom: 10px;
+}
+.table thead th {
+    border-bottom:0px !important;
+}
+.table td, .table th {
+    border-top:0px !important;
+}
+table, th, tr {
+    border: 3px solid black !important;
+}
+#rowCurrency{
+    margin-bottom: 10px;
+}
+#serial{
+    color: orangered;
+    font-weight: bold;
+}
