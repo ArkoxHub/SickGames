@@ -26,6 +26,8 @@ public interface DetallService {
     
     public List<Detall> getDetallsByCodiJoc(int codi);
     
+    public List<Detall> getDetallsByCodiClient(int codi);
+    
     public List<Detall> getAllDetalls();
     
 }

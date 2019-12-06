@@ -56,17 +56,22 @@ public class DetallHibernateDAO implements DetallDAO {
 
     @Override
     public List<Detall> getDetallsByCodiComanda(int codi) {
-        return (List<Detall>) (Detall) getSession().createQuery("FROM Detall WHERE comanda = :codi").setParameter("codi", codi).getResultList();
+        return (List<Detall>) getSession().createQuery("FROM Detall WHERE comanda = :codi").setParameter("codi", codi).getResultList();
     }
 
     @Override
     public List<Detall> getDetallsByCodiJoc(int codi) {
-        return (List<Detall>) (Detall) getSession().createQuery("FROM Detall WHERE joc = :codi").setParameter("codi", codi).getResultList();
+        return (List<Detall>) getSession().createQuery("FROM Detall WHERE joc = :codi").setParameter("codi", codi).getResultList();
+    }
+    
+    @Override
+    public List<Detall> getDetallsByCodiClient(int codi) {
+        return (List<Detall>) getSession().createQuery("FROM Detall WHERE id_Usuari = :codi").setParameter("codi", codi).getResultList();
     }
 
     @Override
     public List<Detall> getAllDetalls() {
-        return (List<Detall>) (Detall) getSession().createQuery("FROM Detall").getResultList();
+        return (List<Detall>) getSession().createQuery("FROM Detall").getResultList();
     }
 
 }

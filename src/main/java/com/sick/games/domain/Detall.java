@@ -29,28 +29,32 @@ public class Detall implements Serializable {
     @Column(name = "preu", nullable = false)
     private double preu;
     
-    @Column(name = "quantitat", nullable = false)
-    private int quantitat;
-    
-    @Column(name = "import_Total", nullable = false)
-    private double total;
-    
     @Column(name = "joc", nullable = false)
     private int codi_Joc;
     
     @Column(name = "comanda", nullable = false)
     private int codi_Comanda;
+    
+    @Column(name = "serial", nullable = false)
+    private String serial;
+    
+    @Column (name = "plataforma", nullable = false)
+    private int plataforma;
+    
+    @Column (name = "id_Usuari", nullable = false)
+    private int id_Usuari;
 
     public Detall() {
     }
 
-    public Detall(int codi_Detall, double preu, int quantitat, double total, int codi_Joc, int codi_Comanda) {
+    public Detall(int codi_Detall, double preu, int codi_Joc, int codi_Comanda, String serial, int plataforma, int id_Usuari) {
         this.codi_Detall = codi_Detall;
         this.preu = preu;
-        this.quantitat = quantitat;
-        this.total = total;
         this.codi_Joc = codi_Joc;
         this.codi_Comanda = codi_Comanda;
+        this.serial = serial;
+        this.plataforma = plataforma;
+        this.id_Usuari = id_Usuari;
     }
 
     public int getCodi_Detall() {
@@ -69,22 +73,6 @@ public class Detall implements Serializable {
         this.preu = preu;
     }
 
-    public int getQuantitat() {
-        return quantitat;
-    }
-
-    public void setQuantitat(int quantitat) {
-        this.quantitat = quantitat;
-    }
-
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
     public int getCodi_Joc() {
         return codi_Joc;
     }
@@ -99,6 +87,30 @@ public class Detall implements Serializable {
 
     public void setCodi_Comanda(int codi_Comanda) {
         this.codi_Comanda = codi_Comanda;
+    }
+
+    public String getSerial() {
+        return serial;
+    }
+
+    public void setSerial(String serial) {
+        this.serial = serial;
+    }
+
+    public int getPlataforma() {
+        return plataforma;
+    }
+
+    public void setPlataforma(int plataforma) {
+        this.plataforma = plataforma;
+    }
+
+    public int getId_Usuari() {
+        return id_Usuari;
+    }
+
+    public void setId_Usuari(int id_Usuari) {
+        this.id_Usuari = id_Usuari;
     }
 
 }

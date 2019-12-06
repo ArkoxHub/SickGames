@@ -63,6 +63,5 @@ public class Client extends User {
     public void setCompte_Bancari(String compte_Bancari) {
         this.compte_Bancari = compte_Bancari;
     }
-    
-    
+
 }
