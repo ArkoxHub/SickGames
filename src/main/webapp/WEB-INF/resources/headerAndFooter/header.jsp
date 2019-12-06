@@ -1,13 +1,11 @@
 <%@page import="com.sick.games.domain.Videojoc"%>
 <%@page import="java.util.List"%>
-<!DOCTYPE html>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<html lang="cat">
-    <head>
+
         <title>SickGames</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -46,14 +44,14 @@
     <div id="fondo"></div>
     <div id="page-container">
     <section class="section-top">
-        <a href="<c:url value='/'/>"><img src="<c:url value='/resources/img/logo_icon.png'/>" role="banner" alt="SickGames  ofertes jocs  codis jocs online tenda de codis" class="logoMvl"></a>
+        <a href="<c:url value='/'/>"><img src="<c:url value='/resources/img/logo_icon.png'/>" role="banner" alt="SickGames Logo" class="logoMvl"></a>
         <nav class="container-cataleg" id="container-top" role="navigation">
             <div class="row">
                 <div class="col-5">
                     <div class="row">
                         <div class="col-12" id="colbuscador" style="display:inline-flex">
                             <div class="col-6" id="showHideLogo">
-                                <a href="<c:url value='/'/>"><img src="<c:url value='/resources/img/logo_sick.png'/>" role="banner" alt="SickGames  ofertes jocs codis jocs online tenda de codis" class="logo"></a>
+                                <a href="<c:url value='/'/>"><img src="<c:url value='/resources/img/logo_sick.png'/>" role="banner" alt="SickGames Logo" class="logo"></a>
                             </div>
                             <form action="/sickgames/cataleg" form="GET">
                                 <input autocomplete="on" title="Buscar Videojoc" class="buscador" type="text" placeholder=" Cerca" name="search">
@@ -72,7 +70,7 @@
                             <c:when test="${not empty user.nom}">
                                 <div class="col-3">
                                     <div id="menuUser">
-                                        <a href="#" class="soporte" id="compte"><img id="userImg" />${user.nickname}</a>
+                                        <a href="<c:url value='/user'/>" class="soporte" id="compte"><img id="userImg" />${user.nickname}</a>
                                         <a href="#" class="soporteMvl" id="compteMvl"><img id="userImgMvl" /></a>
                                         <ul id="menuCompte" class="menuCompte">
                                             <a href="<c:url value='/user'/>">
@@ -166,9 +164,8 @@
 
                 <div class="container">
                     <button title="Sortir del menu login" type="button" class="cancelbtn">Sortir</button>
-                    <span class="psw">Restaurar <a title="Restaurar Contrasenya"href="#">Contrasenya</a></span>
+                    <span class="psw">Restaurar <a title="Restaurar Contrasenya" href="#">Contrasenya</a></span>
                 </div>
             </form>
         </div>
-
     </section>

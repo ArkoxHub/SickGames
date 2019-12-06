@@ -28,12 +28,12 @@
                                 <table class="table table-striped table-dark">
                                     <thead>
                                     <td>${videojocs[status.index].nom}</td>
-                                    <td><img src="<c:url value="/resources/img/plataformes/${detall.plataforma}.png"/>" alt=""></td>
+                                    <td><img alt="Logo Plataforma" src="<c:url value="/resources/img/plataformes/${detall.plataforma}.png"/>" alt=""></td>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td><img class="imgProducteComprat" src="<c:url value="/resources/img/portades/${videojocs[status.index].nom}.jpg"/>"></td>
-                                            <td id="serial"><span>${detall.serial}</span><i class="far fa-copy"></i></td>
+                                            <td id="serial"><span>${detall.serial} </span><i title="Copiar Codi" class="far fa-copy"></i></td>
                                         </tr>
                                     </tbody>
                                 </table>

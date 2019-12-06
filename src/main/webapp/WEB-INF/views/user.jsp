@@ -56,24 +56,37 @@
                         </div>
                     </c:if>
                 </div>
-                <h4  id="jocsH4">Llista de jocs desitjats</h4>
-                <div class="row" id="jocsPerfil">
-                    <c:forEach var="joc" items="${wishlistgames}" varStatus="status">
-                        <div class="column">
-                            <div id="black">
-                                <div id="imgOverflow">
-                                    <a href="<c:url value="/product?id=${joc.codi_Joc}"/>">
-                                        <img id="portadaJoc" src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>">
-                                    </a> 
+                <c:choose>
+                    <c:when test="${not empty wishlistgames}">
+                        <h4  id="jocsH4">Llista de jocs desitjats</h4>
+                        <div class="row" id="jocsPerfil">
+                            <c:forEach var="joc" items="${wishlistgames}" varStatus="status">
+                                <div class="column">
+                                    <div id="black">
+                                        <div id="imgOverflow">
+                                            <a href="<c:url value="/product?id=${joc.codi_Joc}"/>">
+                                                <img id="portadaJoc" src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>">
+                                            </a> 
+                                        </div>
+                                        <a href="<c:url value="/user/removeWishlist?item=${joc.codi_Joc}&nickname=${user.nickname}"></c:url>">
+                                            <img class="retirarWhishList" src="<c:url value="/resources/img/dislike.png"/>" title="${joc.nom}" alt="${joc.nom}">
+                                        </a>
+                                        <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> ${wishlistcodes[status.index].oferta}% - Comprar</a>
+                                    </div>
                                 </div>
-                                <a href="<c:url value="/user/removeWishlist?item=${joc.codi_Joc}&nickname=${user.nickname}"></c:url>">
-                                    <img class="retirarWhishList" src="<c:url value="/resources/img/dislike.png"/>" title="${joc.nom}" alt="${joc.nom}">
-                                </a>
-                                <a href="<c:url value="/product"/>" class="producteAComprar" id="overwatch"><i class="fa fa-arrow-down"></i> ${wishlistcodes[status.index].oferta}% - Comprar</a>
+                            </c:forEach>
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <h4  id="jocsH4">Vols afegir jocs a la teva Whislist?</h4>
+                        <div class="row" id="jocsPerfil">
+                            <div class="col-md-6">
+                                <span>Només tens que fer click al "cor" que veuras a cada producte.</span>
+                                <img id="guiaWhish" src="<c:url value="https://gyazo.com/749bfc7a07e397888fc05495fc60082d.gif"/>">
                             </div>
                         </div>
-                    </c:forEach>
-                </div>
+                    </c:otherwise>
+                </c:choose>
             </div>
         </section>
     <jsp:include page="/WEB-INF/resources/headerAndFooter/footer.jsp"></jsp:include>

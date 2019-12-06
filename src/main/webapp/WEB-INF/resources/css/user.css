@@ -149,6 +149,9 @@
 #black{
     background: black;
 }
+#guiaWhish{
+    width: 200px;
+}
 @media (max-width:1130px){
     #jocsPerfil{
         margin-left: 10px;

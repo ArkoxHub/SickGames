@@ -1,7 +1,7 @@
 *{
     box-sizing: border-box;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
 body{
     max-width: 100%;
@@ -16,6 +16,13 @@ body{
 }
 html{
     scroll-behavior: smooth;
+}
+
+#page-container{
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
 }
 #fondo{
     width: 100%;
@@ -452,15 +459,14 @@ html{
     box-shadow: 0px -5px 5px 0px rgba(69,124,191,0.63);
     margin-top:10px;
 }
+.py-3{
+    padding-bottom: 0px !important;
+}
 .section-body{
     padding-bottom: 225px;
 }
 .section-body .container-cataleg{
     min-height: 835px;
-}
-#page-container{
-    position: relative;
-    min-height: 100vh;
 }
 @media (max-width:767px){
     .section-footer{
@@ -698,8 +704,40 @@ div[class*=genere] span{
     transform: scale(2);
     transform: rotate(180deg);
 }
+/*FOOTER FAVICONS*/
+.fa-instagram {
+    font-size: 22px;
+    color: transparent;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    cursor: pointer;
+    opacity: 0.8;
+}
+.fa-twitter {
+    color: #1c98e6;
+    font-size: 22px;
+    cursor: pointer;
+    opacity: 0.8;
+}
+.fa-facebook-f {
+    color: #3c5a99;
+    font-size: 22px;
+    cursor: pointer;
+    opacity: 0.8;
+}
+.fa-twitch {
+    color: #9147ff;
+    font-size: 22px;
+    cursor: pointer;
+    opacity: 0.8;
+}
+.fa-twitch:hover, .fa-facebook-f:hover, .fa-twitter:hover, .fa-instagram:hover{
+    opacity: 1;
+}
+
 /***************MENU LOGIN********************/
-/* Full-width input fields */
 .fa-shopping-cart{
     font-size:21px;
 }
@@ -712,7 +750,6 @@ div[class*=genere] span{
     box-sizing: border-box;
 }
 
-/* Set a style for all buttons */
 .buttonLogin{
     background-color: #4497f2;
     color: white;
@@ -727,7 +764,6 @@ div[class*=genere] span{
     opacity: 0.8;
 }
 
-/* Extra styles for the cancel button */
 .cancelbtn {
     border: none;
     border-radius: 1.5rem;
@@ -741,7 +777,7 @@ div[class*=genere] span{
 .btn-primary{
     background: #4596f0 !important;
 }
-/* Center the image and position the close button */
+
 .imgcontainer {
     text-align: center;
     margin: 24px 0 12px 0;
@@ -759,7 +795,6 @@ span.psw {
     margin-bottom: 20px;
 }
 
-/* The Modal (background) */
 .modal {
     display: none; 
     position: fixed; 
@@ -774,16 +809,14 @@ span.psw {
     padding-top: 60px;
 }
 
-/* Modal Content/Box */
 .modal-content {
     background: linear-gradient(rgba(45, 72, 128, 1) ,rgba(0, 0, 0, 1));
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    margin: 5% auto 15% auto; 
     border: 1px solid #888;
-    width: 30%; /* Could be more or less, depending on screen size */
+    width: 30%; 
     color: white !important;
 }
 
-/* The Close Button (x) */
 .close {
     position: absolute;
     right: 25px;
@@ -799,7 +832,6 @@ span.psw {
     cursor: pointer;
 }
 
-/* Add Zoom Animation */
 .animate {
     -webkit-animation: animatezoom 0.6s;
     animation: animatezoom 0.6s
@@ -815,7 +847,6 @@ span.psw {
     to {transform: scale(1)}
 }
 
-/* Change styles for span and cancel button on extra small screens */
 
 @media screen and (max-width: 1100px) {
     .modal-content {
@@ -835,7 +866,7 @@ span.psw {
     }
 }
 
-/****************fucking magic dude*********************/
+
 
 .vanishIn{
     display: block;

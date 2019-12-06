@@ -35,9 +35,16 @@ and open the template in the editor.
     font-size: 20px;
     display:none;
 }
+.bla a:hover{
+    text-decoration: none !important;
+}
 #suportRow{
     margin-left: 20px;
     margin-right: 31px;
+}
+#contacte{
+    padding-top: 30px;
+    font-size: 20px;
 }
 @media (max-width:770px){
     .divTitol{

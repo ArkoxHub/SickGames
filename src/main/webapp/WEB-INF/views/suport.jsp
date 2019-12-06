@@ -20,15 +20,78 @@
     <section class="section-body">
         <div class="container-cataleg">
             <div class="row" id="suportRow">
+                <div class="col-md-12 text-center" id='contacte'>
+                <p>
+                    Telèfon de contacte 977 451 214 - Email: sickgames@hotmail.com
+                    <br/>
+                    Horari d'atenció al client: Dilluns a Divendres de 9:00-14:00.
+                </p>
+                </div>
                 <div class="col-md-12 text-center divTitol">
                     <span class="textTitol">Com activar el codi adquirit</span>
                 </div>
                 <div class="text-left descripcioSuport">
-                    <p class="bla">
-                        "En espera de la verificación" es un bloqueo temporal de una transacción por nuestro sistema de seguridad. Las instrucciones para verificar una compra están disponibles en "Mis pedidos", aunque también se envian por correo.
-
-                        Esto no es un paso obligatorio, por lo tanto, si no deseas verificar tu transacción, podemos cancelar tu compra y reembolsarte.
-                    </p>
+                    <div class="bla">
+                        <p>Verifica a quina plataforma pertany el joc i segueix una de les següents guies:</p>
+                        <p>
+                            <a target="_blank" href="https://eu.battle.net/support/es/article/11263">
+                                <img src="<c:url value="./resources/img/plataformes/1.png"/>"> Battle.Net
+                            </a>
+                        </p>
+                        <p>
+                            <a target="_blank" href="https://store.steampowered.com/account/redeemwalletcode?l=spanish">
+                                <img src="<c:url value="./resources/img/plataformes/2.png"/>"> Steam
+                            </a>
+                        </p>
+                        <p>
+                            <a target="_blank" href="https://support.ubi.com/es-es/Faqs/000024797/C%C3%B3mo-canjeo-el-c%C3%B3digo-de-contenido-exclusivo">
+                                <img src="<c:url value="./resources/img/plataformes/3.png"/>"> Uplay
+                            </a>
+                        </p>
+                        <p>
+                            <a target="_blank" href="https://help.ea.com/es-es/help/origin/origin/origin-code-redemption-faq/">
+                                <img src="<c:url value="./resources/img/plataformes/4.png"/>"> Origin
+                            </a>
+                        </p>
+                        <p>
+                            <a target="_blank" href="https://www.nintendo.es/Atencion-al-cliente/Nintendo-Switch/Utilizacion/Programas-de-Nintendo-Switch/Como-adquirir-programas-descargables/Como-canjear-un-codigo-de-descarga-en-Nintendo-eShop-de-Nintendo-Switch-1226548.html"><img src="<c:url value="./resources/img/plataformes/5.png"/>"> Nintendo</a>
+                        </p>
+                        <p>
+                            <a target="_blank" href="https://beta.support.xbox.com/help/Subscriptions-Billing/redeem-codes-gifting/redeem-prepaid-codes">
+                                <img src="<c:url value="./resources/img/plataformes/6.png"/>"> XBOX
+                            </a>
+                        </p>
+                        <p>
+                            <a target="_blank" href="https://www.playstation.com/es-co/explore/playstationnetwork/redemption/">
+                                <img src="<c:url value="./resources/img/plataformes/7.png"/>"> PlayStation
+                            </a>
+                        </p>
+                        <p>
+                            <a target="_blank" href="https://support.fanatical.com/hc/en-us/articles/214143285-How-do-I-use-my-new-Rockstar-keys-">
+                                <img src="<c:url value="./resources/img/plataformes/8.png"/>"> Rockstar
+                            </a>
+                        </p>
+                        <p>
+                            <a target="_blank" href="https://gameflip.zendesk.com/hc/en-us/articles/212478108-How-do-I-activate-a-GOG-code-">
+                                <img src="<c:url value="./resources/img/plataformes/9.png"/>"> GOG
+                            </a>
+                        </p>
+                        <p>
+                            <a target="_blank" href="https://support.microsoft.com/es-do/help/10604/microsoft-account-redeem-gift-card-or-code">
+                                <img src="<c:url value="./resources/img/plataformes/10.png"/>"> Windows Games
+                            </a>
+                        </p>
+                        <p>
+                            <a target="_blank" href="https://support.apple.com/es-lamr/HT201209">
+                                <img src="<c:url value="./resources/img/plataformes/11.png"/>"> Mac
+                            </a>
+                        </p>
+                        <p>
+                            <a target="_blank" href="https://www.epicgames.com/store/es-MX/redeem">
+                                <img src="<c:url value="./resources/img/plataformes/12.png"/>"> Epic Games
+                            </a>
+                        </p>
+                    </div>
                 </div>
                 
                 <div class="col-md-12 text-center divTitol">
@@ -36,7 +99,7 @@
                 </div>
                 <div class="text-left descripcioSuport">
                     <p class="bla">
-                        Un cop adquirit un codi de videojoc no es pot retornar, ja que no formem part de les empreses on s'activen aquest codis
+                        Un cop adquirit un codi de videojoc no es pot retornar, ja que no formem part de les empreses on s'activen aquest codis.
                     </p>
                 </div>
                 
@@ -45,26 +108,11 @@
                 </div>
                 <div class="text-left descripcioSuport">
                     <p class="bla">
-                        En cas de que el codi no funcioni omple aquest formulari amb el codi per comprobar 
-                        amb l'empresa responsable quan va ser activat, en cas de que hagi sigut activat abans 
+                        En cas de que el codi no funcioni posa't en conctacte amb nosaltres (sickgames@hotmail.com) per comprobar 
+                        amb l'empresa responsable quan va ser activat el codi, en cas de que hagi sigut activat abans 
                         de la seva adquisició es reembolsara el 100% del preu. En cas de que hagi sigut activat
                         desprès de la seva adquisició, SickGames no es fa responsable del seu mal ús.
                     </p>
-                    <form style="max-width: 300px" class="bla" action="mailto:sickgames@hotmail.com" method="post" enctype="text/plain">
-                        <label for="nomUser">Nom usuari</label>
-                        <input class="form-control" type="text" name="nomUser" required><br/>
-
-                        <label for="codi">Codi que no funciona</label>
-                        <input class="form-control" type="text" name="codi" required><br/>
-
-                        <label for="nomJoc">Nom del Joc</label>
-                        <input class="form-control" type="text" name="nomJoc" required><br/>
-
-                        <label for="Plataforma">Plataforma</label>
-                        <input class="form-control" type="text" name="Plataforma" required><br/>
-
-                        <input class="form-control" type="submit" value="Enviar">
-                    </form>
                 </div>
                 
                 <div class="col-md-12 text-center divTitol">
@@ -73,7 +121,7 @@
                 <div class="text-left descripcioSuport">
                     <p class="bla">
                         SickGames no es fa carrec del funcionament dels jocs ja que no som els desenvolupadors.
-                        Si us plau posat amb contacte amb el desenvolupador del joc en questió.
+                        Si us plau posat amb contacte amb l'empresa del joc en questió.
                     </p>
                 </div>
                 
@@ -94,8 +142,8 @@
                 </div>
                 <div class="text-left descripcioSuport">
                     <p class="bla">
-                        Si no hem pogut resoldre els teus dubtes, omple el següent formulari amb la descripció del
-                        problema.
+                        Si no hem pogut resoldre els teus dubtes, posat en contacte amb nosaltres per correu: sickgames@hotmail.com
+                        o truca'ns al 977 451 214.<br/> Horari: Dilluns a Divendres de 9:00-14:00.
                     </p>
                 </div>
             </div>                
