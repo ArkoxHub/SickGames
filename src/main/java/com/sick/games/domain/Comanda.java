@@ -36,17 +36,17 @@ public class Comanda implements Serializable {
     @Column(name = "total", nullable = false, precision = 2)
     private double total;
     
-    @Column(name = "usuari_Client")
-    private Client client;
+    @Column(name = "id_Usuari")
+    private int id_Usuari;
 
     public Comanda() {
     }
 
-    public Comanda(int codi_Comanda, Date data_Comanda, double total, Client client) {
+    public Comanda(int codi_Comanda, Date data_Comanda, double total, int id_Usuari) {
         this.codi_Comanda = codi_Comanda;
         this.data_Comanda = data_Comanda;
         this.total = total;
-        this.client = client;
+        this.id_Usuari = id_Usuari;
     }
 
     public int getCodi_Comanda() {
@@ -73,12 +73,12 @@ public class Comanda implements Serializable {
         this.total = total;
     }
 
-    public Client getClient() {
-        return client;
+    public int getUsuari_Client() {
+        return id_Usuari;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setUsuari_Client(int id_Usuari) {
+        this.id_Usuari = id_Usuari;
     }
-    
+ 
 }

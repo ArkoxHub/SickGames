@@ -5,11 +5,16 @@
  */
 package com.sick.games.controller;
 
+import com.sick.games.domain.Client;
 import com.sick.games.domain.Codi;
+import com.sick.games.domain.Comanda;
+import com.sick.games.domain.Detall;
 import com.sick.games.domain.User;
 import com.sick.games.domain.Videojoc;
 import com.sick.games.domain.Wishlist;
 import com.sick.games.service.CodiService;
+import com.sick.games.service.ComandaService;
+import com.sick.games.service.DetallService;
 import com.sick.games.service.UsersService;
 import com.sick.games.service.VideojocService;
 import com.sick.games.service.WishlistService;
@@ -25,7 +30,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -50,6 +54,12 @@ public class UserController {
 
     @Autowired
     WishlistService wishlistService;
+
+    @Autowired
+    ComandaService comandaService;
+
+    @Autowired
+    DetallService detallService;
 
     /**
      * - Es crea la variable de sessio carro que guardarà objectes Videojoc -
@@ -299,6 +309,8 @@ public class UserController {
             HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        System.out.println("URRRRRLLLLL: " + request.getRequestURI());
+        System.out.println("URRRRRLLLLL: " + request.getRequestURL());
         String redirect = "redirect:/user";
         if (request.getRequestURI() != redirect) {
             redirect = "redirect:/";
@@ -403,6 +415,16 @@ public class UserController {
             if (cookie.getName().equals("userNick")) {
                 // Add user to Model Response
                 user = usersService.getUserByNick(cookie.getValue());
+                if (user instanceof Client) {
+                    List<Detall> detalls = detallService.getDetallsByCodiClient(user.getId_Usuari());
+                    model.getModelMap().addAttribute("detalls", detalls);
+                    
+                    List<Videojoc> videojocs = new ArrayList();
+                    for (Detall detall : detalls) {
+                        videojocs.add(videojocSercice.getGameByCode(detall.getCodi_Joc()));
+                    }
+                    model.getModelMap().addAttribute("videojocs", videojocs);
+                }
                 model.getModelMap().addAttribute("user", user);
             }
         }
@@ -411,11 +433,12 @@ public class UserController {
     }
 
     //Realitzar pagament
-    @RequestMapping(value = "/buyout/{total}", method = RequestMethod.GET)
-    public ModelAndView realitzarPagament(@PathVariable("total")int total, HttpServletRequest request, HttpServletResponse response)
+    @RequestMapping(value = "/buyout", method = RequestMethod.GET)
+    public ModelAndView realitzarPagament(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        double total = 0;
         ModelAndView model = new ModelAndView("realitzarPagament");
-        
+
         // Obtenim l'objecte Usuari de les cookies | Ha fet el login abans d'entrar aquí!
         User user = null;
         Cookie[] cookies = request.getCookies();
@@ -426,12 +449,20 @@ public class UserController {
                 model.getModelMap().addAttribute("user", user);
             }
         }
-        
-        List<Videojoc> videojocs;
+
+        // Obtenim els items del carro de l'usuari i els punts que guanyarà
+        List<Videojoc> videojocs = new ArrayList();
         if (request.getSession().getAttribute("carro") != null) {
             videojocs = (List<Videojoc>) request.getSession().getAttribute("carro");
-            model.getModelMap().addAttribute("carro", videojocs);
-            
+
+            // Obtenim els codis de cada joc
+            List<Codi> codis = new ArrayList();
+            for (Videojoc joc : videojocs) {
+                Codi codi = codiService.getNextCodeByCodiJoc(joc.getCodi_Joc());
+                codis.add(codi);
+                total += codi.getPreu();
+            }
+
             // Càlcul dels punts guanyats per la transició
             int punts = 0;
             if (total >= 60) {
@@ -443,10 +474,111 @@ public class UserController {
             } else if (total >= 5) {
                 punts = 2;
             }
-            
+
+            model.getModelMap().addAttribute("carro", videojocs);
+            model.getModelMap().addAttribute("codis", codis);
+            model.getModelMap().addAttribute("total", total);
             model.getModelMap().addAttribute("punts", punts);
         }
-        
+
         return model;
     }
+
+    @RequestMapping(value = "/buyout", method = RequestMethod.POST)
+    public String finalitzarPagament(
+            @RequestParam("punts") int punts,
+            @RequestParam("factura") double factura,
+            @RequestParam("numTarjeta") String tarjeta,
+            HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("userMail")) {
+
+                try {
+                    User user = usersService.getUserByeMail(cookie.getValue());
+                    if (user instanceof Client) {
+                        // Client existent | Li augmentem els punts i l'actualitzem
+                        Client client = usersService.getClientByEmail(cookie.getValue());
+                        client.setPunts(client.getPunts() + punts);
+                        usersService.updateClient(client);
+
+                        // Nova comanda
+                        Comanda comanda = new Comanda();
+                        java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+                        comanda.setTotal(factura);
+                        comanda.setData_Comanda(date);
+                        comanda.setUsuari_Client(client.getId_Usuari());
+                        comandaService.addComanda(comanda);
+
+                        // Detall comanda
+                        if (request.getSession().getAttribute("carro") != null) {
+                            List<Videojoc> jocs = (List<Videojoc>) request.getSession().getAttribute("carro");
+                            for (Videojoc joc : jocs) {
+                                Codi codi = codiService.getNextCodeByCodiJoc(joc.getCodi_Joc());
+
+                                Detall detall = new Detall();
+                                detall.setCodi_Comanda(comanda.getCodi_Comanda());
+                                detall.setCodi_Joc(joc.getCodi_Joc());
+                                detall.setPreu(codi.getPreu());
+                                detall.setSerial(codi.getSerial());
+                                detall.setPlataforma(codi.getPlataforma());
+                                detall.setId_Usuari(client.getId_Usuari());
+                                detallService.addDetall(detall);
+
+                                // Retirem de l'stock el codi!
+                                codiService.removeCodi(codi);
+                            }
+                            request.getSession().removeAttribute("carro");
+                        }
+
+                    } else if (user instanceof User) {
+                        // Primera compra que realitza a la web.
+                        Client client = new Client(user.getId_Usuari(), punts, tarjeta, user.getId_Usuari(),
+                                user.getNom(), user.getCognoms(), user.getNickname(), user.getData_Alta(),
+                                user.getDireccio(), user.getEmail(), user.getContrasenya(), user.getTelefon());
+                        usersService.removeUser(user);
+                        usersService.addClient(client);
+
+                        // Nova comanda
+                        Comanda comanda = new Comanda();
+                        java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+                        comanda.setTotal(factura);
+                        comanda.setData_Comanda(date);
+                        comanda.setUsuari_Client(client.getId_Usuari());
+                        comandaService.addComanda(comanda);
+
+                        // Detall comanda
+                        if (request.getSession().getAttribute("carro") != null) {
+                            List<Videojoc> jocs = (List<Videojoc>) request.getSession().getAttribute("carro");
+                            for (Videojoc joc : jocs) {
+                                Codi codi = codiService.getNextCodeByCodiJoc(joc.getCodi_Joc());
+
+                                Detall detall = new Detall();
+                                detall.setCodi_Comanda(comanda.getCodi_Comanda());
+                                detall.setCodi_Joc(joc.getCodi_Joc());
+                                detall.setPreu(codi.getPreu());
+                                detall.setSerial(codi.getSerial());
+                                detall.setPlataforma(codi.getPlataforma());
+                                detall.setId_Usuari(client.getId_Usuari());
+                                detallService.addDetall(detall);
+
+                                // Retirem de l'stock el codi!
+                                codiService.removeCodi(codi);
+                            }
+                            request.getSession().removeAttribute("carro");
+                        }
+                    }
+
+                } catch (Exception e) {
+                    System.out.println("Error al carregar o actualitzar client " + e.getMessage());
+                }
+            }
+        }
+
+        return "redirect:/";
+
+    }
+
 }

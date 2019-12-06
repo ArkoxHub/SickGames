@@ -1,18 +1,17 @@
 <%@page import="com.sick.games.domain.Videojoc"%>
 <%@page import="java.util.List"%>
-<!DOCTYPE html>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<html lang="cat">
-    <head>
+
         <title>SickGames</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--Jquery-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
         <!--Bootstrap CSS-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="true">
         <!--Global javascript-->
@@ -45,14 +44,14 @@
     <div id="fondo"></div>
     <div id="page-container">
     <section class="section-top">
-        <a href="<c:url value='/'/>"><img src="<c:url value='/resources/img/logo_icon.png'/>" role="banner" alt="SickGames  ofertes jocs  codis jocs online tenda de codis" class="logoMvl"></a>
+        <a href="<c:url value='/'/>"><img src="<c:url value='/resources/img/logo_icon.png'/>" role="banner" alt="SickGames Logo" class="logoMvl"></a>
         <nav class="container-cataleg" id="container-top" role="navigation">
             <div class="row">
                 <div class="col-5">
                     <div class="row">
                         <div class="col-12" id="colbuscador" style="display:inline-flex">
                             <div class="col-6" id="showHideLogo">
-                                <a href="<c:url value='/'/>"><img src="<c:url value='/resources/img/logo_sick.png'/>" role="banner" alt="SickGames  ofertes jocs codis jocs online tenda de codis" class="logo"></a>
+                                <a href="<c:url value='/'/>"><img src="<c:url value='/resources/img/logo_sick.png'/>" role="banner" alt="SickGames Logo" class="logo"></a>
                             </div>
                             <form action="/sickgames/cataleg" form="GET">
                                 <input autocomplete="on" title="Buscar Videojoc" class="buscador" type="text" placeholder=" Cerca" name="search">
@@ -71,16 +70,16 @@
                             <c:when test="${not empty user.nom}">
                                 <div class="col-3">
                                     <div id="menuUser">
-                                        <a href="#" class="soporte" id="compte">Hola ${user.nickname}</a>
-                                        <a href="#" class="soporteMvl" id="compteMvl"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
+                                        <a href="<c:url value='/user'/>" class="soporte" id="compte"><img id="userImg" />${user.nickname}</a>
+                                        <a href="#" class="soporteMvl" id="compteMvl"><img id="userImgMvl" /></a>
                                         <ul id="menuCompte" class="menuCompte">
                                             <a href="<c:url value='/user'/>">
                                                 <li>Perfil</li>
                                             </a>
-                                            <a href="<c:url value='/user'/>">
+                                            <a href="<c:url value='/user/comandes'/>">
                                                 <li>Comandes</li>
                                             </a>
-                                            <a href="<c:url value='/user'/>">
+                                            <a href="<c:url value='/user/'/>">
                                                 <li>Llista desitjos</li>
                                             </a>
                                             <a href="<c:url value='/user/logoff'/>">
@@ -108,15 +107,15 @@
                                                         ${joc.nom} - ${codis[status.index].preu} €
                                                     </span>
                                                     <a href="<c:url value="/user/remove?item=${joc.codi_Joc}&nickname=${user.nickname}"></c:url>" class="eliminarProducte" title="Eliminar producte">&times;</a>
-                                                    </div>
-                                                </li>
+                                                </div>
+                                            </li>
                                         </c:forEach>
                                         <hr>
                                         <c:forEach var="codi" items="${codis}">
                                             <c:set var="total" value="${ total + codi.preu}"/>
                                         </c:forEach>
                                         <c:if test="${total > 0}">
-                                            <a href="#">
+                                            <a href="<c:url value="/user/buyout"/>">
                                                 <li>Realitzar pagament - <fmt:formatNumber value="${total}"currencySymbol="€" type="currency" pattern="###,###.00 ¤"/></li>
                                             </a>
                                         </c:if>
@@ -140,7 +139,7 @@
                         </c:choose>
                         <div class="col-3">
                             <a href="#" class="darkMode" title="Dark Mode"><i class="fa fa-moon fa-lg" aria-hidden="true"></i></a>
-                            <a href="#" class="lightMode" title="Dark Mode"><i class="fa fa-sun fa-lg" aria-hidden="true"></i></a>
+                            <a href="#" class="lightMode" title="Light Mode"><i class="fa fa-sun fa-lg" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
@@ -165,9 +164,8 @@
 
                 <div class="container">
                     <button title="Sortir del menu login" type="button" class="cancelbtn">Sortir</button>
-                    <span class="psw">Restaurar <a title="Restaurar Contrasenya"href="#">Contrasenya</a></span>
+                    <span class="psw">Restaurar <a title="Restaurar Contrasenya" href="#">Contrasenya</a></span>
                 </div>
             </form>
         </div>
-
     </section>

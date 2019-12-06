@@ -22,8 +22,8 @@
         <link href="<c:url value='/resources/css/admin.css'/>" rel="stylesheet" type="text/css"/>
         
         <jsp:include page="/WEB-INF/resources/headerAndFooter/header.jsp"></jsp:include>
+        <section class="section-body">
             <div class="container-cataleg">
-
                 <div class="row" id="adminRow">
                     <div class="logout text-center">
                        <a href="<c:url value="/admin" />" 
@@ -32,23 +32,24 @@
                        class="btn btn-danger btn-mini pull-right" style="color: white">Desconectar Admin</a>
                     </div>
                 </div>
-            <h2>${option} Videojocs</h2>
-            <div class="row">           
-                <div class="col-md-12">
-                    <c:forEach items="${videojocs}" var="joc">
-                        <c:if test="${option == 'Modify'}">
-                            <li class="gameList">
-                                <a style="color:white !important" href="<c:url value="/admin/updateGame?id=${joc.codi_Joc}"></c:url>">${joc.nom}</a>
-                            </li>
-                        </c:if>
-                        <c:if test="${option == 'Delete'}">
-                            <li class="gameList">
-                                <a style="color:white !important" class="confirm" href="<c:url value="/admin/deleteGame?id=${joc.codi_Joc}"></c:url>">${joc.nom}</a>
-                            </li>
-                        </c:if>
-                    </c:forEach>
+                <h2>${option} Videojocs</h2>
+                <div class="row">           
+                    <div class="col-md-12">
+                        <c:forEach items="${videojocs}" var="joc">
+                            <c:if test="${option == 'Modify'}">
+                                <li class="gameList">
+                                    <a style="color:white !important" href="<c:url value="/admin/updateGame?id=${joc.codi_Joc}"></c:url>">${joc.nom}</a>
+                                </li>
+                            </c:if>
+                            <c:if test="${option == 'Delete'}">
+                                <li class="gameList">
+                                    <a style="color:white !important" class="confirm" href="<c:url value="/admin/deleteGame?id=${joc.codi_Joc}"></c:url>">${joc.nom}</a>
+                                </li>
+                            </c:if>
+                        </c:forEach>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
     </body>
 </html>

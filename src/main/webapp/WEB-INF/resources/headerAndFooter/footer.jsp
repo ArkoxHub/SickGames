@@ -38,20 +38,20 @@
                             <div class="col-md-3 mb-md-0 mb-3">
 
                                 <!-- Links -->
-                                <h5 class="text-uppercase">Links</h5>
+                                <h5 class="text-uppercase">Xarxes</h5>
 
                                 <ul class="list-unstyled">
                                     <li>
-                                        <a href="#!">Link 1</a>
+                                        <i title="Twitter" class="fab fa-twitter"></i>
                                     </li>
                                     <li>
-                                        <a href="#!">Link 2</a>
+                                        <i title="Facebook" class="fab fa-facebook-f"></i>
                                     </li>
                                     <li>
-                                        <a href="#!">Link 3</a>
+                                        <i title="Instagram" class="fab fa-instagram"></i>
                                     </li>
                                     <li>
-                                        <a href="#!">Link 4</a>
+                                        <i title="Twitch" class="fab fa-twitch"></i>
                                     </li>
                                 </ul>
 
@@ -62,20 +62,20 @@
                             <div class="col-md-3 mb-md-0 mb-3">
 
                                 <!-- Links -->
-                                <h5 class="text-uppercase">Links</h5>
+                                <h5 class="text-uppercase">Privacitat </h5>
 
                                 <ul class="list-unstyled">
                                     <li>
-                                        <a href="#!">Link 1</a>
+                                        <a href="#!">Contacte</a>
                                     </li>
                                     <li>
-                                        <a href="#!">Link 2</a>
+                                        <a href="#!">Termes i Condicions</a>
                                     </li>
                                     <li>
-                                        <a href="#!">Link 3</a>
+                                        <a href="<c:url value='/suport'/>">Ajuda</a>
                                     </li>
                                     <li>
-                                        <a href="#!">Link 4</a>
+                                        <a href="#!">Política de privacitat / Cookies</a>
                                     </li>
                                 </ul>
 
@@ -96,9 +96,10 @@
 
                 </footer>
             </div>
+                    
+        </section>
         </div>
             <!-- Footer -->   
-        </section>
         <!-- Load the Twitch embed script -->
         <script src="https://embed.twitch.tv/embed/v1.js"></script>
 

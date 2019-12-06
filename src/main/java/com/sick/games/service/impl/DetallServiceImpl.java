@@ -51,6 +51,11 @@ public class DetallServiceImpl implements DetallService {
     public List<Detall> getDetallsByCodiJoc(int codi) {
         return detallDAO.getDetallsByCodiJoc(codi);
     }
+    
+    @Override
+    public List<Detall> getDetallsByCodiClient(int codi) {
+        return detallDAO.getDetallsByCodiClient(codi);
+    }
 
     @Override
     public List<Detall> getAllDetalls() {

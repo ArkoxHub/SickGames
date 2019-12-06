@@ -32,61 +32,91 @@
             <div class="container-cataleg">
                 <div class="row" id="pagamentRow">
                     <div class="col-md-6">
-                        <form style="max-width: 300px" class="bla" action="/buyout" method="post" >
+                        <form action="buyout" method="POST" id="formPagament" name="formPagament">
                             <label for="nomTitular">Titular de la tarjeta:</label>
-                            <input class="form-control" type="text" name="nomTitular" required><br/>
+                            <input class="form-control" type="text" name="nomTitular" id="nomTitular" required><br/>
 
                             <label for="numTarjeta">Número de la tarjeta:</label>
-                            <input class="form-control" type="number" name="numTarjeta" required><br/>
+                            <input class="form-control" type="number" name="numTarjeta" id="numTarjeta" required><br/>
 
                             <label for="mesCad">Mes de caducitat</label>
-                            <input class="form-control" type="number" name="mesCad" required><br/>
+                            <input class="form-control" type="number" name="mesCad" id="mesCad" required><br/>
 
                             <label for="anyCad">Any de caducitat</label>
-                            <input class="form-control" type="number" name="anyCad" required><br/>
+                            <input class="form-control" type="number" name="anyCad" id="anyCad" required><br/>
 
                             <label for="cvc">Codi CVC2</label>
-                            <input class="form-control" type="number" name="cvc" required><br/>
-                            
-                            <input type="hidden" name="punts" value="${punts}">
+                            <input class="form-control" type="number" name="cvc" id="cvc" required><br/>
 
-                            <input class="btn btn-primary" type="submit" value="Enviar">
-                        </form>                        
+                            <input type="hidden" name="punts" value="${punts}">
+                            <input type="hidden" name="jocs" value="${carro}">
+                            <input type="hidden" name="codis" value="${codis}">
+                            <input type="hidden" name="factura" value="${total}">
+                            <input type="hidden" name="user" value="${user}">
+
+                        <input class="btn btn-primary" type="submit" value="Comprar">
+                    </form>                        
+                </div>
+                <div class="col-md-6">
+                    <h2>Productes:</h2>
+                        <table class="table table-striped table-dark">
+                            <thead>
+                                <td scope="col">Joc a comprar</td>
+                                <td scope="col">Preu</td>
+                            </thead>
+                            <tbody>
+                                <c:forEach items="${carro}" var="joc" varStatus="status">  
+                                    <tr>  
+                                        <td>
+                                            <img class="imgProducteComprat" style="width: 60px" src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>">
+                                            <span style="color: green;">${joc.nom}</span>
+                                        </td><!--Tambien joc nom-->
+                                        <td id="serial">                                        
+                                            ${codis[status.index].preu}€
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                         </table>
+                    <div class="row" id="rowCurrency">
+                        <div class="col-md-6">
+                            <h5>Import total: <fmt:formatNumber value="${total}"currencySymbol="€" type="currency" pattern="###,###.00 ¤"/></h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Punts adquirits: <span style="color: green">${punts}</span></h5>
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="tarjeta"></div>
+                    <div>
+                        <h2>Sistema de punts</h2>
+                        <table class="table table-striped table-dark">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Preu videojoc</th>
+                                    <th scope="col">Punts</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id="seixanta">
+                                    <td>+ 60€</td>
+                                    <td>30</td>
+                                </tr>
+                                <tr id="quaranta">
+                                    <td>+ 40€</td>
+                                    <td>10</td>
+                                </tr>
+                                <tr id="vint">
+                                    <td>+ 20€</td>
+                                    <td>5</td>
+                                </tr>
+                                <tr id="cinc">
+                                    <td>+ 5€</td>
+                                    <td>2</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <em>*Al comprar a SickGames, guanyes punts bescanviables per grans descomptes en les futures compres!</em>
                     </div>
                 </div>
-                <h3>Punts adquirits per aquesta transicció: <span style="color: green">${punts}</span></h3>
-            <hr>
-            <div>
-                <p>
-                    Al comprar a SickGames, guanyes punts bescanviables per grans descomptes en les futures compres!<br>
-                <table>
-                    <thead>Taula de punts SickGames</thead>
-                    <tr>
-                        <th>Preu videojoc</th>
-                        <th>Punts</th>
-                    </tr>
-                    <tr>
-                        <td>+ 60€</td>
-                        <td>30</td>
-                    </tr>
-                    <tr>
-                        <td>+ 40</td>
-                        <td>10</td>
-                    </tr>
-                    <tr>
-                        <td>+ 20€</td>
-                        <td>5</td>
-                    </tr>
-                    <tr>
-                        <td>+ 5</td>
-                        <td>2</td>
-                    </tr>
-                </table>
-                </p>
             </div>
-        </div>
     </section>
     <jsp:include page="/WEB-INF/resources/headerAndFooter/footer.jsp"></jsp:include>

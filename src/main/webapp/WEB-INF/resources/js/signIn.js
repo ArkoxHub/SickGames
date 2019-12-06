@@ -1,11 +1,32 @@
 
 $(document).ready(function () {
+    /*******Variables del formulari*******/
+    let nom = $("#nom");
+    let cognoms = $("#cognoms");
+    let nickname = $("#nickname");
+    let contrasenya = $("#contrasenya");
+    let confirmarContrasenya = $("#contrasenyaConfirm");
+    let email = $("#email");
+    let telefon = $("#telefon");
+    let direccio = $("#direccio");
+    
+    if (telefon.attr("value") == 0){
+        telefon.attr("value", "");
+    }
+    /******Afegir placeholder desde js*********
+    nom.attr("placeholder", "Javier");
+    cognoms.attr("placeholder", "Sanzchez de los Amores");
+    nickname.attr("placeholder", "Senyor X");
+    email.attr("placeholder", "sickgames@hotmail.com");
+    telefon.attr("placeholder", "679148114");
+    direccio.attr("placeholder", "C/ Catalunya 27, 5-2");*/
+    
     /*************Contraseña********************/
     //Mostrar contraseña cuando hacemos hover al fa-eye
     $('.fa-eye').hover(function(){
-        $('#contrasenya').attr('type', 'text'); 
+        contrasenya.attr('type', 'text'); 
     }, function (event) {
-        $('#contrasenya').attr('type', 'password'); 
+        contrasenya.attr('type', 'password'); 
     });
     
     //Evitar copy paste en los input de tipo contraseña
@@ -21,17 +42,17 @@ $(document).ready(function () {
     $("#confirmarContrasenya").hide();
     
     //Click en input contraseña hacemos comprobaciones y ofrecemos ayuda
-    $("#contrasenya").focusin(function(){
+    contrasenya.focusin(function(){
         $("#infoPass").remove();
         $("#badPass").remove();
-        var pass = $("#contrasenya").val();
+        var pass = contrasenya.val();
         
         probes(pass);
     });
     
     //Si salimos del input contraseña comprobamos que los datos introducidos sean correctos y desactivamos las ayudas en caso de no tener contraseña
-    $("#contrasenya").focusout(function(){
-        var pass = $("#contrasenya").val();
+    contrasenya.focusout(function(){
+        var pass = contrasenya.val();
         if (!pass.match(regexp)){
             $("#badPass").remove();
             $("#badSpace").remove();
@@ -46,13 +67,14 @@ $(document).ready(function () {
     });
     
     //Cada vez que pulsamos una tecla recogemos el valor de la contraseña y ejecutamos las comprobaciones de ayuda.
-    $("#contrasenya").keyup(function(event){
-        var pass = $("#contrasenya").val();
-        var passConfirm = $("#contrasenyaConfirm").val();
+    contrasenya.keyup(function(event){
+        var pass = contrasenya.val();
+        var passConfirm = confirmarContrasenya.val();
         
         if (event.keyCode == 32) {
             $("#badSpace").remove();
             $("#pass").append("<div id='badSpace'>No s'accepten espais</div>");
+            $("#infoPass").remove();
             this.value = this.value.replace(/\s/g, "");
         }else{
             $("#badSpace").remove();
@@ -61,9 +83,9 @@ $(document).ready(function () {
         }
     });
     //Comprobamos con cada tecleo que las contraseñas coinciden
-    $("#contrasenyaConfirm").keyup(function(event){
-        var pass = $("#contrasenya").val();
-        var passConfirm = $("#contrasenyaConfirm").val();
+    confirmarContrasenya.keyup(function(event){
+        var pass = contrasenya.val();
+        var passConfirm = confirmarContrasenya.val();
         
         checkPassword(pass, passConfirm);
     });
@@ -119,8 +141,106 @@ $(document).ready(function () {
             $("#badSpace").remove();
             $("#confirmarContrasenya").stop().slideDown();
         }else{
-            $("#confirmarContrasenya").stop().slideUp();
+            $("#confirmarContrasenya").stop().hide();
         }
     }
+    
+    $.validator.addMethod("regex", function(value) {
+        return /^[A-Za-z0-9\d=!\-@._*]*$/.test(value) // Mínimo una mayúscula y símbolos
+            && /[a-z]/.test(value) // Mínimo una minuscula
+            && /\d/.test(value); // Mínimo 1 número
+    });
+    /* Validacio formulario quan fem submit */
+    $("form[name='registre']").validate({
+        rules: {
+            nom: {
+                required: true,
+                minlength: 3,
+                maxlength: 20
+            },
+            cognoms: {
+                required: true,
+                minlength: 8,
+                maxlength: 50
+            },
+            nickname: {
+                required: true,
+                minlength: 3,
+                maxlength: 20
+            },
+            email: {
+                required: true,
+                maxlength: 50,
+                email: true
+            },
+            telefon: {
+                required: true,
+                minlength: 9,
+                maxlength: 9
+            },
+            direccio: {
+                required: true,
+                minlength: 8,
+                maxlength: 50
+            },
+            contrasenya: {
+                required: true,
+                minlength: 8,
+                maxlength: 20,
+                regex: true
+            },
+            contrasenyaConfirm: {
+                required: true,
+                equalTo : "#contrasenya"
+            }
+        },
+        // Especificamos los errores 
+        messages: {
+            nom: {
+                required: "Introdueix un nom",
+                minlength: "Mínim 3 caràcters",
+                maxlength: "Màxim 20 caràcters"
+            },
+            cognoms: {
+                required: "Introdueix un cognom",
+                minlength: "Mínim 8 caràcters",
+                maxlength: "Màxim 50 caràcters"
+            },
+            nickname: {
+                required: "Introdueix un nick",
+                minlength: "Mínim 3 caràcters",
+                maxlength: "Màxim 10 caràcters"
+            },
+            email: {
+                required: "Introdueix un correu",
+                maxlength: "Màxim 50 caràcters",
+                email: "Introdueix un correu vàlid"
+            },
+            telefon: {
+                required: "Introdueix un telèfon",
+                minlength: "Mínim 9 caràcters",
+                maxlength: "Màxim 9 caràcters"
+            },
+            direccio: {
+                required: "Introdueix una direcció",
+                minlength: "Mínim 8 caràcters",
+                maxlength: "Màxim 50 caràcters"
+            },
+            contrasenya: {
+                required: "Introdueix una contrasenya",
+                minlength: "",
+                maxlength: "",
+                pattern: ""
+            },
+            contrasenyaConfirm: {
+                required: "Les contrasenyes no coincideixen",
+                equalTo : "Les contrasenyes no coincideixen"
+            }
+        },
+        //Una vez se cumplen las validaciones, nos dejará hacer submit
+        submitHandler: function (form) {
+            form.submit();
+        }
+    });
     
 });

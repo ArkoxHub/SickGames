@@ -9,7 +9,9 @@
 .table td{
     vertical-align: middle !important;
 }
-
+.fa-copy{
+    cursor: pointer;
+}
 @media (max-width:535px){
     .imgProducteComprat{
         width: 100px;

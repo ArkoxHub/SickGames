@@ -5,9 +5,12 @@
  */
 package com.sick.games.controller;
 
+import com.sick.games.domain.User;
+import com.sick.games.service.UsersService;
 import com.sick.games.service.VideojocService;
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,11 +30,26 @@ public class CatalegController {
     @Autowired
     VideojocService videojocService;
 
+    @Autowired
+    UsersService usersService;
+
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView initCataleg(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ModelAndView model = new ModelAndView("cataleg");
         model.getModelMap().addAttribute("videojocs", videojocService.getGamesCataleg());
+
+        // Obtenim l'objecte Usuari de les cookies
+        User user = null;
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("userNick")) {
+                // Add user to Model Response
+                user = usersService.getUserByNick(cookie.getValue());
+                model.getModelMap().addAttribute("user", user);
+            }
+        }
+
         return model;
     }
 }

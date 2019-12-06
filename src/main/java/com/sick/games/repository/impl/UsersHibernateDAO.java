@@ -41,7 +41,7 @@ public class UsersHibernateDAO implements UsersDAO {
 
     @Override
     public void addAdministrador(Administrador admin) {
-        getSession().saveOrUpdate(admin);
+        getSession().save(admin);
     }
 
     @Override
@@ -51,7 +51,7 @@ public class UsersHibernateDAO implements UsersDAO {
 
     @Override
     public void addPartner(Partner partner) {
-        getSession().saveOrUpdate(partner);
+        getSession().save(partner);
     }
 
     @Override
