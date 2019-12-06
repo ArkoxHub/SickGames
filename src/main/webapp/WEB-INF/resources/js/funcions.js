@@ -1,9 +1,23 @@
+$(document).ready(function () {
+    var userImg = document.getElementById('userImg');
+    var userImgMvl = document.getElementById('userImgMvl');
+    var foto = localStorage.getItem('fotoDePerfil');
+    
+    if (userImg != null || userImgMvl != null){
+        if (window.localStorage.getItem('fotoDePerfil')){
 
+            userImg.src = foto;
+            userImgMvl.src = foto;
+        }else{
+            userImg.src = "../sickgames/resources/img/fotosPerfil/user.jpg";
+            userImgMvl.src = "../sickgames/resources/img/fotosPerfil/user.jpg";
+        }
+    }
+});
 /*Funció acceptar cookies*/
 $(document).ready(function () {
     $("#acceptarCookie").click(function(){
         setCookie('CookiesLlei','Acceptades',999);
-        console.log("hola");
         $(".cookiesAccept").css("display","none");
     });
     if (comprobarCookie('CookiesLlei') == 'Acceptades'){

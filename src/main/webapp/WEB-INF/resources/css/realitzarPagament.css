@@ -34,3 +34,29 @@ table, th, tr {
     color: orangered;
     font-weight: bold;
 }
+label[class*="error"]{
+    position: absolute;
+    color: #ff0000;
+    font-weight: bold;
+    left: 26px;
+    background: black;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+/*Amagar un missatge no desitjat del jquery validate*/
+strong{
+    display: none !important;
+}
+
+/*Amagar els butons y numeros input type number*/
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}

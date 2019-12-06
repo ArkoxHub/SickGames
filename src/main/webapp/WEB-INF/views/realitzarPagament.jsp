@@ -32,21 +32,21 @@
             <div class="container-cataleg">
                 <div class="row" id="pagamentRow">
                     <div class="col-md-6">
-                        <form action="buyout" method="POST" id="formPagament">
+                        <form action="buyout" method="POST" id="formPagament" name="formPagament">
                             <label for="nomTitular">Titular de la tarjeta:</label>
-                            <input class="form-control" type="text" name="nomTitular" required><br/>
+                            <input class="form-control" type="text" name="nomTitular" id="nomTitular" required><br/>
 
                             <label for="numTarjeta">Número de la tarjeta:</label>
-                            <input class="form-control" type="number" name="numTarjeta" required><br/>
+                            <input class="form-control" type="number" name="numTarjeta" id="numTarjeta" required><br/>
 
                             <label for="mesCad">Mes de caducitat</label>
-                            <input class="form-control" type="number" name="mesCad" required><br/>
+                            <input class="form-control" type="number" name="mesCad" id="mesCad" required><br/>
 
                             <label for="anyCad">Any de caducitat</label>
-                            <input class="form-control" type="number" name="anyCad" required><br/>
+                            <input class="form-control" type="number" name="anyCad" id="anyCad" required><br/>
 
                             <label for="cvc">Codi CVC2</label>
-                            <input class="form-control" type="number" name="cvc" required><br/>
+                            <input class="form-control" type="number" name="cvc" id="cvc" required><br/>
 
                             <input type="hidden" name="punts" value="${punts}">
                             <input type="hidden" name="jocs" value="${carro}">

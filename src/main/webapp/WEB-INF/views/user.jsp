@@ -23,7 +23,7 @@
                         <div class="col-md-2 text-center center">
                             <img id="fotoPerfil"  src="<c:url value="/resources/img/fotosPerfil/user.jpg"/>">
                         <i class="fas fa-camera upload-button"></i>
-                        <input class="file-upload" type="file" accept="image/*"/>
+                        <input class="file-upload" type="file" id="cambiarUserImg" accept="image/*"/>
                         <h4>${user.nom}</h4>
                     </div>
                     <c:out value="&emsp;" escapeXml="false"/>

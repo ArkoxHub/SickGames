@@ -13,6 +13,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--Jquery-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
         <!--Bootstrap CSS-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="true">
         <!--Global javascript-->
@@ -71,8 +72,8 @@
                             <c:when test="${not empty user.nom}">
                                 <div class="col-3">
                                     <div id="menuUser">
-                                        <a href="#" class="soporte" id="compte">Hola ${user.nickname}</a>
-                                        <a href="#" class="soporteMvl" id="compteMvl"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
+                                        <a href="#" class="soporte" id="compte"><img id="userImg" />${user.nickname}</a>
+                                        <a href="#" class="soporteMvl" id="compteMvl"><img id="userImgMvl" /></a>
                                         <ul id="menuCompte" class="menuCompte">
                                             <a href="<c:url value='/user'/>">
                                                 <li>Perfil</li>
@@ -80,7 +81,7 @@
                                             <a href="<c:url value='/user/comandes'/>">
                                                 <li>Comandes</li>
                                             </a>
-                                            <a href="<c:url value='/user/wishlist'/>">
+                                            <a href="<c:url value='/user/'/>">
                                                 <li>Llista desitjos</li>
                                             </a>
                                             <a href="<c:url value='/user/logoff'/>">
@@ -108,8 +109,8 @@
                                                         ${joc.nom} - ${codis[status.index].preu} €
                                                     </span>
                                                     <a href="<c:url value="/user/remove?item=${joc.codi_Joc}&nickname=${user.nickname}"></c:url>" class="eliminarProducte" title="Eliminar producte">&times;</a>
-                                                    </div>
-                                                </li>
+                                                </div>
+                                            </li>
                                         </c:forEach>
                                         <hr>
                                         <c:forEach var="codi" items="${codis}">
@@ -140,7 +141,7 @@
                         </c:choose>
                         <div class="col-3">
                             <a href="#" class="darkMode" title="Dark Mode"><i class="fa fa-moon fa-lg" aria-hidden="true"></i></a>
-                            <a href="#" class="lightMode" title="Dark Mode"><i class="fa fa-sun fa-lg" aria-hidden="true"></i></a>
+                            <a href="#" class="lightMode" title="Light Mode"><i class="fa fa-sun fa-lg" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>

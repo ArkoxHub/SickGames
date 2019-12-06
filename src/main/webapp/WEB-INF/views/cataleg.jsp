@@ -176,19 +176,6 @@
                 </div>
             </div>
         </div>
-        <nav>
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled"> <!--Cambiar el disabled si se encuentra en pagina 2 backend-->
-                    <a class="page-link" href="#" tabindex="-1"><i class="fas fa-arrow-left"></i></a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#"><i class="fas fa-arrow-right"></i></a>
-                </li>
-            </ul>
-        </nav>
     </section>
     <!--Fi secció body-->
     <jsp:include page="/WEB-INF/resources/headerAndFooter/footer.jsp"></jsp:include>

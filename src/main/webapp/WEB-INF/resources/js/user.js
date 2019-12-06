@@ -52,14 +52,16 @@ $(document).ready(function () {
             document.cookie = c_name + "=" + c_value;
         }
     }
+        
     if (window.localStorage.getItem('fotoDePerfil')){
         var foto = localStorage.getItem('fotoDePerfil');
-
-        cambiarFotoDefault = document.getElementById('fotoPerfil');
+        var cambiarFotoDefault = document.getElementById('fotoPerfil');
 
         cambiarFotoDefault.src = foto;
-        
     }
+    $('#cambiarUserImg').change(function() {
+        location.reload();
+    });
         
 });
 
