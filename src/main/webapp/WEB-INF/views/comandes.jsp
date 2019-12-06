@@ -21,26 +21,28 @@
             <div class="container-cataleg">
                 <div class="row" id="productesCompratsRow">
                     <!-- for each jocs comprats -->
+                <c:forEach var="detall" items="${detalls}" varStatus="status">
                     <div class="col-md-6">
                         <div class="row">
                             <div class="col-md-12">
                                 <table class="table table-striped table-dark">
                                     <thead>
-                                    <td>Joc nom</td>
-                                    <td>Plataforma</td>
+                                    <td>${videojocs[status.index].nom}</td>
+                                    <td><img src="<c:url value="/resources/img/plataformes/${detall.plataforma}.png"/>" alt=""></td>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td><img class="imgProducteComprat" src="<c:url value="/resources/img/portades/ARK.jpg"/>"></td><!--Tambien joc nom-->
-                                            <td id="serial"><span>El codigo</span>  <i class="far fa-copy"></i></td>
+                                            <td><img class="imgProducteComprat" src="<c:url value="/resources/img/portades/${videojocs[status.index].nom}.jpg"/>"></td>
+                                            <td id="serial"><span>${detall.serial}</span><i class="far fa-copy"></i></td>
                                         </tr>
                                     </tbody>
-                                 </table>
+                                </table>
                             </div>
                         </div>
                     </div>
+                </c:forEach>
                 <!-- fi foreach -->
-                </div>
             </div>
-        </section>
-        <jsp:include page="/WEB-INF/resources/headerAndFooter/footer.jsp"></jsp:include>
+        </div>
+    </section>
+    <jsp:include page="/WEB-INF/resources/headerAndFooter/footer.jsp"></jsp:include>

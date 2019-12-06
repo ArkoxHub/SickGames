@@ -43,7 +43,7 @@
                                             <td><img id="jocCarroPerfil" src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>"> ${joc.nom}</td>
                                             <td>${codis[status.index].preu} € </td>
                                             <td><a href="<c:url value="/user/remove?item=${joc.codi_Joc}&nickname=${user.nickname}"></c:url>" class="eliminarProducte" title="Eliminar producte">&times;</a></td>
-                                            </tr>
+                                        </tr>
                                     </c:forEach>
                                 </tbody>
                             </table>
