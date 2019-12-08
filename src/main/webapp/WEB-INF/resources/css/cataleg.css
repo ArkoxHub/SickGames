@@ -7,7 +7,9 @@ hr{
     border: 1px solid white;
     background: white;
 }
-
+#filaCatalogo{
+    padding-bottom: 20px;
+}
 #filaCatalogo .column{
     width: calc(100%/4 - 35px);
     display: inline-block;

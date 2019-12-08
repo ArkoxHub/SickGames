@@ -7,11 +7,16 @@ $(document).ready(function(){
     $("#escollirGenere").click(function(){
         $(".mostrarGenere").slideToggle("fast");    
     });
-    
 
 });
+//Quan fem refresh a la pàgina cataleg borrarem el query
+$(document).ready(function(){
+    if (performance.navigation.type == 1) {
+        window.location = window.location.href.split("?")[0];
+    }
+});
 //CHECKBOX MOSTRAR o OCULTAR
-$( window ).ready(function(){
+$(document).ready(function(){
     //Desactivamos el checkbox de mostrar todos los generos (ya que viene por defecto activa)
     $('.generesTots').prop( "disabled", true);
     
