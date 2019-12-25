@@ -15,10 +15,15 @@ import org.springframework.stereotype.Service;
 /**
  *
  * @author Adri
+ * @version 1.0 Classe Service que implementa i sobreescriu els mètodes de
+ * l'interfície CodiService
+ * 
+ * Simplement es fan crides als mètodes del repositori a través del objecte DAO
+ * instanciat gràcies a l'annotació Autowired.
  */
 @Service
 public class CodiServiceImpl implements CodiService {
-    
+
     @Autowired
     CodiDAO codiDAO;
 
@@ -36,12 +41,12 @@ public class CodiServiceImpl implements CodiService {
     public void removeCodi(Codi codi) {
         codiDAO.removeCodi(codi);
     }
-    
+
     @Override
     public Codi getCodi(int codi) {
         return codiDAO.getCodi(codi);
     }
-    
+
     @Override
     public List<Codi> getCodisByCodiJoc(int codi) {
         return codiDAO.getCodisByCodiJoc(codi);
@@ -63,5 +68,5 @@ public class CodiServiceImpl implements CodiService {
     public long getTotalCodisByJoc(int codi_Joc) {
         return codiDAO.getTotalCodisByJoc(codi_Joc);
     }
-    
+
 }

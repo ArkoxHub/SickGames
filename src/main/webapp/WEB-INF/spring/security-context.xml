@@ -20,7 +20,6 @@
             <security:user-service>
                 <security:user name="Arkox" password="230908" authorities="admin"/>
                 <security:user name="SoyunBot" password="KEVINmerat123!" authorities="admin"/>
-                <security:user name="Oscar" password="oscar123" authorities="admin"/>
             </security:user-service>
         </security:authentication-provider>
     </security:authentication-manager>

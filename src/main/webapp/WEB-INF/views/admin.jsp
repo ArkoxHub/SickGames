@@ -31,7 +31,7 @@
                 <div class="row">
                     <div class="col-xl-4 col-md-12 col-sm-12 col-12 option">
                         <div class="accio">
-                            <h2>Videjocs</h2>
+                            <h2>Videojocs</h2>
                             <a href="<c:url value="/admin/addGame"></c:url>"><li>Afegir videojoc</li></a>
                             <a href="<c:url value="/admin/gameList/Modify"></c:url>"><li>Modificar videojoc</li></a>
                             <a href="<c:url value="/admin/gameList/Delete"></c:url>"><li>Eliminar videojoc</li></a>

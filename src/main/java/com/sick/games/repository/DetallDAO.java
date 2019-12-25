@@ -11,23 +11,26 @@ import java.util.List;
 /**
  *
  * @author Adri
+ * @author Adri
+ * @version 1.0 Interfície que subministra els mètodes Data Access Object per
+ * accedir a les dades de la Classe Entitat Detall
  */
 public interface DetallDAO {
-    
+
     public void addDetall(Detall detall);
-    
+
     public void updateDetall(Detall detall);
-    
+
     public void removeDetall(Detall detall);
-    
+
     public Detall getDetallByCodiDetall(int codi);
-    
+
     public List<Detall> getDetallsByCodiComanda(int codi);
-    
+
     public List<Detall> getDetallsByCodiJoc(int codi);
-    
+
     public List<Detall> getDetallsByCodiClient(int codi);
-    
+
     public List<Detall> getAllDetalls();
-    
+
 }

@@ -17,6 +17,9 @@ import javax.validation.constraints.NotNull;
 /**
  *
  * @author Adri
+ * @version 1.0
+ * Classe Entitat que defineix els atributs de la taula Wishlist que pertany a la
+ * Base de Dades sickgames.sql.
  */
 @Entity
 @Table(name = "wishlist")

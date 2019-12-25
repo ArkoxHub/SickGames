@@ -18,6 +18,12 @@ import javax.validation.constraints.Size;
 /**
  *
  * @author Adri
+ * @version 1.0
+ * Classe Entitat que defineix els atributs de la taula Videojoc que pertany a la
+ * Base de Dades sickgames.sql.
+ * 
+ * Cal destacar que aquesta classe entitat té l'atribut codis annotat amb 
+ * "@OneToMany" ja que un Videojoc fa pot fer referència a molts codis diferents.
  */
 @Entity
 @Table(name = "videojoc")

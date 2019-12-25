@@ -21,6 +21,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 /**
  *
  * @author Adri
+ * @version 1.0 Classe principal de configuració Hibernate que té com a objectiu
+ * connectar-nos amb la base de dades del nostre servidor.
  */
 @Configuration
 @EnableTransactionManagement
@@ -30,6 +32,12 @@ public class HibernateMySQLConfiguration {
     @Autowired
     private Environment environment;
 
+    /**
+     * Afegim els drivers de JDBC i credencials de la base de dades per tal de
+     * que Spring pugui connectar-se amb la BBDD.
+     *
+     * @return dataSource
+     */
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -40,6 +48,13 @@ public class HibernateMySQLConfiguration {
         return dataSource;
     }
 
+    /**
+     * Establir el dataSource a l'objecte sessionFactory a més d'indicar-li
+     * quina carpeta contindrà les Taules Entitats i la configuració d'Hibernate
+     *
+     * @param dataSource
+     * @return sessionFactory necessàri per a les consultes.
+     */
     @Bean
     @Autowired
     public LocalSessionFactoryBean sessionFactory(DataSource dataSource) {
@@ -50,6 +65,12 @@ public class HibernateMySQLConfiguration {
         return sessionFactory;
     }
 
+    /**
+     * Establir les propietats d'Hibernate mitjançant el fitxer
+     * /src/main/resources/jdbc.properties
+     *
+     * @return les propietats d'hibernate
+     */
     private Properties hibernateProperties() {
         Properties properties = new Properties();
         properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
@@ -59,6 +80,14 @@ public class HibernateMySQLConfiguration {
         return properties;
     }
 
+    /**
+     * Crea un objecte HibernateTransactionManager i estableix la configuració
+     * feta en aquesta classe del SessionFactory.
+     *
+     * @param session
+     * @return HibernateTransactionManeger amb el sessionFactory de la nostra
+     * configuració
+     */
     @Bean
     @Autowired
     public HibernateTransactionManager transactionManager(SessionFactory session) {
