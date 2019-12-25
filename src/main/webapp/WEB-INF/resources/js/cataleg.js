@@ -7,6 +7,9 @@ $(document).ready(function(){
     $("#escollirGenere").click(function(){
         $(".mostrarGenere").slideToggle("fast");    
     });
+    $("#escollirPreu").click(function(){
+        $(".mostrarPreu").slideToggle("fast");    
+    });
 
 });
 //Quan fem refresh a la pàgina cataleg borrarem el query
@@ -58,13 +61,29 @@ $(document).ready(function(){
             $('.column'+targets).show();
             $('.column').not('.column'+targets).hide();
             if($('.column'+targets).show().length === 0){
-                var salu2 = '<div class="text-center center salu2" ><h2>No hi ha jocs amb aquest generes</h2></div>';
-                $('.container-fluid').append(salu2);
+                var salu2 = '<div class="text-center center salu2" ><h2>No hi ha jocs amb aquesta combinació de generes</h2></div>';
+                if($(".salu2").length == 0){
+                    $('.container-fluid').append(salu2);
+                }
             }else{
                 $('.salu2').remove();
             }
         }else{
             
+        }
+    });
+});
+/*INPUT RANGE MOSTRAR PER PREU*/
+$(document).on('input', '#customRange', function() {
+    $('.value').html("Preu inferior a: " +$(this).val()+ " €" );
+    
+    var preu = parseInt($(this).val());
+    $('.producteAComprar').each(function() {
+        var preuId = parseInt(this.id);
+        if (preu <= preuId){
+            $(this).parent().parent().hide();
+        }else{
+            $(this).parent().parent().show();
         }
     });
 });

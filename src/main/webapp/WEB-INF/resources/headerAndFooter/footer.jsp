@@ -66,16 +66,16 @@
 
                                 <ul class="list-unstyled">
                                     <li>
-                                        <a href="#!">Contacte</a>
+                                        <a href="<c:url value='/cookies'/>">Cookies</a>
                                     </li>
                                     <li>
-                                        <a href="#!">Termes i Condicions</a>
+                                        <a href="<c:url value='/termes-i-condicions'/>">Termes i Condicions</a>
                                     </li>
                                     <li>
                                         <a href="<c:url value='/suport'/>">Ajuda</a>
                                     </li>
                                     <li>
-                                        <a href="#!">Política de privacitat / Cookies</a>
+                                        <a href="<c:url value='/politica-de-privacitat'/>">Política de privacitat</a>
                                     </li>
                                 </ul>
 
@@ -90,7 +90,7 @@
 
                     <!-- Copyright -->
                     <div class="footer-copyright text-center py-3">© 2019 Copyright:
-                        <a href="<c:url value="/"/>">SickGames</a>
+                        <a href="<c:url value="/copyright"/>">SickGames</a>
                     </div>
                     <!-- Copyright -->
 

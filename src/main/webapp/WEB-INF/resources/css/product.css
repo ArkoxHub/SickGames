@@ -4,7 +4,7 @@
 .afegirWhishList{
     position: absolute;
     width: 30px;
-    z-index: 99999;
+    z-index: 9999;
     opacity: 0.8;
 }
 .afegirWhishList:hover{

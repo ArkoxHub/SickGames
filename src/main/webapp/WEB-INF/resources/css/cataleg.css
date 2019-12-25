@@ -133,12 +133,10 @@ input[type=checkbox]{
         display:block;
         left:30px;
         border:none;
+        min-width: fit-content;
     }
     [class*=mostrar]{
         margin-top: 10px;
-    }
-    .menuPlataforma{
-        display:inline-flex;
     }
     #marginMenuCalaleg{
         margin-bottom: 15px;

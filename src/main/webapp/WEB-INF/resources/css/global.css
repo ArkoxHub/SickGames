@@ -698,6 +698,23 @@ div[class*=genere] span{
 .viewers .fa-user{
     color:red;
 }
+/* Cookies, politica de privacitat, etc */
+.texto{
+    padding: 30px;
+}
+.textoUl{
+    padding-left: 40px;
+}
+.textoUl a{
+    color: #4497f2 !important;
+}
+.textoIndentTitle{
+    padding-left: 10px;
+}
+.ultimaModificacio{
+    font-size: 14px;
+}
+/* FI Cookies, politica de privacitat, etc */
 
 
 #stream{
@@ -1033,6 +1050,21 @@ span.psw {
     }
     div[class*=genere]{
         display:none
+    }
+    .texto{
+        padding: 10px;
+    }
+    .textoUl{
+        padding-left: 10px;
+    }
+    .textoUl a{
+        color: #4497f2 !important;
+    }
+    .textoIndentTitle{
+        padding-left: 10px;
+    }
+    .ultimaModificacio{
+        font-size: 14px;
     }
 }
 

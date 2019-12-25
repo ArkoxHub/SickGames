@@ -22,7 +22,7 @@
             <div class="row" id="suportRow">
                 <div class="col-md-12 text-center" id='contacte'>
                 <p>
-                    Telèfon de contacte 977 451 214 - Email: sickgames@hotmail.com
+                    Telèfon de contacte 977 451 214 - Email: ajudasickgames@hotmail.com
                     <br/>
                     Horari d'atenció al client: Dilluns a Divendres de 9:00-14:00.
                 </p>
@@ -108,7 +108,7 @@
                 </div>
                 <div class="text-left descripcioSuport">
                     <p class="bla">
-                        En cas de que el codi no funcioni posa't en conctacte amb nosaltres (sickgames@hotmail.com) per comprobar 
+                        En cas de que el codi no funcioni posa't en conctacte amb nosaltres (ajudasickgames@hotmail.com) per comprobar 
                         amb l'empresa responsable quan va ser activat el codi, en cas de que hagi sigut activat abans 
                         de la seva adquisició es reembolsara el 100% del preu. En cas de que hagi sigut activat
                         desprès de la seva adquisició, SickGames no es fa responsable del seu mal ús.
@@ -142,7 +142,7 @@
                 </div>
                 <div class="text-left descripcioSuport">
                     <p class="bla">
-                        Si no hem pogut resoldre els teus dubtes, posat en contacte amb nosaltres per correu: sickgames@hotmail.com
+                        Si no hem pogut resoldre els teus dubtes, posat en contacte amb nosaltres per correu: ajudasickgames@hotmail.com
                         o truca'ns al 977 451 214.<br/> Horari: Dilluns a Divendres de 9:00-14:00.
                     </p>
                 </div>

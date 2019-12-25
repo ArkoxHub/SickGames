@@ -155,12 +155,12 @@ $(document).ready(function () {
         rules: {
             nom: {
                 required: true,
-                minlength: 3,
+                minlength: 2,
                 maxlength: 20
             },
             cognoms: {
                 required: true,
-                minlength: 8,
+                minlength: 2,
                 maxlength: 50
             },
             nickname: {
@@ -203,7 +203,7 @@ $(document).ready(function () {
             },
             cognoms: {
                 required: "Introdueix un cognom",
-                minlength: "Mínim 8 caràcters",
+                minlength: "Mínim 2 caràcters",
                 maxlength: "Màxim 50 caràcters"
             },
             nickname: {
