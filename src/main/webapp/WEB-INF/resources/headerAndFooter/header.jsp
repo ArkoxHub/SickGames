@@ -37,7 +37,7 @@
                 a tercers ni utilitzada per fins publicitaris.
             </p>
             <a class="btn btn-primary" id="acceptarCookie">Acceptar</a>
-            <a href="#">Més informació</a>
+            <a href="<c:url value='/cookies'/>">Més informació</a>
         </div>
     </div>
     <!--Secció top: Buscador, conta, logo....--> 

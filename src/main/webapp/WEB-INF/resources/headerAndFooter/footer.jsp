@@ -20,13 +20,10 @@
                                 <h5 class="text-uppercase">Gràcies per confiar en SickGames</h5>
                                 <ul class="list-unstyled">
                                     <li>
-                                        Adrià
+                                        Adrià Gual
                                     </li>
                                     <li>
-                                        Oscar
-                                    </li>
-                                    <li>
-                                        Kevin
+                                        Kevin Merat
                                     </li>
                                 </ul>
                             </div>

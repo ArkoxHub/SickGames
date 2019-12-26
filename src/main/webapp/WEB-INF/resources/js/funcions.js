@@ -5,7 +5,6 @@ $(document).ready(function () {
     
     if (userImg != null || userImgMvl != null){
         if (window.localStorage.getItem('fotoDePerfil')){
-
             userImg.src = foto;
             userImgMvl.src = foto;
         }else{
@@ -386,11 +385,11 @@ function actualitzarBusqueda(name,  value) {
     
 	var existing = localStorage.getItem(name);
 
-	// If no existing data, create an array
-	// Otherwise, convert the localStorage string to an array
+	// Si no existeix , crea l'array
+	// Sino converteix el localStorage en un array.
 	existing = existing ? existing.split(',') : [];
 
-	// Add new data to localStorage Array
+	// Afegim les noves dades a l'array
 	existing.push(value);
         //Netejem l'array de resultats identics
         var result = [];
@@ -398,7 +397,7 @@ function actualitzarBusqueda(name,  value) {
           if ($.inArray(e, result) == -1) result.push(e);
         });
         existing = result;
-	// Save back to localStorage
+	// El guardem al localStorage
 	localStorage.setItem(name, existing.toString());
 
 };
@@ -408,15 +407,15 @@ function removeValorBusqueda(name,  value) {
     
 	var existing = localStorage.getItem(name);
         
-	// If no existing data, create an array
-	// Otherwise, convert the localStorage string to an array
+	// Si no existeix , crea l'array
+	// Sino converteix el localStorage en un array.
 	existing = existing ? existing.split(',') : [];
         var index = existing.indexOf(value);
-	// Add new data to localStorage Array
+	// Afegim les noves dades a l'array
         if (index > -1) {
             existing.splice(index,1);
         }
-	// Save back to localStorage
+	// El guardem al localStorage
 	localStorage.setItem(name, existing.toString());
 
 };

@@ -31,6 +31,11 @@ $(document).ready(function () {
             alert("error carrega resposta");
         }
     });
+    /*
+     * 
+     * @param {type} datosJuego
+     * @returns {undefined}
+     */
     function gameID(datosJuego) {
         var idJoc = datosJuego.data[0].id;
         $.ajax({
@@ -46,6 +51,11 @@ $(document).ready(function () {
         });
         
         //Si no trobem cap stream de parla espanyola ens mostraran els globals
+        /*
+         * 
+         * @param {type} datosStream
+         * @returns {undefined}
+         */
         function mostrarStreamsJoc(datosStream) {
             if (datosStream.data.length == 0) {
                 $.ajax({

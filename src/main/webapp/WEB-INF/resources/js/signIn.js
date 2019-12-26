@@ -13,13 +13,6 @@ $(document).ready(function () {
     if (telefon.attr("value") == 0){
         telefon.attr("value", "");
     }
-    /******Afegir placeholder desde js*********
-    nom.attr("placeholder", "Javier");
-    cognoms.attr("placeholder", "Sanzchez de los Amores");
-    nickname.attr("placeholder", "Senyor X");
-    email.attr("placeholder", "sickgames@hotmail.com");
-    telefon.attr("placeholder", "679148114");
-    direccio.attr("placeholder", "C/ Catalunya 27, 5-2");*/
     
     /*************Contraseña********************/
     //Mostrar contraseña cuando hacemos hover al fa-eye

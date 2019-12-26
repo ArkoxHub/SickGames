@@ -2,7 +2,6 @@
 $(document).ready(function(){
     $("#escollirPlataforma").click(function(){
         $(".mostrarPlataforma").slideToggle("fast"); 
-        
     });
     $("#escollirGenere").click(function(){
         $(".mostrarGenere").slideToggle("fast");    
@@ -60,6 +59,7 @@ $(document).ready(function(){
         if(targets.length !== 0){
             $('.column'+targets).show();
             $('.column').not('.column'+targets).hide();
+            // Si no hay juegos que cumplan los requisitos, mostramos el siguiente mensaje
             if($('.column'+targets).show().length === 0){
                 var salu2 = '<div class="text-center center salu2" ><h2>No hi ha jocs amb aquesta combinació de generes</h2></div>';
                 if($(".salu2").length == 0){
