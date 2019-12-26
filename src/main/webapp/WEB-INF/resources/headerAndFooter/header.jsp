@@ -97,7 +97,7 @@
                                             }
                                         %>
                                         <%=total%>
-                                        <a href="#"><i class="fas fa-shopping-cart"></i></a><!--Redirect a una pagina para comprar y pagar?-->
+                                        <a href="<c:url value='/user'/>"><i class="fas fa-shopping-cart"></i></a><!--Redirect a una pagina para comprar y pagar?-->
                                         <ul id="productesComprats" class="productesComprats">
                                             <c:forEach var="joc" items="${carro}" varStatus="status">
                                                 <li class="cesta">

@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
  * @author Adri
  * @version 1.0 Classe Service que implementa i sobreescriu els mètodes de
  * l'interfície CodiService
- * 
+ *
  * Simplement es fan crides als mètodes del repositori a través del objecte DAO
  * instanciat gràcies a l'annotació Autowired.
  */
@@ -52,11 +52,24 @@ public class CodiServiceImpl implements CodiService {
         return codiDAO.getCodisByCodiJoc(codi);
     }
 
-    // Retornem el següent codi més barat retornat per la query
+    /**
+     * Retorna el següent codi disponible en stock Si no hi ha codi, es retorna
+     * un codi buit.
+     *
+     * @param codi_Joc
+     * @return el següent codi disponible a la venta més barat.
+     */
     @Override
     public Codi getNextCodeByCodiJoc(int codi_Joc) {
-        List<Codi> codis = codiDAO.getNextCodeByCodiJoc(codi_Joc);
-        return codis.get(0);
+        Codi codi = new Codi();
+        try {
+            List<Codi> codis = codiDAO.getNextCodeByCodiJoc(codi_Joc);
+            codi = codis.get(0);
+        } catch (Exception ex) {
+            System.out.println("Stock 0");
+
+        }
+        return codi;
     }
 
     @Override

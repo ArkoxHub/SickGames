@@ -18,16 +18,16 @@
         <link href="<c:url value='/resources/css/product.css'/>" rel="stylesheet" type="text/css"/>
         <!--This javascript-->
         <script src="<c:url value='/resources/js/product.js'/>" type="text/javascript" ></script>
-    <jsp:include page="/WEB-INF/resources/headerAndFooter/header.jsp"></jsp:include>
-        <!--FI Secció top-->
-    <!--Secció body; Jocs més venuts, valorats, millors ofertes, streams...-->
-    <section class="section-body">
-        <div class="container-cataleg">
-            <div class="text-center center" style="padding-top:30px;">
-            </div>
-            <div class="row" id="cartaJoc">
-                <div class="column-3">
-                    <img id="stream${joc.nom}" class="portadaJoc" src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>" alt="${joc.nom}">
+        <jsp:include page="/WEB-INF/resources/headerAndFooter/header.jsp"></jsp:include>
+            <!--FI Secció top-->
+            <!--Secció body; Jocs més venuts, valorats, millors ofertes, streams...-->
+        <section class="section-body">
+            <div class="container-cataleg">
+                <div class="text-center center" style="padding-top:30px;">
+                </div>
+                <div class="row" id="cartaJoc">
+                    <div class="column-3">
+                        <img id="stream${joc.nom}" class="portadaJoc" src="<c:url value="/resources/img/portades/${joc.nom}.jpg"/>" alt="${joc.nom}">
                     <c:choose>
                         <c:when test="${not empty user}">
                             <a href="<c:url value="/user/addWishlist?item=${joc.codi_Joc}&nickname=${user.nickname}"></c:url>">
@@ -88,22 +88,38 @@
                         </div>
                     </div>
                     <div class="row" id="preu">
-                        <div class="column-12 text-center">
-                            <span><fmt:formatNumber value="${codi.preu}" currencySymbol="€" type="currency" pattern="###,###.00 ¤"/></span>
-                        </div>
+                        <c:if test="${stock gt 0}">
+                            <div class="column-12 text-center">
+                                <span><fmt:formatNumber value="${codi.preu}" currencySymbol="€" type="currency" pattern="###,###.00 ¤"/></span>
+                            </div> 
+                        </c:if>
                     </div>
                     <div class="row" id="comprarJoc">
                         <div class="column-12 text-center">
                             <c:choose>
                                 <c:when test="${not empty user}">
-                                    <a href="user/add?jocId=${joc.codi_Joc}&nickname=${user.nickname}" class="productToBuy" id="${joc.nom}">
-                                        Comprar
-                                    </a>
+                                    <c:if test="${stock gt 0}">
+                                        <a href="user/add?jocId=${joc.codi_Joc}&nickname=${user.nickname}" class="productToBuy" id="${joc.nom}">
+                                            Comprar
+                                        </a>
+                                    </c:if>
+                                    <c:if test="${stock le 0}">
+                                        <a href="#" class="productToBuy" id="${joc.nom}">
+                                            No Stock
+                                        </a>
+                                    </c:if>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="#" class="productToBuy" id="NoLogin"><!--S'ha de posar que si es fa click aquí, surti un avís de que ha de fer login o donar-se d'alta-->
-                                        Comprar
-                                    </a>
+                                    <c:if test="${stock gt 0}">
+                                        <a href="#" class="productToBuy" id="NoLogin">
+                                            Comprar
+                                        </a>
+                                    </c:if>
+                                    <c:if test="${stock le 0}">
+                                        <a href="#" class="productToBuy">
+                                            No Stock
+                                        </a>
+                                    </c:if>
                                 </c:otherwise>
                             </c:choose>
                         </div>

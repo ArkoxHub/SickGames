@@ -25,36 +25,36 @@
                 <div class="row" id="adminRow">
                     <div class="logout text-center">
                         <a href="<c:url value="/j_spring_security_logout" />" 
-                       class="btn btn-danger btn-mini pull-right" style="color: white">Desconectar Admin</a><br>
-                    </div>
+                       class="btn btn-danger btn-mini pull-right" style="color: white">Desconectar ${admin}</a><br>
                 </div>
-                <div class="row">
-                    <div class="col-xl-4 col-md-12 col-sm-12 col-12 option">
-                        <div class="accio">
-                            <h2>Videojocs</h2>
-                            <a href="<c:url value="/admin/addGame"></c:url>"><li>Afegir videojoc</li></a>
-                            <a href="<c:url value="/admin/gameList/Modify"></c:url>"><li>Modificar videojoc</li></a>
-                            <a href="<c:url value="/admin/gameList/Delete"></c:url>"><li>Eliminar videojoc</li></a>
+            </div>
+            <div class="row">
+                <div class="col-xl-4 col-md-12 col-sm-12 col-12 option">
+                    <div class="accio">
+                        <h2>Videojocs</h2>
+                        <a href="<c:url value="/admin/addGame"></c:url>"><li>Afegir videojoc</li></a>
+                        <a href="<c:url value="/admin/gameList/Modify"></c:url>"><li>Modificar videojoc</li></a>
+                        <a href="<c:url value="/admin/gameList/Delete"></c:url>"><li>Eliminar videojoc</li></a>
                         </div>
                     </div>
                     <div class="col-xl-4 col-md-12 col-sm-12 col-12 option">
                         <div class="accio">
                             <h2>Codis</h2>
                             <a href="<c:url value="/admin/addCode"></c:url>"><li>Afegir codi</li></a>
-                            <a href="<c:url value="/admin/codeList/Modify"></c:url>"><li>Modificar codi</li></a>
-                            <a href="<c:url value="/admin/codeList/Delete"></c:url>"><li>Eliminar codi</li></a>
+                        <a href="<c:url value="/admin/codeList/Modify"></c:url>"><li>Modificar codi</li></a>
+                        <a href="<c:url value="/admin/codeList/Delete"></c:url>"><li>Eliminar codi</li></a>
                         </div>
                     </div>
                     <div class="col-xl-4 col-md-12 col-sm-12 col-12 option">
                         <div class="accio">
                             <h2>Usuaris</h2>
                             <a href="<c:url value="#"></c:url>"><li>Afegir partner</li></a>
-                            <a href="<c:url value="#"></c:url>"><li>Modificar dades usuari</li></a>
-                            <a href="<c:url value="#"></c:url>"><li>Eliminar usuari</li></a>
-                        </div>
+                        <a href="<c:url value="#"></c:url>"><li>Modificar dades usuari</li></a>
+                        <a href="<c:url value="#"></c:url>"><li>Eliminar usuari</li></a>
                     </div>
                 </div>
             </div>
-        </section>
-    </body>
+        </div>
+    </section>
+</body>
 </html>
