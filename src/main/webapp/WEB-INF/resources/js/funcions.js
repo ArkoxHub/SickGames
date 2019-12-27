@@ -29,11 +29,24 @@ $(document).ready(function () {
 /*Realitzar busqueda*/
 $(document).ready(function () {
     var searchParams = new URLSearchParams(window.location.search);
+    
+    //Total jocs
+    var jocs = ($('.column:not([class*=jocfantasmaquenoexiste])').length);
     //Itera los parámetros de búsqueda.
     for (let busqueda of searchParams) {
         actualitzarBusqueda("ajudaBusqueda", busqueda[1]);
+        //Tots els jocs comencen en lletra majuscula
+        var busquedaString = busqueda[1].toString();
+        var busquedaCapitalize = busquedaString[0].toUpperCase() + busquedaString.slice(1);
+        var salu2 = '<div class="text-center center salu2" ><h2>No hi ha jocs amb el següent nom: '+busquedaCapitalize+'</h2></div>';
         //La posición 0 es el name del form y la 1 la busqueda
-        $('.column:not([class*=' + busqueda[1] + '])').hide();
+        var splitBusqueda = busquedaCapitalize.split(" ");
+        $('.column:not([class*=' + splitBusqueda[0] + '])').hide();
+        if (($('.column:not([class*=' + splitBusqueda[0] + '])').hide().length == jocs)){
+            $('.container-fluid').append(salu2);
+        }
+        
+        
     }
 });
 /*Funcio cambiar fons random*/
@@ -318,7 +331,7 @@ $(document).ready(function(){
     for (var i = 0; i < busquedasArray.length; i++){
         if(busquedasArray[i].length < 30){
             $("#ajudaBuscador").append(`
-                <div id="ajuda`+busquedasArray[i]+`">
+                <div id="ajuda" class="`+busquedasArray[i]+`">
                     <a href="cataleg?search=`+busquedasArray[i]+`">
                         <li>`+busquedasArray[i]+`
                     </a><span class="borrarBusqueda" id="`+busquedasArray[i]+`">&times;</span></li>
@@ -328,9 +341,7 @@ $(document).ready(function(){
     }
     $(".borrarBusqueda").on("click",function(){
         $('.buscador').focus();
-        console.log(this.id)
-        $('#ajuda'+this.id).remove();
-        console.log($('#ajuda'+this.id));
+        $(this).parent().parent().remove();
         removeValorBusqueda("ajudaBusqueda" , this.id);
         if (localStorage.getItem("ajudaBusqueda") == "") {
            localStorage.removeItem("ajudaBusqueda");
