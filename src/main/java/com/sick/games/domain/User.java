@@ -21,6 +21,14 @@ import javax.validation.constraints.Size;
 /**
  *
  * @author Adri
+ * @version 1.0
+ * Classe Entitat que defineix els atributs de la taula Usuari que pertany a la
+ * Base de Dades sickgames.sql.
+ * 
+ * Aquesta classe entitat és la super classe de les derivades, que concretament són:
+ * -Administrador
+ * -Client
+ * -Partner
  */
 @Entity
 @Table(name = "usuari")

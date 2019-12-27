@@ -12,12 +12,54 @@ var loadFile = function (event) {
  */
 function validacio() {
     $(".alert").remove();
-    
+
     var nom = $("#nom").val();
     var data_Llançament = $("#data_Llançament").val();
     var preu = $("#pvp").val();
-    var idioma = $("#idioma").val();
+
+    // Validació idiomes
+    var idioma = $("#idioma").val().toUpperCase();
+
+    idioma = idioma.split(" ");
+    for (var i = 0; i < idioma.length; i++) {
+        if (idioma[i] === 'ESP' || idioma[i] === 'ENG' || idioma[i] === 'ALM'
+                || idioma[i] === 'FR' || idioma[i] === 'ITL' || idioma[i] === 'JPN'
+                || idioma[i] === 'Multillengua') {
+            console.log(idioma[i] + " vàlid");
+        } else {
+            alert(idioma[i] + " no és un idioma vàlid");
+            event.preventDefault();
+            $("#idioma").focus();
+        }
+    }
+
+    // Validació generes
     var generes = $("#generes").val();
+    generes = generes.split(" ");
+    for (var i = 0; i < generes.length; i++) {
+        // Upper Case si té 3 o menys lletres (FPS, RPG MMO...)
+        if (generes[i].length <= 3) {
+            generes[i] = generes[i].toUpperCase();
+            // Capitalize resta de categories (Plataforma, Estratègia...)
+        } else {
+            generes[i] = generes[i].charAt(0).toUpperCase() + generes[i].slice(1);
+        }
+
+        if (generes[i] === 'FPS' || generes[i] === 'RPG' || generes[i] === 'MMO'
+                || generes[i] === 'Acció' || generes[i] === 'Deportiu' || generes[i] === 'Aventura'
+                || generes[i] === 'Construcció' || generes[i] === 'Conducció' || generes[i] === 'Cooperació'
+                || generes[i] === 'Plataforma' || generes[i] === 'Simulador' || generes[i] === 'Survival'
+                || generes[i] === 'Gestió' || generes[i] === 'Estratègia' || generes[i] === 'Indies'
+                || generes[i] === 'Lluita' || generes[i] === 'SinglePlayer' || generes[i] === 'Multijugador') {
+            console.log(generes[i], "ok");
+        } else {
+            alert(generes[i] + " no és una categoria vàlida");
+            event.preventDefault();
+            $("#generes").focus();
+        }
+    }
+
+
     var descripcio = $("#descripcio").val();
     var fullPath = document.getElementById('logo').value;
     var comprobarJoc = "";
@@ -67,7 +109,10 @@ function validacio() {
         $("#nom").focus();
         return false;
     }
-    return true;
+
+    // Validacions TEA4 Adrià
+    if (idioma !== '')
+        return true;
 }
 
 $(document).ready(function () {
@@ -92,8 +137,9 @@ $(document).ready(function () {
             div.classList.remove("helpForm2");
             div.classList.add("helpForm2Show");
         }
-    };
-   
+    }
+    ;
+
     function deleteDiv() {
         if (this.getAttribute("id") === "idioma") {
             var div = document.querySelector(".helpForm1Show");
@@ -104,6 +150,7 @@ $(document).ready(function () {
             div.classList.remove("helpForm2Show");
             div.classList.add("helpForm2");
         }
-    };
+    }
+    ;
 });
 

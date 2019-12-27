@@ -28,6 +28,8 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  *
  * @author Adri
+ * @version 1.0 Controlador encarregat de tractar totes les peticions que tenen
+ * a veure en llistar un producte.
  */
 @Controller
 @RequestMapping("/product")
@@ -42,6 +44,24 @@ public class ProductController {
     @Autowired
     UsersService usersService;
 
+    /**
+     * Mètode que rep les peticions que es fan a www.sickgames.com?id=codiJoc
+     * Donat el codi d'un joc, consulta a la base de dades el joc, el seu pròxim
+     * codi més barat i l'stock i els adjunta com a atributs al model de
+     * resposta.
+     *
+     * Es comprova que l'usuari que fa la consulta sigui una persona existent
+     * consultant la base de dades a través de les Cookies. Si existeix
+     * l'adjuntem al model de resposta per si vol afegir el producte a la
+     * WishList.
+     *
+     * @param codi paràmetre URL que identifica el videojoc amb el seu codi
+     * @param request
+     * @param response
+     * @return product.jsp
+     * @throws ServletException
+     * @throws IOException
+     */
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView product(@RequestParam(name = "id") String codi, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -89,20 +109,4 @@ public class ProductController {
         return model;
     }
 
-    @RequestMapping(value = "/noStock", method = RequestMethod.GET)
-    public ModelAndView videoJocInfo(@RequestParam(name = "id") String codi,
-            HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        // Iniciem la variable de sessio carro si no ho està
-        if (request.getSession().getAttribute("carro") == null) {
-            List<Videojoc> carro = new ArrayList();
-            request.getSession().setAttribute("carro", carro);
-        }
-
-        int codi_Joc = Integer.parseInt(codi);
-        ModelAndView model = new ModelAndView("productNoStock");
-        model.getModelMap().addAttribute("joc", videojocService.getGameByCode(codi_Joc));
-        return model;
-    }
 }

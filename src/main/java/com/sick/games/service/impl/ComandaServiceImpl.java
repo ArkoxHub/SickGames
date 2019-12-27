@@ -15,6 +15,12 @@ import org.springframework.stereotype.Service;
 /**
  *
  * @author Adri
+ * @version 1.0 Classe Service que implementa i sobreescriu els mètodes de
+ * l'interfície ComandaService
+ * 
+ * Simplement es fan crides als mètodes del repositori a través del objecte DAO
+ * instanciat gràcies a l'annotació Autowired.
+ * 
  */
 @Service
 public class ComandaServiceImpl implements ComandaService {

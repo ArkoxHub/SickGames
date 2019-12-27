@@ -19,6 +19,12 @@ import javax.validation.constraints.Size;
 /**
  *
  * @author Adri
+ * @version 1.0
+ * Classe Entitat que defineix els atributs de la taula Codi que pertany a la
+ * Base de Dades sickgames.sql.
+ * 
+ * Aquesta classe té la propietat Videojoc annotat amb "ManyToOne" que ens indica
+ * que varis objecte Codi poden fer referència a un únic Videojoc concret.
  */
 @Entity
 @Table(name = "codi")

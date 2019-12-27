@@ -11,6 +11,8 @@ import java.util.List;
 /**
  *
  * @author Adri
+ * @version 1.0 Interfície que defineix quins seràn els mètodes que es
+ * criden del repositori DetallDAO
  */
 public interface DetallService {
     
