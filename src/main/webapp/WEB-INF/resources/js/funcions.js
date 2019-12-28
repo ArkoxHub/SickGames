@@ -26,13 +26,27 @@ $(document).ready(function () {
         $(".cookiesAccept").css("display", "block");
     }
 });
+/*Realitzar busqueda*/
 $(document).ready(function () {
     var searchParams = new URLSearchParams(window.location.search);
-
+    
+    //Total jocs
+    var jocs = ($('.column:not([class*=jocfantasmaquenoexiste])').length);
     //Itera los parámetros de búsqueda.
     for (let busqueda of searchParams) {
+        actualitzarBusqueda("ajudaBusqueda", busqueda[1]);
+        //Tots els jocs comencen en lletra majuscula
+        var busquedaString = busqueda[1].toString();
+        var busquedaCapitalize = busquedaString[0].toUpperCase() + busquedaString.slice(1);
+        var salu2 = '<div class="text-center center salu2" ><h2>No hi ha jocs amb el següent nom: '+busquedaCapitalize+'</h2></div>';
         //La posición 0 es el name del form y la 1 la busqueda
-        $('.column:not([class*=' + busqueda[1] + '])').hide();
+        var splitBusqueda = busquedaCapitalize.split(" ");
+        $('.column:not([class*=' + splitBusqueda[0] + '])').hide();
+        if (($('.column:not([class*=' + splitBusqueda[0] + '])').hide().length == jocs)){
+            $('.container-fluid').append(salu2);
+        }
+        
+        
     }
 });
 /*Funcio cambiar fons random*/
@@ -210,26 +224,7 @@ function rellenarStreams(datosStream) {
 }
 //Dark y light Mode 
 $(document).ready(function () {
-    /*
-     * 
-     * @param {type} c_name
-     * @param {type} value
-     * @returns {undefined}
-     */
-    function setLocalStorage(c_name, value) {
-        var exdays = 30;
-
-        if (('localStorage' in window) && window.localStorage !== null) {
-            localStorage[c_name] = value;
-        } else {
-            var exdate = new Date();
-            exdate.setDate(exdate.getDate() + exdays);
-            var c_value = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString());
-            document.cookie = c_name + "=" + c_value;
-        }
-    }
-
-
+    
     if (window.localStorage.getItem('colorMode') == "darkMode") {
         colorsDark();
     }
@@ -252,6 +247,7 @@ $(document).ready(function () {
         $(".container-cataleg").css("background-color", "white");
         $(".section-top").css("background", "rgba(0, 0, 0)");
         $(".column-9").css("background-color", "white");
+        $("hr").css("background", "black");
     }
     function colorsDark() {
         $(".darkMode").css("display", "none");
@@ -260,6 +256,7 @@ $(document).ready(function () {
         $(".container-cataleg").css("background-color", "rgb(42, 41, 41)");
         $(".soporte").css("color", "white");
         $(".column-9").css("background-color", "black");
+        $("hr").css("background", "white");
     }
 
 });
@@ -318,6 +315,52 @@ $(document).ready(function () {
     });
 });
 
+/*Mostrar ajudes de busqueda*/
+$(document).ready(function(){
+    var busquedasString = localStorage.getItem("ajudaBusqueda");
+    var busquedasArray = "";
+    
+    busquedasString!=null ? busquedasArray = busquedasString.split(",") :busquedasArray = "";
+    if(busquedasString!=null){
+        $('#formBuscador').append(`
+            <ul id="ajudaBuscador" class="ajudaBuscador" ></ul>
+        `);
+    }else{
+        $("#ajudaBuscador").remove();
+    }
+    for (var i = 0; i < busquedasArray.length; i++){
+        if(busquedasArray[i].length < 30){
+            $("#ajudaBuscador").append(`
+                <div id="ajuda" class="`+busquedasArray[i]+`">
+                    <a href="cataleg?search=`+busquedasArray[i]+`">
+                        <li>`+busquedasArray[i]+`
+                    </a><span class="borrarBusqueda" id="`+busquedasArray[i]+`">&times;</span></li>
+                </div>
+            `);
+        }
+    }
+    $(".borrarBusqueda").on("click",function(){
+        $('.buscador').focus();
+        $(this).parent().parent().remove();
+        removeValorBusqueda("ajudaBusqueda" , this.id);
+        if (localStorage.getItem("ajudaBusqueda") == "") {
+           localStorage.removeItem("ajudaBusqueda");
+        }
+        let check = localStorage.getItem("ajudaBusqueda");
+        if(check == null){
+            $("#ajudaBuscador").remove();
+        }
+    });
+    $(".buscador").on("focus",function(){
+        $('#ajudaBuscador').slideDown('fast');
+    });
+    $(".section-body").on("click",function(){
+        $('#ajudaBuscador').slideUp('fast');
+    });
+    
+    
+});
+
 
 //Cookies Functions
 /*
@@ -337,7 +380,7 @@ function setCookie(nomCookie, text, caducitat) {
 /*
  * 
  * @param {type} nomCookie
- * @returns {String}
+ * @returns {String} name
  */
 function comprobarCookie(nomCookie) {
     //Codi de w3 schools, com agafar una cookie
@@ -355,3 +398,62 @@ function comprobarCookie(nomCookie) {
     }
     return name;
 }
+
+/*
+     * 
+     * @param {type} c_name
+     * @param {type} value
+     * @returns {undefined}
+     */
+function setLocalStorage(c_name, value) {
+    var exdays = 30;
+
+    if (('localStorage' in window) && window.localStorage !== null) {
+        localStorage[c_name] = value;
+    } else {
+        var exdate = new Date();
+        exdate.setDate(exdate.getDate() + exdays);
+        var c_value = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString());
+        document.cookie = c_name + "=" + c_value;
+    }
+}
+
+
+function actualitzarBusqueda(name,  value) {
+    
+	var existing = localStorage.getItem(name);
+
+	// Si no existeix , crea l'array
+	// Sino converteix el localStorage en un array.
+	existing = existing ? existing.split(',') : [];
+
+	// Afegim les noves dades a l'array
+	existing.push(value);
+        //Netejem l'array de resultats identics
+        var result = [];
+        $.each(existing, function(i, e) {
+          if ($.inArray(e, result) == -1) result.push(e);
+        });
+        existing = result;
+	// El guardem al localStorage
+	localStorage.setItem(name, existing.toString());
+
+};
+
+
+function removeValorBusqueda(name,  value) {
+    
+	var existing = localStorage.getItem(name);
+        
+	// Si no existeix , crea l'array
+	// Sino converteix el localStorage en un array.
+	existing = existing ? existing.split(',') : [];
+        var index = existing.indexOf(value);
+	// Afegim les noves dades a l'array
+        if (index > -1) {
+            existing.splice(index,1);
+        }
+	// El guardem al localStorage
+	localStorage.setItem(name, existing.toString());
+
+};

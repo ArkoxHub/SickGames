@@ -37,7 +37,7 @@
                 a tercers ni utilitzada per fins publicitaris.
             </p>
             <a class="btn btn-primary" id="acceptarCookie">Acceptar</a>
-            <a href="#">Més informació</a>
+            <a href="<c:url value='/cookies'/>">Més informació</a>
         </div>
     </div>
     <!--Secció top: Buscador, conta, logo....--> 
@@ -53,8 +53,8 @@
                                 <div class="col-6" id="showHideLogo">
                                     <a href="<c:url value='/'/>"><img src="<c:url value='/resources/img/logo_sick.png'/>" role="banner" alt="SickGames Logo" class="logo"></a>
                                 </div>
-                                <form action="/sickgames/cataleg" form="GET">
-                                    <input autocomplete="on" title="Buscar Videojoc" class="buscador" type="text" placeholder=" Cerca" name="search">
+                                <form action="/sickgames/cataleg" form="GET"  id="formBuscador">
+                                    <input autocomplete="off" title="Buscar Videojoc" class="buscador" type="text" placeholder=" Cerca" name="search">
                                     <button class="botonBuscador" type="submit" title="Realitzar Busqueda"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>

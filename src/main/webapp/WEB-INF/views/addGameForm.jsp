@@ -16,6 +16,8 @@
         <title>Formulari addGame</title>
         <!--This css-->
         <link href="<c:url value='/resources/css/afegirJoc.css'/>" rel="stylesheet" type="text/css"/>
+        <!--Jquery-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <!--This javascript-->
         <script src="<c:url value='/resources/js/afegirJoc.js'/>" type="text/javascript" ></script>
 
@@ -26,8 +28,6 @@
         <!--FontsGoogle-->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="true">
         <link href="https://fonts.googleapis.com/css?family=Archivo&display=swap" rel="stylesheet">
-        <!--Jquery-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <!--My javascript-->
         <script src="<c:url value="/resources/js/afegirJoc.js"/>" type="text/javascript" ></script>
     </head>

@@ -3,7 +3,7 @@ $(document).ready(function () {
         rules: {
             nomTitular: {
                 required: true,
-                minlength: 8,
+                minlength: 3,
                 maxlength: 70
             },
             numTarjeta: {
@@ -31,7 +31,7 @@ $(document).ready(function () {
         messages: {
             nomTitular: {
                 required: "Introdueix el nom",
-                minlength: "Mínim 8 caràcters",
+                minlength: "Mínim 3 caràcters",
                 maxlength: "Màxim 70 caràcters"
             },
             numTarjeta: {

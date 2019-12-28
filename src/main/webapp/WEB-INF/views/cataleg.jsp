@@ -111,7 +111,7 @@
                             <button class="btn btn-primary" id="escollirGenere" >Genere</button>
                             <form class="mostrarGenere">
                                 <!--Generes per mostrar, foreach generes... -->
-                                <div class="row">
+                                <div class="row" style="max-width: fit-content;">
                                     <%
                                         String[] llistaGeneres = {
                                             "FPS", "RPG", "Cooperació", "Deportiu", "Multijugador",
@@ -144,6 +144,20 @@
                             </form>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12" id="marginMenuCalaleg">
+                            <button class="btn btn-primary" id="escollirPreu" >Preu</button>
+                            <form class="mostrarPreu">
+                                <!--Generes per mostrar, foreach generes... -->
+                                <div class="row">
+                                    <div class="col-md-12 checkboxDiv">
+                                        <input type="range" class="custom-range" id="customRange" min="5" max="70" step="5" value="70">
+                                        <div class="value">Preu inferior a: 70 €</div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>               
                 </div>
                 <div class="col-md-9">
                     <div class="container-fluid">
@@ -165,7 +179,7 @@
                                                 </c:forTokens>
                                             </div>
                                         </a>
-                                        <a href="<c:url value="product?id=${joc[0]}"/>" class="producteAComprar" id="overwatch">
+                                        <a href="<c:url value="product?id=${joc[0]}"/>" class="producteAComprar" id="${joc[5]}" title="${joc[1]}">
                                             <fmt:formatNumber value="${joc[5]}" currencySymbol="€" type="currency" pattern="###,###.00 ¤"/> - Comprar
                                         </a>
                                     </div>

@@ -6,7 +6,10 @@ var loadFile = function (event) {
     };
     reader.readAsDataURL(event.target.files[0]);
 };
-
+/**
+ * 
+ * @returns {Boolean}
+ */
 function validacio() {
     $(".alert").remove();
 
@@ -62,7 +65,6 @@ function validacio() {
     var comprobarJoc = "";
     if (fullPath) {
         var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
-        console.log(fullPath);
         var filename = fullPath.substring(startIndex);
         if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
             filename = filename.substring(1);
@@ -120,7 +122,11 @@ $(document).ready(function () {
     language.addEventListener("focus", addDiv);
     plataforma.addEventListener("blur", deleteDiv);
     plataforma.addEventListener("focus", addDiv);
-
+    /**
+     * 
+     * @returns {undefined}
+     * 
+     */
     function addDiv() {
         if (this.getAttribute("id") === "idioma") {
             var div = document.querySelector(".helpForm1");
