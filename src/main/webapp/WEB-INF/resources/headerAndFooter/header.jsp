@@ -36,8 +36,8 @@
                 seran utilitzades implicitament per millorar la pàgina y mai serà venguda
                 a tercers ni utilitzada per fins publicitaris.
             </p>
-            <a class="btn btn-primary" id="acceptarCookie">Acceptar</a>
-            <a href="<c:url value='/cookies'/>">Més informació</a>
+            <a href="#" class="btn btn-primary" id="acceptarCookie" tabindex="1">Acceptar</a>
+            <a href="<c:url value='/cookies'/>" tabindex="2">Més informació</a>
         </div>
     </div>
     <!--Secció top: Buscador, conta, logo....--> 

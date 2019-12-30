@@ -389,12 +389,12 @@ html{
     font-size: 25px;
     position: absolute;
     cursor: pointer;
-    color: #c33d3d;
+    color: #c33d3d !important;
      transform: translateY(-20%); 
     
 }
 .borrarBusqueda:hover{
-    color: red;
+    color: red !important;
 }
 .ajudaBuscador {
     display: none;
@@ -402,13 +402,13 @@ html{
     position: absolute;
     top:100%;
     z-index: 99999;
-    min-width: 120px;
+    min-width: fit-content;
     background-color: #0A0909;
     padding-left: 5px;
     list-style-type: none;
     border: 1px solid #4e77d3;
     overflow: hidden;
-    width: fit-content;
+    width: 302px;
     padding-right: 20px;
 
 }

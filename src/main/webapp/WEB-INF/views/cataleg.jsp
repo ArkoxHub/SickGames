@@ -160,10 +160,13 @@
                     </div>               
                 </div>
                 <div class="col-md-9">
-                    <div class="container-fluid">
+                    <div class="container-fluid" id="catalegJocs">
                         <div class="row">
                             <c:forEach var="joc" items="${videojocs}">
-                                <div class="column <c:forTokens var="token" items="${joc[2]}" delims=","> ${token} </c:forTokens> ${joc[1]}">
+                                <c:set var="search" value="'" />
+                                <c:set var = "string1" value = "${fn:replace(joc[1],' ', '')}" />
+                                <c:set var = "string2" value = "${fn:replace(string1,search, '')}" />
+                                <div class="column <c:forTokens var="token" items="${joc[2]}" delims=","> ${token} </c:forTokens> ${string2}">
                                     <div class="outClick">
                                         <div class="mvlGeneres">
                                             <span>Veure Generes</span>

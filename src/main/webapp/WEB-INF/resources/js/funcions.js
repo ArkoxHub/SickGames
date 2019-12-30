@@ -28,27 +28,103 @@ $(document).ready(function () {
 });
 /*Realitzar busqueda*/
 $(document).ready(function () {
-    var searchParams = new URLSearchParams(window.location.search);
-    
-    //Total jocs
-    var jocs = ($('.column:not([class*=jocfantasmaquenoexiste])').length);
-    //Itera los parámetros de búsqueda.
-    for (let busqueda of searchParams) {
-        actualitzarBusqueda("ajudaBusqueda", busqueda[1]);
-        //Tots els jocs comencen en lletra majuscula
-        var busquedaString = busqueda[1].toString();
-        var busquedaCapitalize = busquedaString[0].toUpperCase() + busquedaString.slice(1);
-        var salu2 = '<div class="text-center center salu2" ><h2>No hi ha jocs amb el següent nom: '+busquedaCapitalize+'</h2></div>';
-        //La posición 0 es el name del form y la 1 la busqueda
-        var splitBusqueda = busquedaCapitalize.split(" ");
-        $('.column:not([class*=' + splitBusqueda[0] + '])').hide();
-        if (($('.column:not([class*=' + splitBusqueda[0] + '])').hide().length == jocs)){
-            $('.container-fluid').append(salu2);
+    if (location.pathname == "/sickgames/cataleg"){
+        var searchParams = new URLSearchParams(window.location.search);
+        
+        //Total jocs
+        var jocs = ($('.column:not([class*=jocfantasmaquenoexiste])').length);
+        
+        //Itera los parámetros de búsqueda.
+        for (let busqueda of searchParams) {
+            //Tots els jocs comencen en lletra majuscula
+            var busquedaString = busqueda[1].toString().trim().toLowerCase();
+            var busquedaCapitalize = mayus(busquedaString);
+            var salu2 = '<div class="text-center center salu2" ><h2 style="padding-top: 20px">No hi ha jocs amb el següent nom: ' + busquedaCapitalize + '</h2></div>';
+            //Quitamos los espacios a los nombres y los apostrofes para poder realizar una busqueda por id.
+            var apostrofe = busqueda[1].replace(/'/g, '');
+            var espacios = apostrofe.replace(/\s/g, '');
+            
+            //Comprobamos si la palabra compuesta junta existe.
+            if($('.'+espacios) == true){
+                mostrarOcultar(espacios);
+            }
+            //Si no existe, buscamos por palabra.
+            else{
+                //Separamos las palabras en un array
+                var splitBusqueda = busquedaCapitalize.split(" ");
+                //Recorremos el array
+                for (var i = 0; i < splitBusqueda.length; i ++){
+                    //Si hay más de 1 palabra y la palabra anterior no encuentra un juego..
+                    if(splitBusqueda.length > 1 && $('.column:not([class*=' + splitBusqueda[i-1] + '])').length == jocs){
+                        //Si la palabra actual se encuentra, realizamos la busqueda
+                        if($('.column:not([class*=' + splitBusqueda[i+1] + '])').length != jocs){
+                            mostrarOcultar(splitBusqueda[i+1]);
+                        }
+                        //Si no la encuentra, mostramos mensaje de busqueda fallida
+                        else{
+                            $('.column:not([class*=' + splitBusqueda[i] + '])').hide();
+                            $('#catalegJocs').append(salu2);
+                            break;
+                        }
+                    }
+                    else{
+                        mostrarOcultar(splitBusqueda[0]);
+                    }
+                }
+            }
+            /*
+             * 
+             * @param {type} clase
+             * @returns {undefined}
+             */
+            function mostrarOcultar(clase){
+                $('.column:not([class*=' + clase + '])').hide();
+                //Si se oculta todo pasamos la busqueda en minusculas
+                if (($('.column:not([class*=' + clase + '])').hide().length == jocs) && (location.pathname == "/sickgames/cataleg")) {
+                    $('.column:not([class*=' + clase + '])').show();
+                    //Buscamos la palabra sin modificar en minusculas
+                    mostrarOcultarMinus(busquedaString);
+                } else {
+                    for (var i = 0; i < $('.column:visible').length; i++){
+                        //Guardamos el nombre del juego
+                        if(clase.length > 2){
+                             actualitzarBusqueda("ajudaBusqueda", $('.column:visible').eq(i).children().children().children().children().children().children().children().prevObject.prevObject.prevObject[0].title);
+                        }else{
+                            //Evitar guardar palabras erroneas o espacios
+                            actualitzarBusqueda("ajudaBusqueda","NO");
+                            removeValorBusqueda("ajudaBusqueda" , "NO");
+                        }
+                    }
+                }
+            }
+            /*
+             * 
+             * @param {type} clase
+             * @returns {undefined}
+             */
+            function mostrarOcultarMinus(clase){
+                //Si tampoco encuentra la busqueda en minusculas, mostramo mensaje de error
+                $('.column:not([class*=' + clase + '])').hide();
+                if (($('.column:not([class*=' + clase + '])').hide().length == jocs) && (location.pathname == "/sickgames/cataleg")) {
+                    $('#catalegJocs').append(salu2);
+                } else {
+                    for (var i = 0; i < $('.column:visible').length; i++) {
+                        if (clase.length > 2) {
+                            actualitzarBusqueda("ajudaBusqueda", $('.column:visible').eq(i).children().children().children().children().children().children().children().prevObject.prevObject.prevObject[0].title);
+                        } else {
+                            //Evitar guardar palabras erroneas, espacios, letras sueltas ,etc
+                            actualitzarBusqueda("ajudaBusqueda", "NO");
+                            removeValorBusqueda("ajudaBusqueda", "NO");
+                        }
+                    }
+                    
+                }
+            }
         }
-        
-        
     }
 });
+
+
 /*Funcio cambiar fons random*/
 $(document).ready(function () {
 
@@ -317,11 +393,15 @@ $(document).ready(function () {
 
 /*Mostrar ajudes de busqueda*/
 $(document).ready(function(){
-    var busquedasString = localStorage.getItem("ajudaBusqueda");
-    var busquedasArray = "";
-    
+    if(localStorage.getItem("ajudaBusqueda")){
+        var busquedasStringSplit = localStorage.getItem("ajudaBusqueda").split(",");
+        var busquedasString = busquedasStringSplit.sort().join(",");
+        localStorage.removeItem("ajudaBusqueda");
+        localStorage.setItem("ajudaBusqueda", busquedasString);
+        var busquedasArray = "";
+    }
     busquedasString!=null ? busquedasArray = busquedasString.split(",") :busquedasArray = "";
-    if(busquedasString!=null){
+    if(busquedasString != null){
         $('#formBuscador').append(`
             <ul id="ajudaBuscador" class="ajudaBuscador" ></ul>
         `);
@@ -329,12 +409,13 @@ $(document).ready(function(){
         $("#ajudaBuscador").remove();
     }
     for (var i = 0; i < busquedasArray.length; i++){
-        if(busquedasArray[i].length < 30){
+        if(busquedasArray[i].length < 40){
             $("#ajudaBuscador").append(`
                 <div id="ajuda" class="`+busquedasArray[i]+`">
-                    <a href="cataleg?search=`+busquedasArray[i]+`">
-                        <li>`+busquedasArray[i]+`
-                    </a><span class="borrarBusqueda" id="`+busquedasArray[i]+`">&times;</span></li>
+                    <li>
+                        <a href="cataleg?search=`+busquedasArray[i]+`">`+busquedasArray[i]+`</a>
+                        <a href="#" class="borrarBusqueda" id="`+busquedasArray[i]+`">&times;</a>
+                    </li>
                 </div>
             `);
         }
@@ -351,13 +432,14 @@ $(document).ready(function(){
             $("#ajudaBuscador").remove();
         }
     });
+    
     $(".buscador").on("focus",function(){
         $('#ajudaBuscador').slideDown('fast');
     });
     $(".section-body").on("click",function(){
         $('#ajudaBuscador').slideUp('fast');
     });
-    
+  
     
 });
 
@@ -440,7 +522,7 @@ function actualitzarBusqueda(name,  value) {
 
 };
 
-
+//Funció per eliminar una ajuda de la busqueda
 function removeValorBusqueda(name,  value) {
     
 	var existing = localStorage.getItem(name);
@@ -457,3 +539,15 @@ function removeValorBusqueda(name,  value) {
 	localStorage.setItem(name, existing.toString());
 
 };
+
+
+
+//Funció per convertir el principi de cada lletra en majuscules
+function mayus(texto) {
+   var textoSplit = texto.split(' ');
+   for (var i = 0; i < textoSplit.length; i++) {
+       textoSplit[i] = textoSplit[i].charAt(0).toUpperCase() + textoSplit[i].substring(1);     
+   }
+   // Tornem a juntar l'array
+   return textoSplit.join(' '); 
+}

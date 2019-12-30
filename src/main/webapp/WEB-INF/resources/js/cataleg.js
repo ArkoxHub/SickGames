@@ -63,7 +63,7 @@ $(document).ready(function(){
             if($('.column'+targets).show().length === 0){
                 var salu2 = '<div class="text-center center salu2" ><h2>No hi ha jocs amb aquesta combinació de generes</h2></div>';
                 if($(".salu2").length == 0){
-                    $('.container-fluid').append(salu2);
+                    $('#catalegJocs').append(salu2);
                 }
             }else{
                 $('.salu2').remove();
