@@ -14,19 +14,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-
 /**
  *
  * @author Kevin-PC
  */
 @Controller
-@RequestMapping("/politica-de-privacitat")
-public class PrivacityController {
-
+@RequestMapping("/copyright")
+public class copyrightController {
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView initPolitica(HttpServletRequest request, HttpServletResponse response)
+    public ModelAndView initCopyright(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ModelAndView model = new ModelAndView("politica-de-privacitat");
+        ModelAndView model = new ModelAndView("copyright");
         return model;
     }
 }

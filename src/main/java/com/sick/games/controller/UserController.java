@@ -33,7 +33,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  *
@@ -174,13 +173,6 @@ public class UserController {
         // Afegim a l'usuari la data d'alta equivalent al moment de crear-la.
         java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
         newUser.setData_Alta(date);
-        
-        // Encriptació password usuari
-        String password = newUser.getContrasenya();
-        password = DigestUtils.md5Hex(password);
-        newUser.setContrasenya(password);
-        
-        // Afegim l'usuari a la base de dades
         usersService.addUser(newUser);
 
         // Afegim les 3 cookies per a una navegació més cómode a l'usuari
@@ -268,7 +260,6 @@ public class UserController {
             User user = usersService.getUserByNick(userNick);
 
             if (user != null) {
-                userPwd = DigestUtils.md5Hex(userPwd);
                 if (user.getContrasenya().equals(userPwd)) {
                     Cookie cookieMail = new Cookie("userMail", user.getEmail());
                     cookieMail.setMaxAge(60 * 60 * 24 * 365 * 10); // 10 anys expiració

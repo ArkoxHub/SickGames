@@ -120,9 +120,4 @@ public class UsersServiceImpl implements UsersService {
         return usersDAO.getAllUsers();
     }
 
-    @Override
-    public User getUserById(int id) {
-        return usersDAO.getUserById(id);
-    }
-
 }

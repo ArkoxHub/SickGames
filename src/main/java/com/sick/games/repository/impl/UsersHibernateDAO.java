@@ -237,16 +237,6 @@ public class UsersHibernateDAO implements UsersDAO {
     public List<User> getAllUsers() {
         return (List<User>) getSession().createQuery("FROM Users").getResultList();
     }
-    
-    /**
-     * Permet obtenir un usuari mitjançant el seu ID
-     * @param id id de l'usuari
-     * @return Objecte usuari
-     */
-    @Override
-    public User getUserById(int id) {
-        return (User) getSession().createQuery("FROM Users WHERE id_Usuari = :id").setParameter("id", id).uniqueResult();
-    }
 
     // Connecta amb la Base de Dades
     public Session getSession() {

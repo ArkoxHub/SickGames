@@ -81,7 +81,7 @@
                         <h4  id="jocsH4">Vols afegir jocs a la teva Whislist?</h4>
                         <div class="row" id="jocsPerfil">
                             <div class="col-md-6">
-                                <span>Només has de fer clic al <strong>COR ♥</strong> que veuràs a la caràtula d'un videojoc.</span>
+                                <span>Només tens que fer click al "cor" que veuras a cada producte.</span>
                                 <img id="guiaWhish" src="<c:url value="https://gyazo.com/749bfc7a07e397888fc05495fc60082d.gif"/>">
                             </div>
                         </div>

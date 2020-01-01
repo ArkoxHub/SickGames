@@ -14,6 +14,7 @@ import java.util.List;
 /**
  *
  * @author Adri
+ * @author Adri
  * @version 1.0 Interfície que subministra els mètodes Data Access Object per
  * accedir a les dades de les següents classes - Users - Admins - Clients -
  * Partners
@@ -67,8 +68,5 @@ public interface UsersDAO {
 
     // GET ALL USERS
     public List<User> getAllUsers();
-    
-    // GET USER BY ID
-    public User getUserById(int id);
 
 }

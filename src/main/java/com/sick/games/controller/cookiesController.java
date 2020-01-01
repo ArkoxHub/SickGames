@@ -21,7 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 @RequestMapping("/cookies")
-public class CookiesController {
+public class cookiesController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView initCookies(HttpServletRequest request, HttpServletResponse response)
