@@ -11,7 +11,6 @@ import java.util.List;
 /**
  *
  * @author Adri
- * @author Adri
  * @version 1.0 Interfície que subministra els mètodes Data Access Object per
  * accedir a les dades de la Classe Entitat Comanda
  */

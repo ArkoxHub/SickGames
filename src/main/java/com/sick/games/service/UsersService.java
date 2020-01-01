@@ -54,4 +54,6 @@ public interface UsersService {
     public User getUserByNick(String nickname);
 
     public List<User> getAllUsers();
+    
+    public User getUserById(int id);
 }
