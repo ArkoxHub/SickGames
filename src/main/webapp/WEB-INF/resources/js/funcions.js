@@ -14,7 +14,7 @@ $(document).ready(function () {
         }
     }
 });
-/*Funció acceptar cookies*/
+/*Funció acceptar politica de cookies*/
 $(document).ready(function () {
     $("#acceptarCookie").click(function () {
         setCookie('CookiesLlei', 'Acceptades', 999);
