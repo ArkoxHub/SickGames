@@ -20,13 +20,13 @@ import org.springframework.web.servlet.ModelAndView;
  * @author Kevin-PC
  */
 @Controller
-@RequestMapping("/cookies")
+@RequestMapping("/Cookies")
 public class CookiesController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView initCookies(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ModelAndView model = new ModelAndView("cookies");
+        ModelAndView model = new ModelAndView("Cookies");
         return model;
     }
 }

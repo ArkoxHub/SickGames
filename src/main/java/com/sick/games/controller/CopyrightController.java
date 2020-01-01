@@ -19,12 +19,12 @@ import org.springframework.web.servlet.ModelAndView;
  * @author Kevin-PC
  */
 @Controller
-@RequestMapping("/copyright")
+@RequestMapping("/Copyright")
 public class CopyrightController {
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView initCopyright(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ModelAndView model = new ModelAndView("copyright");
+        ModelAndView model = new ModelAndView("Copyright");
         return model;
     }
 }

@@ -20,13 +20,13 @@ import org.springframework.web.servlet.ModelAndView;
  * @author Kevin-PC
  */
 @Controller
-@RequestMapping("/politica-de-privacitat")
+@RequestMapping("/Politica-de-privacitat")
 public class PrivacityController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView initPolitica(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ModelAndView model = new ModelAndView("politica-de-privacitat");
+        ModelAndView model = new ModelAndView("Politica-de-privacitat");
         return model;
     }
 }

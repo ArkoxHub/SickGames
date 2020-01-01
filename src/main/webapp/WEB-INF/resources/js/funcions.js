@@ -44,9 +44,11 @@ $(document).ready(function () {
             var apostrofe = busqueda[1].replace(/'/g, '');
             var espacios = apostrofe.replace(/\s/g, '');
             
+                console.log(espacios)
             //Comprobamos si la palabra compuesta junta existe.
-            if($('.'+espacios) == true){
+            if($('.column:not([class*=' + espacios + '])').length != jocs){
                 mostrarOcultar(espacios);
+                console.log("oddo")
             }
             //Si no existe, buscamos por palabra.
             else{
@@ -544,10 +546,14 @@ function removeValorBusqueda(name,  value) {
 
 //Funció per convertir el principi de cada lletra en majuscules
 function mayus(texto) {
-   var textoSplit = texto.split(' ');
-   for (var i = 0; i < textoSplit.length; i++) {
-       textoSplit[i] = textoSplit[i].charAt(0).toUpperCase() + textoSplit[i].substring(1);     
-   }
-   // Tornem a juntar l'array
-   return textoSplit.join(' '); 
+   
+    var textoSplit = texto.split(' ');
+    for (var i = 0; i < textoSplit.length; i++) {
+        if(textoSplit[i].length > 2){
+            textoSplit[i] = textoSplit[i].charAt(0).toUpperCase() + textoSplit[i].substring(1);  
+        }
+    }
+    // Tornem a juntar l'array
+    return textoSplit.join(' '); 
+       
 }
