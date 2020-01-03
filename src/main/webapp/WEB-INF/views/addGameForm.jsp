@@ -16,9 +16,11 @@
         <title>Formulari addGame</title>
         <!--This css-->
         <link href="<c:url value='/resources/css/afegirJoc.css'/>" rel="stylesheet" type="text/css"/>
+        <!--Jquery-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <!--This javascript-->
         <script src="<c:url value='/resources/js/afegirJoc.js'/>" type="text/javascript" ></script>
-        
+
         <!--WebIcon-->
         <link rel="icon" href="<c:url value="/resources/img/logo_icon.png"/>" alt="Favicon">
         <!--My css-->
@@ -26,8 +28,6 @@
         <!--FontsGoogle-->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="true">
         <link href="https://fonts.googleapis.com/css?family=Archivo&display=swap" rel="stylesheet">
-        <!--Jquery-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <!--My javascript-->
         <script src="<c:url value="/resources/js/afegirJoc.js"/>" type="text/javascript" ></script>
     </head>
@@ -69,7 +69,7 @@
         </div>
 
         <div class="wrap">
-            
+
             <h2 class="center">Formulari per afegir joc a la Base de Dades</h2>
             <form:form modelAttribute="game" id="form" method="post" onsubmit="return validacio();" enctype="multipart/form-data">
                 <label for="nom">Nom</label><br>
@@ -82,10 +82,10 @@
                 <form:input path="pvp" type="number" step="0.01" class="form-control" id="pvp" name="pvp" placeholder="Preu en €"/>
 
                 <label for="idioma">Idioma</label>
-                <form:input path="idioma" type="text" maxlength="50" class="form-control" id="idioma" name="idioma" placeholder="ESP | ENG | ALM | ITL | FR"/>
-                
+                <form:input path="idioma" type="text" maxlength="50" class="form-control" id="idioma" name="idioma" placeholder="ESP ENG ALM ITL FR..."/>
+
                 <label for="generes">Gèneres</label>
-                <form:input path="generes" type="text" maxlength="100" class="form-control" id="generes" name="generes" placeholder="Acció, Aventures, MMO, RPG, FPS..."/>
+                <form:input path="generes" type="text" maxlength="100" class="form-control" id="generes" name="generes" placeholder="Acció Aventures MMO RPG FPS..."/>
 
                 <label for="descripcio">Descripció</label>
                 <form:textarea path="descripcio"  class="form-control" id="descripcio" name="descripcio" placeholder="El mon necesita herois..."/>
@@ -97,7 +97,7 @@
                 <input type="submit" id="submit" class="btn btn-primary" value="Crear Videojoc">
                 <a class="btn btn-primary" id="back" href="<c:url value="/admin"/>">Cancel·lar</a>
             </form:form>
-                
+
         </div>
     </body>
 </html>

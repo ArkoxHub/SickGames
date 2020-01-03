@@ -11,23 +11,25 @@ import java.util.List;
 /**
  *
  * @author Adri
+ * @version 1.0 Interfície que defineix quins seran els mètodes que es
+ * criden del repositori CodiDAO
  */
 public interface CodiService {
-    
+
     public void addCodi(Codi codi);
-    
+
     public void updateCodi(Codi codi);
-    
+
     public void removeCodi(Codi codi);
-    
+
     public Codi getCodi(int codi);
-    
+
     public List<Codi> getCodisByCodiJoc(int codi);
-    
+
     public Codi getNextCodeByCodiJoc(int codi_Joc);
-    
+
     public List<Codi> getPlataformesByCodiJoc(int codi_Joc);
-    
+
     public long getTotalCodisByJoc(int codi_Joc);
-    
+
 }

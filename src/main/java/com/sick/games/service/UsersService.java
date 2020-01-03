@@ -14,6 +14,8 @@ import java.util.List;
 /**
  *
  * @author Adri
+ * @version 1.0 Interfície que defineix quins seràn els mètodes que es
+ * criden del repositori UsersDAO
  */
 public interface UsersService {
 
@@ -52,4 +54,6 @@ public interface UsersService {
     public User getUserByNick(String nickname);
 
     public List<User> getAllUsers();
+    
+    public User getUserById(int id);
 }

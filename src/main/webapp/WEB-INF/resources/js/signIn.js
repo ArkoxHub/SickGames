@@ -13,13 +13,6 @@ $(document).ready(function () {
     if (telefon.attr("value") == 0){
         telefon.attr("value", "");
     }
-    /******Afegir placeholder desde js*********
-    nom.attr("placeholder", "Javier");
-    cognoms.attr("placeholder", "Sanzchez de los Amores");
-    nickname.attr("placeholder", "Senyor X");
-    email.attr("placeholder", "sickgames@hotmail.com");
-    telefon.attr("placeholder", "679148114");
-    direccio.attr("placeholder", "C/ Catalunya 27, 5-2");*/
     
     /*************Contraseña********************/
     //Mostrar contraseña cuando hacemos hover al fa-eye
@@ -155,12 +148,12 @@ $(document).ready(function () {
         rules: {
             nom: {
                 required: true,
-                minlength: 3,
+                minlength: 2,
                 maxlength: 20
             },
             cognoms: {
                 required: true,
-                minlength: 8,
+                minlength: 2,
                 maxlength: 50
             },
             nickname: {
@@ -203,7 +196,7 @@ $(document).ready(function () {
             },
             cognoms: {
                 required: "Introdueix un cognom",
-                minlength: "Mínim 8 caràcters",
+                minlength: "Mínim 2 caràcters",
                 maxlength: "Màxim 50 caràcters"
             },
             nickname: {

@@ -15,6 +15,11 @@ import javax.validation.constraints.Size;
 /**
  *
  * @author Adri
+ * @version 1.0
+ * Classe Entitat que defineix els atributs de la taula Administrador que pertany a la 
+ * Base de Dades sickgames.sql.
+ * 
+ * Aquesta classe entitat hereta de la classe User i afegeix els atributs propis.
  */
 @Entity
 @Table(name = "administrador")
@@ -33,6 +38,7 @@ public class Administrador extends User {
     @Column(name = "rol")
     private String rol;
 
+    // Empty constructor
     public Administrador() {
     }
    

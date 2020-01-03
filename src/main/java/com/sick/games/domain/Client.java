@@ -14,6 +14,11 @@ import javax.validation.constraints.NotNull;
 /**
  *
  * @author Adri
+ * @version 1.0
+ * Classe Entitat que defineix els atributs de la taula Client que pertany a la 
+ * Base de Dades sickgames.sql.
+ * 
+ * Aquesta classe entitat hereta de la classe User i afegeix els atributs propis.
  */
 @Entity
 @Table(name = "client")
@@ -30,6 +35,7 @@ public class Client extends User {
     @Column(name = "compte_Bancari", unique = true)
     private String compte_Bancari;
 
+    // Empty constructor
     public Client() {
     }
 

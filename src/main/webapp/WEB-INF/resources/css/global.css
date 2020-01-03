@@ -151,20 +151,24 @@ html{
 
 
 #userImg{
-    width: 41px;
+    width: 50px;
     border-radius: 50%;
     position: absolute;
     bottom: 4px;
-    left: 0;
-    border: 1px solid;
+    left: -16px;
+    -webkit-box-shadow: 0px 0px 13px 0px rgba#007bff;
+    -moz-box-shadow: 0px 0px 13px 0px #007bff;
+    box-shadow: 0px 0px 13px 0px #007bff;
 }
 #userImgMvl{
-    width: 25px;
+    width: 35px;
     border-radius: 50%;
     position: absolute;
     bottom: 4px;
-    border: 1px solid;
-    left: 14px;
+    -webkit-box-shadow: 0px 0px 13px 0px rgba#007bff;
+    -moz-box-shadow: 0px 0px 13px 0px #007bff;
+    box-shadow: 0px 0px 13px 0px #007bff;
+    left: 8px;
 }
 
 .logoMvl{
@@ -373,6 +377,54 @@ html{
     color: white;
     text-shadow: 0 0 15px rgba(255,255,255,.5), 0 0 10px rgba(255,255,255,.5), 0px -1px 4px rgba(255,255,255,0);
 }
+.menuCompte li:hover{
+    -webkit-box-shadow: 8px 0px 0px 0px rgba(78,118,211,1);
+    -moz-box-shadow: 8px 0px 0px 0px rgba(78,118,211,1);
+    box-shadow: 8px 0px 0px 0px rgba(78,118,211,1);
+    margin-left: 5px;
+}
+
+.borrarBusqueda{
+    right: 0px;
+    font-size: 25px;
+    position: absolute;
+    cursor: pointer;
+    color: #c33d3d !important;
+     transform: translateY(-20%); 
+    
+}
+.borrarBusqueda:hover{
+    color: red !important;
+}
+.ajudaBuscador {
+    display: none;
+    overflow: auto;  
+    position: absolute;
+    top:100%;
+    z-index: 99999;
+    min-width: fit-content;
+    background-color: #0A0909;
+    padding-left: 5px;
+    list-style-type: none;
+    border: 1px solid #4e77d3;
+    overflow: hidden;
+    width: 302px;
+    padding-right: 20px;
+
+}
+.ajudaBuscador li{
+    margin-top:5px;
+    text-align: left;
+}
+.ajudaBuscador a{
+    
+    color: white !important;
+}
+.ajudaBuscador a:hover{
+    text-decoration: none;
+    color: white;
+    text-shadow: 0 0 15px rgba(255,255,255,.5), 0 0 10px rgba(255,255,255,.5), 0px -1px 4px rgba(255,255,255,0);
+}
 .productesComprats {
     display: none;
     overflow: auto;  
@@ -387,14 +439,6 @@ html{
 }
 .productesComprats img{
     width: 50px;
-}
-
-.menuCompte li:hover{
-    -webkit-box-shadow: 8px 0px 0px 0px rgba(78,118,211,1);
-    -moz-box-shadow: 8px 0px 0px 0px rgba(78,118,211,1);
-    box-shadow: 8px 0px 0px 0px rgba(78,118,211,1);
-    margin-left: 5px;
-    border-right: 5px solid #4497f2;
 }
 
 .producteAComprar{
@@ -654,6 +698,23 @@ div[class*=genere] span{
 .viewers .fa-user{
     color:red;
 }
+/* Cookies, politica de privacitat, etc */
+.texto{
+    padding: 30px;
+}
+.textoUl{
+    padding-left: 40px;
+}
+.textoUl a{
+    color: #4497f2 !important;
+}
+.textoIndentTitle{
+    padding-left: 10px;
+}
+.ultimaModificacio{
+    font-size: 14px;
+}
+/* FI Cookies, politica de privacitat, etc */
 
 
 #stream{
@@ -989,6 +1050,21 @@ span.psw {
     }
     div[class*=genere]{
         display:none
+    }
+    .texto{
+        padding: 10px;
+    }
+    .textoUl{
+        padding-left: 10px;
+    }
+    .textoUl a{
+        color: #4497f2 !important;
+    }
+    .textoIndentTitle{
+        padding-left: 10px;
+    }
+    .ultimaModificacio{
+        font-size: 14px;
     }
 }
 

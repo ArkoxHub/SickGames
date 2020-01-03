@@ -11,19 +11,21 @@ import java.util.List;
 /**
  *
  * @author Adri
+ * @version 1.0 Interfície que subministra els mètodes Data Access Object per
+ * accedir a les dades de la Classe Entitat Comanda
  */
 public interface ComandaDAO {
-    
+
     public void addComanda(Comanda comanda);
-    
+
     public void updateComanda(Comanda comanda);
-    
+
     public void removeComanda(Comanda comanda);
-    
+
     public Comanda getComandaByCodiComanda(int codi);
-    
+
     public List<Comanda> getComandesByClient(int codi);
-    
+
     public List<Comanda> getAllComandes();
-    
+
 }

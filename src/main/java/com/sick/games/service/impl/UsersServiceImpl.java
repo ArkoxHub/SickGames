@@ -18,6 +18,11 @@ import org.springframework.stereotype.Service;
 /**
  *
  * @author Adri
+ * @version 1.0 Classe Service que implementa i sobreescriu els mètodes de
+ * l'interfície UsersService
+ * 
+ * Simplement es fan crides als mètodes del repositori a través del objecte DAO
+ * instanciat gràcies a l'annotació Autowired.
  */
 @Service
 public class UsersServiceImpl implements UsersService {
@@ -113,6 +118,11 @@ public class UsersServiceImpl implements UsersService {
     @Override
     public List<User> getAllUsers() {
         return usersDAO.getAllUsers();
+    }
+
+    @Override
+    public User getUserById(int id) {
+        return usersDAO.getUserById(id);
     }
 
 }

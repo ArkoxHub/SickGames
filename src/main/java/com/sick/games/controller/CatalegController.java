@@ -22,6 +22,8 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  *
  * @author Adri
+ * @version 1.0
+ * Controlador encarregat de rebre totes les peticions que es fan a www.sickgames.com/cataleg
  */
 @Controller
 @RequestMapping("/cataleg")
@@ -33,6 +35,16 @@ public class CatalegController {
     @Autowired
     UsersService usersService;
 
+    /**
+     * Mètode que rep les peticions del catàleg.
+     * Si l'usuari està loguejat s'obtenen els seus credencials a través de les 
+     * cookies i si existeixen, retorna l'usuari per tal de mostrar-lo al header
+     * @param request
+     * @param response
+     * @return cataleg.jsp
+     * @throws ServletException
+     * @throws IOException 
+     */
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView initCataleg(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

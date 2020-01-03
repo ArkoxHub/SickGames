@@ -8,6 +8,12 @@ package com.sick.games.domain;
 /**
  *
  * @author Adri
+ * @version 1.0
+ * Aquesta classe s'utilitza per retornar consultes amb atributs de les taules
+ * Videojoc i Codi de la Base de Dades sickgames.sql.
+ * 
+ * A diferència de les altres classes d'aquest paquet, aquesta és l'única que no
+ * és Entitat pel fet de compartir atributs de dos taules concretes.
  */
 public class CodeGame {
     

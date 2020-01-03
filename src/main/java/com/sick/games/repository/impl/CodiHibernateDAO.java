@@ -20,6 +20,11 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  *
  * @author Adri
+ * @version 1.0 Classe que implementa l'interfície CodiDAO i especifíca la
+ * funcionalitat de cada mètode.
+ *
+ * Tots els mètodes treballen sobre la Taula Codi de la Base de Dadaes
+ * sickgames.sql.
  */
 @Transactional
 @Repository("codiHibernateDAO")
@@ -30,44 +35,90 @@ public class CodiHibernateDAO implements CodiDAO {
 
     private static final Logger logger = LoggerFactory.getLogger(CodiHibernateDAO.class);
 
+    /**
+     * Permet afegir un codi a la Taula Codi.
+     *
+     * @param codi Objecte a afegir.
+     */
     @Override
     public void addCodi(Codi codi) {
         getSession().save(codi);
     }
 
+    /**
+     * Permet modificar un codi existent de la Taula Codi.
+     *
+     * @param codi Objecte codi a modificar.
+     */
     @Override
     public void updateCodi(Codi codi) {
         getSession().merge(codi);
     }
 
+    /**
+     * Elimina un codi existent de la Taula Codi.
+     *
+     * @param codi Objecte codi a eliminar.
+     */
     @Override
     public void removeCodi(Codi codi) {
         getSession().remove(codi);
     }
-    
+
+    /**
+     * Permet obtenir un codi existent de la Taula Codi.
+     *
+     * @param codi PK codi de l'objecte codi a obtenir.
+     * @return l'objecte Codi recuperat de la base de dades.
+     */
     @Override
     public Codi getCodi(int codi) {
         return (Codi) getSession().createQuery("FROM Codi WHERE codi = :codi").setParameter("codi", codi).uniqueResult();
     }
-    
+
+    /**
+     * Obté tots els objectes Codi que té un Videojoc concret.
+     *
+     * @param codi PK del Videojoc que es vol obtenir els seus codis.
+     * @return ArrayList de Codi amb tots els resultats.
+     */
     @Override
     public List<Codi> getCodisByCodiJoc(int codi) {
         return (List<Codi>) getSession().createQuery("FROM Codi WHERE codi_Joc = :codi").setParameter("codi", codi).getResultList();
     }
 
+    /**
+     * Permet obtenir el següent codi més barat que té un joc disponible.
+     *
+     * @param codi_Joc PK del Videojoc que es vol obtenir.
+     * @return ArrayList de Codis amb els codis ordenats de més barats a més
+     * cars.
+     */
     @Override
     public List<Codi> getNextCodeByCodiJoc(int codi_Joc) {
-        List <Codi> codi = (List<Codi>) getSession().createQuery("FROM Codi WHERE codi_Joc = :codi ORDER BY preu ASC").setParameter("codi", codi_Joc).list();
+        List<Codi> codi = (List<Codi>) getSession().createQuery("FROM Codi WHERE codi_Joc = :codi ORDER BY preu ASC").setParameter("codi", codi_Joc).list();
         return codi;
     }
 
-    // Retorna els codis d'un joc concret
+    /**
+     * Obté tots els codis que té un codi segons la plataforma passada per
+     * paràmetre.
+     *
+     * @param plataforma ID de la plataforma.
+     * @return ArrayList de Codis de tots els codis resultants de la cerca.
+     */
     @Override
     public List<Codi> getPlataformesByCodiJoc(int plataforma) {
         return (List<Codi>) getSession().load(Codi.class, plataforma);
     }
 
-    // Retorna el STOCK de codis que tenim d'un videojoc concret
+    /**
+     * MÈTODE CLAU Permet obtenir l'STOCK TOTAL que tenim d'un Videojoc concret.
+     *
+     * @param codi_Joc PK del Videojoc que volem consultar quants codis té
+     * disponible a la venta.
+     * @return Quantitat total de codis que té un Videojoc.
+     */
     @Override
     public long getTotalCodisByJoc(int codi_Joc) {
         Long codis = (long) getSession().createQuery("SELECT COUNT(codi.codi_Joc) FROM Codi codi WHERE codi.codi_Joc = :codi")

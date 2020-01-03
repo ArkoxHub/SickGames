@@ -111,7 +111,7 @@
                             <button class="btn btn-primary" id="escollirGenere" >Genere</button>
                             <form class="mostrarGenere">
                                 <!--Generes per mostrar, foreach generes... -->
-                                <div class="row">
+                                <div class="row" style="max-width: fit-content;">
                                     <%
                                         String[] llistaGeneres = {
                                             "FPS", "RPG", "Cooperació", "Deportiu", "Multijugador",
@@ -144,12 +144,29 @@
                             </form>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12" id="marginMenuCalaleg">
+                            <button class="btn btn-primary" id="escollirPreu" >Preu</button>
+                            <form class="mostrarPreu">
+                                <!--Generes per mostrar, foreach generes... -->
+                                <div class="row">
+                                    <div class="col-md-12 checkboxDiv">
+                                        <input type="range" class="custom-range" id="customRange" min="5" max="70" step="5" value="70">
+                                        <div class="value">Preu inferior a: 70 €</div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>               
                 </div>
                 <div class="col-md-9">
-                    <div class="container-fluid">
+                    <div class="container-fluid" id="catalegJocs">
                         <div class="row">
                             <c:forEach var="joc" items="${videojocs}">
-                                <div class="column <c:forTokens var="token" items="${joc[2]}" delims=","> ${token} </c:forTokens> ${joc[1]}">
+                                <c:set var="search" value="'" />
+                                <c:set var = "string1" value = "${fn:replace(joc[1],' ', '')}" />
+                                <c:set var = "string2" value = "${fn:replace(string1,search, '')}" />
+                                <div class="column <c:forTokens var="token" items="${joc[2]}" delims=","> ${token} </c:forTokens> ${string2}">
                                     <div class="outClick">
                                         <div class="mvlGeneres">
                                             <span>Veure Generes</span>
@@ -165,7 +182,7 @@
                                                 </c:forTokens>
                                             </div>
                                         </a>
-                                        <a href="<c:url value="product?id=${joc[0]}"/>" class="producteAComprar" id="overwatch">
+                                        <a href="<c:url value="product?id=${joc[0]}"/>" class="producteAComprar" id="${joc[5]}" title="${joc[1]}">
                                             <fmt:formatNumber value="${joc[5]}" currencySymbol="€" type="currency" pattern="###,###.00 ¤"/> - Comprar
                                         </a>
                                     </div>

@@ -27,24 +27,48 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  *
  * @author Adri
+ * @version 1.0 Controlador de la pàgina principal que rep les peticions a
+ * l'index HTML. www.sickgames.com
  */
 @Controller
 @RequestMapping("/")
 public class HomeController {
-
+    
     @Autowired
     VideojocService videojocService;
-
+    
     @Autowired
     UsersService usersService;
-
+    
     @Autowired
     CodiService codiService;
 
+    /**
+     * Mètode main que rep les peticions que es fan a la pàgina inicial.
+     *
+     * Obté de la base de dades els próxims llançaments dels jocs que sortiràn
+     * en els pròxims dies en el moment de fer la consulta i les adjunta al
+     * model. Obté les ofertes majors dels jocs i les adjunta al model. Obté els
+     * jocs amb els preus més baixos i els adjunta al model.
+     *
+     * Si l'atribut de sessió "carro" no té valor en el moment d'entrar a la
+     * web, el crea. Si l'atribut de sessió "carro" existeix, per cada joc,
+     * actualitzem els preus dels codis. Adjuntem al model l'atribut carro.
+     *
+     * Mitjanánt les cookies de sickgames, es comprova amb els seus credencials
+     * (userMail) si està encara a la nostra base de dades. Si està, adjuntem al
+     * model el seu usuari. Si no ho està li eliminem totes les cookies.
+     *
+     * @param request
+     * @param response
+     * @return index.jsp
+     * @throws ServletException
+     * @throws IOException
+     */
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView homePage(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         ModelAndView model = new ModelAndView("index");
         model.getModelMap().addAttribute("upcoming", videojocService.getGamesUpcoming());
         model.getModelMap().addAttribute("ofertes", videojocService.getGamesByOferta());
@@ -81,7 +105,7 @@ public class HomeController {
                         user = usersService.getUserByeMail(cookie.getValue());
                         model.getModelMap().addAttribute("user", user);
                     } catch (NullPointerException e) {
-                        System.out.println("No s'ha trobat usuari equivalent a la base de dades actual");
+                        System.out.println("No s'ha trobat usuari amb aquest mail a la base de dades");
                     }
                 }
             }
@@ -91,18 +115,24 @@ public class HomeController {
             cookieMail.setMaxAge(0);
             cookieMail.setPath("/");
             response.addCookie(cookieMail);
-
+            
             Cookie cookieNick = new Cookie("userNick", "");
             cookieNick.setMaxAge(0);
             cookieNick.setPath("/");
             response.addCookie(cookieNick);
-
+            
             Cookie cookiePwd = new Cookie("userPwd", "");
             cookiePwd.setMaxAge(0);
             cookiePwd.setPath("/");
             response.addCookie(cookiePwd);
         }
-
+        
+        if (request.getSession().getAttribute("loginError") != null) {
+            String error = (String) request.getSession().getAttribute("loginError");
+            model.getModelMap().addAttribute("loginError", error);
+            request.getSession().removeAttribute("loginError");
+        }
+        
         return model;
     }
 }

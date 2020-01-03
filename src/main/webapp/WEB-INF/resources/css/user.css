@@ -168,3 +168,14 @@
         width: calc(100%/2 - 35px);
     }
 }
+
+/*Taules*/
+.table thead th {
+    border-bottom:0px !important;
+}
+.table td, .table th {
+    border-top:0px !important;
+}
+table, tr {
+    border: 3px solid black !important;
+}

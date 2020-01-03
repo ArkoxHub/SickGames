@@ -14,6 +14,9 @@ import javax.persistence.Table;
 /**
  *
  * @author Adri
+ * @version 1.0
+ * Classe Entitat que defineix els atributs de la taula Detall que pertany a la
+ * Base de Dades sickgames.sql.
  */
 
 @Entity
