@@ -6,6 +6,4 @@ Integrants del Projecte:
   -Kevin
   
   -Adrià
-  
-  -Oscar
  
