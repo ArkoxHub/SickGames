@@ -1,9 +1,6 @@
 # SickGames
-M12 Projecte de desenvolupament d'aplicacions web
+Proyecto página web dedicada a la venta de códigos de videojuegos online.
 
-Integrants del Projecte:
-
-  -Kevin
-  
-  -Adrià
- 
+Programado con Spring MVC
+BBDD MySQL
+IDE: NetbBeans 8.2
